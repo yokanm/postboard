@@ -1,8 +1,16 @@
 # DESIGN.md
 
-# PostBoard Frontend Architecture & Design System
+# POSTBOARD
 
-## Product Vision
+## Frontend Architecture & Design System
+
+Version: 2.0
+
+---
+
+# 1. Product Vision
+
+## Platform Overview
 
 PostBoard is a multi-tenant recruitment platform combining:
 
@@ -11,68 +19,193 @@ PostBoard is a multi-tenant recruitment platform combining:
 * Recruiter Workspace
 * Platform Administration
 
-The platform is designed for elite recruitment, technical hiring pipelines, talent operations, and workforce intelligence.
+The platform is designed for:
 
-The UI should feel closer to:
+* Technical hiring
+* Enterprise recruitment
+* Talent operations
+* Workforce intelligence
+* Multi-company hiring workflows
+
+---
+
+## Experience Principles
+
+The experience should feel closer to:
 
 * Linear
 * Vercel
 * Notion
-* Financial terminals
-* Bloomberg-style operational dashboards
+* Bloomberg Terminal
+* Modern operational software
 
-than traditional job boards.
+Than:
 
-The experience prioritizes:
+* Traditional job boards
+* Generic SaaS dashboards
+* Consumer-focused marketplaces
 
-* Information density
-* Operational efficiency
-* Technical clarity
-* Fast navigation
-* Enterprise scalability
+Priorities:
+
+1. Information Density
+2. Operational Efficiency
+3. Technical Transparency
+4. Fast Navigation
+5. Enterprise Scalability
 
 ---
 
-# Design Language
+# 2. Technology Stack
+
+## Core Framework
+
+* TanStack Start
+* React
+* TypeScript
+
+---
+
+## Routing
+
+* TanStack Router
+
+---
+
+## Server State
+
+* TanStack Query
+
+---
+
+## Tables
+
+* TanStack Table
+
+---
+
+## UI
+
+* Radix UI
+* shadcn/ui
+
+---
+
+## Styling
+
+* Tailwind CSS
+
+---
+
+## Forms
+
+* React Hook Form
+* Zod
+
+---
+
+## Charts
+
+* Recharts
+
+---
+
+## Client State
+
+* Zustand
+
+---
+
+## API
+
+* Native Fetch API
+
+---
+
+# 3. Architectural Constraints
+
+## Forbidden Technologies
+
+Do not introduce:
+
+* Axios
+* Lucide Icons
+* Redux
+* MobX
+* Chakra UI
+* Material UI
+* Styled Components
+
+Without architectural approval.
+
+---
+
+## Backend Ownership
+
+Backend already exists.
+
+Frontend acts only as:
+
+* Consumer
+* Presenter
+* Orchestrator
+
+Frontend must never duplicate backend business logic.
+
+---
+
+# 4. Design Language
 
 ## Industrial Broadsheet
 
-The official PostBoard design system is called **Industrial Broadsheet**.
+The official design system.
 
-It is a high-density, technical aesthetic that blends the authority of editorial print with the precision of developer tooling.
-
-Core traits:
+Core Traits:
 
 * Editorial
 * Technical
-* High-density
-* Minimalist
 * Brutalist
-* Enterprise-focused
-* Data-centric
+* Enterprise
+* High Density
+* Data-Centric
 
 Avoid:
 
-* excessive whitespace
-* oversized cards
-* playful consumer UI
-* glassmorphism
-* neumorphism
-* soft gradients
-* oversized shadows
-* rounded SaaS aesthetics
-
-### Key Attributes
-
-* Zero-Radius Geometry
-* Editorial Hierarchy
-* System Transparency
-* Technical Metadata Visibility
-* Monochromatic Structure
-* Iridescent Data Visualization
+* Glassmorphism
+* Neumorphism
+* Soft Shadows
+* Oversized Cards
+* Excessive White Space
+* Rounded SaaS Aesthetics
 
 ---
 
+## Key Attributes
+
+* Zero Radius Geometry
+* Editorial Hierarchy
+* Technical Metadata Visibility
+* Monochromatic Structure
+* System Transparency
+* Operational Density
+
+---
+
+# 5. Design Tokens
+
+[KEEP ALL COLOR TOKENS FROM CURRENT DESIGN]
+
+* Surface System
+* Text System
+* Primary System
+* Secondary System
+* Tertiary System
+* Error System
+* Fixed Colors
+* Structural Colors
+* Status Colors
+* Data Gradient Palette
+
+No modifications.
 # Design Tokens
 
 ## Colors
@@ -185,7 +318,7 @@ Avoid:
 
 ---
 
-# Typography
+# 6. Typography System
 
 ## Font Families
 
@@ -303,7 +436,8 @@ Examples:
 
 ---
 
-# Layout & Spacing
+
+# 7. Layout & Grid System
 
 ## Spacing Tokens
 
@@ -363,94 +497,274 @@ Fixed-Fluid Hybrid Grid
 
 ---
 
-# Visual Rules
+# 8. Visual Rules
 
 ## Radius
 
-Default radius:
+Default:
 
-```css
-border-radius: 0px;
-```
+0px
 
-### Exceptions
+Exceptions:
 
-Status badges:
-
-```css
-border-radius: 2px;
-```
-
-Category pills:
-
-```css
-border-radius: 999px;
-```
+* Status Badge → 2px
+* Pills → Full Radius
 
 ---
 
 ## Shadows
 
-Do not use shadows.
+Not allowed.
 
-Depth comes from:
+Use:
 
-* borders
-* tonal layering
-* contrast
-* interaction states
+* Borders
+* Contrast
+* Tonal Layering
 
 ---
 
-## Elevation & Depth
+## Structural Rules
 
-This system is intentionally flat.
+Primary Layout Border:
 
-Depth is created through:
-
-### Tonal Layering
-
-Background:
-
-```css
-#131313
-```
-
-Containers:
-
-```css
-#1c1b1b
-#201f1f
-#2a2a2a
-```
-
-### Borders
-
-```css
 1px solid #1A1A1A
-```
 
-### Hover States
+Borders establish hierarchy.
 
-Hover states should emphasize:
-
-* border changes
-* color inversion
-* accent highlighting
-
-Never use elevation jumps.
-
-### Overlays
-
-```css
-rgba(0,0,0,0.8)
-```
-
-No backdrop blur.
+Not shadows.
 
 ---
 
-# Component Standards
+# 9. TanStack Start Architecture
+
+## Root Structure
+
+src/
+├── app/
+├── routes/
+├── layouts/
+├── components/
+├── features/
+├── hooks/
+├── stores/
+├── lib/
+├── types/
+├── assets/
+└── styles/
+
+---
+
+# 10. App Layer
+
+app/
+├── providers/
+├── router/
+├── guards/
+└── config/
+
+Responsibilities:
+
+* Bootstrapping
+* Global Providers
+* Configuration
+* Route Guards
+
+---
+
+# 11. Route Architecture
+
+routes/
+├── __root.tsx
+├── index.tsx
+
+├── (public)/
+├── (candidate)/
+├── (recruiter)/
+├── (admin)/
+
+└── api/
+
+---
+
+## Route Groups
+
+Public
+
+* Landing
+* Jobs
+* Companies
+* Login
+* Register
+
+Candidate
+
+* Dashboard
+* Applications
+* Saved Jobs
+* Profile
+
+Recruiter
+
+* Dashboard
+* Jobs
+* Applicants
+* Analytics
+
+Admin
+
+* Dashboard
+* Users
+* Companies
+* Reports
+
+---
+
+# 12. Layout Architecture
+
+layouts/
+├── public-layout.tsx
+├── candidate-layout.tsx
+├── recruiter-layout.tsx
+└── admin-layout.tsx
+
+Each layout owns:
+
+* Navigation
+* Sidebar
+* Breadcrumbs
+* Access Control
+
+---
+
+# 13. Feature Architecture
+
+features/
+├── auth/
+├── jobs/
+├── candidate/
+├── recruiter/
+├── admin/
+├── analytics/
+└── notifications/
+
+Feature Structure:
+
+feature/
+├── api/
+├── components/
+├── hooks/
+├── schemas/
+├── services/
+├── types/
+└── utils/
+
+---
+
+# 14. API Architecture
+
+Use Native Fetch API.
+
+lib/api/
+├── client.ts
+├── request.ts
+├── auth.ts
+├── endpoints.ts
+├── errors.ts
+└── query-keys.ts
+
+Required Flow:
+
+Component
+→ Feature Hook
+→ Feature API
+→ Request Layer
+→ Backend
+
+Components never call fetch directly.
+
+---
+
+# 15. Authentication
+
+Supported:
+
+* Login
+* Register
+* Forgot Password
+* Reset Password
+
+Roles:
+
+* Candidate
+* Recruiter
+* Admin
+
+Flow:
+
+User
+→ Login
+→ Token Storage
+→ Current User Query
+→ Role Redirect
+
+---
+
+# 16. State Management
+
+## TanStack Query
+
+Server State Only
+
+Examples:
+
+* Users
+* Jobs
+* Companies
+* Applications
+* Analytics
+
+---
+
+## Zustand
+
+Client State Only
+
+Examples:
+
+* Sidebar
+* Theme
+* Modal
+* UI Preferences
+
+Never duplicate query data.
+
+---
+
+# 17. UI Architecture
+
+Priority:
+
+Radix UI
+→ shadcn/ui
+→ Shared Components
+→ Feature Components
+
+Do not create custom primitives when existing primitives exist.
+
+---
+
+# 18. Component Standards
+
+Keep all existing:
+
+* Buttons
+* Inputs
+* Cards
+* Tables
+* Status Badges
+* Audit Logs
+* Press Grid
 
 ## Buttons
 
@@ -617,356 +931,135 @@ Interactive behavior:
 
 ---
 
-# Frontend Folder Structure
+# 19. Data Tables
 
-```text
-src/
-├── app/
-├── routes/
-├── layouts/
-├── components/
-├── features/
-├── hooks/
-├── lib/
-├── store/
-├── types/
-└── assets/
-```
+Mandatory:
 
----
+TanStack Table
 
-# Feature Structure
+Features:
 
-```text
-features/
-├── auth/
-├── jobs/
-├── candidate/
-├── recruiter/
-├── admin/
-├── notifications/
-└── analytics/
-```
+* Search
+* Filter
+* Sort
+* Pagination
+* Column Visibility
 
-Each feature contains:
+Used by:
 
-```text
-api/
-components/
-hooks/
-schemas/
-types/
-pages/
-```
-
----
-
-# Application Layouts
-
-## Public Layout
-
-Pages:
-
-* Landing
-* Job Search
-* Job Detail
-* Login
-* Register
-* Forgot Password
-* Reset Password
-
----
-
-## Candidate Layout
-
-Pages:
-
-* Dashboard
-* Profile
-* Resume
+* Jobs
+* Users
+* Companies
 * Applications
-* Saved Jobs
-* Notifications
+* Audit Logs
 
 ---
 
-## Recruiter Layout
-
-Pages:
-
-* Dashboard
-* Company Profile
-* Job Management
-* Applicant Pipeline
-* Analytics
-
----
-
-## Admin Layout
-
-Pages:
-
-* Platform Dashboard
-* User Management
-* Company Management
-* Moderation
-* Reporting
-
----
-
-# Routing Architecture
-
-TanStack Router
-
-Route Groups:
-
-```text
-public/
-candidate/
-recruiter/
-admin/
-```
-
-Protection Levels:
-
-* guest
-* authenticated
-* role-based
-
----
-
-# API Architecture
-
-All API communication must use the native Fetch API.
-
-```text
-lib/api/
-├── client.ts
-├── request.ts
-├── endpoints.ts
-├── errors.ts
-└── auth.ts
-```
-
-Responsibilities:
-
-* Centralized API configuration
-* Request abstraction using Fetch API
-* Authentication token handling
-* Request and response normalization
-* Error transformation
-* Retry and timeout strategies
-
-Features consume APIs through feature-level hooks.
-
-Components must never call `fetch()` directly.
-
-Recommended pattern:
-
-```text
-Feature Hook
-→ API Function
-→ Fetch Client
-→ Backend API
-```
-
----
-
-# Authentication Flow
-
-Supported Screens
-
-* Login
-* Register
-* Forgot Password
-* Reset Password
-
-Flow
-
-```text
-User
-→ Login
-→ Token Storage
-→ Current User Query
-→ Role Redirect
-```
-
-Roles
-
-* Candidate
-* Recruiter
-* Admin
-
----
-
-# State Management
-
-## TanStack Query
-
-Server State:
-
-* user
-* jobs
-* companies
-* applications
-* analytics
-
-## Zustand
-
-Client State:
-
-* sidebar
-* theme
-* modal
-* filters
-
-Never duplicate query data in Zustand.
-
----
-
-# Forms
-
-React Hook Form + Zod
-
-Pattern:
-
-```text
-Schema
-→ Form
-→ Mutation
-→ Toast
-→ Query Invalidation
-```
-
----
-
-# Analytics
+# 20. Analytics
 
 Recharts
 
 Candidate:
 
-* application trends
+* Application Metrics
 
 Recruiter:
 
-* hiring funnel
-* conversion rates
+* Hiring Funnel
+* Conversion Metrics
 
 Admin:
 
-* platform metrics
-* tenant growth
+* Platform KPIs
+* Tenant Growth
+
+Follow Industrial Broadsheet visualization styling.
 
 ---
 
-# Dashboard Design Standards
+# 21. Error Handling
 
-All dashboards must provide:
+Every experience must support:
 
-* KPIs
-* activity feed
-* recent actions
-* searchable tables
-* audit visibility
-* operational metrics
+* Loading
+* Empty
+* Error
+* Success
 
-Density is preferred over oversized cards.
+Required Boundaries:
 
-Technical metadata should remain visible.
-
----
-
-# Error Handling
-
-Every page must support:
-
-* loading
-* empty
-* error
-* success
-
-Error boundaries:
-
-* global
-* layout
-* route
-
-API errors should be standardized through the Fetch API layer and surfaced consistently across the application.
+* Global
+* Layout
+* Route
+* Feature
 
 ---
 
-# Responsive Strategy
+# 22. Accessibility
+
+Release Requirements:
+
+* Keyboard Navigation
+* ARIA Labels
+* Semantic HTML
+* Screen Readers
+* WCAG Compliance
+
+Accessibility failures block release.
+
+---
+
+# 23. Responsive Strategy
 
 Desktop First
 
-Breakpoints:
+Desktop
 
-* Desktop
-* Tablet
-* Mobile
+* Fixed Sidebar
 
-### Desktop
+Tablet
 
-* Fixed sidebar
-* Full dashboard density
+* Adaptive Layout
 
-### Tablet
+Mobile
 
-* Reduced columns
-* Adaptive navigation
-
-### Mobile
-
-* Single-column layout
-* Drawer navigation
-* Bottom navigation support
-
-Gutters reduce:
-
-```text
-24px → 16px
-```
+* Drawer Navigation
+* Single Column Layout
 
 ---
 
-# Accessibility Standards
+# 24. Multi-Tenant Requirements
 
 Every feature must support:
 
-* Keyboard navigation
-* Focus visibility
-* Screen readers
-* Semantic HTML
-* ARIA labels
-* WCAG-compliant contrast ratios
+* Tenant Isolation
+* Company Ownership
+* Recruiter Ownership
+* Platform Administration
 
-Accessibility is a release requirement.
+Never assume a single company.
 
 ---
 
-# Future Expansion
+# 25. Future Scalability
 
 Architecture must support:
 
-* subscriptions
-* billing
-* team members
-* audit logs
-* notifications
-* feature flags
-* websocket events
-* AI matching
-* multi-company recruiters
-* tenant isolation
-* enterprise permissions
-* workflow automation
+* Subscription Plans
+* Billing
+* Recruiter Teams
+* Audit Logs
+* Notifications
+* Feature Flags
+* WebSockets
+* AI Matching
+* Enterprise Permissions
+
+Without major refactoring.
 
 ---
 
-# Definition of Done
-
-A feature is complete when:
+# 26. Definition Of Done
 
 ✓ Typed
 
@@ -982,7 +1075,7 @@ A feature is complete when:
 
 ✓ Success State
 
-✓ Query Integration
+✓ Query Integrated
 
 ✓ Role Protected
 

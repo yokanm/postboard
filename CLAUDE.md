@@ -1,241 +1,713 @@
-# CLAUDE.md — POSTBOARD Engineering Context
+# CLAUDE.md
 
-> Read this file before making any changes to the codebase.  
-> It encodes critical decisions and enforces the design system contract.
+# POSTBOARD Frontend Engineering Rules
 
----
+## Project Context
 
-## Project Overview
+POSTBOARD is a frontend-only application.
 
-**POSTBOARD** is an industrial-broadsheet job marketplace with two user portals:
-- **Candidate Portal** — browse jobs, track applications, manage saved roles
-- **Recruiter Portal** — post roles, manage applicant pipeline (Kanban), view analytics
+Backend already exists and is maintained separately.
 
----
+Frontend Responsibilities:
 
-## Tech Stack
+* UI Rendering
+* Routing
+* Authentication Experience
+* API Consumption
+* State Management
+* Dashboard Experiences
+* Data Visualization
+* Multi-Tenant User Experience
 
-| Layer            | Choice                                   |
-|------------------|------------------------------------------|
-| Framework        | React 19 + TypeScript 5                  |
-| Routing          | TanStack Router v1 (file-based)          |
-| Server State     | TanStack Query v5                        |
-| Forms            | React Hook Form v7 + Zod validation      |
-| Drag & Drop      | dnd-kit/core + dnd-kit/sortable          |
-| Styling          | Tailwind CSS v4 (CSS-first config)       |
-| Charts           | Recharts (AreaChart)                     |
-| Icons            | Material Symbols Outlined (Google Fonts) |
-| Auth State       | Zustand v5 (in-memory only)              |
-| Build            | Vite 6 + @tailwindcss/vite               |
+The frontend must never implement backend business logic.
 
 ---
 
-## Design System Contract
+# Core Technology Stack
 
-### The Law of Zero Radius
-**All elements use `border-radius: 0px`.**  
-Only two exceptions are permitted — never add others:
-1. **Badge pill** — `border-radius: 2px` (inline `style={{ borderRadius: 2 }}`)
-2. **Filter pill** — `border-radius: 9999px` (inline `style={{ borderRadius: 999 }}`)
+## Application Framework
 
-**Never add `rounded-*` Tailwind classes.** Use `rounded-none` explicitly when
-overriding third-party defaults.
+TanStack Start
 
-### Color Tokens (Tailwind class → CSS var)
-```
-bg-background           → #131313   (page canvas)
-bg-ink                  → #0F0F0F   (surface/card bg)
-bg-surface-container-lowest → #0e0e0e
-border-rule             → #1A1A1A   (all borders)
-bg-muted                → #2A2A2A
-text-dim                → #666666
-text-body               → #B8B8B8
-text-on-surface         → #e5e2e1
-text-press-amber        → #E8610A   (primary accent)
-bg-primary-container    → #f06613   (CTA buttons)
-text-live               → #22C55A
-bg-live-dim             → #14532D
-text-destructive        → #EF4444
-```
+Required:
 
-### Typography Rules
-```
-font-masthead-4xl    → "Playfair Display"  — hero mastheads only
-font-headline-2xl    → "Playfair Display"  — section headings
-font-mono-label      → "JetBrains Mono"    — labels, badges, captions, nav
-font-ui-sm/lg/xl     → "DM Sans"           — body copy, form text, descriptions
-```
-
-Labels always use: `font-mono-label text-mono-label uppercase tracking-widest`  
-Body copy always uses: `font-ui-sm text-ui-sm text-body`  
-Section eyebrows always use: `// PREFIX` format (the two forward-slashes are intentional)
-
-### Spacing System
-```
-px-gutter   → 24px   (page horizontal gutters)
-px-margin   → 32px   (outer section margins)
-py-section-v-pad → 48px (vertical section padding)
-```
-
-### Sidebar Width
-Fixed at `220px`. Applied as `md:pl-[220px]` on the main content wrapper.
+* File-based routing
+* SSR-ready architecture
+* Route-based code splitting
+* Modern React patterns
 
 ---
 
-## API Layer Rules
+## Data Layer
 
-### ❌ NEVER use Axios
-All HTTP calls go through `src/lib/api.ts` which uses native `fetch`.
+TanStack Query
 
-```ts
-import { api } from '@/lib/api'
+Used for:
 
-// Correct
-const data = await api.get<Job>('/jobs/123')
-const result = await api.post<AuthResponse>('/auth/login', payload)
-const updated = await api.patch<Job>('/jobs/123', { status: 'CLOSED' })
-await api.delete('/jobs/123')
-```
+* API caching
+* mutations
+* optimistic updates
+* invalidation
+* background refetching
 
-### Auth Token
-- **Never** store the JWT in `localStorage` or `sessionStorage`
-- Token lives only in Zustand store (`src/store/auth.ts`)
-- `api.ts` reads it from the store on every request
-- On 401 → store is cleared → user redirected to `/login`
+TanStack Query is the source of truth for all server state.
 
 ---
 
-## Route Architecture
+## Routing
 
-```
-/                       → Landing page (public)
-/login                  → Two-panel auth
-/register               → Two-panel auth
-/onboarding             → Role selector
-/forgot-password
-/reset-password?token=
-/jobs/                  → Public jobs marketplace (grid + side detail)
+TanStack Router
 
-/_candidate             → Layout guard (JOBSEEKER role only)
-  /dashboard/           → Overview + pipeline tracker
-  /applications/        → My applications with status filter
-  /saved/               → Bookmarked roles
+Used for:
 
-/_recruiter             → Layout guard (EMPLOYER role only)
-  /recruiter/           → Overview dashboard
-  /recruiter/jobs/      → Listings table (CRUD)
-  /recruiter/jobs/new   → Job posting form
-  /recruiter/jobs/$jobId/edit
-  /recruiter/jobs/$jobId/pipeline  → Kanban board
-  /recruiter/analytics/
-  /recruiter/talent-pool/
-  /recruiter/company/new
-  /recruiter/company/$companyId
-```
+* route protection
+* layouts
+* search params
+* role-based navigation
+* data loading
+
+Do not introduce alternative routing solutions.
 
 ---
 
-## TanStack Router Notes
+## Tables
 
-### Route Tree
-`src/routeTree.gen.ts` is **auto-generated** by the Vite plugin.  
-On `npm run dev`, the plugin watches `src/routes/` and regenerates it.  
-The file committed here is a valid stub; dev server overwrites it.
+TanStack Table
 
-### Auth Guards
-Layout routes (`_candidate.tsx`, `_recruiter.tsx`) use `beforeLoad` with
-`redirect()` — not middleware. Never add guards inside individual pages.
+Required for:
 
-### Pathless Layout Routes
-`_candidate` and `_recruiter` are pathless (no URL segment). Their children
-define the full paths. This is TanStack Router v1 convention.
+* Jobs
+* Applicants
+* Companies
+* Users
+* Audit Logs
 
 ---
 
-## Query Keys
+## UI Layer
 
-All keys are defined in `src/lib/queryKeys.ts`.  
-Never hardcode query key strings in components.
+shadcn/ui
 
-```ts
-import { queryKeys } from '@/lib/queryKeys'
+Built on:
 
-useQuery({ queryKey: queryKeys.jobs.list(params) })
-useQuery({ queryKey: queryKeys.jobs.detail(jobId) })
-useQuery({ queryKey: queryKeys.applications.mine })
-```
+* Radix UI
 
----
+Use existing shadcn primitives first.
 
-## Component Conventions
-
-### Icons
-Use `MaterialIcon` component, not Lucide React:
-```tsx
-import { MaterialIcon } from '@/components/ui/MaterialIcon'
-<MaterialIcon icon="arrow_forward" size={18} />
-<MaterialIcon icon="check_circle" size={20} filled />
-```
-Icon names from: https://fonts.google.com/icons
-
-### Section Labels (eyebrows)
-```tsx
-<span className="font-mono-label text-mono-label text-press-amber uppercase tracking-widest block mb-2">
-  // SECTION_NAME
-</span>
-```
-
-### Empty States
-Always use the `EmptyState` component from `@/components/ui/Primitives`.
-Never write custom empty states.
-
-### Toasts
-```tsx
-const { addToast } = useToast()
-addToast('Message here', 'success')  // 'success' | 'error' | 'info' | 'warning'
-```
+Custom components must extend design-system patterns.
 
 ---
 
-## File Structure
+## Styling
 
-```
-src/
-  components/
-    layout/       CandidateSidebar, RecruiterSidebar, DashboardShell, etc.
-    ui/           Button, Badge, Card, FormControls, Modal, Drawer, MaterialIcon, Primitives
-  features/
-    auth/         AuthForms (LoginForm, RegisterForm, OnboardingRoleSelect)
-    jobs/         JobComponents (JobCard, JobFilters, ApplyModal)
-    pipeline/     KanbanBoard (full dnd-kit board)
-    company/      CompanyComponents (CompanyCard, CompanyCreationForm)
-    recruiter/    RecruiterComponents (StatTile, AnalyticsFunnel, AnalyticsLineChart, JobPostingForm)
-  lib/            api.ts, queryClient.ts, queryKeys.ts
-  routes/         File-based TanStack Router routes
-  store/          auth.ts (Zustand)
-  styles/         globals.css (Tailwind v4 @theme tokens)
-  types/          index.ts (all TypeScript types)
-```
+Tailwind CSS
+
+Required:
+
+* utility-first styling
+* design token usage
+* responsive layouts
+
+Avoid custom CSS files unless absolutely necessary.
 
 ---
 
-## Environment Variables
+## Forms
 
-```env
-VITE_API_URL=http://localhost:3000/api
-```
+React Hook Form
++
+Zod
 
-Create a `.env.local` file at the project root. The app will not crash without
-it — `api.ts` falls back to `http://localhost:3000/api`.
+All forms must use:
+
+* schema validation
+* typed form values
+* reusable field patterns
 
 ---
 
-## Common Pitfalls
+## Charts
 
-1. **Don't add `rounded-*` classes** — zero radius is a hard design law
-2. **Don't use Axios** — native fetch only via `src/lib/api.ts`
-3. **Don't store JWT in localStorage** — Zustand in-memory only
-4. **Don't invent new color values** — use Tailwind tokens from `globals.css`
-5. **Don't use Lucide React** — Material Symbols Outlined only
-6. **Don't hardcode `font-family` inline** — use `font-mono-label`, `font-headline-2xl`, etc.
-7. **Don't modify `routeTree.gen.ts`** — it is overwritten by the Vite plugin
+Recharts
+
+Only approved charting solution.
+
+---
+
+# Forbidden Technologies
+
+Do not introduce:
+
+* Axios
+* Lucide Icons
+* Redux
+* MobX
+* Context-based server state
+* Styled Components
+* Material UI
+* Chakra UI
+
+Without explicit architectural approval.
+
+---
+
+# API Rules
+
+All API communication must use:
+
+Fetch API
+
+Architecture:
+
+Feature Hook
+→ API Function
+→ Request Layer
+→ Backend
+
+Never call fetch() directly inside components.
+
+Required structure:
+
+lib/api/
+
+client.ts
+request.ts
+auth.ts
+errors.ts
+endpoints.ts
+
+---
+
+# Design System Compliance
+
+The official design language is:
+
+Industrial Broadsheet
+
+Required characteristics:
+
+* Zero-radius geometry
+* Dense information layouts
+* Editorial hierarchy
+* Visible structural borders
+* Technical metadata visibility
+* Flat visual hierarchy
+
+Avoid:
+
+* glassmorphism
+* neumorphism
+* floating cards
+* oversized spacing
+* excessive shadows
+
+DESIGN.md is the visual source of truth.
+
+---
+
+# State Management
+
+## Server State
+
+TanStack Query only.
+
+Examples:
+
+* User
+* Jobs
+* Applications
+* Companies
+* Analytics
+
+---
+
+## Client State
+
+Zustand only.
+
+Examples:
+
+* Sidebar
+* Theme
+* Modal
+* Filters
+
+Never duplicate server state in Zustand.
+
+---
+
+# Component Rules
+
+Shared UI:
+
+src/components
+
+Feature Components:
+
+src/features/*/components
+
+Never place business logic inside reusable UI components.
+
+---
+
+# Accessibility
+
+Required:
+
+* Keyboard navigation
+* Semantic HTML
+* Focus states
+* ARIA attributes
+* WCAG-compliant contrast
+
+Accessibility failures block release.
+
+---
+
+# Performance Standards
+
+Required:
+
+* Route-level splitting
+* Lazy loading
+* Query caching
+* Bundle awareness
+
+Avoid premature memoization.
+
+Profile first.
+
+---
+
+# Multi-Tenant Awareness
+
+Every feature must consider:
+
+* Tenant isolation
+* Recruiter ownership
+* Candidate ownership
+* Platform administration
+
+Never assume a single company environment.
+
+---
+# Dependency Governance
+
+## Package Verification Policy
+
+Before recommending, installing, upgrading, or using ANY package, framework, library, plugin, SDK, or tooling dependency, Claude must verify:
+
+1. Official Website
+2. Official Documentation
+3. Official NPM Package
+4. Official GitHub Repository
+5. Current Stable Version
+6. Maintenance Activity
+7. Security Status
+8. Community Adoption
+9. Compatibility With Existing Stack
+10. Long-Term Viability
+
+Verification is mandatory.
+
+Never assume package versions.
+
+Always check the latest stable release before suggesting installation.
+
+---
+
+## Package Selection Criteria
+
+A package may only be introduced when:
+
+* Actively maintained
+* Production-ready
+* Well documented
+* Compatible with React and TanStack Start
+* Compatible with TypeScript
+* Compatible with SSR
+* Compatible with current architecture
+
+Prefer fewer dependencies.
+
+Avoid introducing packages that solve problems already covered by:
+
+* React
+* TanStack
+* Tailwind
+* shadcn/ui
+* Radix UI
+* Existing internal utilities
+
+---
+
+## Dependency Review Process
+
+Before adding a dependency, document:
+
+Purpose:
+Why is the package needed?
+
+Alternative:
+Can existing tools solve the problem?
+
+Bundle Impact:
+Expected bundle increase.
+
+Maintenance:
+Last active release date.
+
+Security:
+Known vulnerabilities.
+
+Decision:
+Approved or Rejected.
+
+---
+
+## Version Policy
+
+Always use:
+
+* Latest stable version
+
+Avoid:
+
+* Alpha releases
+* Experimental releases
+* Release candidates
+* Unmaintained packages
+
+Unless explicitly approved.
+
+---
+
+## Package Replacement Policy
+
+If a package becomes:
+
+* Deprecated
+* Unmaintained
+* Security Risk
+
+It must be reviewed for replacement.
+
+Technical debt should not accumulate indefinitely.
+
+---
+
+# Frontend Engineering Standards
+
+## Component Design
+
+Prefer:
+
+Small focused components.
+
+Target:
+
+* Single responsibility
+* Reusable
+* Composable
+
+Avoid:
+
+* Massive components
+* God components
+* Deep prop chains
+
+---
+
+## Composition Over Inheritance
+
+Always prefer:
+
+Composition
+
+Over:
+
+Inheritance
+
+Build reusable primitives.
+
+---
+
+## Feature Isolation
+
+Business logic belongs inside features.
+
+Never place feature-specific business logic in:
+
+src/components
+
+Shared components must remain generic.
+
+---
+
+## TypeScript Standards
+
+Forbidden:
+
+any
+
+ts-ignore
+
+ts-nocheck
+
+unsafe casting
+
+Required:
+
+* Strict typing
+* Explicit interfaces
+* Explicit return types for public functions
+* Type-safe APIs
+
+---
+
+## Error Handling
+
+Every API interaction must support:
+
+* Loading
+* Error
+* Retry
+* Success
+
+Never silently swallow errors.
+
+---
+
+## Code Quality
+
+Required:
+
+* Readable code
+* Self-documenting code
+* Small functions
+* Clear naming
+
+Optimize for maintainability.
+
+---
+
+## Performance Standards
+
+Measure before optimizing.
+
+Required:
+
+* Route splitting
+* Query caching
+* Lazy loading
+* Bundle awareness
+
+Avoid premature optimization.
+
+---
+
+## Accessibility Standards
+
+Required:
+
+* Keyboard support
+* Semantic HTML
+* ARIA labels
+* Focus management
+* Screen reader support
+
+Accessibility is a release blocker.
+
+---
+
+# Security Standards
+
+## Authentication
+
+Never trust frontend state.
+
+Authentication state must always be validated against backend responses.
+
+Frontend authorization is UX only.
+
+Backend remains the source of truth.
+
+---
+
+## Token Security
+
+Never:
+
+* Log tokens
+* Expose tokens in UI
+* Store secrets in source code
+* Commit secrets to repositories
+
+Use environment variables appropriately.
+
+---
+
+## API Security
+
+All requests must:
+
+* Validate input
+* Handle unauthorized responses
+* Handle expired sessions
+
+Sensitive endpoints must be protected by backend authorization.
+
+---
+
+## XSS Protection
+
+Never use:
+
+dangerouslySetInnerHTML
+
+Unless explicitly reviewed and sanitized.
+
+All user-generated content must be treated as untrusted.
+
+---
+
+## Injection Protection
+
+Never build URLs, queries, or HTML using unsanitized user input.
+
+Validate all user input.
+
+---
+
+## File Upload Security
+
+Validate:
+
+* File type
+* File size
+* Upload status
+
+Never trust client-side validation alone.
+
+---
+
+## Sensitive Data Handling
+
+Never expose:
+
+* Tokens
+* Internal IDs
+* Secrets
+* Environment Variables
+* Security Configuration
+
+To end users.
+
+---
+
+## Security Headers Awareness
+
+Frontend must be compatible with:
+
+* CSP
+* CORS
+* X-Frame-Options
+* HSTS
+* Referrer Policy
+
+Do not introduce features that break security headers.
+
+---
+
+## Dependency Security
+
+Regularly review:
+
+* npm audit
+* package advisories
+* GitHub security advisories
+
+Security vulnerabilities must be addressed promptly.
+
+---
+
+# Architecture Protection Rules
+
+## No Architectural Drift
+
+New features must follow existing patterns.
+
+Do not introduce:
+
+* New state management solutions
+* New form libraries
+* New routing libraries
+* New UI frameworks
+
+Without architecture approval.
+
+---
+
+## Design System Enforcement
+
+All UI must follow:
+
+Industrial Broadsheet
+
+No exceptions.
+
+Design consistency is more important than individual screen creativity.
+
+---
+
+## Documentation Requirement
+
+Major changes must update:
+
+* DESIGN.md
+* CLAUDE.md
+* AGENTS.md
+
+Documentation must remain synchronized with implementation.
+
+---
+
+## Production Mindset
+
+Every implementation decision should assume:
+
+* Thousands of users
+* Large datasets
+* Multi-tenant operation
+* Long-term maintenance
+
+Build for scalability from the beginning.
+
+
+# Definition Of Done
+
+A feature is complete only when:
+
+✓ Typed
+
+✓ Accessible
+
+✓ Responsive
+
+✓ Loading State
+
+✓ Empty State
+
+✓ Error State
+
+✓ Success State
+
+✓ Query Integrated
+
+✓ Role Protected
+
+✓ Design System Compliant
+
+✓ Tested
+
+✓ Production Ready
