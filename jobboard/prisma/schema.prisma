@@ -1,0 +1,356 @@
+// prisma/schema.prisma
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  
+  
+}
+
+
+// ─── Enums ────────────────────────────────────────────────
+
+enum UserRole {
+  ADMIN
+  RECRUITER
+  CANDIDATE
+}
+
+enum JobStatus {
+  DRAFT
+  OPEN
+  CLOSED
+  EXPIRED
+}
+
+enum LocationType {
+  REMOTE
+  ONSITE
+  HYBRID
+}
+
+enum ExperienceLevel {
+  JUNIOR
+  MID
+  SENIOR
+  LEAD
+}
+
+enum ApplicationStatus {
+  PENDING
+  REVIEWED
+  SHORTLISTED
+  REJECTED
+  ACCEPTED
+}
+
+enum NotificationType {
+  APPLICATION_RECEIVED
+  APPLICATION_STATUS_CHANGED
+  JOB_POSTED
+  JOB_EXPIRED
+  SYSTEM_ALERT
+}
+
+// ─── Company side ─────────────────────────────────────────
+
+model Company {
+  id          String    @id @default(uuid())
+  name        String
+  slug        String    @unique
+  email       String    @unique
+  password    String
+  primaryAdminId String? @unique
+  logoUrl     String?
+  website     String?
+  industry    String?
+  size        String?
+  isVerified  Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  // Email verification
+  emailVerifyToken     String?   @unique
+  emailVerifyExpiresAt DateTime?
+
+  // Password reset
+  passwordResetToken     String?   @unique
+  passwordResetExpiresAt DateTime?
+
+  users         User[]
+  primaryAdmin  User?         @relation("CompanyPrimaryAdmin", fields: [primaryAdminId], references: [id], onDelete: SetNull)
+  jobs          Job[]
+  notifications Notification[]
+  refreshTokens RefreshToken[]
+
+  @@map("companies")
+  @@index([email])
+  @@index([slug])
+  @@index([primaryAdminId])
+  @@index([deletedAt])
+}
+
+model User {
+  id        String    @id @default(uuid())
+  userName  String
+  firstName String
+  lastName  String
+  email     String    @unique
+  password  String
+  phone     String?
+  role      UserRole  @default(CANDIDATE)
+  companyId String?
+  isVerified Boolean  @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  // Email verification
+  emailVerifyToken     String?   @unique
+  emailVerifyExpiresAt DateTime?
+
+  // Password reset
+  passwordResetToken     String?   @unique
+  passwordResetExpiresAt DateTime?
+
+  profile       UserProfile?
+  company       Company?        @relation(fields: [companyId], references: [id])
+  primaryAdminFor Company?       @relation("CompanyPrimaryAdmin")
+  postedJobs    Job[]           @relation("PostedBy")
+  refreshTokens RefreshToken[]
+  applications  JobApplication[]
+  notifications Notification[]
+  auditLogs      AdminAuditLog[]
+
+  @@map("users")
+  @@index([companyId])
+  @@index([email])
+  @@index([deletedAt])
+}
+
+
+model UserProfile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  bio         String?
+  resumeUrl   String?
+  resumePublicId String?
+  linkedinUrl String?
+  githubUrl   String?
+  skills      String[]
+  location    String?
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+  @@map("user_profiles")
+}
+
+// ─── Jobs ─────────────────────────────────────────────────
+
+model Job {
+  id              String          @id @default(uuid())
+  title           String
+  slug            String          @unique
+  description     String
+  location        String?
+  locationType    LocationType    @default(ONSITE)
+  salaryMin       Int?
+  salaryMax       Int?
+  currency        String          @default("USD")
+  status          JobStatus       @default(OPEN)
+  experienceLevel ExperienceLevel @default(MID)
+  companyId       String
+  postedById      String
+  expiresAt       DateTime?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  deletedAt       DateTime?
+
+  company      Company          @relation(fields: [companyId], references: [id])
+  postedBy     User             @relation("PostedBy", fields: [postedById], references: [id])
+  applications JobApplication[]
+  tags         JobTag[]
+
+  @@index([companyId])
+  @@index([status, createdAt])
+  @@index([deletedAt])
+  @@index([expiresAt])
+  @@map("jobs")
+}
+
+// ─── Applications ─────────────────────────────────────────
+
+model JobApplication {
+  id              String            @id @default(uuid())
+  jobId           String
+  userId          String
+  resumeUrl       String?
+  coverLetter     String?
+  status          ApplicationStatus @default(PENDING)
+  rejectionReason String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  job  Job  @relation(fields: [jobId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([jobId, userId])
+  @@index([jobId])
+  @@index([userId])
+  @@index([status])
+  @@map("job_application")
+}
+
+// ─── Tags ─────────────────────────────────────────────────
+
+model Tag {
+  id   String @id @default(uuid())
+  name String @unique
+  slug String @unique
+
+  jobs JobTag[]
+
+  @@map("tags")
+}
+
+model JobTag {
+  jobId String
+  tagId String
+
+  job Job @relation(fields: [jobId], references: [id])
+  tag Tag @relation(fields: [tagId], references: [id])
+
+  @@id([jobId, tagId])
+  @@map("job_tags")
+}
+
+// ─── Auth ─────────────────────────────────────────────────
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String?
+  companyId String?
+  isRevoked Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user    User?    @relation(fields: [userId], references: [id])
+  company Company? @relation(fields: [companyId], references: [id])
+
+  @@index([userId])
+  @@index([companyId])
+  @@map("refresh_token")
+}
+
+
+// ─── Notifications ────────────────────────────────────────
+
+model Notification {
+  id        String           @id @default(uuid())
+  type      NotificationType
+  message   String
+  metadata  Json?
+  isRead    Boolean          @default(false)
+  companyId String?
+  userId    String?
+  createdAt DateTime         @default(now())
+
+  company Company? @relation(fields: [companyId], references: [id])
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([companyId, isRead])
+  @@index([userId, isRead])
+  @@map("notifications")
+}
+
+model AdminAuditLog {
+  id            String   @id @default(uuid())
+  actorId       String                          // user who performed the action
+  action        String                          // e.g. 'DELETE_JOB', 'CHANGE_ROLE'
+  targetType    String                          // 'USER' | 'JOB' | 'COMPANY' | 'APPLICATION'
+  targetId      String
+  companyId     String?                         // tenant scope for isolation
+  correlationId String?                         // trace a complete action chain
+  ipAddress     String?
+  userAgent     String?
+  metadata      Json?
+  createdAt     DateTime @default(now())
+
+  actor User @relation(fields: [actorId], references: [id])
+
+  @@index([actorId])
+  @@index([action])
+  @@index([companyId])
+  @@index([correlationId])
+  @@index([createdAt(sort: Desc)])
+  @@map("admin_audit_log")
+}
+
+model OwnershipHistory {
+  id             String   @id @default(uuid())
+  companyId      String
+  previousOwnerId String?
+  newOwnerId     String
+  reason         String?
+  transferredBy  String
+  ipAddress      String?
+  userAgent      String?
+  createdAt      DateTime @default(now())
+
+  @@index([companyId])
+  @@index([createdAt(sort: Desc)])
+  @@map("ownership_history")
+}
+
+model SecurityEvent {
+  id          String   @id @default(uuid())
+  companyId   String?
+  actorId     String?
+  eventType   String                          // 'FAILED_LOGIN' | 'PERMISSION_DENIED' | 'OWNERSHIP_CHANGE' | etc
+  severity    String   @default("INFO")       // 'INFO' | 'WARN' | 'CRITICAL'
+  metadata    Json?
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+
+  @@index([companyId])
+  @@index([actorId])
+  @@index([eventType])
+  @@index([createdAt(sort: Desc)])
+  @@map("security_events")
+}
+
+model SuperAdmin {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  refreshTokens SuperAdminRefreshToken[]
+
+  @@index([email])
+  @@map("super_admins")
+}
+
+model SuperAdminRefreshToken {
+  id           String   @id @default(uuid())
+  token        String   @unique
+  superAdminId String
+  isRevoked    Boolean  @default(false)
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+
+  superAdmin SuperAdmin @relation(fields: [superAdminId], references: [id])
+
+  @@index([superAdminId])
+  @@map("super_admin_refresh_tokens")
+}

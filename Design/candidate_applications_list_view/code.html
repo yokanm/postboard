@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | Candidate Applications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #080808;
+            color: #B8B8B8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .press-grid-pattern {
+            background-image: radial-gradient(#1A1A1A 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E8610A;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#131313",
+                      "primary-container": "#f06613",
+                      "on-surface": "#e5e2e1",
+                      "outline-variant": "#594237",
+                      "surface-container-high": "#2a2a2a",
+                      "on-tertiary-container": "#2a2a29",
+                      "destructive": "#EF4444",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "surface-container": "#201f1f",
+                      "on-secondary": "#31312c",
+                      "primary-fixed": "#ffdbcc",
+                      "tertiary-container": "#929090",
+                      "on-primary-fixed": "#351000",
+                      "surface-container-highest": "#353534",
+                      "live": "#22C55A",
+                      "inverse-on-surface": "#313030",
+                      "dim": "#666666",
+                      "surface-variant": "#353534",
+                      "primary": "#ffb694",
+                      "live-dim": "#14532D",
+                      "body": "#B8B8B8",
+                      "surface": "#131313",
+                      "on-surface-variant": "#e1c0b2",
+                      "gradient-d": "#F59E0B",
+                      "muted": "#2A2A2A",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "on-error": "#690005",
+                      "on-primary-container": "#4c1a00",
+                      "error-container": "#93000a",
+                      "on-primary": "#571f00",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "secondary-container": "#474742",
+                      "inverse-surface": "#e5e2e1",
+                      "gradient-b": "#60A5FA",
+                      "secondary-fixed": "#e5e2db",
+                      "gradient-a": "#C084FC",
+                      "outline": "#a88a7e",
+                      "rule": "#1A1A1A",
+                      "surface-container-lowest": "#0e0e0e",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#1c1c18",
+                      "secondary": "#c9c6c0",
+                      "on-tertiary": "#313030",
+                      "surface-tint": "#ffb694",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "gradient-c": "#34D399",
+                      "surface-bright": "#3a3939",
+                      "inverse-primary": "#a14000",
+                      "primary-fixed-dim": "#ffb694",
+                      "on-background": "#e5e2e1",
+                      "tertiary": "#c8c6c5",
+                      "surface-container-low": "#1c1b1b",
+                      "background": "#131313",
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-secondary-container": "#b7b5af",
+                      "on-secondary-fixed-variant": "#474742"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-v-pad": "48px",
+                      "gutter": "24px",
+                      "unit": "4px",
+                      "sidebar-width": "220px",
+                      "max-width": "1280px",
+                      "margin": "32px"
+              },
+              "fontFamily": {
+                      "ui-lg": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "ui-xl": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "headline-2xl-mobile": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background selection:bg-primary-container selection:text-on-primary-container">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width border-r border-rule bg-surface-container-lowest flex flex-col py-margin px-4 z-50">
+<div class="mb-12">
+<h1 class="font-headline-2xl text-ui-lg text-primary uppercase tracking-tighter">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-dim">// ADMIN_PANEL</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant group" href="#">
+<span class="material-symbols-outlined text-dim group-hover:text-primary" data-icon="dashboard">dashboard</span>
+<span class="font-mono-label text-mono-label">Dashboard</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors bg-primary text-on-primary font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-mono-label text-mono-label">Active Pipeline</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant group" href="#">
+<span class="material-symbols-outlined text-dim group-hover:text-primary" data-icon="groups">groups</span>
+<span class="font-mono-label text-mono-label">Talent Pool</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant group" href="#">
+<span class="material-symbols-outlined text-dim group-hover:text-primary" data-icon="monitoring">monitoring</span>
+<span class="font-mono-label text-mono-label">Analytics</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant group" href="#">
+<span class="material-symbols-outlined text-dim group-hover:text-primary" data-icon="domain">domain</span>
+<span class="font-mono-label text-mono-label">Company Profile</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant group" href="#">
+<span class="material-symbols-outlined text-dim group-hover:text-primary" data-icon="settings">settings</span>
+<span class="font-mono-label text-mono-label">Settings</span>
+</a>
+</nav>
+<button class="mt-8 mb-12 bg-primary text-on-primary py-3 px-4 font-mono-label text-mono-label uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all rounded-none">
+                Create New Listing
+            </button>
+<div class="mt-auto space-y-1">
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant group" href="#">
+<span class="material-symbols-outlined text-dim group-hover:text-primary" data-icon="help">help</span>
+<span class="font-mono-label text-mono-label">Support</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant group" href="#">
+<span class="material-symbols-outlined text-dim group-hover:text-primary" data-icon="description">description</span>
+<span class="font-mono-label text-mono-label">Documentation</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[220px] flex-1 bg-surface-dim min-h-screen">
+<!-- Top Header Anchor -->
+<header class="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b border-rule">
+<div class="max-w-max-width mx-auto px-margin py-6">
+<span class="font-mono-label text-mono-label text-dim">// my_applications</span>
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface mt-1">Applications</h2>
+</div>
+</header>
+<div class="max-w-max-width mx-auto px-margin py-8">
+<!-- Filter Tabs -->
+<div class="flex gap-8 border-b border-rule mb-10">
+<button class="pb-4 font-mono-label text-mono-label text-primary border-b-2 border-primary-container tracking-widest uppercase">
+                        All
+                    </button>
+<button class="pb-4 font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors tracking-widest uppercase">
+                        Active
+                    </button>
+<button class="pb-4 font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors tracking-widest uppercase">
+                        Archived
+                    </button>
+</div>
+<!-- Application List -->
+<div class="space-y-4">
+<!-- Application Card 1 -->
+<div class="bg-surface-container-lowest border border-rule hover:border-primary-container transition-all duration-200 flex items-center p-6 group cursor-pointer">
+<div class="flex-1">
+<h3 class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary transition-colors">Senior Protocol Engineer</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-ui-sm text-ui-sm text-body">Aether Network</span>
+<span class="text-dim">•</span>
+<span class="font-ui-sm text-ui-sm text-dim">Berlin, Germany</span>
+</div>
+</div>
+<div class="px-12">
+<span class="inline-block px-3 py-1 bg-primary-container/10 border border-primary-container/30 text-primary font-mono-label text-mono-label uppercase">
+                                [APPLIED]
+                            </span>
+</div>
+<div class="text-right flex items-center gap-8">
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label text-dim">// TIMESTAMP</span>
+<span class="font-mono-label text-mono-label text-on-surface">Applied Jan 14, 2025</span>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 font-mono-label text-mono-label text-dim hover:text-destructive transition-colors">
+                                    [Withdraw]
+                                </button>
+<button class="px-4 py-2 border border-rule font-mono-label text-mono-label text-on-surface hover:bg-surface-variant transition-colors">
+                                    [View]
+                                </button>
+</div>
+</div>
+</div>
+<!-- Application Card 2 -->
+<div class="bg-surface-container-lowest border border-rule hover:border-primary-container transition-all duration-200 flex items-center p-6 group cursor-pointer">
+<div class="flex-1">
+<h3 class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary transition-colors">Full Stack Developer (L5)</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-ui-sm text-ui-sm text-body">Void Interactive</span>
+<span class="text-dim">•</span>
+<span class="font-ui-sm text-ui-sm text-dim">Remote</span>
+</div>
+</div>
+<div class="px-12">
+<span class="inline-block px-3 py-1 bg-gradient-a/10 border border-gradient-a/30 text-gradient-a font-mono-label text-mono-label uppercase">
+                                [REVIEWING]
+                            </span>
+</div>
+<div class="text-right flex items-center gap-8">
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label text-dim">// TIMESTAMP</span>
+<span class="font-mono-label text-mono-label text-on-surface">Applied Jan 02, 2025</span>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 font-mono-label text-mono-label text-dim hover:text-destructive transition-colors">
+                                    [Withdraw]
+                                </button>
+<button class="px-4 py-2 border border-rule font-mono-label text-mono-label text-on-surface hover:bg-surface-variant transition-colors">
+                                    [View]
+                                </button>
+</div>
+</div>
+</div>
+<!-- Application Card 3 -->
+<div class="bg-surface-container-lowest border border-rule hover:border-primary-container transition-all duration-200 flex items-center p-6 group cursor-pointer">
+<div class="flex-1">
+<h3 class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary transition-colors">Product Designer (Industrial)</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-ui-sm text-ui-sm text-body">Neuralink Foundry</span>
+<span class="text-dim">•</span>
+<span class="font-ui-sm text-ui-sm text-dim">Austin, TX</span>
+</div>
+</div>
+<div class="px-12">
+<span class="inline-block px-3 py-1 bg-destructive/10 border border-destructive/30 text-destructive font-mono-label text-mono-label uppercase">
+                                [REJECTED]
+                            </span>
+</div>
+<div class="text-right flex items-center gap-8">
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label text-dim">// TIMESTAMP</span>
+<span class="font-mono-label text-mono-label text-on-surface">Applied Dec 15, 2024</span>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 font-mono-label text-mono-label text-dim cursor-not-allowed opacity-50">
+                                    [Archive]
+                                </button>
+<button class="px-4 py-2 border border-rule font-mono-label text-mono-label text-on-surface hover:bg-surface-variant transition-colors">
+                                    [View]
+                                </button>
+</div>
+</div>
+</div>
+<!-- Application Card 4 -->
+<div class="bg-surface-container-lowest border border-rule hover:border-primary-container transition-all duration-200 flex items-center p-6 group cursor-pointer">
+<div class="flex-1">
+<h3 class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary transition-colors">R&amp;D Scientist, Materials</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-ui-sm text-ui-sm text-body">Graphite Corp</span>
+<span class="text-dim">•</span>
+<span class="font-ui-sm text-ui-sm text-dim">Cambridge, MA</span>
+</div>
+</div>
+<div class="px-12">
+<span class="inline-block px-3 py-1 bg-primary-container/10 border border-primary-container/30 text-primary font-mono-label text-mono-label uppercase">
+                                [APPLIED]
+                            </span>
+</div>
+<div class="text-right flex items-center gap-8">
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label text-dim">// TIMESTAMP</span>
+<span class="font-mono-label text-mono-label text-on-surface">Applied Dec 01, 2024</span>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 font-mono-label text-mono-label text-dim hover:text-destructive transition-colors">
+                                    [Withdraw]
+                                </button>
+<button class="px-4 py-2 border border-rule font-mono-label text-mono-label text-on-surface hover:bg-surface-variant transition-colors">
+                                    [View]
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex justify-center items-center gap-8">
+<button class="font-mono-label text-mono-label text-dim hover:text-primary transition-colors tracking-widest uppercase">
+                        ← Prev
+                    </button>
+<span class="font-mono-label text-mono-label text-on-surface">Page 1 of 3</span>
+<button class="font-mono-label text-mono-label text-dim hover:text-primary transition-colors tracking-widest uppercase">
+                        Next →
+                    </button>
+</div>
+</div>
+<!-- Decorative Press Grid Element -->
+<div class="mt-section-v-pad max-w-max-width mx-auto px-margin">
+<div class="border border-rule p-8 flex justify-between items-end relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-mono-label text-mono-label text-dim tracking-widest uppercase">// SYSTEM_STATUS</span>
+<div class="flex items-center gap-3 mt-2">
+<div class="w-3 h-3 bg-live rounded-none"></div>
+<p class="font-ui-sm text-ui-sm text-on-surface">All systems functional. Data sync active.</p>
+</div>
+</div>
+<div class="absolute right-0 bottom-0 w-32 h-32 press-grid-pattern opacity-20"></div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-section-v-pad border-t border-rule bg-background">
+<div class="max-w-max-width mx-auto px-margin py-unit flex flex-col md:flex-row justify-between items-center gap-gutter min-h-[120px]">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-masthead-4xl text-ui-lg text-on-surface uppercase font-bold tracking-tighter">POSTBOARD</span>
+<p class="font-mono-label text-mono-label text-dim mt-2 tracking-widest">© 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-all" href="#">API Status</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-all" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Subtle scale effect handled via tailwind classes would be better but keeping it minimal
+            });
+        });
+    </script>
+</body></html>

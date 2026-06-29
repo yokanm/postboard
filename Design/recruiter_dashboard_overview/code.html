@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | Recruiter Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&amp;family=Playfair+Display:wght@700;900&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "gradient-a": "#C084FC",
+                      "on-background": "#e5e2e1",
+                      "gradient-b": "#60A5FA",
+                      "outline": "#a88a7e",
+                      "secondary": "#c9c6c0",
+                      "on-secondary-fixed-variant": "#474742",
+                      "on-tertiary": "#313030",
+                      "muted": "#2A2A2A",
+                      "error-container": "#93000a",
+                      "primary-fixed-dim": "#ffb694",
+                      "primary": "#ffb694",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "surface-variant": "#353534",
+                      "tertiary": "#c8c6c5",
+                      "surface-tint": "#ffb694",
+                      "on-secondary-fixed": "#1c1c18",
+                      "primary-container": "#f06613",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#e5e2e1",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "on-primary": "#571f00",
+                      "gradient-c": "#34D399",
+                      "inverse-on-surface": "#313030",
+                      "surface-container": "#201f1f",
+                      "outline-variant": "#594237",
+                      "gradient-d": "#F59E0B",
+                      "surface-container-highest": "#353534",
+                      "on-error": "#690005",
+                      "destructive": "#EF4444",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "surface-container-low": "#1c1b1b",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "dim": "#666666",
+                      "rule": "#1A1A1A",
+                      "surface-bright": "#3a3939",
+                      "live-dim": "#14532D",
+                      "surface-container-high": "#2a2a2a",
+                      "surface": "#131313",
+                      "surface-dim": "#131313",
+                      "error": "#ffb4ab",
+                      "on-surface": "#e5e2e1",
+                      "background": "#080808",
+                      "on-tertiary-container": "#2a2a29",
+                      "on-surface-variant": "#e1c0b2",
+                      "on-primary-container": "#4c1a00",
+                      "inverse-primary": "#a14000",
+                      "tertiary-fixed": "#e5e2e1",
+                      "tertiary-container": "#929090",
+                      "secondary-fixed": "#e5e2db",
+                      "on-secondary-container": "#b7b5af",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "secondary-container": "#474742",
+                      "on-secondary": "#31312c",
+                      "on-primary-fixed": "#351000",
+                      "body": "#B8B8B8",
+                      "primary-fixed": "#ffdbcc",
+                      "surface-container-lowest": "#0e0e0e",
+                      "live": "#22C55A"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sidebar-width": "220px",
+                      "section-v-pad": "48px",
+                      "gutter": "24px",
+                      "margin": "32px",
+                      "max-width": "1280px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "ui-xl": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "ui-lg": ["DM Sans"],
+                      "headline-2xl-mobile": ["Playfair Display"],
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #080808;
+            color: #e5e2e1;
+        }
+        .sidebar-border { border-right: 1px solid #1A1A1A; }
+        .rule-border { border: 1px solid #1A1A1A; }
+        .rule-bottom { border-bottom: 1px solid #1A1A1A; }
+        .stat-card { background-color: #0F0F0F; border: 1px solid #1A1A1A; transition: border-color 0.2s ease; }
+        .stat-card:hover { border-color: #f06613; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #080808; }
+        ::-webkit-scrollbar-thumb { background: #1A1A1A; }
+    </style>
+</head>
+<body class="font-body-base text-on-background selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 bg-background border-b border-rule">
+<div class="flex justify-between items-center w-full px-margin py-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-masthead-4xl text-ui-xl tracking-tighter text-on-surface uppercase font-black">POSTBOARD</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-mono-label text-mono-label text-primary border-b-2 border-primary pb-1" href="#">Marketplace</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Companies</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Pricing</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors px-4 py-2 border border-rule hover:bg-surface-container">Login</button>
+<button class="bg-primary-container text-on-primary-container font-mono-label text-mono-label px-4 py-2 hover:bg-primary transition-all active:scale-95">Post a Job</button>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-lowest border-r border-rule hidden md:flex flex-col py-margin px-4 z-40 mt-[73px]">
+<div class="mb-12">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-8 h-8 bg-surface-container-high border border-rule flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">domain</span>
+</div>
+<div>
+<p class="font-headline-2xl text-ui-lg text-primary font-bold leading-none">POSTBOARD</p>
+<p class="font-mono-label text-[9px] text-dim tracking-widest mt-1">// ADMIN_PANEL</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors bg-primary text-on-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-mono-label text-mono-label">Dashboard</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:text-on-surface hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-mono-label text-mono-label">Active Pipeline</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:text-on-surface hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-mono-label text-mono-label">Talent Pool</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:text-on-surface hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-mono-label text-mono-label">Analytics</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:text-on-surface hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-mono-label text-mono-label">Company Profile</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:text-on-surface hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-mono-label text-mono-label">Settings</span>
+</a>
+</nav>
+<div class="pt-8 border-t border-rule space-y-1 mt-auto pb-24">
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:text-on-surface hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-mono-label text-mono-label">Support</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:text-on-surface hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-mono-label text-mono-label">Documentation</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-sidebar-width p-margin max-w-max-width mx-auto w-full pt-12">
+<header class="mb-12">
+<span class="font-mono-label text-mono-label text-primary uppercase tracking-[0.2em] block mb-4">// recruiter_overview</span>
+<h1 class="font-headline-2xl text-headline-2xl text-on-surface font-bold">Good morning, Alexander.</h1>
+<div class="flex items-center gap-4 mt-8">
+<button class="bg-primary-container text-on-primary-container font-mono-label text-mono-label px-6 py-3 hover:bg-primary transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                        Post New Role
+                    </button>
+<button class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors px-6 py-3 border border-rule hover:bg-surface-container">
+                        View All Applicants
+                    </button>
+</div>
+</header>
+<!-- Stat Tiles Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-margin">
+<!-- 1. Active Jobs -->
+<div class="stat-card p-6 flex flex-col justify-between h-40">
+<span class="font-mono-label text-[10px] text-dim uppercase tracking-wider">// 01_active_roles</span>
+<div class="flex items-baseline justify-between">
+<p class="font-masthead-4xl text-[64px] font-bold leading-none text-on-surface">12</p>
+<p class="font-ui-sm text-ui-sm text-dim">Active Jobs</p>
+</div>
+</div>
+<!-- 2. Total Applicants -->
+<div class="stat-card p-6 flex flex-col justify-between h-40">
+<span class="font-mono-label text-[10px] text-dim uppercase tracking-wider">// 02_candidate_pool</span>
+<div class="flex items-baseline justify-between">
+<p class="font-masthead-4xl text-[64px] font-bold leading-none text-on-surface">842</p>
+<p class="font-ui-sm text-ui-sm text-dim">Total Applicants</p>
+</div>
+</div>
+<!-- 3. New This Week -->
+<div class="stat-card p-6 flex flex-col justify-between h-40">
+<span class="font-mono-label text-[10px] text-dim uppercase tracking-wider">// 03_weekly_velocity</span>
+<div class="flex items-baseline justify-between">
+<p class="font-masthead-4xl text-[64px] font-bold leading-none text-primary">48</p>
+<p class="font-ui-sm text-ui-sm text-dim">New This Week</p>
+</div>
+</div>
+<!-- 4. Avg. Time to Hire -->
+<div class="stat-card p-6 flex flex-col justify-between h-40">
+<span class="font-mono-label text-[10px] text-dim uppercase tracking-wider">// 04_efficiency_metrics</span>
+<div class="flex items-baseline justify-between">
+<p class="font-masthead-4xl text-[64px] font-bold leading-none text-on-surface">18<span class="text-ui-lg font-ui-sm ml-1">d</span></p>
+<p class="font-ui-sm text-ui-sm text-dim">Avg. Time</p>
+</div>
+</div>
+<!-- 5. Hired (30d) -->
+<div class="stat-card p-6 flex flex-col justify-between h-40">
+<span class="font-mono-label text-[10px] text-dim uppercase tracking-wider">// 05_conversion_30d</span>
+<div class="flex items-baseline justify-between">
+<p class="font-masthead-4xl text-[64px] font-bold leading-none text-live">07</p>
+<p class="font-ui-sm text-ui-sm text-dim">Hired (30d)</p>
+</div>
+</div>
+<!-- 6. Pipeline Health -->
+<div class="stat-card p-6 flex flex-col justify-between h-40">
+<span class="font-mono-label text-[10px] text-dim uppercase tracking-wider">// 06_pipeline_health</span>
+<div class="space-y-4">
+<div class="flex h-4 w-full bg-rule">
+<div class="h-full bg-gradient-a" style="width: 25%" title="Applied"></div>
+<div class="h-full bg-gradient-b" style="width: 35%" title="Reviewing"></div>
+<div class="h-full bg-gradient-c" style="width: 20%" title="Interview"></div>
+<div class="h-full bg-gradient-d" style="width: 10%" title="Offer"></div>
+<div class="h-full bg-live" style="width: 10%" title="Hired"></div>
+</div>
+<div class="flex justify-between font-mono-label text-[9px] text-dim">
+<span>APPLIED</span>
+<span>REVIEW</span>
+<span>INTV</span>
+<span>OFFER</span>
+<span>HIRED</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Press Grid Aesthetic Section -->
+<section class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+<div class="lg:col-span-3 stat-card p-8 min-h-[400px] flex flex-col">
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="font-mono-label text-[10px] text-dim tracking-widest uppercase mb-1 block">// system_log</span>
+<h3 class="font-headline-2xl text-ui-xl text-on-surface">Recent Activity</h3>
+</div>
+<span class="material-symbols-outlined text-dim">more_horiz</span>
+</div>
+<div class="space-y-4 overflow-y-auto pr-4">
+<div class="border-b border-rule pb-4 flex justify-between items-center group cursor-pointer hover:bg-surface-container transition-all">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-gradient-c"></div>
+<div>
+<p class="font-ui-sm text-on-surface font-semibold">Sarah Jenkins applied for <span class="text-primary">Lead DevOps Engineer</span></p>
+<p class="font-mono-label text-[10px] text-dim uppercase">2m ago • Seattle, WA</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-dim opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+<div class="border-b border-rule pb-4 flex justify-between items-center group cursor-pointer hover:bg-surface-container transition-all">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-gradient-d"></div>
+<div>
+<p class="font-ui-sm text-on-surface font-semibold">Interview scheduled with <span class="text-primary">Marcus Vore</span></p>
+<p class="font-mono-label text-[10px] text-dim uppercase">45m ago • Product Designer</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-dim opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+<div class="border-b border-rule pb-4 flex justify-between items-center group cursor-pointer hover:bg-surface-container transition-all">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-live"></div>
+<div>
+<p class="font-ui-sm text-on-surface font-semibold">Offer accepted by <span class="text-live">Elena Rodriguez</span></p>
+<p class="font-mono-label text-[10px] text-dim uppercase">2h ago • Senior Frontend Architect</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-dim opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+<div class="border-b border-rule pb-4 flex justify-between items-center group cursor-pointer hover:bg-surface-container transition-all">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-gradient-a"></div>
+<div>
+<p class="font-ui-sm text-on-surface font-semibold">New listing published: <span class="text-primary">Security Researcher</span></p>
+<p class="font-mono-label text-[10px] text-dim uppercase">5h ago • Remote (US)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-dim opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1 stat-card p-8 flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<span class="font-mono-label text-[10px] text-dim tracking-widest uppercase mb-1 block">// hiring_visualizer</span>
+<h3 class="font-headline-2xl text-ui-xl text-on-surface mb-6">Market Trends</h3>
+<p class="font-ui-sm text-dim leading-relaxed">Software Engineer demand in <span class="text-on-surface underline">Berlin</span> is up <span class="text-live">+14%</span> this quarter.</p>
+</div>
+<div class="mt-8 grid grid-cols-6 gap-2 opacity-50 group-hover:opacity-100 transition-opacity">
+<div class="h-12 bg-gradient-a"></div>
+<div class="h-24 bg-gradient-b"></div>
+<div class="h-16 bg-gradient-c"></div>
+<div class="h-32 bg-gradient-d"></div>
+<div class="h-20 bg-primary"></div>
+<div class="h-40 bg-live"></div>
+</div>
+<!-- Atmospheric decoration -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-container/10 blur-[60px] pointer-events-none"></div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="full-width bg-background border-t border-rule mt-section-v-pad relative z-50">
+<div class="max-w-max-width mx-auto px-margin py-unit flex flex-col md:flex-row justify-between items-center gap-gutter min-h-[80px]">
+<p class="font-mono-label text-mono-label text-dim">© 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-8">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">API Status</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Shell (Filtered for main destinations) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container border-t border-rule flex justify-around p-4 z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-mono-label text-[10px]">HOME</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-dim">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-mono-label text-[10px]">PIPELINE</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-dim">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-mono-label text-[10px]">TALENT</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-dim">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-mono-label text-[10px]">SYSTEM</span>
+</button>
+</nav>
+<script>
+        // Simple Micro-interaction for Stats
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

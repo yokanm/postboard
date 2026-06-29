@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD // COMPANY_MANAGEMENT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#a88a7e",
+                      "on-secondary-container": "#b7b5af",
+                      "surface-container-highest": "#353534",
+                      "on-background": "#e5e2e1",
+                      "on-tertiary": "#313030",
+                      "secondary": "#c9c6c0",
+                      "on-surface": "#e5e2e1",
+                      "muted": "#2A2A2A",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#ffdbcc",
+                      "gradient-c": "#34D399",
+                      "outline-variant": "#594237",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-container": "#929090",
+                      "rule": "#1A1A1A",
+                      "on-surface-variant": "#e1c0b2",
+                      "on-secondary-fixed": "#1c1c18",
+                      "live": "#22C55A",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-bright": "#3a3939",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "gradient-a": "#C084FC",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "inverse-on-surface": "#313030",
+                      "surface-variant": "#353534",
+                      "on-primary-fixed": "#351000",
+                      "inverse-primary": "#a14000",
+                      "destructive": "#EF4444",
+                      "on-primary": "#571f00",
+                      "gradient-d": "#F59E0B",
+                      "tertiary": "#c8c6c5",
+                      "gradient-b": "#60A5FA",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "surface-container": "#201f1f",
+                      "on-tertiary-container": "#2a2a29",
+                      "primary-container": "#f06613",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "on-secondary-fixed-variant": "#474742",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "surface-container-high": "#2a2a2a",
+                      "on-primary-container": "#4c1a00",
+                      "surface-container-low": "#1c1b1b",
+                      "secondary-container": "#474742",
+                      "error-container": "#93000a",
+                      "on-error": "#690005",
+                      "live-dim": "#14532D",
+                      "surface-dim": "#131313",
+                      "tertiary-fixed": "#e5e2e1",
+                      "background": "#131313",
+                      "surface-tint": "#ffb694",
+                      "body": "#B8B8B8",
+                      "secondary-fixed": "#e5e2db",
+                      "primary-fixed-dim": "#ffb694",
+                      "inverse-surface": "#e5e2e1",
+                      "surface": "#131313",
+                      "primary": "#ffb694",
+                      "on-secondary": "#31312c",
+                      "dim": "#666666"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "0px"
+              },
+              "spacing": {
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "unit": "4px",
+                      "section-v-pad": "48px",
+                      "gutter": "24px",
+                      "sidebar-width": "220px"
+              },
+              "fontFamily": {
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl-mobile": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "ui-lg": ["DM Sans"],
+                      "ui-xl": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "headline-2xl": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #080808;
+            color: #e5e2e1;
+        }
+        .press-grid-tile {
+            aspect-ratio: 1;
+            border: 1px solid #1A1A1A;
+            transition: all 0.15s ease;
+        }
+        .press-grid-tile:hover {
+            background-color: #f06613;
+            border-color: #f06613;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        .status-pill {
+            padding: 2px 8px;
+            font-family: 'JetBrains Mono';
+            font-size: 10px;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body class="font-body-base text-body-base overflow-x-hidden">
+<!-- Sidebar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width border-r border-rule bg-surface-container-lowest z-50 flex flex-col py-margin px-4">
+<div class="mb-8">
+<h1 class="font-headline-2xl text-ui-lg text-primary tracking-tighter">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-dim uppercase">// ADMIN_PANEL</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active State Logic: Mapping Company Management to Company Profile/Dashboard -->
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors hover:bg-surface-variant text-body hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-mono-label text-mono-label">Dashboard</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors hover:bg-surface-variant text-body hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-mono-label text-mono-label">Active Pipeline</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors hover:bg-surface-variant text-body hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-mono-label text-mono-label">Talent Pool</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors hover:bg-surface-variant text-body hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-mono-label text-mono-label">Analytics</span>
+</a>
+<!-- Active Tab -->
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors bg-primary-container text-on-primary-container font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">domain</span>
+<span class="font-mono-label text-mono-label">Company Profile</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors hover:bg-surface-variant text-body hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-mono-label text-mono-label">Settings</span>
+</a>
+</nav>
+<button class="mt-4 bg-primary text-on-primary font-bold w-full p-3 font-mono-label text-mono-label uppercase tracking-widest text-center">
+            Create New Listing
+        </button>
+<div class="mt-auto pt-8 border-t border-rule">
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors hover:bg-surface-variant text-body" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-mono-label text-mono-label">Support</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors hover:bg-surface-variant text-body" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-mono-label text-mono-label">Documentation</span>
+</a>
+<div class="flex items-center gap-3 p-3 mt-4">
+<div class="w-8 h-8 bg-rule flex items-center justify-center">
+<span class="material-symbols-outlined text-dim">person</span>
+</div>
+<div class="overflow-hidden">
+<p class="font-mono-label text-[10px] text-on-surface truncate">Admin Root</p>
+<p class="font-mono-label text-[9px] text-dim">// SUPER_USER</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-[220px] min-h-screen flex flex-col bg-background">
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-background/95 backdrop-blur-none border-b border-rule">
+<div class="max-w-max-width mx-auto px-margin py-8 flex justify-between items-end">
+<div>
+<p class="font-mono-label text-mono-label text-primary uppercase mb-1 tracking-widest">// company_management</p>
+<h1 class="font-headline-2xl text-headline-2xl text-on-surface">Companies</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="font-mono-label text-mono-label text-dim border border-rule px-3 py-1 bg-surface-container-lowest">
+                        [1,248 companies]
+                    </div>
+</div>
+</div>
+</header>
+<!-- Filters Section -->
+<section class="border-b border-rule bg-surface-container-low">
+<div class="max-w-max-width mx-auto px-margin py-6">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<div class="md:col-span-4 relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-dim text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-background border border-rule text-on-surface font-mono-label text-mono-label focus:border-primary outline-none focus:ring-0" placeholder="Search by name or ID..." type="text"/>
+</div>
+<div class="md:col-span-2">
+<select class="w-full px-3 py-2.5 bg-background border border-rule text-on-surface font-mono-label text-mono-label appearance-none focus:border-primary outline-none focus:ring-0">
+<option>All Plans</option>
+<option>Free</option>
+<option>Pro</option>
+<option>Enterprise</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<select class="w-full px-3 py-2.5 bg-background border border-rule text-on-surface font-mono-label text-mono-label appearance-none focus:border-primary outline-none focus:ring-0">
+<option>Status</option>
+<option>Active</option>
+<option>Suspended</option>
+<option>Pending</option>
+</select>
+</div>
+<div class="md:col-span-3">
+<select class="w-full px-3 py-2.5 bg-background border border-rule text-on-surface font-mono-label text-mono-label appearance-none focus:border-primary outline-none focus:ring-0">
+<option>All Industries</option>
+<option>Software</option>
+<option>Fintech</option>
+<option>Healthcare</option>
+<option>Retail</option>
+</select>
+</div>
+<div class="md:col-span-1 flex gap-2">
+<button class="flex items-center justify-center w-full border border-rule hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface">filter_list</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Table Section -->
+<section class="flex-1 bg-black">
+<div class="max-w-max-width mx-auto px-margin py-margin">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-rule font-mono-label text-mono-label text-dim uppercase tracking-tighter">
+<th class="pb-4 px-4 font-normal">Company Name</th>
+<th class="pb-4 px-4 font-normal">Plan Tier</th>
+<th class="pb-4 px-4 font-normal">Jobs</th>
+<th class="pb-4 px-4 font-normal">Users</th>
+<th class="pb-4 px-4 font-normal">Joined Date</th>
+<th class="pb-4 px-4 font-normal">Status</th>
+<th class="pb-4 px-4 font-normal text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-mono-label text-mono-label text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-rule group hover:bg-surface-container transition-colors">
+<td class="py-5 px-4 flex items-center gap-3">
+<div class="w-8 h-8 bg-rule flex items-center justify-center font-bold text-primary">S</div>
+<span class="font-medium">Stripe</span>
+</td>
+<td class="py-5 px-4"><span class="text-on-secondary-container">PRO</span></td>
+<td class="py-5 px-4">14</td>
+<td class="py-5 px-4">8</td>
+<td class="py-5 px-4 text-dim">2024-01-03</td>
+<td class="py-5 px-4">
+<span class="status-pill bg-live-dim text-live uppercase">[ACTIVE]</span>
+</td>
+<td class="py-5 px-4 text-right">
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-rule group hover:bg-surface-container transition-colors">
+<td class="py-5 px-4 flex items-center gap-3">
+<div class="w-8 h-8 bg-rule flex items-center justify-center font-bold text-primary">V</div>
+<span class="font-medium">Vercel</span>
+</td>
+<td class="py-5 px-4"><span class="text-primary-container">ENTERPRISE</span></td>
+<td class="py-5 px-4">82</td>
+<td class="py-5 px-4">45</td>
+<td class="py-5 px-4 text-dim">2023-11-15</td>
+<td class="py-5 px-4">
+<span class="status-pill bg-live-dim text-live uppercase">[ACTIVE]</span>
+</td>
+<td class="py-5 px-4 text-right">
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-rule group hover:bg-surface-container transition-colors">
+<td class="py-5 px-4 flex items-center gap-3">
+<div class="w-8 h-8 bg-rule flex items-center justify-center font-bold text-primary">B</div>
+<span class="font-medium">Buffer</span>
+</td>
+<td class="py-5 px-4"><span class="text-dim">FREE</span></td>
+<td class="py-5 px-4">2</td>
+<td class="py-5 px-4">3</td>
+<td class="py-5 px-4 text-dim">2023-09-05</td>
+<td class="py-5 px-4">
+<span class="status-pill border border-rule text-dim uppercase">[SUSPENDED]</span>
+</td>
+<td class="py-5 px-4 text-right">
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-rule group hover:bg-surface-container transition-colors">
+<td class="py-5 px-4 flex items-center gap-3">
+<div class="w-8 h-8 bg-rule flex items-center justify-center font-bold text-primary">L</div>
+<span class="font-medium">Linear</span>
+</td>
+<td class="py-5 px-4"><span class="text-on-secondary-container">PRO</span></td>
+<td class="py-5 px-4">24</td>
+<td class="py-5 px-4">12</td>
+<td class="py-5 px-4 text-dim">2024-02-01</td>
+<td class="py-5 px-4">
+<span class="status-pill bg-live-dim text-live uppercase">[ACTIVE]</span>
+</td>
+<td class="py-5 px-4 text-right">
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="border-b border-rule group hover:bg-surface-container transition-colors">
+<td class="py-5 px-4 flex items-center gap-3">
+<div class="w-8 h-8 bg-rule flex items-center justify-center font-bold text-primary">R</div>
+<span class="font-medium">Railway</span>
+</td>
+<td class="py-5 px-4"><span class="text-on-secondary-container">PRO</span></td>
+<td class="py-5 px-4">5</td>
+<td class="py-5 px-4">6</td>
+<td class="py-5 px-4 text-dim">2024-03-12</td>
+<td class="py-5 px-4">
+<span class="status-pill border border-dashed border-rule text-dim uppercase">[PENDING]</span>
+</td>
+<td class="py-5 px-4 text-right">
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center items-center gap-8 font-mono-label text-mono-label">
+<button class="text-dim hover:text-on-surface transition-colors">← PREV PAGE</button>
+<span class="text-on-surface px-4 border-x border-rule">1 OF 84</span>
+<button class="text-dim hover:text-on-surface transition-colors">NEXT →</button>
+</div>
+</div>
+</section>
+<!-- Aesthetic Press Grid Footer Detail -->
+<section class="mt-auto py-8 px-margin">
+<div class="grid grid-cols-24 h-4 gap-0 overflow-hidden">
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<p class="font-mono-label text-[10px] text-dim">© 2024 POSTBOARD INDUSTRIAL // ALL RIGHTS RESERVED.</p>
+<p class="font-mono-label text-[10px] text-dim">SYSTEM_STATUS: <span class="text-live">OPERATIONAL</span></p>
+</div>
+</section>
+</main>
+<script>
+        // Micro-interactions for table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.querySelector('.material-symbols-outlined').style.color = '#ffb694';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.querySelector('.material-symbols-outlined').style.color = '';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding | POSTBOARD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#474742",
+                    "on-secondary-fixed": "#1c1c18",
+                    "surface-container": "#201f1f",
+                    "on-surface": "#e5e2e1",
+                    "live": "#22C55A",
+                    "gradient-c": "#34D399",
+                    "surface-container-lowest": "#0e0e0e",
+                    "error": "#ffb4ab",
+                    "surface-tint": "#ffb694",
+                    "inverse-primary": "#a14000",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "surface-container-highest": "#353534",
+                    "surface": "#131313",
+                    "primary-container": "#f06613",
+                    "inverse-surface": "#e5e2e1",
+                    "destructive": "#EF4444",
+                    "secondary-fixed-dim": "#c9c6c0",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#b7b5af",
+                    "on-primary-fixed": "#351000",
+                    "secondary-fixed": "#e5e2db",
+                    "muted": "#2A2A2A",
+                    "secondary": "#c9c6c0",
+                    "live-dim": "#14532D",
+                    "secondary-container": "#474742",
+                    "inverse-on-surface": "#313030",
+                    "gradient-b": "#60A5FA",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "primary-fixed": "#ffdbcc",
+                    "rule": "#1A1A1A",
+                    "body": "#B8B8B8",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-primary": "#571f00",
+                    "surface-container-high": "#2a2a2a",
+                    "primary": "#ffb694",
+                    "outline": "#a88a7e",
+                    "on-tertiary-container": "#2a2a29",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-primary-container": "#4c1a00",
+                    "on-tertiary": "#313030",
+                    "primary-fixed-dim": "#ffb694",
+                    "tertiary": "#c8c6c5",
+                    "tertiary-container": "#929090",
+                    "surface-bright": "#3a3939",
+                    "surface-dim": "#131313",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "on-secondary": "#31312c",
+                    "gradient-a": "#C084FC",
+                    "on-background": "#e5e2e1",
+                    "on-error": "#690005",
+                    "dim": "#666666",
+                    "surface-variant": "#353534",
+                    "on-surface-variant": "#e1c0b2",
+                    "background": "#080808",
+                    "gradient-d": "#E8610A",
+                    "error-container": "#93000a",
+                    "outline-variant": "#594237"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "sidebar-width": "220px",
+                    "section-v-pad": "48px",
+                    "max-width": "1280px",
+                    "margin": "32px"
+            },
+            "fontFamily": {
+                    "ui-sm": ["DM Sans"],
+                    "mono-label": ["JetBrains Mono"],
+                    "headline-2xl-mobile": ["Playfair Display"],
+                    "body-base": ["DM Sans"],
+                    "ui-lg": ["DM Sans"],
+                    "ui-xl": ["DM Sans"],
+                    "masthead-4xl": ["Playfair Display"],
+                    "headline-2xl": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                    "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                    "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                    "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: #080808;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1px;
+            background-color: #1A1A1A;
+            border: 1px solid #1A1A1A;
+        }
+        .bento-cell {
+            background-color: #080808;
+        }
+        .role-card:hover {
+            border-color: #E8610A;
+            transition: border-color 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-body-base text-body-base min-h-screen flex flex-col items-center justify-between py-12 px-gutter">
+<!-- Top Wordmark -->
+<header class="w-full flex justify-center mb-12">
+<h1 class="font-headline-2xl text-headline-2xl font-bold tracking-tighter text-on-surface">
+            POSTBOARD
+        </h1>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
+<!-- Header Group -->
+<div class="text-center mb-12">
+<p class="font-mono-label text-mono-label text-dim uppercase mb-4 tracking-widest">
+                // one_last_thing
+            </p>
+<h2 class="font-headline-2xl text-headline-2xl md:text-5xl font-bold mb-6 text-on-surface">
+                How will you use POSTBOARD?
+            </h2>
+<p class="font-body-base text-body-base text-body max-w-[480px] mx-auto opacity-80">
+                Your choice determines what you see. You can change this later in settings.
+            </p>
+</div>
+<!-- Role Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter w-full">
+<!-- Candidate Card -->
+<div class="role-card flex flex-col p-8 bg-[#0F0F0F] border border-rule transition-all group">
+<div class="mb-8">
+<span class="material-symbols-outlined text-4xl text-gradient-d" style="font-variation-settings: 'FILL' 1;">person_search</span>
+</div>
+<div class="flex-1">
+<h3 class="font-ui-xl text-ui-xl mb-3 text-on-surface">I'm looking for work.</h3>
+<p class="font-body-base text-body-base text-body mb-8">
+                        Browse roles, track your applications, build your profile.
+                    </p>
+</div>
+<button class="w-full py-4 bg-gradient-d text-background font-ui-lg text-ui-lg font-bold hover:opacity-90 active:scale-[0.98] transition-all">
+                    [Choose: Candidate]
+                </button>
+</div>
+<!-- Recruiter Card -->
+<div class="role-card flex flex-col p-8 bg-[#0F0F0F] border border-rule transition-all group">
+<div class="mb-8">
+<span class="material-symbols-outlined text-4xl text-gradient-d" style="font-variation-settings: 'FILL' 1;">domain</span>
+</div>
+<div class="flex-1">
+<h3 class="font-ui-xl text-ui-xl mb-3 text-on-surface">I'm hiring.</h3>
+<p class="font-body-base text-body-base text-body mb-8">
+                        Post roles, manage applications, track your pipeline.
+                    </p>
+</div>
+<button class="w-full py-4 border border-rule text-on-surface font-ui-lg text-ui-lg font-semibold hover:border-gradient-d hover:text-gradient-d active:scale-[0.98] transition-all">
+                    [Choose: Recruiter]
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer Action -->
+<footer class="w-full flex justify-center mt-12">
+<a class="font-mono-label text-mono-label text-dim uppercase hover:text-on-surface transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+            ← Back
+        </a>
+</footer>
+<!-- Atmospheric Grid Background (Visual Token: The Press Grid) -->
+<div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-10">
+<div class="absolute inset-0 bento-grid w-full h-full">
+<!-- Generating small cells for pattern -->
+<div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div>
+<div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div>
+<div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div>
+<div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div>
+<div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div>
+<div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div><div class="bento-cell"></div>
+</div>
+</div>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.role-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

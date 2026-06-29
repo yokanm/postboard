@@ -1,0 +1,175 @@
+# ─── Postboard — Production Docker Compose ────────────────────────────────────
+# Usage:
+#   docker compose up -d                    # Start all services
+#   docker compose -f docker-compose.yml up  # Production stack
+#
+# Environment file: .env (at project root or jobboard/.env)
+# See .env.production.example for all required variables.
+
+x-common: &common
+  env_file:
+    - ./jobboard/.env
+  restart: unless-stopped
+  networks:
+    - postboard-network
+
+services:
+  # ─── Reverse Proxy ───────────────────────────────────────────────────────────
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: postboard-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - nginx_logs:/var/log/nginx
+      - certbot_data:/etc/letsencrypt
+    depends_on:
+      frontend:
+        condition: service_started
+      api:
+        condition: service_started
+    networks:
+      - postboard-network
+    restart: unless-stopped
+
+  # ─── Frontend (TanStack Start SSR) ───────────────────────────────────────────
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    container_name: postboard-frontend
+    env_file:
+      - .env
+    environment:
+      VITE_API_URL: http://nginx/api/v1
+      VITE_APP_ENV: production
+      VITE_APP_URL: ${VITE_APP_URL:-http://localhost}
+    ports:
+      - "3000"
+    depends_on:
+      - api
+    networks:
+      - postboard-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # ─── API (Express) ───────────────────────────────────────────────────────────
+  api:
+    build:
+      context: ./jobboard
+      dockerfile: Dockerfile
+      target: production
+    container_name: postboard-api
+    <<: *common
+    ports:
+      - "5000"
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      APP_URL: ${APP_URL:-http://localhost}
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:5000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # ─── Email Worker (BullMQ) ───────────────────────────────────────────────────
+  email-worker:
+    build:
+      context: ./jobboard
+      dockerfile: Dockerfile.worker
+      target: production
+    container_name: postboard-email-worker
+    <<: *common
+    environment:
+      NODE_ENV: production
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  # ─── PostgreSQL ──────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: postboard-postgres
+    <<: *common
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postboard}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-postboard}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backups:/backups
+    ports:
+      - "5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postboard} -d ${POSTGRES_DB:-postboard}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ─── Redis ───────────────────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: postboard-redis
+    <<: *common
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+    command: >
+      sh -c 'if [ -n "$REDIS_PASSWORD" ]; then
+        redis-server --requirepass "$REDIS_PASSWORD" --appendonly yes --save 300 10 --save 60 10000;
+      else
+        redis-server --appendonly yes --save 300 10 --save 60 10000;
+      fi'
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+
+  # ─── Backup (pg_dump cron) ───────────────────────────────────────────────────
+  backup:
+    image: postgres:16-alpine
+    container_name: postboard-backup
+    <<: *common
+    entrypoint: |
+      sh -c '
+        echo "0 3 * * * pg_dump -h postgres -U ${POSTGRES_USER:-postboard} -d ${POSTGRES_DB:-postboard} -Fc -f /backups/backup_\$$(date +%Y%m%d_%H%M%S).dump && find /backups -name "*.dump" -mtime +30 -delete" > /etc/crontabs/root
+        crond -f -l 2
+      '
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backups:/backups
+
+volumes:
+  postgres_data:
+  redis_data:
+  nginx_logs:
+  certbot_data:
+
+networks:
+  postboard-network:
+    driver: bridge

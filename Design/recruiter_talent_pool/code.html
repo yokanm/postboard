@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | Talent Pool</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..900&family=Playfair+Display:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E8610A;
+        }
+        .press-grid-tile {
+            background-image: radial-gradient(circle at 2px 2px, #1A1A1A 1px, transparent 0);
+            background-size: 8px 8px;
+        }
+        .iridescent-bg {
+            background: linear-gradient(135deg, #C084FC 0%, #60A5FA 50%, #34D399 100%);
+            filter: saturate(1.2) contrast(1.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "gradient-b": "#60A5FA",
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-secondary-container": "#b7b5af",
+                      "surface-variant": "#353534",
+                      "surface-container-high": "#2a2a2a",
+                      "secondary": "#c9c6c0",
+                      "inverse-on-surface": "#313030",
+                      "outline": "#a88a7e",
+                      "on-error": "#690005",
+                      "surface-container-lowest": "#0e0e0e",
+                      "gradient-d": "#F59E0B",
+                      "tertiary-container": "#929090",
+                      "on-primary-fixed": "#351000",
+                      "error": "#ffb4ab",
+                      "surface-bright": "#3a3939",
+                      "surface-container": "#201f1f",
+                      "on-tertiary": "#313030",
+                      "on-secondary": "#31312c",
+                      "surface-container-highest": "#353534",
+                      "primary": "#ffb694",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "on-primary": "#571f00",
+                      "inverse-primary": "#a14000",
+                      "surface-container-low": "#1c1b1b",
+                      "on-secondary-fixed": "#1c1c18",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "muted": "#2A2A2A",
+                      "dim": "#666666",
+                      "error-container": "#93000a",
+                      "secondary-container": "#474742",
+                      "body": "#B8B8B8",
+                      "surface-dim": "#131313",
+                      "primary-container": "#f06613",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "primary-fixed": "#ffdbcc",
+                      "gradient-a": "#C084FC",
+                      "on-surface": "#e5e2e1",
+                      "background": "#131313",
+                      "surface-tint": "#ffb694",
+                      "on-background": "#e5e2e1",
+                      "destructive": "#EF4444",
+                      "live-dim": "#14532D",
+                      "outline-variant": "#594237",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "secondary-fixed": "#e5e2db",
+                      "primary-fixed-dim": "#ffb694",
+                      "on-surface-variant": "#e1c0b2",
+                      "gradient-c": "#34D399",
+                      "rule": "#1A1A1A",
+                      "tertiary": "#c8c6c5",
+                      "on-tertiary-container": "#2a2a29",
+                      "inverse-surface": "#e5e2e1",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-container": "#4c1a00",
+                      "surface": "#131313",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "live": "#22C55A",
+                      "on-secondary-fixed-variant": "#474742"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "sidebar-width": "220px",
+                      "section-v-pad": "48px",
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-2xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "ui-lg": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "ui-xl": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl-mobile": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-base antialiased overflow-x-hidden">
+<!-- DASHBOARD SHELL: SIDENAV -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-lowest border-r border-rule flex flex-col py-margin px-4 z-50">
+<div class="mb-10">
+<h2 class="font-headline-2xl text-ui-lg text-primary tracking-tighter">POSTBOARD</h2>
+<p class="font-mono-label text-mono-label text-dim">// ADMIN_PANEL</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="inline-flex items-center gap-3 w-full p-3 text-body hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="font-mono-label text-mono-label">Dashboard</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 text-body hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg">account_tree</span>
+<span class="font-mono-label text-mono-label">Active Pipeline</span>
+</a>
+<!-- ACTIVE TAB: Talent Pool -->
+<a class="inline-flex items-center gap-3 w-full p-3 bg-primary text-on-primary font-bold transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-mono-label text-mono-label">Talent Pool</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 text-body hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg">monitoring</span>
+<span class="font-mono-label text-mono-label">Analytics</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 text-body hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg">domain</span>
+<span class="font-mono-label text-mono-label">Company Profile</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 text-body hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span class="font-mono-label text-mono-label">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-6">
+<button class="w-full bg-primary-container text-on-primary-container font-ui-sm text-ui-sm py-3 px-4 flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+                Create New Listing
+            </button>
+<div class="space-y-1">
+<a class="inline-flex items-center gap-3 w-full p-2 text-dim hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+<span class="font-mono-label text-mono-label">Support</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-2 text-dim hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">description</span>
+<span class="font-mono-label text-mono-label">Documentation</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- MAIN CANVAS -->
+<main class="ml-sidebar-width min-h-screen">
+<!-- HEADER -->
+<header class="w-full px-margin py-8 flex justify-between items-end border-b border-rule">
+<div>
+<p class="font-mono-label text-mono-label text-dim mb-1">// talent_pool</p>
+<h1 class="font-headline-2xl text-headline-2xl">Talent Pool</h1>
+</div>
+<div class="flex gap-4">
+<button class="font-mono-label text-mono-label text-body hover:text-on-surface flex items-center gap-1 py-2 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                    [Export CSV]
+                </button>
+<button class="bg-primary text-on-primary font-ui-sm text-ui-sm py-2 px-6 flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">person_add</span>
+                    [+ Add Candidate]
+                </button>
+</div>
+</header>
+<!-- FILTER BAR -->
+<div class="px-margin py-6 flex flex-wrap gap-4 items-center border-b border-rule bg-surface-container-low/50 sticky top-0 backdrop-blur-sm z-40">
+<div class="relative flex-1 min-w-[300px]">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-dim text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-background border border-rule focus:border-primary focus:ring-0 text-ui-sm font-ui-sm" placeholder="Search candidates by name, skills, or role..." type="text"/>
+</div>
+<div class="relative min-w-[200px]">
+<select class="w-full px-4 py-2 bg-background border border-rule focus:border-primary focus:ring-0 text-ui-sm font-ui-sm appearance-none">
+<option>All Roles</option>
+<option>Frontend</option>
+<option>Backend</option>
+<option>Design</option>
+<option>DevOps</option>
+</select>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-dim pointer-events-none">expand_more</span>
+</div>
+<div class="flex-1 flex items-center gap-2 px-4 py-2 bg-background border border-rule min-w-[250px]">
+<span class="font-mono-label text-mono-label text-dim uppercase">Skills:</span>
+<span class="bg-surface-variant px-2 py-0.5 text-mono-label font-mono-label flex items-center gap-1">React <span class="material-symbols-outlined text-[10px] cursor-pointer">close</span></span>
+<span class="bg-surface-variant px-2 py-0.5 text-mono-label font-mono-label flex items-center gap-1">TypeScript <span class="material-symbols-outlined text-[10px] cursor-pointer">close</span></span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-ui-sm p-0 ml-1" placeholder="Add skill..." type="text"/>
+</div>
+</div>
+<!-- CANDIDATE GRID -->
+<section class="p-margin">
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-gutter">
+<!-- Candidate 1 -->
+<div class="bg-surface-container-lowest border border-rule p-6 flex flex-col gap-4 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-muted relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a male software engineer with short dark hair and a confident expression. The lighting is crisp and editorial, casting subtle shadows in a monochromatic studio setting. The aesthetic is clean, technical, and high-contrast, fitting for a modern recruitment platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_SIX4DcsDad3irAxShR7KHOeGMbb0x-_FvauW58fO5oWTCmDhifq4HFBNvjIGMqkUfPlfg0GJTPsaKsiSEU4bCmrgIOS8i_bZK1fIn0bDxKMBwwdIVMIESzg7IN9oTXvy_fd7dO6IcM06hcqQl0jKQZ-Cu95RZrf4v76JZ5erABbvVmNeup7OrOkUpqHXlburlxz_OtDdZzdM-egUAdk0MF9hPad0_59ZSQtmAj74YNK_2pb-q_R2TZEv3XwboESyK23GKwSyFImC"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg leading-none">Marcus Thorne</h3>
+<p class="text-primary font-mono-label text-mono-label mt-1 uppercase tracking-wider">Senior Rust Engineer</p>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-dim font-mono-label text-mono-label">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">location_on</span> Berlin, DE</span>
+<span class="text-rule">|</span>
+<a class="flex items-center gap-1 hover:text-primary transition-colors uppercase" href="#">Portfolio <span class="material-symbols-outlined text-[10px]">north_east</span></a>
+</div>
+<div class="border-t border-rule pt-4 flex flex-wrap gap-2">
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">RUST</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">WEBASSEMBLY</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">DISTRIBUTED SYSTEMS</span>
+</div>
+<div class="text-dim font-mono-label text-mono-label mt-2">
+                        Added Jan 12 · <span class="text-body">From: Application #APP-4829</span>
+</div>
+<div class="mt-4 pt-4 border-t border-rule flex justify-between items-center">
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">[View Full Profile]</a>
+<div class="relative">
+<select class="bg-transparent border-none text-mono-label font-mono-label text-dim hover:text-on-surface cursor-pointer appearance-none pr-6 focus:ring-0">
+<option>Move to Pipeline ↓</option>
+<option>Technical Interview</option>
+<option>Hiring Manager Review</option>
+<option>Offer Stage</option>
+</select>
+<span class="absolute right-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-[14px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Candidate 2 -->
+<div class="bg-surface-container-lowest border border-rule p-6 flex flex-col gap-4 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-muted relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female design lead with a sharp, intelligent gaze. She wears a minimalist black turtleneck against a solid dark grey background. The lighting is dramatic and directional, highlighting the contours of her face and the clean aesthetic of her professional persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ5ag5HoKx4pUjte1swVyWohw2l90LBl3CvyCtUJIkBB0nxk5TUHjRqumsgDftI0wE-O2RnU47_L4u7KUn55ogmfgH_t2x8kdad7ZLRB_C5dhNTWp86HPpXTIIN0S6h2p6BJO7wgHNE536lTXDM0YMvdTTJBqcg5Wqme-g_PiSpgw4sZ_Po3G2KyyJ7fV-BWQ8_KpDZKZuwIs9WN2Q11oOEJT5MbInSmRRPIFbJbablMm-RzyE_0nN5aYOt51_BrgnOJI72-K7n_Fz"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg leading-none">Sarah Chen</h3>
+<p class="text-primary font-mono-label text-mono-label mt-1 uppercase tracking-wider">Product Design Lead</p>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-dim font-mono-label text-mono-label">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">location_on</span> San Francisco, US</span>
+<span class="text-rule">|</span>
+<a class="flex items-center gap-1 hover:text-primary transition-colors uppercase" href="#">Portfolio <span class="material-symbols-outlined text-[10px]">north_east</span></a>
+</div>
+<div class="border-t border-rule pt-4 flex flex-wrap gap-2">
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">FIGMA</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">DESIGN SYSTEMS</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">UX RESEARCH</span>
+</div>
+<div class="text-dim font-mono-label text-mono-label mt-2">
+                        Added Jan 08 · <span class="text-body">From: Internal Referral</span>
+</div>
+<div class="mt-4 pt-4 border-t border-rule flex justify-between items-center">
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">[View Full Profile]</a>
+<div class="relative">
+<select class="bg-transparent border-none text-mono-label font-mono-label text-dim hover:text-on-surface cursor-pointer appearance-none pr-6 focus:ring-0">
+<option>Move to Pipeline ↓</option>
+<option>Initial Screening</option>
+<option>Design Challenge</option>
+<option>Final Interview</option>
+</select>
+<span class="absolute right-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-[14px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Candidate 3 -->
+<div class="bg-surface-container-lowest border border-rule p-6 flex flex-col gap-4 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-muted relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male backend developer in a minimalist technical environment. Soft amber lighting catches the edge of his silhouette against a charcoal background. He has a thoughtful expression, embodying the serious, detail-oriented nature of an expert in data infrastructure and systems engineering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApyNdyT19Ge-PEazrCjU9toHffejkqYKMTYRwAObErxyr2lVJGOToDLNwI2uT8qlO-fUn7pGVt43IUMlFve8YeFgzk7j3BlNp9Q4mTbxlDeP7DFbCgmh9-DYRbUvhibvCmtItmjr3v0Pp3oSVMRrToYm0HOTuW_7E28zGV-BLqFYXSNzbLC6BA3cqt-P-1l_6d5JFRjCbr5KYyRgZiJ3ImWAkk_ttYtestOmMMKh0DSeLn3Rh5izj5DjY8_9M_QaKNouLDcAWgYJFl"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg leading-none">Elias Vance</h3>
+<p class="text-primary font-mono-label text-mono-label mt-1 uppercase tracking-wider">Cloud Infrastructure Engineer</p>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-dim font-mono-label text-mono-label">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">location_on</span> London, UK</span>
+<span class="text-rule">|</span>
+<a class="flex items-center gap-1 hover:text-primary transition-colors uppercase" href="#">Portfolio <span class="material-symbols-outlined text-[10px]">north_east</span></a>
+</div>
+<div class="border-t border-rule pt-4 flex flex-wrap gap-2">
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">KUBERNETES</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">AWS</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">GOLANG</span>
+</div>
+<div class="text-dim font-mono-label text-mono-label mt-2">
+                        Added Jan 10 · <span class="text-body">From: Application #APP-4912</span>
+</div>
+<div class="mt-4 pt-4 border-t border-rule flex justify-between items-center">
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">[View Full Profile]</a>
+<div class="relative">
+<select class="bg-transparent border-none text-mono-label font-mono-label text-dim hover:text-on-surface cursor-pointer appearance-none pr-6 focus:ring-0">
+<option>Move to Pipeline ↓</option>
+<option>Technical Screening</option>
+<option>Architecture Review</option>
+</select>
+<span class="absolute right-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-[14px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Candidate 4 -->
+<div class="bg-surface-container-lowest border border-rule p-6 flex flex-col gap-4 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-muted relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A striking portrait of a female developer with glasses, reflecting a computer screen's light in the dark. The image is stylized with a slight blue tint, emphasizing a high-tech, futuristic mood. The composition is tight and intense, focusing on her expertise in front-end architecture and modern UI development." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdhydAolSKbUDQc-xZBGeSL4KN-7QuSd3kMai41ATsdTyw6vUu7YfEdvajMziAinc4Q6t-pZmT2fPLrXQO-FqDVJioIvUkiMm25JYLCSyrBhRgwnJbdq7RQ7YyWz6F5cUW_OefS4PHhTWoTZDaaKrZiN73YRCXJd4ouYcnzj0XgUQ96UxziCj0DPKxNVAnv302P6fFmgJr6gHyGSBXc6YsJq5jzoG4-p2rSxXyNptVqPuAeKs3TMLYPh6FbIZME3Nh8w8GRTsin1ie"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg leading-none">Maya Jenson</h3>
+<p class="text-primary font-mono-label text-mono-label mt-1 uppercase tracking-wider">Staff Frontend Engineer</p>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-dim font-mono-label text-mono-label">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">location_on</span> Stockholm, SE</span>
+<span class="text-rule">|</span>
+<a class="flex items-center gap-1 hover:text-primary transition-colors uppercase" href="#">Portfolio <span class="material-symbols-outlined text-[10px]">north_east</span></a>
+</div>
+<div class="border-t border-rule pt-4 flex flex-wrap gap-2">
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">NEXT.JS</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">TYPESCRIPT</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">TAILWIND</span>
+</div>
+<div class="text-dim font-mono-label text-mono-label mt-2">
+                        Added Jan 05 · <span class="text-body">From: Talent Scout</span>
+</div>
+<div class="mt-4 pt-4 border-t border-rule flex justify-between items-center">
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">[View Full Profile]</a>
+<div class="relative">
+<select class="bg-transparent border-none text-mono-label font-mono-label text-dim hover:text-on-surface cursor-pointer appearance-none pr-6 focus:ring-0">
+<option>Move to Pipeline ↓</option>
+<option>Intro Call</option>
+<option>Pair Programming</option>
+</select>
+<span class="absolute right-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-[14px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Candidate 5 -->
+<div class="bg-surface-container-lowest border border-rule p-6 flex flex-col gap-4 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-muted relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio photo of an Asian male engineer in a charcoal grey environment. He has a sharp, analytical expression. The lighting is dramatic, high-key, and emphasizes professional authority and technical precision. The image is crisp and monochromatic, except for subtle skin tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA45nzJg0nEu0wY-7OTdytHc9594ZZo9mkKwfY6Mvc9A1ESBV92b4DBbsfFKCgVisyZAAvShiuDIMgSez3rzSjRqko_8Yv6Vu2yB2MVaLD3SiE8l4IajR9o44Q4uVW_E0WDVeTZuW0C7_R-0lwMHg2TAPtBGfKP8Pe-iInL6yzpVGg62mE88iH5Ux40DDQIZsUwUeYnhBm51Zibp0SblQ68ElscBiAGgcrLi8G5G8LrZj_XuCSwVHzlbMcQYW0__ud_0RYy2kcRiurV"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg leading-none">Hiroshi Tanaka</h3>
+<p class="text-primary font-mono-label text-mono-label mt-1 uppercase tracking-wider">Senior ML Engineer</p>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-dim font-mono-label text-mono-label">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">location_on</span> Tokyo, JP</span>
+<span class="text-rule">|</span>
+<a class="flex items-center gap-1 hover:text-primary transition-colors uppercase" href="#">Portfolio <span class="material-symbols-outlined text-[10px]">north_east</span></a>
+</div>
+<div class="border-t border-rule pt-4 flex flex-wrap gap-2">
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">PYTORCH</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">PYTHON</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">COMPUTER VISION</span>
+</div>
+<div class="text-dim font-mono-label text-mono-label mt-2">
+                        Added Dec 28 · <span class="text-body">From: Application #APP-4552</span>
+</div>
+<div class="mt-4 pt-4 border-t border-rule flex justify-between items-center">
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">[View Full Profile]</a>
+<div class="relative">
+<select class="bg-transparent border-none text-mono-label font-mono-label text-dim hover:text-on-surface cursor-pointer appearance-none pr-6 focus:ring-0">
+<option>Move to Pipeline ↓</option>
+<option>Technical Screening</option>
+<option>Whiteboard Session</option>
+</select>
+<span class="absolute right-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-[14px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Candidate 6 -->
+<div class="bg-surface-container-lowest border border-rule p-6 flex flex-col gap-4 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-muted relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A minimalist and sharp portrait of a female developer with a determined expression. She is shot in a bright, modern studio with soft lighting that creates a clean, light-mode inspired contrast against a dark background. The mood is professional, visionary, and technically grounded, reflecting her role as a creative director in tech." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQLCNi98TFQH1gzl1uKQq_yvGdH3sp_IYc--xyZBQUAROZ53AOUdL5BW9L34kauf4EAFUl0GbKhYW409cegiGvsC8zamclQuvL0OmVX3kwEswElaXS4ckN3h699LpoTnK2nnHijydS4LgZ1Yjg-g7SRFQZaX1Iv4ZLILUwVdIAmUb9AtZmSclSu_ROtNDm_DaiyJ1Zs7sKI4hVm_Bjzzx_ol_ossMB6bXtykA_bxKPaKWz6wpCnU8D7bDu-f3UpMLaUL55R7shSvhi"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg leading-none">Elena Rodriguez</h3>
+<p class="text-primary font-mono-label text-mono-label mt-1 uppercase tracking-wider">Creative Technologist</p>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-dim font-mono-label text-mono-label">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">location_on</span> Barcelona, ES</span>
+<span class="text-rule">|</span>
+<a class="flex items-center gap-1 hover:text-primary transition-colors uppercase" href="#">Portfolio <span class="material-symbols-outlined text-[10px]">north_east</span></a>
+</div>
+<div class="border-t border-rule pt-4 flex flex-wrap gap-2">
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">THREE.JS</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">WEBGL</span>
+<span class="border border-rule px-3 py-1 font-mono-label text-[10px] text-body">SHADERS</span>
+</div>
+<div class="text-dim font-mono-label text-mono-label mt-2">
+                        Added Jan 14 · <span class="text-body">From: Behance Lead</span>
+</div>
+<div class="mt-4 pt-4 border-t border-rule flex justify-between items-center">
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">[View Full Profile]</a>
+<div class="relative">
+<select class="bg-transparent border-none text-mono-label font-mono-label text-dim hover:text-on-surface cursor-pointer appearance-none pr-6 focus:ring-0">
+<option>Move to Pipeline ↓</option>
+<option>Portfolio Deep Dive</option>
+<option>Team Interview</option>
+</select>
+<span class="absolute right-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-[14px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- EMPTY STATE PATTERN (Hidden for demo purpose) -->
+<div class="hidden mt-section-v-pad max-w-2xl mx-auto border border-dashed border-rule p-margin flex flex-col items-center text-center" id="empty-state">
+<div class="grid grid-cols-3 grid-rows-2 gap-4 mb-8">
+<div class="w-16 h-16 press-grid-tile border border-rule"></div>
+<div class="w-16 h-16 press-grid-tile border border-rule iridescent-bg"></div>
+<div class="w-16 h-16 press-grid-tile border border-rule"></div>
+<div class="w-16 h-16 press-grid-tile border border-rule"></div>
+<div class="w-16 h-16 press-grid-tile border border-rule"></div>
+<div class="w-16 h-16 press-grid-tile border border-rule"></div>
+</div>
+<h3 class="font-headline-2xl text-ui-xl mb-2">No Candidates Found</h3>
+<p class="text-body max-w-md mb-6">Your talent pool is currently empty for this specific filter. Try adjusting your search or opening a new pipeline to attract talent.</p>
+<button class="bg-primary text-on-primary font-ui-sm text-ui-sm py-3 px-8 flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">rocket_launch</span>
+                    Open Pipeline
+                </button>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="max-w-max-width mx-auto px-margin py-unit flex flex-col md:flex-row justify-between items-center gap-gutter border-t border-rule mt-section-v-pad">
+<div class="font-mono-label text-mono-label text-dim uppercase">
+                © 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.
+            </div>
+<div class="flex gap-6">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-opacity duration-200 hover:underline underline-offset-4" href="#">Privacy Policy</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-opacity duration-200 hover:underline underline-offset-4" href="#">Terms of Service</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-opacity duration-200 hover:underline underline-offset-4" href="#">API Status</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-opacity duration-200 hover:underline underline-offset-4" href="#">Contact</a>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interaction: Filter tagging
+        const filterInput = document.querySelector('input[placeholder="Add skill..."]');
+        filterInput?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && e.target.value.trim() !== '') {
+                const tag = document.createElement('span');
+                tag.className = 'bg-surface-variant px-2 py-0.5 text-mono-label font-mono-label flex items-center gap-1 animate-in fade-in zoom-in duration-200';
+                tag.innerHTML = `${e.target.value} <span class="material-symbols-outlined text-[10px] cursor-pointer" onclick="this.parentElement.remove()">close</span>`;
+                e.target.parentElement.insertBefore(tag, e.target);
+                e.target.value = '';
+            }
+        });
+
+        // Hover effect for press grid tiles if visible
+        document.querySelectorAll('.press-grid-tile').forEach(tile => {
+            tile.addEventListener('mouseenter', () => {
+                tile.classList.add('iridescent-bg');
+                tile.style.transform = 'scale(1.05)';
+                tile.style.transition = 'all 0.2s ease-out';
+            });
+            tile.addEventListener('mouseleave', () => {
+                if (!tile.dataset.permanent) {
+                    tile.classList.remove('iridescent-bg');
+                    tile.style.transform = 'scale(1)';
+                }
+            });
+        });
+    </script>
+</body></html>

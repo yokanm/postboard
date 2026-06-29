@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Postboard | Applicant Pipeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#a88a7e",
+                    "surface-container-high": "#2a2a2a",
+                    "on-surface-variant": "#e1c0b2",
+                    "surface": "#131313",
+                    "body": "#B8B8B8",
+                    "rule": "#1A1A1A",
+                    "on-tertiary-container": "#2a2a29",
+                    "on-error": "#690005",
+                    "dim": "#666666",
+                    "live-dim": "#14532D",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary-fixed": "#1c1c18",
+                    "on-secondary-container": "#b7b5af",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "surface-variant": "#353534",
+                    "on-tertiary": "#313030",
+                    "on-secondary": "#31312c",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-primary-container": "#4c1a00",
+                    "surface-container-low": "#1c1b1b",
+                    "inverse-surface": "#e5e2e1",
+                    "gradient-a": "#C084FC",
+                    "error": "#ffb4ab",
+                    "primary": "#ffb694",
+                    "gradient-b": "#60A5FA",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "primary-fixed": "#ffdbcc",
+                    "on-secondary-fixed-variant": "#474742",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#929090",
+                    "secondary-container": "#474742",
+                    "on-error-container": "#ffdad6",
+                    "destructive": "#EF4444",
+                    "secondary-fixed": "#e5e2db",
+                    "gradient-d": "#F59E0B",
+                    "gradient-c": "#34D399",
+                    "surface-tint": "#ffb694",
+                    "surface-container-lowest": "#0e0e0e",
+                    "live": "#22C55A",
+                    "background": "#131313",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "surface-dim": "#131313",
+                    "on-primary-fixed": "#351000",
+                    "on-background": "#e5e2e1",
+                    "inverse-on-surface": "#313030",
+                    "tertiary-fixed": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "primary-container": "#f06613",
+                    "tertiary": "#c8c6c5",
+                    "secondary-fixed-dim": "#c9c6c0",
+                    "outline-variant": "#594237",
+                    "on-primary": "#571f00",
+                    "surface-container-highest": "#353534",
+                    "secondary": "#c9c6c0",
+                    "muted": "#2A2A2A",
+                    "primary-fixed-dim": "#ffb694",
+                    "surface-bright": "#3a3939",
+                    "inverse-primary": "#a14000",
+                    "accent": "#E8610A"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width": "1280px",
+                    "margin": "32px",
+                    "sidebar-width": "220px",
+                    "unit": "4px",
+                    "section-v-pad": "48px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-2xl": ["Playfair Display"],
+                    "mono-label": ["JetBrains Mono"],
+                    "ui-lg": ["DM Sans"],
+                    "ui-sm": ["DM Sans"],
+                    "ui-xl": ["DM Sans"],
+                    "body-base": ["DM Sans"],
+                    "masthead-4xl": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                    "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                    "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #080808;
+            color: #F0EDE6;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kanban-column {
+            scrollbar-width: thin;
+            scrollbar-color: #1A1A1A transparent;
+        }
+        .kanban-column::-webkit-scrollbar {
+            width: 4px;
+        }
+        .kanban-column::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+    </style>
+</head>
+<body class="font-ui-sm text-body selection:bg-primary-container selection:text-white">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-[220px] bg-surface-container-lowest border-r border-rule flex flex-col py-8 px-4 z-50">
+<div class="mb-12 px-3">
+<h1 class="font-headline-2xl text-ui-lg text-primary tracking-tighter">POSTBOARD</h1>
+<p class="font-mono-label text-[10px] text-dim">// ADMIN_PANEL</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-sm">dashboard</span>
+<span class="font-mono-label">Dashboard</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors bg-primary-container text-on-primary-container font-bold" href="#">
+<span class="material-symbols-outlined text-sm">account_tree</span>
+<span class="font-mono-label">Active Pipeline</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span class="font-mono-label">Talent Pool</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-sm">monitoring</span>
+<span class="font-mono-label">Analytics</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-sm">domain</span>
+<span class="font-mono-label">Company Profile</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="font-mono-label">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-8 border-t border-rule">
+<button class="w-full bg-primary-container text-on-primary-container py-3 font-mono-label text-xs uppercase hover:brightness-110 active:scale-[0.98] transition-all">
+                Create New Listing
+            </button>
+<div class="mt-6 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-dim hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-xs">help</span>
+<span class="font-mono-label">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-dim hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-xs">description</span>
+<span class="font-mono-label">Documentation</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Top Header Shell -->
+<header class="fixed top-0 right-0 left-[220px] bg-background border-b border-rule z-40">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-mono-label text-dim hover:text-on-surface transition-colors" href="#">Marketplace</a>
+<a class="font-mono-label text-dim hover:text-on-surface transition-colors" href="#">Companies</a>
+<a class="font-mono-label text-dim hover:text-on-surface transition-colors" href="#">Pricing</a>
+<a class="font-mono-label text-dim hover:text-on-surface transition-colors" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-dim text-lg">search</span>
+<input class="bg-surface-container border border-rule py-2 pl-10 pr-4 font-ui-sm text-on-surface focus:border-primary-container outline-none transition-colors w-64" placeholder="Search applicants..." type="text"/>
+</div>
+<button class="px-6 py-2 bg-primary-container text-on-primary-container font-mono-label text-xs uppercase hover:brightness-110 transition-all">Post a Job</button>
+<div class="w-8 h-8 bg-surface-container border border-rule overflow-hidden">
+<img alt="Company Admin" class="w-full h-full object-cover" data-alt="A professional high-contrast monochromatic abstract avatar for a tech recruiter dashboard with minimalist geometric shapes and a deep charcoal and amber theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwHCLByj0-LP_IO9K8po_LkB4FZDt3dvCFooUUKyQ2BgAuChGzWtSpfWpbe6Hemm5KQ7hs71X6PwTZXvGCk1pryqB6jd3r_5Ci4SoVVkhvnK--RvaLGDb1u6Y7bL7xIbR8PS-tpOAGhGkMqneM_nKR-zU9Z55G7hQX3USiZLPCJQ6n5TOY7E5tpZ5HHuMq1LzywT3ScTxdojSdvbptr6PtcV6elXQ5jJRtnzyzE-tn4Kk4f43WfV68M1DUToGi6J4roBpSxgCy38SJ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[220px] pt-[72px] min-h-screen bg-background p-8">
+<div class="max-w-max-width mx-auto flex flex-col h-[calc(100vh-140px)]">
+<!-- Page Header Area -->
+<div class="flex justify-between items-end mb-10">
+<div>
+<span class="font-mono-label text-primary uppercase">// applicant_pipeline</span>
+<h1 class="font-headline-2xl text-headline-2xl text-on-surface mt-1">Pipeline</h1>
+</div>
+<div class="flex bg-surface-container p-1 border border-rule">
+<button class="px-4 py-1.5 font-mono-label text-xs uppercase text-dim hover:text-on-surface transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">view_list</span>
+                        ≡ List
+                    </button>
+<button class="px-4 py-1.5 font-mono-label text-xs uppercase bg-muted text-on-surface border border-rule flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">grid_view</span>
+                        ⊞ Kanban
+                    </button>
+</div>
+</div>
+<!-- Kanban Board -->
+<div class="flex gap-4 overflow-x-auto pb-4 h-full kanban-column">
+<!-- Column: Applied -->
+<div class="flex-shrink-0 w-72 flex flex-col gap-4">
+<div class="flex justify-between items-center border-b border-rule pb-2">
+<span class="font-mono-label text-xs uppercase">// applied (24)</span>
+<span class="material-symbols-outlined text-dim text-sm cursor-pointer hover:text-on-surface">more_vert</span>
+</div>
+<div class="flex-1 overflow-y-auto space-y-3 kanban-column">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-rule p-4 hover:border-primary-container transition-all cursor-grab active:cursor-grabbing group">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 border border-rule">
+<img alt="Candidate" class="w-full h-full object-cover" data-alt="A portrait of a young professional candidate for a technical position, set against a dark, minimalist industrial background. High-contrast studio lighting, sharp editorial photography style, monochromatic tones with subtle amber highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOY0Qt3wDRPt-_ZCMVgeMUCF4NRxNDKDSRhB2Gf7Xrl-SUUpPRtSTfkeb57JwSyh5kUizmSjW5sVIAUbmsP9DClA5b8hTClmpdZ6knTqhXIlw653dMjA_i19S8-I8BrdJGg-agHB_8R8W6uPJo78YbIVGccfch0oi9SmCeiGeAoVTv8euhlUgXR0MvCcJ9yax2CknDwAB8pBdok4L_j_4dIZeHA7pnrQYZ-F7dm8srWzz8wL7gUogiTFIbECycJerPzB_BHp-F7itO"/>
+</div>
+<div>
+<h4 class="font-ui-lg text-sm text-on-surface group-hover:text-primary transition-colors">Alex Rivera</h4>
+<p class="font-mono-label text-[10px] text-dim uppercase">Sr. Backend Engineer</p>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-mono-label">
+<span class="text-dim">Applied Oct 24</span>
+<span class="bg-muted px-2 py-0.5 text-on-surface border border-rule">4.8 ★</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-rule p-4 hover:border-primary-container transition-all cursor-grab active:cursor-grabbing group">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 border border-rule">
+<img alt="Candidate" class="w-full h-full object-cover" data-alt="A portrait of a creative professional candidate, set against a dark background with industrial architectural elements. Dramatic high-contrast photography with a focus on sharp lines and deep shadows, professional and sophisticated mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_GOhUlIEVKUgXbH3hihH7OIpYF6bAWBSWMYFMnEkRoKXo1MttS_1SaeueZYuMw7M3RWNAJuxUiwl9nu5r0cVmI03sQ4w3LGneMc4RUzY7NY0S7r0_EcaZBAhFKOgzd-v_FRyjuxiexRXIC56xdm1myehRkxwdZY6tOfMNF_0seCLGfpQ3ana3BGPO0WmyVhtx3VGd1RN9IqZAwKKSHzHcCtYLF4G69C9MVnAQibf34oeWAXepVcNobMJUhLy0YHza9S0EywFhxJXn"/>
+</div>
+<div>
+<h4 class="font-ui-lg text-sm text-on-surface group-hover:text-primary transition-colors">Maya Sterling</h4>
+<p class="font-mono-label text-[10px] text-dim uppercase">Lead Product Designer</p>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-mono-label">
+<span class="text-dim">Applied Oct 23</span>
+<span class="bg-muted px-2 py-0.5 text-on-surface border border-rule">4.5 ★</span>
+</div>
+</div>
+<!-- Ghost Button -->
+<button class="w-full py-3 border border-dashed border-rule text-dim font-mono-label text-[11px] uppercase flex items-center justify-center gap-2 hover:border-primary-container hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[14px]">add</span>
+                            [+ Add Candidate]
+                        </button>
+</div>
+</div>
+<!-- Column: Reviewing -->
+<div class="flex-shrink-0 w-72 flex flex-col gap-4">
+<div class="flex justify-between items-center border-b border-rule pb-2">
+<span class="font-mono-label text-xs uppercase">// reviewing (11)</span>
+<span class="material-symbols-outlined text-dim text-sm">more_vert</span>
+</div>
+<div class="flex-1 overflow-y-auto space-y-3 kanban-column">
+<!-- Drag State Preview -->
+<div class="bg-surface-container-lowest border border-dashed border-primary-container p-4 opacity-50">
+<div class="h-12 flex items-center justify-center font-mono-label text-[10px] text-primary uppercase">
+                                Drop Candidate Here
+                            </div>
+</div>
+<div class="bg-surface-container-lowest border border-rule p-4 hover:border-primary-container transition-all cursor-grab active:cursor-grabbing group">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 border border-rule">
+<img alt="Candidate" class="w-full h-full object-cover" data-alt="Professional headshot of a developer candidate with a minimalist tech background. Strong editorial aesthetic, black and white photography with warm light accents, high-end recruitment visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_J3-onySlYbXRC1PaPmAHyBfjkaWUAjr0kdQCwvbp2rzbXmedKGNHDEc-iIRpn00mV1saQdYR839TYDn429GzMngfEz8SqYKBNfdn09_dUZ-npEyBKglMmnMdUbkrS87mQXy5ayolYy9iLiCIljiFIYPHXxwUBP99_33Nv1ndSRdMhgCGmqlT-TwgjvefoQ7aMO9rW9XDKEGsjcvwzLZcjJTqYYRvlji76XSrV5gg_VrF4nfRwkfPxOjUGI2po26Hw5xkUg-KON2q"/>
+</div>
+<div>
+<h4 class="font-ui-lg text-sm text-on-surface group-hover:text-primary transition-colors">Jordan Vance</h4>
+<p class="font-mono-label text-[10px] text-dim uppercase">Infrastructure Eng</p>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-mono-label">
+<span class="text-dim">Reviewed 2h ago</span>
+<span class="text-live px-2 py-0.5 uppercase">// VETTED</span>
+</div>
+</div>
+<!-- Ghost Button -->
+<button class="w-full py-3 border border-dashed border-rule text-dim font-mono-label text-[11px] uppercase flex items-center justify-center gap-2 hover:border-primary-container hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[14px]">add</span>
+                            [+ Add Candidate]
+                        </button>
+</div>
+</div>
+<!-- Column: Interview -->
+<div class="flex-shrink-0 w-72 flex flex-col gap-4">
+<div class="flex justify-between items-center border-b border-rule pb-2">
+<span class="font-mono-label text-xs uppercase text-primary">// interview (4)</span>
+<span class="material-symbols-outlined text-dim text-sm">more_vert</span>
+</div>
+<div class="flex-1 overflow-y-auto space-y-3 kanban-column">
+<div class="bg-surface-container-lowest border border-rule p-4 border-l-4 border-l-primary group">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 border border-rule">
+<img alt="Candidate" class="w-full h-full object-cover" data-alt="Editorial portrait of a senior tech professional for a recruitment platform. Monochromatic industrial setting with sharp focus, minimalist shadows, and elegant professional demeanor. Cinematic high-contrast lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhY9SH5PreHCC7IzVm4M-eNVa61b50waVllpCr55YeDiAE7Uj21CEX06dhJtpPBAvwY0zG1Qkxi6O8FEgxMTvED93Ah4bbv9r89cC3H62uFxBMCXNM_xjHItAwLJwsUqpQwb0T5J-LHcr2vkUV4S28onYU-cBRM2WfiFOVBCHdjF86vymKOfb_blr2oCdEQ1iWX04VGr4ZlywqX34WUoUPdWWY4Z7UDOyNYY2i-kBR66dPD6-Mf6dyfI_yO4u1cmAPs0_bSsI8KOlq"/>
+</div>
+<div>
+<h4 class="font-ui-lg text-sm text-on-surface">Sarah Connor</h4>
+<p class="font-mono-label text-[10px] text-dim uppercase">CTO / Founder</p>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-mono-label">
+<span class="text-primary uppercase">Scheduled: Today 2PM</span>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary">video_call</span>
+</div>
+</div>
+</div>
+<!-- Ghost Button -->
+<button class="w-full py-3 border border-dashed border-rule text-dim font-mono-label text-[11px] uppercase flex items-center justify-center gap-2 hover:border-primary-container hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[14px]">add</span>
+                            [+ Add Candidate]
+                        </button>
+</div>
+</div>
+<!-- Column: Offer -->
+<div class="flex-shrink-0 w-72 flex flex-col gap-4">
+<div class="flex justify-between items-center border-b border-rule pb-2">
+<span class="font-mono-label text-xs uppercase">// offer (2)</span>
+<span class="material-symbols-outlined text-dim text-sm">more_vert</span>
+</div>
+<div class="flex-1 overflow-y-auto space-y-3 kanban-column">
+<div class="bg-surface-container-lowest border border-rule p-4 group">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 border border-rule">
+<img alt="Candidate" class="w-full h-full object-cover" data-alt="Portrait of a young male professional in a sharp, minimalist office environment. Deep charcoal tones, high-contrast industrial aesthetic, professional photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsURHgAM0IFLpAcWRvdjvA317vpyMijlbWocnCzSVL0XgSgZgsx5EiUfDDPJ10wn5UT99tyMsSEi28_yUoDdfdYxyv6LvYUuUjASNV2_aJhqBK_E5AhkKka6x7FI2beBXi0-ipBC3dHPnzUwEKMGOYEJk1R0Nd9AdC-MqbBCbAgJSPNwgDXqQrbf_UoroUq98XVknfMIPA0UQm6m2nC-sbTcX0NRJM00Qzp4JezLatOheUJK-V6iDK8L1WyeLk9TSuUTIgGGCA2FAz"/>
+</div>
+<div>
+<h4 class="font-ui-lg text-sm text-on-surface">David Miller</h4>
+<p class="font-mono-label text-[10px] text-dim uppercase">Security Analyst</p>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-mono-label">
+<span class="text-on-surface">Base: $185k</span>
+<span class="bg-primary/20 text-primary border border-primary/30 px-2 py-0.5">PENDING</span>
+</div>
+</div>
+<!-- Ghost Button -->
+<button class="w-full py-3 border border-dashed border-rule text-dim font-mono-label text-[11px] uppercase flex items-center justify-center gap-2 hover:border-primary-container hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[14px]">add</span>
+                            [+ Add Candidate]
+                        </button>
+</div>
+</div>
+<!-- Column: Hired -->
+<div class="flex-shrink-0 w-72 flex flex-col gap-4">
+<div class="flex justify-between items-center border-b border-rule pb-2">
+<span class="font-mono-label text-xs uppercase text-live">// hired (42)</span>
+<span class="material-symbols-outlined text-dim text-sm">more_vert</span>
+</div>
+<div class="flex-1 overflow-y-auto space-y-3 kanban-column opacity-75">
+<div class="bg-surface-container-lowest border border-rule p-4 group">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 border border-rule grayscale">
+<img alt="Candidate" class="w-full h-full object-cover" data-alt="Professional profile of a successful hire, minimalist background, sharp monochromatic high-key lighting, modern industrial corporate photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBakDEenl0zm_pEwpTGbRSPHO1IXz84avPR9Rl7E-n2l3nzWE089LDIBxrmcKUwUDv__Mn5EDsCtwE_BOqE-morYxs28dAgvhAGiI5pDbOymxFEVg9itS-06fQ44T53I7J4FLFEM_EknID-T1tmR2GIq8BmPsbHYA5S30E77V__OZf16c-0n74g8qGsfmolr6GDOYRyhTZCHUtroD7eXxRgygFbHacxcymiVpRgSDzwfM7iiP90xYaxLn5lQGtMJg-oL4kSPUHszSzq"/>
+</div>
+<div>
+<h4 class="font-ui-lg text-sm text-dim">Claire Bennett</h4>
+<p class="font-mono-label text-[10px] text-dim uppercase">Project Manager</p>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-mono-label">
+<span class="text-dim">Joined Oct 01</span>
+<span class="text-live">● ONBOARDED</span>
+</div>
+</div>
+<!-- Ghost Button -->
+<button class="w-full py-3 border border-dashed border-rule text-dim font-mono-label text-[11px] uppercase flex items-center justify-center gap-2 hover:border-primary-container hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[14px]">add</span>
+                            [+ Add Candidate]
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="ml-[220px] bg-background border-t border-rule">
+<div class="max-w-max-width mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4">
+<span class="font-masthead-4xl text-lg text-on-surface uppercase tracking-tight">POSTBOARD</span>
+<span class="font-mono-label text-[10px] text-dim">© 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex gap-6 font-mono-label text-[10px] uppercase">
+<a class="text-dim hover:text-on-surface hover:underline transition-opacity" href="#">Privacy Policy</a>
+<a class="text-dim hover:text-on-surface hover:underline transition-opacity" href="#">Terms of Service</a>
+<a class="text-dim hover:text-on-surface hover:underline transition-opacity" href="#">API Status</a>
+<a class="text-dim hover:text-on-surface hover:underline transition-opacity" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<!-- Atmosphere/Micro-interactions -->
+<script>
+        // Simple drag feedback simulation
+        const cards = document.querySelectorAll('.bg-surface-container-lowest');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if(!card.classList.contains('border-dashed')) {
+                    card.style.transform = 'translateY(-2px)';
+                    card.style.borderColor = '#E8610A';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                if(!card.classList.contains('border-dashed')) {
+                    card.style.transform = 'translateY(0)';
+                    card.style.borderColor = '#1A1A1A';
+                }
+            });
+        });
+
+        // Search highlight
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.style.borderColor = '#E8610A';
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.style.borderColor = '#1A1A1A';
+        });
+    </script>
+</body></html>

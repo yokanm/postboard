@@ -1,477 +1,397 @@
 # AGENTS.md
 
-# POSTBOARD Frontend Agent System
+# POSTBOARD Frontend — Onboarding Guide
 
-## Frontend Architect Agent
+## Project Overview
 
-Owns:
+Postboard is a multi-tenant recruitment platform with **five user personas**: Public visitors, Candidates, Recruiters, Company Admins, and SuperAdmins. The frontend is a TanStack Start application with SSR, file-based routing, and a strict feature-based architecture.
 
-* TanStack Start architecture
-* Folder structure
-* Dependency governance
-* Scalability reviews
+### Product Vision
 
-Must approve:
+Connect job seekers with employers through a high-density, enterprise-grade recruitment platform. The design language is **Industrial Broadsheet** — zero-radius, information-dense, monochrome with amber accents, inspired by Bloomberg Terminal, Linear, and print broadsheets.
 
-* new dependencies
-* architectural changes
-* state-management changes
+### Tech Stack
 
----
+| Layer | Technology |
+|-------|-----------|
+| Framework | TanStack Start (React 19, SSR) |
+| Routing | TanStack Router (file-based) |
+| Server State | TanStack Query |
+| Client State | Zustand |
+| Forms | React Hook Form + Zod |
+| Styling | Tailwind CSS v4 |
+| UI Primitives | shadcn/ui + Radix UI |
+| Icons | Hugeicons |
+| Charts | Recharts (lazy-loaded) |
+| HTTP | Native Fetch (no Axios) |
+| Validation | Zod schemas |
+| Testing | Vitest + MSW |
 
-## Design System Agent
+### Multi-Tenant Model
 
-Owns:
+```
+Public (/)          → Landing, job search, company profiles
+Candidate            → Job discovery, applications, profile
+Recruiter            → Job management, applicant pipeline, analytics
+Company Admin        → Team, settings, audit logs, analytics
+SuperAdmin           → Platform oversight, users, companies, security
+```
 
-Industrial Broadsheet
+### Backend Assumptions
 
-Responsible for:
-
-* design tokens
-* typography hierarchy
-* spacing system
-* component consistency
-* visual governance
-
-Must reject:
-
-* rounded SaaS UI
-* glassmorphism
-* shadow-heavy interfaces
-
-DESIGN.md is the authority.
-
----
-
-## Routing Agent
-
-Owns:
-
-TanStack Router
-
-Responsibilities:
-
-* route tree
-* layouts
-* route guards
-* role routing
-* navigation architecture
-* search params
-
-Route groups:
-
-* Public
-* Candidate
-* Recruiter
-* Admin
+- Backend is complete and frozen at `jobboard/API_CONTRACT.md`
+- All API responses wrap in `{ data: T }` envelope via `sendSuccess()`
+- Pagination uses cursor-based model: `{ data: T[], nextCursor, hasNextPage }`
+- Auth uses access token (in memory) + refresh token (httpOnly cookie)
+- Backend auto-unwraps paginated `data` to root level via `mapPaginated()`
 
 ---
 
-## Data Agent
+## Folder Structure
 
-Owns:
+```
+src/
+├── app/                    # (reserved — not in use)
+├── components/             # Shared UI primitives
+│   ├── devtools/           # TanStack devtools
+│   ├── layout/             # AppShell, Sidebar, Topbar, MobileNav, UserMenu
+│   └── ui/                 # shadcn/ui primitives (button, input, dialog, etc.)
+├── features/               # Feature modules (single responsibility)
+│   ├── admin/              # Company-level admin
+│   ├── applications/       # Application state, status machine, hooks
+│   ├── auth/               # Authentication pages, hooks, API
+│   ├── candidate/          # Candidate layout & dashboard
+│   ├── company/            # Company admin (profile, team, settings)
+│   ├── jobs/               # Job CRUD, marketplace, hooks, API
+│   ├── notifications/      # Cross-role notification system
+│   ├── profile/            # User profile (candidate + recruiter)
+│   ├── public/             # Landing page components
+│   ├── recruiter/          # Recruiter workspace
+│   └── superadmin/         # Platform-level administration
+├── guards/                 # Route guards (auth, role, superadmin)
+├── integrations/           # Third-party integration configs (TanStack Query)
+├── lib/                    # Infrastructure layer
+│   ├── api/                # Backward-compat API client, endpoints, query keys
+│   ├── env.ts              # Environment variables
+│   └── utils.ts            # General utilities
+├── providers/              # React context providers
+├── routes/                 # TanStack Router route files
+│   ├── __root.tsx          # App root (SEO, theme script)
+│   ├── _authenticated/     # Authenticated user routes
+│   │   ├── admin/          # Company admin
+│   │   ├── candidate/      # Candidate portal
+│   │   ├── company/        # Company settings (layout + children)
+│   │   └── recruiter/      # Recruiter workspace
+│   ├── _superadmin/        # SuperAdmin routes
+│   │   └── superadmin/     # Dashboard, companies, users, jobs, etc.
+│   ├── index.tsx           # Public landing page
+│   ├── jobs.tsx            # Public job marketplace
+│   ├── jobs.$jobId.tsx     # Public job detail
+│   ├── login.tsx           # Auth pages
+│   ├── register.tsx
+│   ├── forgot-password.tsx
+│   ├── reset-password.tsx
+│   ├── verify-email.tsx
+│   └── superadmin/login.tsx
+├── shared/                 # Shared components, types, utilities
+│   ├── api/client.ts       # Core apiFetch (single HTTP entry point)
+│   ├── components/         # Reusable UI (dialogs, forms, tables, UX)
+│   ├── hooks/              # Shared hooks (useMediaQuery)
+│   ├── types/api.ts        # DTOs, error types, response envelopes
+│   └── utils/              # cn(), password utilities
+├── stores/                 # Zustand stores
+│   ├── auth-store.ts       # User auth (in-memory only)
+│   ├── superadmin-auth-store.ts
+│   ├── theme-store.ts      # Theme preference (persisted)
+│   ├── sidebar-store.ts    # Sidebar toggle state
+│   └── saved-jobs-store.ts # Client-side saved jobs (persisted)
+└── tests/                  # Test setup
+```
 
-TanStack Query
+### Feature Module Structure
 
-Responsibilities:
+Each feature follows the same internal structure:
 
-* query keys
-* cache strategy
-* invalidation
-* optimistic updates
-* stale time policies
-
-Must prevent duplicated server state.
-
----
-
-## API Integration Agent
-
-Owns:
-
-Fetch API Layer
-
-Responsibilities:
-
-* request abstraction
-* authentication headers
-* retries
-* timeout handling
-* error normalization
-
-Architecture:
-
-Feature
-→ Hook
-→ API
-→ Request Layer
-→ Backend
-
----
-
-## UI Agent
-
-Owns:
-
-* shadcn/ui
-* Radix UI
-* shared components
-
-Responsibilities:
-
-* accessibility
-* responsiveness
-* reusable patterns
-
-Must prioritize existing primitives before custom solutions.
-
----
-
-## Forms Agent
-
-Owns:
-
-* React Hook Form
-* Zod
-
-Responsibilities:
-
-* schemas
-* validation
-* field abstraction
-* form consistency
-
----
-
-## Table Agent
-
-Owns:
-
-TanStack Table
-
-Responsibilities:
-
-* sorting
-* filtering
-* pagination
-* column visibility
-* row actions
-* bulk actions
-
-Used by:
-
-* jobs
-* users
-* companies
-* applications
-* audit logs
+```
+features/{name}/
+├── api/index.ts         # API functions (apiFetch calls)
+├── components/          # Feature-specific components
+├── hooks/index.ts       # TanStack Query hooks
+├── pages/               # Page-level components (consumed by routes)
+├── types/index.ts       # TypeScript types
+├── schemas/index.ts     # Zod schemas (if forms)
+├── utils/               # Feature-specific utilities
+└── layout/              # Layout components (if applicable)
+```
 
 ---
 
-## Analytics Agent
+## Feature Architecture
 
-Owns:
+### Auth (features/auth/)
+- Login, Register, Forgot/Reset Password, Verify Email, Change Password
+- Uses `http.get/post` with `endpoints.auth.*`
+- Hooks: `useLogin`, `useRegister`, `useLogout`, `useCurrentUser`, etc.
+- Auth layout has brand panel + form panel
+- Access token stored in Zustand memory ONLY (no localStorage)
 
-Recharts
+### Candidate (features/candidate/)
+- Dashboard with profile completion %, application breakdown stats
+- Uses CandidateLayout with sidebar + mobile tabs
+- Hooks into jobs, applications, profile, and notifications features
 
-Responsibilities:
+### Recruiter (features/recruiter/)
+- Dashboard, analytics, notifications, job detail, application detail
+- Uses RecruiterLayout with sidebar navigation
+- Shared recruiter components in `src/shared/components/recruiter/`
 
-* KPI visualization
-* recruiter analytics
-* admin metrics
-* workforce intelligence dashboards
+### Company Admin (features/company/)
+- Dashboard, profile editing, team management, analytics, audit logs
+- Uses CompanyLayout with sidebar nav + mobile tab navigation
+- Team management with invite/promote/remove/transfer ownership
 
-Must follow Industrial Broadsheet visualization standards.
+### SuperAdmin (features/superadmin/)
+- Separate auth flow (login page, separate store, separate guard)
+- Dashboard, companies CRUD, users management, jobs oversight
+- Security events, ownerless companies, platform settings
+- Lazy-loaded Recharts for analytics
 
----
-
-## Authentication Agent
-
-Responsibilities:
-
-* Login
-* Register
-* Forgot Password
-* Reset Password
-* Session Restoration
-* Role-Based Access
-
-Roles:
-
-* Candidate
-* Recruiter
-* Admin
-
----
-
-## Candidate Experience Agent
-
-Responsibilities:
-
-* Profile
-* Resume
-* Applications
-* Saved Jobs
-* Notifications
+### Shared (src/shared/)
+- `api/client.ts`: Core `apiFetch<T>()` — single HTTP entry point
+- `components/ux/`: LoadingState (spinner/skeleton/page variants), EmptyState, ErrorState
+- `components/table/`: DataTable (TanStack Table wrapper), TablePagination, TableToolbar
+- `components/dialogs/`: ConfirmDialog
+- `components/forms/`: PasswordField (with strength meter)
+- `components/theme/`: ThemeToggle
+- `types/api.ts`: All shared DTOs, error types, pagination types
+- `utils/`: cn(), password utilities
 
 ---
 
-## Recruiter Experience Agent
+## API Standards
 
-Responsibilities:
+### apiFetch() — `src/shared/api/client.ts`
+- **Single entry point** for all HTTP requests
+- Auto-injects `Authorization: Bearer` from Zustand stores
+- Auto-detects Content-Type (JSON or FormData)
+- 30-second timeout via AbortController
+- Auto-refresh on 401 (queue pattern prevents token stampede)
+- Auto-unwraps `{ data: T }` backend envelopes
+- Pagination helper: `mapPaginated<T>(response, "key")` renames `data` to feature-specific key
 
-* Job Management
-* Applicant Pipeline
-* Hiring Workflows
-* Recruiter Analytics
+### Fetch Only
+All HTTP uses native `fetch()`. No Axios. No direct fetch() outside apiFetch.
 
----
+### Error Format
+Standardized via `ApiError` (extends Error):
+- `message`: string
+- `status`: number (HTTP status)
+- `code`: ErrorCode (VALIDATION_ERROR | UNAUTHORIZED | FORBIDDEN | NOT_FOUND | CONFLICT | RATE_LIMITED | GONE | INTERNAL_ERROR | UNKNOWN_ERROR)
+- `details`: ApiErrorDetail[] (field-level errors)
 
-## Admin Experience Agent
+### Response Format
+- Non-paginated: `{ data: T }` → apiFetch unwraps to `T`
+- Paginated: `{ data: T[], meta: { nextCursor, hasNextPage } }` → flattened to `{ data: T[], nextCursor, hasNextPage }`
 
-Responsibilities:
-
-* User Management
-* Company Management
-* Moderation
-* Reporting
-* Platform Analytics
-
----
-
-## Accessibility Agent
-
-Responsibilities:
-
-* keyboard support
-* screen readers
-* semantic HTML
-* ARIA compliance
-
-Can block releases.
+### Refresh Flow
+1. Request returns 401 while token exists in store
+2. Single refresh call to `/auth/refresh-token` (or `/superadmin/refresh`)
+3. Concurrent requests during refresh are queued (not duplicate calls)
+4. Original request retried with new token
+5. On failure: store cleared, redirect to `/login`
 
 ---
 
-## Performance Agent
+## TanStack Query Standards
 
-Responsibilities:
+### Query Keys
+Centralized factory in `src/lib/api/query-keys.ts` using `as const` for type safety:
 
-* bundle size review
-* route splitting review
-* rendering optimization
-* query performance
+```
+auth      → ["auth"], ["auth", "user"]
+profile   → ["profile"], ["profile", "detail"]
+job       → ["jobs"], ["jobs", "list", params], ["jobs", "detail", id]
+company   → ["companies"], ["companies", "current"], ["companies", "team"]
+notification → ["notifications"], ["notifications", "list"]
+admin     → ["admin"], ["admin", "stats"], ["admin", "users", ...]
+superadmin → ["superadmin"], ["superadmin", "stats"], ["superadmin", "companies", ...]
+```
 
-Can reject performance regressions.
+### Mutations
+- Use `useMutation` from TanStack Query
+- Call `queryClient.invalidateQueries()` on success with precise keys
+- Avoid overly broad invalidation (e.g., `queryKeys.job.all` for a single job update)
 
----
+### Cache Invalidation
+- Invalidate only the affected query keys
+- Use the factory (`queryKeys.*`) not hardcoded arrays
+- After mutations, invalidate list + detail keys for the affected entity
 
-## QA Agent
-
-Responsibilities:
-
-* integration testing
-* regression testing
-* UX verification
-* accessibility verification
-
-No feature is complete without QA validation.
-
-# Additional Governance Agents
-
-## Dependency Governance Agent
-
-Owns all package decisions.
-
-Responsibilities:
-
-* Verify official package website
-* Verify official documentation
-* Verify npm package
-* Verify GitHub repository
-* Verify latest stable release
-* Verify maintenance activity
-* Verify security status
-* Verify compatibility with current stack
-
-Before approving any dependency, evaluate:
-
-* necessity
-* bundle impact
-* maintenance quality
-* security risk
-* TypeScript support
-* SSR compatibility
-* TanStack Start compatibility
-
-Can reject dependency additions.
+### Optimistic Updates
+- Used where user experience benefits (e.g., status toggles)
+- Always provide `onError` rollback
 
 ---
 
-## Security Agent
+## Zustand Standards
 
-Owns frontend security standards.
+### Store Boundaries
+- Auth tokens → `auth-store.ts` / `superadmin-auth-store.ts` (in-memory)
+- Theme preference → `theme-store.ts` (persisted)
+- UI state → `sidebar-store.ts` (transient)
+- Local-only data → `saved-jobs-store.ts` (persisted for offline-like UX)
 
-Responsibilities:
+### Key Rule
+**Never store server state in Zustand.** All server-originating data flows through TanStack Query.
 
-* Authentication reviews
-* Authorization reviews
-* Token handling reviews
-* XSS prevention reviews
-* Dependency security reviews
-* Environment variable reviews
+### Persistence
+- Only `theme-store` and `saved-jobs-store` use Zustand `persist` middleware
+- Auth stores explicitly do NOT persist (access token in memory only)
 
-Must verify:
-
-* no secret exposure
-* no unsafe HTML rendering
-* secure authentication flow
-* secure API interaction
-
-Can block releases.
+### Derived State
+- `isAuthenticated` is derived from `accessToken` presence
+- `role` is derived from `user.role`
+- Both are updated atomically in store actions
 
 ---
 
-## Architecture Governance Agent
+## UI Standards
 
-Owns architectural consistency.
+### shadcn/ui Components
+Located in `src/components/ui/`. Customized for Industrial Broadsheet:
+- Zero border-radius on all components
+- High contrast borders (`border-(--rule)`)
+- Monochrome + amber accent palette
+- Form primitives use `react-hook-form` + Zod integration
 
-Responsibilities:
+### Tailwind CSS
+- Primary styling system
+- CSS variables for design tokens (`--background`, `--on-surface`, etc.)
+- Dark mode via `dark:` class on `<html>` element
+- No custom CSS classes except for design tokens and global animations
 
-* prevent architecture drift
-* review folder structure
-* review state management decisions
-* review abstraction layers
-* review new libraries
+### Radix UI
+- Used through shadcn/ui primitives
+- Properly configured for accessibility (ARIA, keyboard nav, focus management)
 
-Must reject:
-
-* duplicate patterns
-* competing architectures
-* unnecessary abstractions
-
-Can reject implementation proposals.
-
----
-
-## Performance Agent
-
-Owns frontend performance.
-
-Responsibilities:
-
-* bundle size reviews
-* route splitting reviews
-* query performance reviews
-* rendering reviews
-* caching reviews
-
-Must verify:
-
-* lazy loading
-* route-level splitting
-* efficient query usage
-
-Can reject performance regressions.
+### Hugeicons
+- Single icon library for consistency
+- Use `<HugeiconsIcon icon={...} />` pattern
+- Prefer outline variants for UI, filled for active states
 
 ---
 
-## Accessibility Agent
+## Component Rules
 
-Owns accessibility compliance.
+### Reusable
+- Components in `shared/` must be truly shared across features
+- Role-specific components go in the feature's `components/` directory
 
-Responsibilities:
+### Composable
+- Prefer composition over abstraction
+- Do not create wrappers around native elements unless accessibility or reuse is improved
 
-* keyboard navigation
-* ARIA validation
-* focus management
-* semantic HTML reviews
+### Accessible
+- Semantic HTML (nav, main, section, button)
+- ARIA labels and roles
+- Keyboard navigation (focus-visible outlines)
+- Screen reader support (sr-only, aria-current, aria-hidden)
+- Focus management in dialogs and drawers
 
-Accessibility is mandatory.
-
-Can block releases.
-
----
-
-## Design Compliance Agent
-
-Owns Industrial Broadsheet compliance.
-
-Responsibilities:
-
-* token enforcement
-* typography enforcement
-* spacing enforcement
-* layout enforcement
-
-Must reject:
-
-* glassmorphism
-* neumorphism
-* shadow-heavy UI
-* inconsistent spacing
-* non-approved visual patterns
-
-DESIGN.md is the authority.
+### Loading/Empty/Error States
+Every data-fetching component must handle:
+- Loading → `<LoadingState variant="spinner|skeleton|page" />`
+- Empty → `<EmptyState title={...} description={...} />`
+- Error → `<ErrorState message={...} onRetry={...} />`
 
 ---
 
-## Quality Assurance Agent
+## Security Rules
 
-Owns production readiness.
+### Token Storage
+- **Access token:** Zustand in-memory only. Never in localStorage or sessionStorage.
+- **Refresh token:** httpOnly cookie only. Never accessible from JavaScript.
 
-Must verify:
+### XSS Safety
+- React's built-in escaping handles most cases
+- No `dangerouslySetInnerHTML`
+- No direct URL interpolation without `encodeURIComponent`
+- File uploads type-checked before display
 
-* loading states
-* empty states
-* error states
-* success states
-* responsive behavior
-* edge cases
+### Role Guards
+- `requireAuth()` — redirects to `/login` if not authenticated
+- `requireRole(roles[])` — checks auth + role match, redirects to role dashboard if unauthorized
+- `requireSuperAdmin()` — separate guard for superadmin routes
+- `redirectIfAuthenticated()` — for login/register pages
 
-No feature is complete without QA review.
-
----
-
-## Documentation Agent
-
-Owns project documentation.
-
-When architecture changes:
-
-Must update:
-
-* DESIGN.md
-* CLAUDE.md
-* AGENTS.md
-
-Documentation and implementation must remain synchronized.
-
-Can reject undocumented changes.
+### Route Guards
+- Applied in `beforeLoad` of route definitions
+- `_authenticated` layout enforces `requireAuth` for all children
+- Each role group has explicit `requireRole` guards
+- SuperAdmin routes use separate `_superadmin` layout with `requireSuperAdmin`
 
 ---
 
-## Release Readiness Agent
+## Performance Rules
 
-Final approval authority.
+### Lazy Loading
+- Route-level code splitting via TanStack Router (automatic)
+- Recharts lazy-loaded with `React.lazy()` + `Suspense`
+- Devtools only in development
 
-Must verify:
+### Memoization
+- Use `useMemo` for expensive computations
+- Use `useCallback` for stable function references passed to child components
+- Avoid premature optimization — profile first
 
-✓ Design Compliant
+### Virtualization
+- Consider `@tanstack/virtual` for large lists (>500 items)
+- Current implementation uses infinite scroll with cursor pagination
 
-✓ Architecture Compliant
+### Prefetch
+- Use TanStack Query `prefetchQuery` in route loaders for critical data
+- `queryClient.ensureQueryData` for data the user will likely navigate to
 
-✓ Security Compliant
+---
 
-✓ Accessibility Compliant
+## Accessibility (WCAG AA)
 
-✓ Performance Compliant
+- All interactive elements keyboard accessible
+- Focus indicators visible (focus-visible outlines)
+- ARIA landmarks (nav, main, banner)
+- Form inputs have associated labels
+- Error messages linked to inputs via aria-describedby
+- Color contrast meets WCAG AA (minimum 4.5:1 for normal text)
+- Dark and light modes both tested for contrast
+- Screen reader announcements for dynamic content changes
 
-✓ Typed
+---
 
-✓ Tested
+## Testing
 
-✓ Responsive
+### Stack
+- **Vitest** — test runner
+- **MSW** — API mocking (handlers in `tests/fixtures/`)
+- **React Testing Library** — component tests
 
-✓ Production Ready
+### Structure
+```
+tests/
+├── fixtures/
+│   ├── handlers.ts    # MSW request handlers
+│   ├── server.ts      # MSW server setup
+│   └── test-utils.tsx # Test utilities
+└── unit/
+    ├── auth.test.ts
+    ├── jobs.test.ts
+    ├── profile.test.ts
+    ├── company.test.ts
+    ├── admin.test.ts
+    └── superadmin.test.ts
+```
 
-Only then may a feature be considered complete.
+### Coverage Expectations
+- API layer: all endpoints tested (happy + error paths)
+- Hooks: query/mutation behavior tested
+- Components: render, interaction, edge cases
+- Current: 26 tests across 6 files, all passing

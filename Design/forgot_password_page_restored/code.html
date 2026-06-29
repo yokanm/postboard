@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&amp;family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "dim": "#666666",
+                        "gradient-a": "#C084FC",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-secondary": "#31312c",
+                        "surface-bright": "#3a3939",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#594237",
+                        "error-container": "#93000a",
+                        "gradient-d": "#F59E0B",
+                        "on-surface-variant": "#e1c0b2",
+                        "background": "#131313",
+                        "surface-variant": "#353534",
+                        "primary": "#ffb694",
+                        "outline": "#a88a7e",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-primary": "#571f00",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-fixed": "#e5e2e1",
+                        "rule": "#1A1A1A",
+                        "body": "#B8B8B8",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "primary-fixed": "#ffdbcc",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#474742",
+                        "inverse-on-surface": "#313030",
+                        "gradient-b": "#60A5FA",
+                        "tertiary-container": "#929090",
+                        "primary-fixed-dim": "#ffb694",
+                        "tertiary": "#c8c6c5",
+                        "on-tertiary": "#313030",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-primary-container": "#4c1a00",
+                        "secondary-fixed": "#e5e2db",
+                        "on-secondary-container": "#b7b5af",
+                        "on-primary-fixed": "#351000",
+                        "on-error-container": "#ffdad6",
+                        "live-dim": "#14532D",
+                        "secondary": "#c9c6c0",
+                        "muted": "#2A2A2A",
+                        "live": "#22C55A",
+                        "surface-container": "#201f1f",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#1c1c18",
+                        "on-secondary-fixed-variant": "#474742",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "destructive": "#EF4444",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-container-highest": "#353534",
+                        "surface": "#131313",
+                        "primary-container": "#f06613",
+                        "surface-tint": "#ffb694",
+                        "inverse-primary": "#a14000",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error": "#ffb4ab",
+                        "gradient-c": "#34D399",
+                        "ink": "#0F0F0F",
+                        "press-amber": "#E8610A"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "sidebar-width": "220px",
+                        "section-v-pad": "48px",
+                        "max-width": "1280px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "ui-xl": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"],
+                        "ui-sm": ["DM Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "body-base": ["DM Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #080808;
+            color: #F0EDE6;
+            margin: 0;
+            overflow: hidden;
+        }
+        .press-grid-tile {
+            aspect-ratio: 1;
+            border: 0.5px solid #1A1A1A;
+            transition: background-color 0.3s ease;
+        }
+        .press-grid-tile:hover {
+            background-color: #E8610A;
+        }
+        input:focus {
+            outline: none;
+            border-color: #E8610A !important;
+            box-shadow: none !important;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fade-in { animation: fadeIn 0.5s ease forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-body-base">
+<main class="flex h-screen w-full">
+<!-- BRAND PANEL -->
+<section class="relative hidden md:flex w-1/2 flex-col justify-between p-12 bg-surface-container-lowest border-r border-rule">
+<!-- The Press Grid Background (6x4) -->
+<div class="absolute inset-0 grid grid-cols-6 grid-rows-4 opacity-25 pointer-events-none" id="pressGridContainer">
+<!-- Grid tiles will be injected via JS for efficiency, or hardcoded for exact state -->
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-a to-gradient-b"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-b to-gradient-c"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-c to-gradient-d"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-d to-gradient-a"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-a to-gradient-c"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-b to-gradient-d"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-c to-gradient-a"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-d to-gradient-b"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-a to-gradient-b"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-b to-gradient-c"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-c to-gradient-d"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-d to-gradient-a"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-a to-gradient-c"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-b to-gradient-d"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-c to-gradient-a"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-d to-gradient-b"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-a to-gradient-b"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-b to-gradient-c"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-c to-gradient-d"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-d to-gradient-a"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-a to-gradient-c"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-b to-gradient-d"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-c to-gradient-a"></div>
+<div class="border-[0.5px] border-rule bg-gradient-to-br from-gradient-d to-gradient-b"></div>
+</div>
+<div class="relative z-10">
+<h1 class="font-headline-2xl text-[48px] font-extrabold tracking-tighter text-on-surface uppercase">
+        POSTBOARD
+    </h1>
+</div>
+<div class="relative z-10 max-w-sm">
+<p class="font-mono-label text-dim uppercase tracking-widest mb-2">// IDENTITY_01</p>
+<p class="font-headline-2xl text-on-surface leading-tight italic">
+        Work, printed daily.
+    </p>
+</div></section>
+<!-- FORM PANEL -->
+<section class="w-full md:w-1/2 bg-ink flex flex-col items-center justify-center p-8 md:p-24 overflow-y-auto">
+<div class="w-full max-w-md" id="formContainer">
+<div class="space-y-8" id="recoveryForm">
+<div>
+<span class="font-mono-label text-dim uppercase tracking-widest block mb-4">// account_recovery</span>
+<h2 class="font-headline-2xl text-on-surface text-[32px] mb-4">Reset your password</h2>
+<p class="text-body font-ui-sm">
+                            Enter the email on your account. We'll send a reset link within a few minutes.
+                        </p>
+</div>
+<form class="space-y-6" id="resetRequest" onsubmit="handleReset(event)">
+<div class="space-y-2">
+<label class="block font-mono-label text-dim text-[10px] uppercase tracking-wider" for="email">email_address</label>
+<input class="w-full bg-background border border-rule px-4 py-3 text-on-surface font-ui-sm focus:border-press-amber transition-colors" id="email" placeholder="name@company.com" required="" type="email"/>
+</div>
+<button class="w-full bg-press-amber hover:bg-[#ff751a] text-background font-ui-lg py-4 transition-transform active:scale-[0.98] font-bold" type="submit">
+                            Send Reset Link
+                        </button>
+</form>
+<div class="pt-4 border-t border-rule">
+<a class="inline-flex items-center gap-2 font-mono-label text-dim hover:text-on-surface transition-colors uppercase text-[11px]" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                            Back to login
+                        </a>
+</div>
+</div>
+<!-- SUCCESS STATE (Hidden by default) -->
+<div class="hidden fade-in space-y-8" id="successState">
+<div class="border border-live p-8 bg-ink space-y-6">
+<span class="font-mono-label text-live uppercase tracking-widest block">// email_sent</span>
+<div class="space-y-4">
+<h2 class="font-headline-2xl text-on-surface text-[24px]">Check your inbox</h2>
+<p class="text-body font-ui-sm leading-relaxed">
+                                We’ve sent a password reset link to your email. If you don’t see it in a few minutes, check your spam folder or try again.
+                            </p>
+</div>
+<div class="pt-6">
+<button class="inline-flex items-center gap-2 font-mono-label text-dim cursor-not-allowed uppercase text-[11px]" disabled="" id="resendBtn">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+                                Resend in <span id="countdown">60</span>s
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+        // Form Handling
+        function handleReset(e) {
+            e.preventDefault();
+            const recoveryForm = document.getElementById('recoveryForm');
+            const successState = document.getElementById('successState');
+            
+            recoveryForm.classList.add('hidden');
+            successState.classList.remove('hidden');
+            
+            startCountdown();
+        }
+
+        function startCountdown() {
+            let timeLeft = 60;
+            const countdownEl = document.getElementById('countdown');
+            const resendBtn = document.getElementById('resendBtn');
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                countdownEl.innerText = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    resendBtn.disabled = false;
+                    resendBtn.classList.remove('text-dim', 'cursor-not-allowed');
+                    resendBtn.classList.add('text-press-amber', 'hover:text-on-surface', 'cursor-pointer');
+                    resendBtn.innerHTML = `
+                        <span class="material-symbols-outlined text-[16px]">refresh</span>
+                        Resend Link Now
+                    `;
+                }
+            }, 1000);
+        }
+
+        // Optional Micro-interaction for tiles if they were dynamic
+        const gridContainer = document.getElementById('pressGridContainer');
+        if (gridContainer) {
+            gridContainer.addEventListener('mouseover', (e) => {
+                if (e.target.parentElement === gridContainer) {
+                    if (Math.random() > 0.5) {
+                        const colors = ['#E8610A', '#14532D', '#93000a', '#60A5FA'];
+                        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                        const originalStyle = e.target.style.backgroundColor;
+                        e.target.style.backgroundColor = randomColor;
+                        setTimeout(() => {
+                            e.target.style.backgroundColor = originalStyle;
+                        }, 1000);
+                    }
+                }
+            });
+        }
+    </script>
+</body></html>

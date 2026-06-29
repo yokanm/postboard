@@ -1,0 +1,333 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>POSTBOARD - The Board.</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#a88a7e",
+                      "surface-tint": "#ffb694",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "on-surface-variant": "#e1c0b2",
+                      "inverse-on-surface": "#313030",
+                      "on-secondary-fixed-variant": "#474742",
+                      "surface-container-lowest": "#0e0e0e",
+                      "muted": "#2A2A2A",
+                      "secondary": "#c9c6c0",
+                      "on-primary-container": "#4c1a00",
+                      "surface-container-low": "#1c1b1b",
+                      "secondary-container": "#474742",
+                      "gradient-a": "#C084FC",
+                      "tertiary-fixed": "#e5e2e1",
+                      "surface-variant": "#353534",
+                      "on-secondary-container": "#b7b5af",
+                      "surface-container": "#201f1f",
+                      "primary-fixed": "#ffdbcc",
+                      "surface-container-high": "#2a2a2a",
+                      "on-tertiary-container": "#2a2a29",
+                      "on-surface": "#e5e2e1",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed": "#1c1c18",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "surface-container-highest": "#353534",
+                      "tertiary-container": "#929090",
+                      "surface-bright": "#3a3939",
+                      "tertiary": "#c8c6c5",
+                      "on-primary-fixed": "#351000",
+                      "body": "#B8B8B8",
+                      "gradient-d": "#F59E0B",
+                      "on-error-container": "#ffdad6",
+                      "gradient-b": "#60A5FA",
+                      "destructive": "#EF4444",
+                      "inverse-primary": "#a14000",
+                      "gradient-c": "#34D399",
+                      "surface-dim": "#131313",
+                      "primary-fixed-dim": "#ffb694",
+                      "primary-container": "#f06613",
+                      "on-primary": "#571f00",
+                      "secondary-fixed": "#e5e2db",
+                      "live": "#22C55A",
+                      "dim": "#666666",
+                      "surface": "#131313",
+                      "rule": "#1A1A1A",
+                      "on-error": "#690005",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "on-tertiary": "#313030",
+                      "primary": "#ffb694",
+                      "on-secondary": "#31312c",
+                      "live-dim": "#14532D",
+                      "outline-variant": "#594237",
+                      "background": "#131313",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "on-background": "#e5e2e1",
+                      "inverse-surface": "#e5e2e1",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "ink": "#080808",
+                      "accent": "#E8610A"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "0px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "section-v-pad": "48px",
+                      "sidebar-width": "220px",
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "ui-lg": ["DM Sans"],
+                      "headline-2xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "ui-xl": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl-mobile": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #080808; /* Pure black ground */
+            color: #e5e2e1;
+        }
+        
+        /* The Press Grid */
+        .press-grid-tile {
+            transition: all 0.2s ease-in-out;
+            opacity: 0.3;
+        }
+        .press-grid-tile:hover {
+            opacity: 1;
+            transform: scale(0.95);
+            filter: invert(1);
+        }
+        .bg-gradient-iridescent-1 { background: linear-gradient(135deg, #C084FC, #60A5FA); }
+        .bg-gradient-iridescent-2 { background: linear-gradient(135deg, #34D399, #F59E0B); }
+        .bg-gradient-iridescent-3 { background: linear-gradient(135deg, #F59E0B, #EF4444); }
+        .bg-gradient-iridescent-4 { background: linear-gradient(135deg, #60A5FA, #34D399); }
+        
+        /* Monochromatic Rules */
+        .rule-border {
+            border-color: #1A1A1A;
+        }
+    </style>
+</head>
+<body class="font-body-base bg-ink text-on-surface min-h-screen flex flex-col selection:bg-accent selection:text-ink">
+<!-- TopNavBar -->
+<header class="bg-background dark:bg-background docked full-width top-0 sticky z-50 border-b rule-border flex justify-between items-center w-full px-margin py-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-headline-2xl text-ui-xl tracking-tighter text-on-surface uppercase" href="#">POSTBOARD</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-mono-label text-mono-label text-primary border-b-2 border-primary pb-1" href="#">Marketplace</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors hover:bg-surface-container transition-all duration-150 px-2 py-1" href="#">Companies</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors hover:bg-surface-container transition-all duration-150 px-2 py-1" href="#">Pricing</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors hover:bg-surface-container transition-all duration-150 px-2 py-1" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Login</a>
+<a class="bg-accent text-ink px-4 py-2 font-ui-sm font-semibold hover:bg-[#d65a09] transition-colors scale-95 active:scale-90" href="#">Post a Job</a>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+<!-- The Press Grid Background -->
+<div class="absolute inset-0 flex justify-center items-center pointer-events-none z-0 opacity-30">
+<div class="grid grid-cols-6 grid-rows-4 gap-1 w-full max-w-4xl opacity-40">
+<!-- Generating a 6x4 grid of tiles -->
+<script>
+                        const gradients = ['bg-gradient-iridescent-1', 'bg-gradient-iridescent-2', 'bg-gradient-iridescent-3', 'bg-gradient-iridescent-4'];
+                        for(let i=0; i<24; i++) {
+                            const grad = gradients[Math.floor(Math.random() * gradients.length)];
+                            document.write(`<div class="w-full aspect-square ${grad} press-grid-tile pointer-events-auto cursor-crosshair"></div>`);
+                        }
+                    </script><div class="w-full aspect-square bg-gradient-iridescent-2 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-2 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-2 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-1 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-2 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-2 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-1 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-4 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-4 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-2 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-4 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-4 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-3 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-4 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-4 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-3 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-4 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-2 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-4 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-3 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-3 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-1 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-2 press-grid-tile pointer-events-auto cursor-crosshair"></div><div class="w-full aspect-square bg-gradient-iridescent-1 press-grid-tile pointer-events-auto cursor-crosshair"></div>
+</div>
+</div>
+<div class="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+<span class="font-mono-label text-dim uppercase tracking-wider mb-6">// find_your_next_role</span>
+<h1 class="font-masthead-4xl text-masthead-4xl text-on-surface mb-6">The Board.</h1>
+<p class="font-headline-2xl text-[32px] italic font-normal text-body mb-12">Where serious companies post.</p>
+<div class="flex flex-col sm:flex-row gap-4 mb-16">
+<a class="bg-accent text-ink px-8 py-4 font-ui-lg font-bold hover:bg-[#d65a09] transition-colors border border-accent" href="#">Browse Roles</a>
+<a class="bg-transparent text-body px-8 py-4 font-ui-lg border border-rule hover:text-on-surface hover:border-on-surface transition-colors" href="#">Post a Job</a>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-mono-label text-dim uppercase mb-6">// trusted_by</span>
+<div class="flex flex-wrap justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="h-8 w-24 bg-surface-variant flex items-center justify-center font-mono-label text-xs">LOGO_1</div>
+<div class="h-8 w-24 bg-surface-variant flex items-center justify-center font-mono-label text-xs">LOGO_2</div>
+<div class="h-8 w-24 bg-surface-variant flex items-center justify-center font-mono-label text-xs">LOGO_3</div>
+<div class="h-8 w-24 bg-surface-variant flex items-center justify-center font-mono-label text-xs hidden sm:flex">LOGO_4</div>
+<div class="h-8 w-24 bg-surface-variant flex items-center justify-center font-mono-label text-xs hidden md:flex">LOGO_5</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bar -->
+<section class="w-full bg-ink border-y rule-border py-12">
+<div class="max-w-max-width mx-auto px-margin grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x rule-border">
+<div class="flex flex-col items-center text-center px-4 py-4 md:py-0">
+<span class="font-headline-2xl text-[48px] font-extrabold text-accent mb-2">8,400+</span>
+<span class="font-mono-label text-dim uppercase">Open Roles</span>
+</div>
+<div class="flex flex-col items-center text-center px-4 py-4 md:py-0">
+<span class="font-headline-2xl text-[48px] font-extrabold text-accent mb-2">142</span>
+<span class="font-mono-label text-dim uppercase">Companies</span>
+</div>
+<div class="flex flex-col items-center text-center px-4 py-4 md:py-0">
+<span class="font-headline-2xl text-[48px] font-extrabold text-accent mb-2">72hrs</span>
+<span class="font-mono-label text-dim uppercase">Avg. Time to Hire</span>
+</div>
+</div>
+</section>
+<!-- Features -->
+<section class="max-w-max-width mx-auto px-margin py-section-v-pad flex flex-col gap-32 my-16">
+<!-- Feature 1 -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col">
+<span class="font-mono-label text-dim uppercase mb-4">// for_candidates</span>
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface mb-6">Smart Applications.</h2>
+<p class="font-body-base text-body-base text-body mb-8">Stop submitting into the void. Track your application status in real-time, communicate directly with hiring managers, and keep your professional profile updated with our unified portal.</p>
+<ul class="flex flex-col gap-3 font-ui-sm text-secondary">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">check</span> Real-time status tracking</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">check</span> Direct recruiter messaging</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">check</span> One-click applying</li>
+</ul>
+</div>
+<div class="bg-[#0F0F0F] border rule-border p-6 aspect-video flex flex-col relative overflow-hidden group"><div class="absolute inset-0 bg-gradient-to-br from-surface/50 to-transparent pointer-events-none"></div><div class="flex items-center justify-between border-b rule-border pb-4 mb-6 relative z-10"><span class="font-mono-label text-xs text-dim">// APPLICATION_STATUS</span><span class="bg-live-dim text-live px-2 py-1 font-mono-label text-[10px] border border-live/20">[INTERVIEWING]</span></div><div class="flex flex-col gap-6 relative z-10"><div class="flex flex-col gap-3"><div class="flex items-center justify-between text-secondary font-ui-sm"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">check_circle</span><span class="">Initial Screen</span></div><span class="font-mono-label text-[10px] opacity-50">COMPLETED</span></div><div class="flex items-center justify-between text-secondary font-ui-sm"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">check_circle</span><span class="">Technical Assessment</span></div><span class="font-mono-label text-[10px] opacity-50">COMPLETED</span></div></div><div class="border-t rule-border pt-4"><div class="flex flex-col gap-1 mb-4"><span class="font-mono-label text-[10px] text-dim uppercase tracking-wider">Current Stage</span><div class="flex justify-between items-end"><span class="font-ui-lg text-on-surface">Technical Interview</span><span class="font-mono-label text-[10px] text-accent">TODAY @ 14:00</span></div></div><div class="bg-surface-container p-3 border border-rule"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-dim text-sm">arrow_forward</span><span class="font-mono-label text-[10px] text-dim uppercase">Next Step:</span><span class="font-ui-sm text-on-surface">Final Partner Review</span></div></div></div></div></div>
+</div>
+<!-- Feature 2 -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center lg:flex-row-reverse">
+<div class="order-2 lg:order-1 bg-[#0F0F0F] border rule-border p-6 aspect-video flex flex-col relative overflow-hidden"><div class="flex gap-3 h-full relative z-10">
+  <!-- Column 1 -->
+  <div class="flex-1 flex flex-col gap-3">
+    <span class="font-mono-label text-[11px] text-dim uppercase tracking-wider">// applied</span>
+    <div class="flex flex-col gap-2">
+      <div class="bg-ink border border-rule p-3 flex flex-col gap-1">
+        <span class="font-ui-sm font-semibold text-on-surface">Sarah Chen</span>
+        <span class="font-mono-label text-[11px] text-dim">// sr_eng</span>
+      </div>
+      <div class="bg-ink border border-rule p-3 flex flex-col gap-1 opacity-50">
+        <span class="font-ui-sm font-semibold text-on-surface">Alex Rivera</span>
+        <span class="font-mono-label text-[11px] text-dim">// product_mgr</span>
+      </div>
+    </div>
+  </div>
+  <!-- Column 2 -->
+  <div class="flex-1 flex flex-col gap-3">
+    <span class="font-mono-label text-[11px] text-dim uppercase tracking-wider">// interviewing</span>
+    <div class="flex flex-col gap-2">
+      <div class="bg-ink border border-rule border-l-2 border-l-accent p-3 flex flex-col gap-1">
+        <span class="font-ui-sm font-semibold text-on-surface">Marcus Bell</span>
+        <span class="font-mono-label text-[11px] text-dim">// lead_designer</span>
+      </div>
+    </div>
+  </div>
+  <!-- Column 3 -->
+  <div class="flex-1 flex flex-col gap-3">
+    <span class="font-mono-label text-[11px] text-dim uppercase tracking-wider">// offer</span>
+    <div class="flex flex-col gap-2">
+      <div class="bg-ink border border-rule p-3 flex flex-col gap-1">
+        <span class="font-ui-sm font-semibold text-on-surface">Jordan Smith</span>
+        <span class="font-mono-label text-[11px] text-dim">// backend_dev</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-br from-surface/50 to-transparent pointer-events-none"></div></div>
+<div class="flex flex-col order-1 lg:order-2">
+<span class="font-mono-label text-dim uppercase mb-4">// for_recruiters</span>
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface mb-6">Kanban Pipeline.</h2>
+<p class="font-body-base text-body-base text-body mb-8">Manage applicants with surgical precision. Drag and drop candidates through customized stages, leave internal notes, and schedule interviews without leaving the board.</p>
+<ul class="flex flex-col gap-3 font-ui-sm text-secondary">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">view_kanban</span> Visual candidate tracking</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">forum</span> Internal team notes</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">bolt</span> Automated stage actions</li>
+</ul>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col">
+<span class="font-mono-label text-dim uppercase mb-4">// for_teams</span>
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface mb-6">Multi-seat &amp; Audit.</h2>
+<p class="font-body-base text-body-base text-body mb-8">Built for enterprise compliance. Granular role permissions, full action audit trails, and multi-user seat management ensure your hiring process is secure and transparent.</p>
+<ul class="flex flex-col gap-3 font-ui-sm text-secondary">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">admin_panel_settings</span> Granular RBAC</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">history</span> Comprehensive audit logs</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">group</span> Unlimited recruiter seats</li>
+</ul>
+</div>
+<div class="bg-[#0F0F0F] border rule-border p-6 aspect-video flex flex-col relative overflow-hidden">
+<div class="flex flex-col gap-2 font-mono-label text-xs relative z-10">
+<div class="flex justify-between text-dim border-b rule-border pb-2">
+<span class="">TIMESTAMP</span><span class="">USER</span><span class="">ACTION</span>
+</div>
+<div class="flex justify-between text-body border-b rule-border py-2">
+<span class="">10:42:01</span><span class="text-secondary">admin_jane</span><span class="">UPDATE_ROLE_PERM</span>
+</div>
+<div class="flex justify-between text-body border-b rule-border py-2">
+<span class="">09:15:22</span><span class="text-secondary">recruiter_tom</span><span class="">MOVE_CANDIDATE</span>
+</div>
+<div class="flex justify-between text-body py-2">
+<span class="">08:01:55</span><span class="text-secondary">system</span><span class="">AUTO_REJECT_BATCH</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Footer Band -->
+<section class="bg-ink border-t rule-border py-24 text-center px-4 flex flex-col items-center justify-center min-h-[512px]">
+<h2 class="font-masthead-4xl text-[64px] italic font-black text-on-surface mb-6 leading-none">Ready to hire?</h2>
+<p class="font-body-base text-ui-xl text-body mb-12 max-w-2xl">Post your first role in under 3 minutes.</p>
+<a class="bg-accent text-ink px-12 py-5 font-ui-lg font-bold hover:bg-[#d65a09] transition-colors text-lg tracking-wide border border-accent hover:border-[#d65a09]" href="#">Get Started</a>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background dark:bg-background max-w-max-width mx-auto px-margin py-unit flex flex-col md:flex-row justify-between items-center gap-gutter border-t border-rule mt-section-v-pad">
+<div class="font-masthead-4xl text-ui-lg text-on-surface">POSTBOARD</div>
+<div class="font-mono-label text-mono-label text-dim">© 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.</div>
+<nav class="flex gap-6">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">API Status</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">Contact</a>
+</nav>
+</footer>
+
+
+</body></html>

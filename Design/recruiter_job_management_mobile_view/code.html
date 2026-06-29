@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Postboard - Job Management</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "rule": "#1A1A1A",
+                    "on-secondary-fixed": "#1c1c18",
+                    "gradient-c": "#34D399",
+                    "on-tertiary": "#313030",
+                    "surface-container": "#201f1f",
+                    "on-primary": "#571f00",
+                    "surface-bright": "#3a3939",
+                    "live": "#22C55A",
+                    "tertiary-container": "#929090",
+                    "surface-container-low": "#1c1b1b",
+                    "on-secondary": "#31312c",
+                    "primary": "#ffb694",
+                    "inverse-on-surface": "#313030",
+                    "destructive": "#EF4444",
+                    "on-secondary-fixed-variant": "#474742",
+                    "gradient-b": "#60A5FA",
+                    "live-dim": "#14532D",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-tint": "#ffb694",
+                    "tertiary": "#c8c6c5",
+                    "primary-fixed-dim": "#ffb694",
+                    "on-surface-variant": "#e1c0b2",
+                    "on-primary-fixed": "#351000",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a2a",
+                    "gradient-d": "#F59E0B",
+                    "surface-variant": "#353534",
+                    "inverse-primary": "#a14000",
+                    "dim": "#666666",
+                    "secondary-fixed": "#e5e2db",
+                    "on-tertiary-container": "#2a2a29",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-error": "#690005",
+                    "on-surface": "#e5e2e1",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "muted": "#2A2A2A",
+                    "tertiary-fixed": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "primary-container": "#f06613",
+                    "on-primary-container": "#4c1a00",
+                    "on-background": "#e5e2e1",
+                    "on-secondary-container": "#b7b5af",
+                    "inverse-surface": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "gradient-a": "#C084FC",
+                    "surface-container-lowest": "#0e0e0e",
+                    "error-container": "#93000a",
+                    "surface-dim": "#131313",
+                    "outline": "#a88a7e",
+                    "surface": "#131313",
+                    "secondary-container": "#474742",
+                    "body": "#B8B8B8",
+                    "secondary-fixed-dim": "#c9c6c0",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "outline-variant": "#594237",
+                    "secondary": "#c9c6c0",
+                    "background": "#131313"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "sidebar-width": "220px",
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "max-width": "1280px",
+                    "margin": "32px",
+                    "section-v-pad": "48px"
+            },
+            "fontFamily": {
+                    "body-base": ["DM Sans"],
+                    "mono-label": ["JetBrains Mono"],
+                    "headline-2xl-mobile": ["Playfair Display"],
+                    "ui-lg": ["DM Sans"],
+                    "ui-sm": ["DM Sans"],
+                    "masthead-4xl": ["Playfair Display"],
+                    "ui-xl": ["DM Sans"],
+                    "headline-2xl": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "body-base": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "mono-label": ["11px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                    "headline-2xl-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                    "ui-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                    "ui-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                    "masthead-4xl": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                    "ui-xl": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                    "headline-2xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Base styles forcing zero radius and preventing horizontal scroll */
+        * { border-radius: 0 !important; }
+        body { overflow-x: hidden; }
+        
+        /* Monochromatic grid background effect */
+        .grid-bg {
+            background-image: linear-gradient(to right, #1A1A1A 1px, transparent 1px),
+                              linear-gradient(to bottom, #1A1A1A 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: center top;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-base h-[884px] flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar (Mobile View) - No bottom border per instructions, using tonal shift -->
+<header class="md:hidden flex items-center justify-between px-4 h-16 bg-surface-container-low shrink-0 z-50">
+<div class="font-headline-2xl-mobile text-headline-2xl-mobile font-bold text-on-surface uppercase tracking-tighter">
+            POSTBOARD
+        </div>
+<div class="flex items-center gap-4">
+<button class="text-body hover:text-on-surface transition-colors active:scale-95 duration-75">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-body hover:text-on-surface transition-colors active:scale-95 duration-75">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto relative w-full pb-24 grid-bg bg-background">
+<div class="px-4 py-6 max-w-2xl mx-auto flex flex-col gap-6">
+<!-- Context Header -->
+<div class="flex items-end justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-mono-label text-mono-label text-dim uppercase tracking-wider">// PIPELINE</span>
+<h1 class="font-ui-xl text-ui-xl text-on-surface">Active Requisitions</h1>
+</div>
+<div class="font-mono-label text-mono-label text-dim text-right">
+                    TOTAL: 12<br/>
+                    UPDATED: JUST NOW
+                </div>
+</div>
+<!-- High Density Job Cards -->
+<div class="flex flex-col gap-3">
+<!-- Card: Open Status -->
+<button class="w-full text-left bg-surface border border-rule p-4 flex flex-col gap-3 hover:border-primary-container transition-colors active:bg-surface-container-high group">
+<div class="flex justify-between items-start w-full">
+<div class="flex flex-col">
+<span class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary-container transition-colors">Senior Backend Engineer</span>
+<span class="font-ui-sm text-ui-sm text-body">REQ-2049 • Core Infrastructure</span>
+</div>
+<div class="bg-live-dim text-live px-2 py-1 font-mono-label text-mono-label uppercase border border-live/20">
+                            OPEN
+                        </div>
+</div>
+<div class="flex items-center gap-4 pt-2 border-t border-rule/50 w-full">
+<div class="flex items-center gap-1.5 text-body">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span class="font-mono-label text-mono-label">42 APPLICANTS</span>
+</div>
+<div class="flex items-center gap-1.5 text-body">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-mono-label text-mono-label">14 DAYS</span>
+</div>
+</div>
+</button>
+<!-- Card: Interviewing (Custom state) -->
+<button class="w-full text-left bg-surface border border-rule p-4 flex flex-col gap-3 hover:border-primary-container transition-colors active:bg-surface-container-high group">
+<div class="flex justify-between items-start w-full">
+<div class="flex flex-col">
+<span class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary-container transition-colors">Staff Product Designer</span>
+<span class="font-ui-sm text-ui-sm text-body">REQ-2050 • Platform Team</span>
+</div>
+<div class="bg-surface-bright text-on-surface px-2 py-1 font-mono-label text-mono-label uppercase border border-rule">
+                            INTERVIEWING
+                        </div>
+</div>
+<div class="flex items-center gap-4 pt-2 border-t border-rule/50 w-full">
+<div class="flex items-center gap-1.5 text-body">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span class="font-mono-label text-mono-label">18 APPLICANTS</span>
+</div>
+<div class="flex items-center gap-1.5 text-primary-container">
+<span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+<span class="font-mono-label text-mono-label">2 AT ONSITE</span>
+</div>
+</div>
+</button>
+<!-- Card: Draft Status -->
+<button class="w-full text-left bg-surface border border-rule p-4 flex flex-col gap-3 hover:border-primary-container transition-colors active:bg-surface-container-high group opacity-80">
+<div class="flex justify-between items-start w-full">
+<div class="flex flex-col">
+<span class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary-container transition-colors">Machine Learning Ops</span>
+<span class="font-ui-sm text-ui-sm text-body">REQ-2051 • Data Science</span>
+</div>
+<div class="border border-dashed border-dim text-dim px-2 py-1 font-mono-label text-mono-label uppercase">
+                            DRAFT
+                        </div>
+</div>
+<div class="flex items-center gap-4 pt-2 border-t border-rule/50 w-full">
+<div class="flex items-center gap-1.5 text-dim">
+<span class="material-symbols-outlined text-[16px]">edit_document</span>
+<span class="font-mono-label text-mono-label">PENDING APPROVAL</span>
+</div>
+</div>
+</button>
+<!-- Card: Rejected/Paused Status -->
+<button class="w-full text-left bg-surface border border-rule p-4 flex flex-col gap-3 hover:border-primary-container transition-colors active:bg-surface-container-high group opacity-60">
+<div class="flex justify-between items-start w-full">
+<div class="flex flex-col">
+<span class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary-container transition-colors">Frontend Developer II</span>
+<span class="font-ui-sm text-ui-sm text-body">REQ-2042 • Marketing Site</span>
+</div>
+<div class="bg-destructive/20 text-destructive border border-destructive/30 px-2 py-1 font-mono-label text-mono-label uppercase">
+                            PAUSED
+                        </div>
+</div>
+<div class="flex items-center gap-4 pt-2 border-t border-rule/50 w-full">
+<div class="flex items-center gap-1.5 text-dim">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+<span class="font-mono-label text-mono-label">HEADCOUNT HOLD</span>
+</div>
+</div>
+</button>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-[88px] right-4 md:right-8 w-14 h-14 bg-primary-container text-on-primary-container flex items-center justify-center shadow-none active:scale-95 transition-transform z-40 border border-primary-container hover:bg-transparent hover:text-primary-container duration-150">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar (Mobile View) - No top border per instructions, using tonal shift -->
+<nav class="md:hidden flex h-16 bg-surface-container-low shrink-0 z-50">
+<!-- Dashboard -->
+<a class="flex-1 flex flex-col items-center justify-center text-body hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-mono-label text-[9px] mt-1 hidden">DASHBOARD</span>
+</a>
+<!-- Pipeline (Active State) mapped from JSON style_active_navigation but adapted for bottom bar -->
+<a class="flex-1 flex flex-col items-center justify-center bg-surface-container-high text-primary-container relative" href="#">
+<div class="absolute top-0 inset-x-0 h-[2px] bg-primary-container"></div>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-mono-label text-[9px] mt-1 hidden">PIPELINE</span>
+</a>
+<!-- Talent Pool -->
+<a class="flex-1 flex flex-col items-center justify-center text-body hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-mono-label text-[9px] mt-1 hidden">TALENT</span>
+</a>
+<!-- Analytics -->
+<a class="flex-1 flex flex-col items-center justify-center text-body hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-mono-label text-[9px] mt-1 hidden">STATS</span>
+</a>
+<!-- Settings -->
+<a class="flex-1 flex flex-col items-center justify-center text-body hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-mono-label text-[9px] mt-1 hidden">CONFIG</span>
+</a>
+</nav>
+</body></html>

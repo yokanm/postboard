@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verification Link Invalid - POSTBOARD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#e5e2e1",
+                        "body": "#B8B8B8",
+                        "on-surface-variant": "#e1c0b2",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#351000",
+                        "gradient-b": "#60A5FA",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "surface-bright": "#3a3939",
+                        "on-surface": "#e5e2e1",
+                        "surface-tint": "#ffb694",
+                        "on-primary": "#571f00",
+                        "dim": "#666666",
+                        "destructive": "#EF4444",
+                        "live-dim": "#14532D",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#31312c",
+                        "gradient-c": "#34D399",
+                        "surface-variant": "#353534",
+                        "secondary-fixed": "#e5e2db",
+                        "on-tertiary": "#313030",
+                        "primary": "#ffb694",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#929090",
+                        "muted": "#2A2A2A",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed": "#ffdbcc",
+                        "inverse-on-surface": "#313030",
+                        "background": "#131313",
+                        "on-secondary-fixed-variant": "#474742",
+                        "surface": "#131313",
+                        "primary-container": "#f06613",
+                        "on-secondary-container": "#b7b5af",
+                        "on-background": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "surface-container": "#201f1f",
+                        "rule": "#1A1A1A",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "secondary-container": "#474742",
+                        "on-primary-container": "#4c1a00",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "primary-fixed-dim": "#ffb694",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#594237",
+                        "error-container": "#93000a",
+                        "outline": "#a88a7e",
+                        "inverse-primary": "#a14000",
+                        "tertiary": "#c8c6c5",
+                        "live": "#22C55A",
+                        "secondary": "#c9c6c0",
+                        "gradient-d": "#F59E0B",
+                        "gradient-a": "#C084FC",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-secondary-fixed": "#1c1c18"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "section-v-pad": "48px",
+                        "max-width": "1280px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "sidebar-width": "220px"
+                    },
+                    "fontFamily": {
+                        "body-base": ["DM Sans"],
+                        "ui-lg": ["DM Sans"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-sm": ["DM Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "ui-xl": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-base": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "ui-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "headline-2xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "ui-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "mono-label": ["11px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "headline-2xl-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "ui-xl": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "masthead-4xl": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'DM Sans', sans-serif; background-color: #080808; color: #e5e2e1; }
+        .bg-press-amber { background-color: #E8610A; }
+        .text-press-amber { color: #E8610A; }
+        .border-press-amber { border-color: #E8610A; }
+        .hover\:bg-press-amber:hover { background-color: #E8610A; }
+        .hover\:text-press-amber:hover { color: #E8610A; }
+        .hover\:border-press-amber:hover { border-color: #E8610A; }
+        
+        .bg-pure-black { background-color: #080808; }
+        .bg-surface-elevated { background-color: #0F0F0F; }
+        
+        .press-grid-bg {
+            background-image: 
+                linear-gradient(to right, rgba(26, 26, 26, 0.5) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(26, 26, 26, 0.5) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-pure-black min-h-screen flex flex-col antialiased selection:bg-press-amber selection:text-pure-black overflow-hidden relative justify-center items-center p-6 md:p-margin press-grid-bg">
+<!-- Watermark -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
+<span class="text-[20vw] font-mono-label font-bold text-surface-elevated opacity-50 whitespace-nowrap select-none">CODE_401</span>
+</div>
+<!-- Header (Absolute) -->
+<div class="absolute top-0 left-0 w-full p-6 md:p-margin flex justify-between items-center z-20">
+<div>
+<h1 class="font-headline-2xl-mobile text-headline-2xl-mobile tracking-tighter uppercase text-on-surface">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-dim">// SYSTEM_AUTH_GATEWAY</p>
+</div>
+<div class="flex items-center gap-2 font-mono-label text-mono-label text-dim">
+<span class="material-symbols-outlined text-[16px] text-destructive">gpp_bad</span>
+<span class="hidden sm:inline">AUTH_FAILED</span>
+</div>
+</div>
+<!-- Main Dossier Card -->
+<div class="w-full max-w-3xl bg-surface-elevated border border-rule relative z-10 flex flex-col shadow-2xl">
+<!-- Card Header -->
+<div class="w-full border-b border-rule p-4 md:p-6 bg-pure-black flex justify-between items-center">
+<div class="font-mono-label text-mono-label text-dim uppercase tracking-widest flex items-center gap-3">
+<span class="w-2 h-2 bg-destructive"></span>
+<span>// SYSTEM_ERROR_DOSSIER</span>
+</div>
+<span class="text-destructive font-bold font-mono-label text-mono-label border border-destructive/30 px-2 py-1 bg-destructive/5">ERR_0x4A</span>
+</div>
+<!-- Card Body -->
+<div class="p-6 md:p-10 flex flex-col gap-8">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<!-- Warning Icon -->
+<div class="w-24 h-24 bg-gradient-to-br from-amber-500/20 to-red-600/20 border border-red-500/50 flex items-center justify-center shrink-0 shadow-[0_0_30px_rgba(239,68,68,0.15)]">
+<span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-b from-amber-500 to-red-600 text-5xl" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<!-- Main Error Message -->
+<div class="flex flex-col gap-4">
+<h2 class="font-masthead-4xl text-5xl md:text-6xl text-on-surface uppercase tracking-tight leading-none" style="font-weight: 900;">LINK_<br/>INVALID</h2>
+<p class="font-body-base text-body-base text-body border-l-2 border-red-500/50 pl-4 max-w-lg">
+                            This verification link is invalid, expired, or has already been used. Security protocols dictate a strict TTL (Time-To-Live) for all authentication tokens.
+                        </p>
+</div>
+</div>
+<!-- System Diagnostic Section -->
+<div class="w-full border border-rule bg-pure-black p-6 flex flex-col gap-4">
+<div class="font-mono-label text-mono-label text-dim uppercase tracking-widest border-b border-rule pb-2 mb-2">
+<span>// SYSTEM_DIAGNOSTIC</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 font-mono-label text-mono-label text-dim">
+<div class="flex justify-between border-b border-rule/50 pb-1">
+<span>TIMESTAMP</span>
+<span class="text-body" id="current-time">19:42:05.112 UTC</span>
+</div>
+<div class="flex justify-between border-b border-rule/50 pb-1">
+<span>TOKEN_ID</span>
+<span class="text-on-surface">tkn_8f92a1...</span>
+</div>
+<div class="flex justify-between border-b border-rule/50 pb-1">
+<span>TOKEN_STATUS</span>
+<span class="text-destructive">INVALIDATED</span>
+</div>
+<div class="flex justify-between border-b border-rule/50 pb-1">
+<span>CLIENT_IP</span>
+<span class="text-on-surface">192.168.1.**</span>
+</div>
+<div class="flex justify-between border-b border-rule/50 pb-1 md:border-none md:pb-0">
+<span>ACTION_REQ</span>
+<span class="text-on-surface">REGENERATE_TOKEN</span>
+</div>
+<div class="flex justify-between">
+<span>TRACE_ID</span>
+<span class="text-on-surface">trc_x881p_99</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Footer / Actions -->
+<div class="w-full border-t border-rule p-6 bg-pure-black flex flex-col sm:flex-row gap-4 justify-end">
+<button class="bg-transparent text-body border border-rule font-ui-lg text-ui-lg py-3 px-8 hover:text-on-surface hover:border-on-surface transition-colors duration-200 uppercase tracking-wide text-center order-2 sm:order-1">
+                Back to Login
+            </button>
+<button class="bg-press-amber text-pure-black border border-press-amber font-ui-lg text-ui-lg py-3 px-8 hover:bg-transparent hover:text-press-amber transition-colors duration-200 uppercase tracking-wide flex items-center justify-center gap-2 group order-1 sm:order-2">
+<span>Resend Verification</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</div>
+</div>
+<!-- Footer (Absolute) -->
+<div class="absolute bottom-6 w-full px-6 md:px-margin font-mono-label text-mono-label text-dim flex justify-between items-center z-20">
+<span>© 2024 POSTBOARD INDUSTRIAL</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-destructive"></span>
+<span>SYS_ERR_LOGGED</span>
+</div>
+</div>
+<script>
+        // Update timestamp for aesthetic
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toISOString().split('T')[1].replace('Z', ' UTC');
+            const timeEl = document.getElementById('current-time');
+            if (timeEl) timeEl.textContent = timeString;
+        }
+        setInterval(updateTime, 100);
+        updateTime();
+    </script>
+</body></html>

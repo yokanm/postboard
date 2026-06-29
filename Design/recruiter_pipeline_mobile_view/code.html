@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | Applicant Pipeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --ink: #0F0F0F;
+            --rule: #1A1A1A;
+            --primary: #E8610A; /* Industrial Amber */
+            --background: #080808;
+        }
+
+        body {
+            background-color: var(--background);
+            color: #F0EDE6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .press-grid-bg {
+            background-image: 
+                linear-gradient(to right, #1A1A1A 1px, transparent 1px),
+                linear-gradient(to bottom, #1A1A1A 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#e5e2e1",
+                      "background": "#080808",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-container": "#0F0F0F",
+                      "primary": "#ffb694",
+                      "primary-fixed": "#E8610A",
+                      "rule": "#1A1A1A",
+                      "dim": "#666666",
+                      "body": "#B8B8B8",
+                      "on-surface": "#e5e2e1",
+                      "on-primary": "#080808"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "none": "0px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "section-v-pad": "48px",
+                      "gutter": "24px",
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "sidebar-width": "220px"
+              },
+              "fontFamily": {
+                      "ui-sm": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl": ["Playfair Display"],
+                      "masthead-4xl": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopNavBar (Mobile Specialized Sticky Header) -->
+<header class="sticky top-0 z-50 bg-background border-b border-rule flex justify-between items-center px-6 py-4">
+<h1 class="font-masthead-4xl text-xl tracking-tighter text-on-surface uppercase font-black">POSTBOARD</h1>
+<div class="flex items-center gap-4">
+<button class="relative p-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface">notifications</span>
+<span class="absolute top-2 right-2 w-1.5 h-1.5 bg-primary-fixed"></span>
+</button>
+<div class="w-8 h-8 bg-surface-container border border-rule flex items-center justify-center overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmEUrj6NO6paQgvaFvTnVIrlbF23vUnh5wX4nbJtTP5bvqgcvzr6UuVjUkwjhOnHVZYOeEmkJCGk39gjU7_TxWYiXauhRpdZg93JtJdAwjzCO3xaEhup6td9saNMX7agr5IpngAsQRBMcuvT0JgBFKrFB2vF8lx6Xn_0UAeLDie8sUKFyTf9cCkHxYfUUMrAhDFXieCuKW8fyQ69Fght7xGPRjf4ODF25Mm5ASxoAFkYihT-R0VhQXL2zUdqSnpyGnpHsMBYUkSWPF"/>
+</div>
+</div>
+</header>
+<main class="flex-grow pb-24">
+<!-- Dashboard Header & Toggle -->
+<section class="px-6 pt-6 pb-4">
+<div class="flex items-center justify-between mb-4">
+<span class="font-mono-label text-dim uppercase tracking-widest">// RECRUITMENT_PIPELINE</span>
+<div class="flex border border-rule">
+<button class="px-3 py-1 font-mono-label bg-rule text-on-surface">LIST</button>
+<button class="px-3 py-1 font-mono-label text-dim hover:text-on-surface transition-colors">KANBAN</button>
+</div>
+</div>
+<h2 class="font-headline-2xl text-2xl text-on-surface">Active Candidates</h2>
+</section>
+<!-- Stage Navigation (Horizontal Scroll) -->
+<nav class="border-b border-rule sticky top-[65px] bg-background z-40">
+<div class="flex overflow-x-auto no-scrollbar px-6 gap-8 items-center h-12">
+<div class="flex flex-col h-full justify-center relative flex-shrink-0">
+<button class="flex items-center gap-2 font-mono-label text-on-surface">
+                        APPLIED
+                        <span class="text-[9px] px-1.5 py-0.5 bg-rule text-dim">24</span>
+</button>
+<div class="absolute bottom-0 left-0 right-0 h-[2px] bg-primary-fixed"></div>
+</div>
+<div class="flex flex-col h-full justify-center flex-shrink-0">
+<button class="flex items-center gap-2 font-mono-label text-dim hover:text-on-surface">
+                        REVIEWING
+                        <span class="text-[9px] px-1.5 py-0.5 bg-rule text-dim">12</span>
+</button>
+</div>
+<div class="flex flex-col h-full justify-center flex-shrink-0">
+<button class="flex items-center gap-2 font-mono-label text-dim hover:text-on-surface">
+                        INTERVIEW
+                        <span class="text-[9px] px-1.5 py-0.5 bg-rule text-dim">08</span>
+</button>
+</div>
+<div class="flex flex-col h-full justify-center flex-shrink-0">
+<button class="flex items-center gap-2 font-mono-label text-dim hover:text-on-surface">
+                        OFFER
+                        <span class="text-[9px] px-1.5 py-0.5 bg-rule text-dim">02</span>
+</button>
+</div>
+<div class="flex flex-col h-full justify-center flex-shrink-0">
+<button class="flex items-center gap-2 font-mono-label text-dim hover:text-on-surface">
+                        HIRED
+                        <span class="text-[9px] px-1.5 py-0.5 bg-rule text-dim">84</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Pipeline Content (Single Column Cards) -->
+<section class="px-6 py-6 space-y-4">
+<!-- Search & Filter Bar -->
+<div class="flex items-center gap-2 pb-2">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-dim text-sm">search</span>
+<input class="w-full bg-surface-container border border-rule py-2 pl-9 pr-4 text-ui-sm font-ui-sm focus:border-primary-fixed focus:ring-0 outline-none text-on-surface placeholder:text-dim" placeholder="Search applicants..." type="text"/>
+</div>
+<button class="p-2 border border-rule bg-surface-container">
+<span class="material-symbols-outlined text-dim">filter_list</span>
+</button>
+</div>
+<!-- Candidate Card 1 -->
+<div class="bg-surface-container border border-rule p-4 group active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="w-10 h-10 border border-rule bg-rule overflow-hidden">
+<img alt="Candidate" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyRccXr3PpOHrmWYl3H6Mpz_VgJbu_F_-FmG982OmtAH9sEX05ZEpvvadelBBtIn6AxSq4FaFo5xRvTvnk88u7Qn91AaQhGyIV8IPXmnmCvbIPaFFhnRllHgqjtUbOSwtO4M4GgWZweA8ou3yFcVd6lz1j4I9-gM0ACqMEB85N4gJoAVhuPy4Fyph_-j-yI-8gWN9TryWtcGOTMCIMgWsJ4qlHoYeaBi-wzYbRvNGkKK_45XecE4EqG7kgNPMbM1CThKugAnTlmBxH"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-sm text-on-surface font-bold tracking-tight">FELIX VANDENBERG</h3>
+<p class="font-mono-label text-[10px] text-dim uppercase">Sr. Backend Engineer</p>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">schedule</span>
+<span class="font-mono-label text-[10px] text-dim">2h ago</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">stars</span>
+<span class="font-mono-label text-[10px] text-primary-fixed">MATCH: 94%</span>
+</div>
+</div>
+<div class="flex gap-2 border-t border-rule pt-4">
+<button class="flex-grow py-2 border border-rule font-mono-label text-[10px] text-on-surface bg-background hover:bg-rule transition-colors">VIEW DOSSIER</button>
+<button class="flex-grow py-2 bg-primary-fixed font-mono-label text-[10px] text-background font-bold hover:opacity-90 transition-opacity">MOVE STAGE</button>
+</div>
+</div>
+<!-- Candidate Card 2 -->
+<div class="bg-surface-container border border-rule p-4 group active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="w-10 h-10 border border-rule bg-rule overflow-hidden">
+<img alt="Candidate" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgg348fsuVQ4TFVbEB2OKKTBNbbIWlYMuDU2AnzKiFy6xu0wqGeemNkanX7rZ1or8WcUVB4b6pwvp3ynoUL_NGNop_Pp0Lx065oPAeko6R7ScnJJVEaMkLcr-ZcFk6d5eIwEZaEwBJDSWD1xW-AyfwENoQSqqf9jY3m9InWdxEDXkzpY-CNOWXXrD_9geoZFUUH7SiYOGas_l3swQmwwGjSDvY9iB8DnA4Wu9VYLQ-ncpQBw2ANP2yagUvvWa8zx-5BtxawwdA4x1X"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-sm text-on-surface font-bold tracking-tight">SARAH JENKINS</h3>
+<p class="font-mono-label text-[10px] text-dim uppercase">Lead UI Designer</p>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">schedule</span>
+<span class="font-mono-label text-[10px] text-dim">5h ago</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">stars</span>
+<span class="font-mono-label text-[10px] text-primary-fixed">MATCH: 88%</span>
+</div>
+</div>
+<div class="flex gap-2 border-t border-rule pt-4">
+<button class="flex-grow py-2 border border-rule font-mono-label text-[10px] text-on-surface bg-background hover:bg-rule transition-colors">VIEW DOSSIER</button>
+<button class="flex-grow py-2 bg-primary-fixed font-mono-label text-[10px] text-background font-bold hover:opacity-90 transition-opacity">MOVE STAGE</button>
+</div>
+</div>
+<!-- Candidate Card 3 (DRAFT/INCOMPLETE) -->
+<div class="bg-surface-container border border-dashed border-dim p-4 group active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="w-10 h-10 border border-rule bg-rule overflow-hidden grayscale">
+<img alt="Candidate" class="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_GsES-VxfaAN9iJNaOB2kPRkL9ijBFAJ9OET5St2Z1sNMPX4wztriIN3QUCQ5H56Vv_8ba-fov8RrR8kE-LKO5jh2bJUyqxzoEqjgWh00Ps92jdAuotmhVDw0jvSt_gXF9rOXNRyB7vrVUG8tIL41cRxsX8luYqnqY0KKYHYjMRhP3tTcNWgSKAKrdC_pXv8XQWwIO5rSWpvH6Zj9kLi0ViS2h5EeM8QyCZiOtVv9lpC9d7ZcLbwPPHOZzJstIo4jY68yiQKtnT2j"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-sm text-dim font-bold tracking-tight">MARKUS KANE</h3>
+<p class="font-mono-label text-[10px] text-dim uppercase">Cloud Architect</p>
+</div>
+</div>
+<div class="px-2 py-0.5 border border-dim text-dim font-mono-label text-[8px] uppercase">Draft</div>
+</div>
+<p class="font-mono-label text-[9px] text-dim italic mb-4">Awaiting additional documentation...</p>
+<div class="flex gap-2 border-t border-rule pt-4 opacity-50">
+<button class="flex-grow py-2 border border-rule font-mono-label text-[10px] text-dim bg-background" disabled="">RESUME CHECK</button>
+</div>
+</div>
+<!-- Candidate Card 4 -->
+<div class="bg-surface-container border border-rule p-4 group active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="w-10 h-10 border border-rule bg-rule overflow-hidden">
+<img alt="Candidate" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS5gCevVJAS__UXnHAjcE8NENnhPDZQdDvOnX9y4JT92OaL2seH_YZ75nqVo5ciG5ze3mecmXiL_3B4xST0J1COh45RDfa1hLwD4Tt7pjMWQAmkTD2qoWnHcqbMtS-qY-aFSuGCii0R3X4vAm-9jPoZ83P9nKrTMRvHoHkbOzkJTgNPtzYCsAIiPNTmjjHJx0NS-UYDmgPIuLgfsOP0XPDR_WCgVB_jJNOWMn_6KzAYtGDm7rJA9bWxNiFgqgjiuzXIzEgkEjCsR22"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-sm text-on-surface font-bold tracking-tight">ELENA RODRIGUEZ</h3>
+<p class="font-mono-label text-[10px] text-dim uppercase">Product Strategist</p>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">schedule</span>
+<span class="font-mono-label text-[10px] text-dim">1d ago</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">stars</span>
+<span class="font-mono-label text-[10px] text-primary-fixed">MATCH: 91%</span>
+</div>
+</div>
+<div class="flex gap-2 border-t border-rule pt-4">
+<button class="flex-grow py-2 border border-rule font-mono-label text-[10px] text-on-surface bg-background hover:bg-rule transition-colors">VIEW DOSSIER</button>
+<button class="flex-grow py-2 bg-primary-fixed font-mono-label text-[10px] text-background font-bold hover:opacity-90 transition-opacity">MOVE STAGE</button>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB for Create New Listing -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary-fixed flex items-center justify-center text-background shadow-2xl active:scale-90 transition-transform z-50">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background border-t border-rule flex justify-around items-center px-4 py-2 z-50 h-20">
+<button class="flex flex-col items-center gap-1 flex-1 py-2 text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-mono-label text-[9px] uppercase">Overview</span>
+</button>
+<button class="flex flex-col items-center gap-1 flex-1 py-2 text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">work</span>
+<span class="font-mono-label text-[9px] uppercase">Jobs</span>
+</button>
+<button class="flex flex-col items-center gap-1 flex-1 py-2 text-primary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-mono-label text-[9px] uppercase font-bold">Pipeline</span>
+</button>
+<button class="flex flex-col items-center gap-1 flex-1 py-2 text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-mono-label text-[9px] uppercase">Company</span>
+</button>
+<button class="flex flex-col items-center gap-1 flex-1 py-2 text-dim hover:text-on-surface">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-mono-label text-[9px] uppercase">Settings</span>
+</button>
+</nav>
+<!-- Interaction Script -->
+<script>
+        document.querySelectorAll('.stage-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.stage-tab .underline').forEach(u => u.classList.add('hidden'));
+                tab.querySelector('.underline').classList.remove('hidden');
+            });
+        });
+
+        // Simple touch effect for cards
+        const cards = document.querySelectorAll('.bg-surface-container');
+        cards.forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.borderColor = 'var(--primary)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.borderColor = 'var(--rule)';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Editor | Industrial Broadsheet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..900&family=Playfair+Display:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for the industrial aesthetic */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E8610A;
+        }
+        
+        /* Stipple effect for the press grid */
+        .stipple-bg {
+            background-image: radial-gradient(#1A1A1A 1px, transparent 0);
+            background-size: 8px 8px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #f06613 !important;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#e5e2db",
+                      "surface-container-high": "#2a2a2a",
+                      "on-primary-fixed": "#351000",
+                      "gradient-a": "#C084FC",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "tertiary": "#c8c6c5",
+                      "tertiary-container": "#929090",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#2a2a29",
+                      "surface-tint": "#ffb694",
+                      "gradient-d": "#F59E0B",
+                      "on-primary": "#571f00",
+                      "surface-container-highest": "#353534",
+                      "destructive": "#EF4444",
+                      "outline-variant": "#594237",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "rule": "#1A1A1A",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "body": "#B8B8B8",
+                      "primary-fixed-dim": "#ffb694",
+                      "on-secondary-fixed-variant": "#474742",
+                      "on-primary-container": "#4c1a00",
+                      "live-dim": "#14532D",
+                      "on-surface": "#e5e2e1",
+                      "gradient-b": "#60A5FA",
+                      "inverse-surface": "#e5e2e1",
+                      "on-surface-variant": "#e1c0b2",
+                      "tertiary-fixed": "#e5e2e1",
+                      "secondary": "#c9c6c0",
+                      "inverse-primary": "#a14000",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "dim": "#666666",
+                      "surface-container": "#201f1f",
+                      "on-error": "#690005",
+                      "gradient-c": "#34D399",
+                      "secondary-container": "#474742",
+                      "background": "#131313",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-container": "#b7b5af",
+                      "on-secondary": "#31312c",
+                      "primary": "#ffb694",
+                      "on-secondary-fixed": "#1c1c18",
+                      "surface-bright": "#3a3939",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "surface-dim": "#131313",
+                      "outline": "#a88a7e",
+                      "on-tertiary": "#313030",
+                      "primary-fixed": "#ffdbcc",
+                      "on-background": "#e5e2e1",
+                      "live": "#22C55A",
+                      "surface-container-low": "#1c1b1b",
+                      "muted": "#2A2A2A",
+                      "surface-variant": "#353534",
+                      "primary-container": "#f06613",
+                      "inverse-on-surface": "#313030",
+                      "surface": "#131313"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline-2xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "ui-xl": ["DM Sans"],
+                      "ui-lg": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "headline-2xl-mobile": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-base selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-rule flex justify-between items-center h-16 px-4 w-full bg-background">
+<div class="flex items-center gap-3">
+<button class="active:opacity-80 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-ui-lg text-ui-lg uppercase tracking-tight text-primary">// CANDIDATE_EDITOR</h1>
+</div>
+<button class="active:opacity-80 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="save">save</span>
+</button>
+</header>
+<main class="pt-20 pb-32 px-4 max-w-md mx-auto space-y-8">
+<!-- Completeness Bar -->
+<div class="border border-rule p-4 bg-surface-container-low">
+<div class="flex justify-between items-end mb-2">
+<span class="font-mono-label text-mono-label uppercase text-dim">// PROFILE_COMPLETENESS</span>
+<span class="font-mono-label text-mono-label uppercase text-primary">85%</span>
+</div>
+<div class="w-full h-1 bg-rule">
+<div class="h-full bg-primary-container" style="width: 85%"></div>
+</div>
+</div>
+<!-- Section: Account Information -->
+<section class="space-y-4">
+<label class="block font-mono-label text-mono-label uppercase text-dim">// account_information</label>
+<!-- Avatar Upload -->
+<div class="relative group aspect-square w-full border border-rule bg-surface-container overflow-hidden">
+<img alt="Candidate Portrait" class="w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 transition-transform duration-700" data-alt="A moody, high-contrast black and white portrait of a professional man in a minimalist studio setting. The lighting is dramatic, highlighting sharp facial features and creating deep shadows that emphasize a sense of serious, industrial professionalism. The background is a flat, dark grey surface that matches a brutalist and monochromatic UI aesthetic. The overall mood is authoritative and elite, suitable for a technical recruitment platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVyG8GYt3H5R4exT2hna5j58n4DfSS11XZ57Bh1khF7Qar5cllD0DlI0FdVAnYHTUifmPikS-2EhsPM1JQHFIwU6-0BoMjGX9j95xOXTSPqwxHAzzx0R-sZUYtE-ikr5NNw8ZCJTHsxvXe6rse-znO-vs2rmTgexcbZpQ6Iz117BxXMai3VDvwk_A1GA3NnCjvul32pl6oAjUxStVfs_A5Lno9yU8k9gaqYfD3LtM2JHAa5L0CTO1WhFksRAP_fUV6hAXvtR1__xhY"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-primary-container text-on-primary-container px-6 py-3 font-mono-label text-mono-label uppercase flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="upload">upload</span>
+                        Change Photo
+                    </button>
+</div>
+<div class="absolute bottom-0 left-0 bg-background p-2 border-tr border-rule">
+<span class="material-symbols-outlined text-dim text-sm" data-icon="camera_alt">camera_alt</span>
+</div>
+</div>
+<!-- Form Fields -->
+<div class="space-y-4">
+<div class="space-y-1">
+<label class="font-mono-label text-mono-label uppercase text-dim pl-1 text-[9px]">Full Name</label>
+<input class="w-full bg-background border border-rule text-on-surface font-ui-lg px-4 py-3 focus:border-primary-container transition-colors" type="text" value="ALEXANDER VANCE"/>
+</div>
+<div class="space-y-1">
+<label class="font-mono-label text-mono-label uppercase text-dim pl-1 text-[9px]">Professional Email</label>
+<input class="w-full bg-background border border-rule text-on-surface font-ui-lg px-4 py-3 focus:border-primary-container transition-colors" type="email" value="vance.a@industrial-labs.io"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="font-mono-label text-mono-label uppercase text-dim pl-1 text-[9px]">Phone</label>
+<input class="w-full bg-background border border-rule text-on-surface font-ui-lg px-4 py-3 focus:border-primary-container transition-colors" type="tel" value="+1 (555) 012-4492"/>
+</div>
+<div class="space-y-1">
+<label class="font-mono-label text-mono-label uppercase text-dim pl-1 text-[9px]">Location</label>
+<input class="w-full bg-background border border-rule text-on-surface font-ui-lg px-4 py-3 focus:border-primary-container transition-colors" type="text" value="Berlin, DE"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Skills -->
+<section class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="font-mono-label text-mono-label uppercase text-dim">// skills</label>
+<button class="text-primary font-mono-label text-mono-label uppercase">+ Add</button>
+</div>
+<div class="border border-rule p-4 bg-surface-container-low flex flex-wrap gap-2">
+<span class="bg-rule text-on-surface-variant font-mono-label text-[10px] px-3 py-1.5 flex items-center gap-2 border border-dim/20">
+                    TYPESCRIPT <span class="material-symbols-outlined text-[12px]" data-icon="close">close</span>
+</span>
+<span class="bg-rule text-on-surface-variant font-mono-label text-[10px] px-3 py-1.5 flex items-center gap-2 border border-dim/20">
+                    RUST <span class="material-symbols-outlined text-[12px]" data-icon="close">close</span>
+</span>
+<span class="bg-rule text-on-surface-variant font-mono-label text-[10px] px-3 py-1.5 flex items-center gap-2 border border-dim/20">
+                    KUBERNETES <span class="material-symbols-outlined text-[12px]" data-icon="close">close</span>
+</span>
+<span class="bg-rule text-on-surface-variant font-mono-label text-[10px] px-3 py-1.5 flex items-center gap-2 border border-dim/20">
+                    GRPC <span class="material-symbols-outlined text-[12px]" data-icon="close">close</span>
+</span>
+<span class="bg-rule text-on-surface-variant font-mono-label text-[10px] px-3 py-1.5 flex items-center gap-2 border border-dim/20">
+                    POSTGRESQL <span class="material-symbols-outlined text-[12px]" data-icon="close">close</span>
+</span>
+<span class="bg-primary-container/10 text-primary border border-primary-container/30 font-mono-label text-[10px] px-3 py-1.5 flex items-center gap-2">
+                    DISTRIBUTED SYSTEMS <span class="material-symbols-outlined text-[12px]" data-icon="close">close</span>
+</span>
+</div>
+</section>
+<!-- Section: Experience -->
+<section class="space-y-4">
+<label class="block font-mono-label text-mono-label uppercase text-dim">// experience</label>
+<div class="space-y-4">
+<div class="space-y-1">
+<label class="font-mono-label text-mono-label uppercase text-dim pl-1 text-[9px]">Professional Summary</label>
+<textarea class="w-full bg-background border border-rule text-body font-body-base px-4 py-3 focus:border-primary-container transition-colors resize-none" rows="4">Senior Infrastructure Engineer with 8+ years of experience in architecting high-availability systems. Focused on deterministic performance and low-latency data pipelines in industrial contexts.</textarea>
+</div>
+<!-- History Items -->
+<div class="space-y-3">
+<label class="font-mono-label text-mono-label uppercase text-dim pl-1 text-[9px]">Work History</label>
+<!-- Item 1 -->
+<div class="border border-rule p-4 bg-surface-container-low space-y-2 group hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-ui-lg text-on-surface">LEAD SYSTEMS ARCHITECT</h3>
+<p class="font-mono-label text-[10px] text-primary">VERTEX CORE LABS • 2021—PRESENT</p>
+</div>
+<button class="text-dim hover:text-destructive transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="text-ui-sm text-dim line-clamp-2">Orchestrated the migration of legacy monolith to microservices using Rust and K8s...</p>
+</div>
+<!-- Item 2 -->
+<div class="border border-rule p-4 bg-surface-container-low space-y-2 group hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-ui-lg text-on-surface">SENIOR BACKEND ENGINEER</h3>
+<p class="font-mono-label text-[10px] text-primary">SYNAPSE DATA • 2018—2021</p>
+</div>
+<button class="text-dim hover:text-destructive transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="text-ui-sm text-dim line-clamp-2">Optimized PostgreSQL query engine reducing latency by 40% across production clusters...</p>
+</div>
+<button class="w-full py-4 border border-dashed border-rule text-dim font-mono-label text-mono-label uppercase hover:border-primary hover:text-primary transition-all">
+                        + Add Experience Record
+                    </button>
+</div>
+</div>
+</section>
+<!-- Section: Portfolio Links -->
+<section class="space-y-4">
+<label class="block font-mono-label text-mono-label uppercase text-dim">// portfolio_links</label>
+<div class="space-y-3">
+<div class="flex items-center border border-rule bg-surface-container-low group focus-within:border-primary-container transition-colors">
+<div class="px-4 text-dim group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+</div>
+<input class="w-full bg-transparent border-none text-ui-sm py-4 pr-4 focus:ring-0" placeholder="LinkedIn URL" type="text" value="linkedin.com/in/alex-vance"/>
+</div>
+<div class="flex items-center border border-rule bg-surface-container-low group focus-within:border-primary-container transition-colors">
+<div class="px-4 text-dim group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+</div>
+<input class="w-full bg-transparent border-none text-ui-sm py-4 pr-4 focus:ring-0" placeholder="GitHub URL" type="text" value="github.com/avance-dev"/>
+</div>
+<div class="flex items-center border border-rule bg-surface-container-low group focus-within:border-primary-container transition-colors">
+<div class="px-4 text-dim group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</div>
+<input class="w-full bg-transparent border-none text-ui-sm py-4 pr-4 focus:ring-0" placeholder="Personal Website" type="text" value="vance.io"/>
+</div>
+</div>
+</section>
+<!-- Form Success State Trigger (Micro-interaction) -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-[60] bg-live-dim text-live border border-live/30 px-6 py-3 font-mono-label text-mono-label uppercase transform scale-0 transition-transform duration-300" id="save-toast">
+            Profile Updated Successfully // 001
+        </div>
+</main>
+<!-- Bottom Action CTA (Sticky) -->
+<div class="fixed bottom-16 left-0 w-full p-4 bg-background/80 backdrop-blur-sm border-t border-rule z-40">
+<button class="w-full bg-primary-container text-on-primary-container font-mono-label text-mono-label font-bold uppercase py-4 transition-all active:scale-[0.98] hover:brightness-110" id="save-btn">
+            Save All Changes
+        </button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 border-t border-rule flex justify-around items-center h-16 w-full px-2 pb-safe bg-background">
+<a class="flex flex-col items-center justify-center text-dim hover:text-on-surface transition-colors active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-mono-label text-[9px] uppercase mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim hover:text-on-surface transition-colors active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-mono-label text-[9px] uppercase mt-1">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim hover:text-on-surface transition-colors active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-mono-label text-[9px] uppercase mt-1">Applied</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-transparent active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-mono-label text-[9px] uppercase mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        document.getElementById('save-btn').addEventListener('click', function() {
+            const toast = document.getElementById('save-toast');
+            toast.classList.remove('scale-0');
+            toast.classList.add('scale-100');
+            
+            this.innerText = "Processing...";
+            this.classList.add('opacity-50');
+            
+            setTimeout(() => {
+                toast.classList.add('scale-0');
+                toast.classList.remove('scale-100');
+                this.innerText = "Save All Changes";
+                this.classList.remove('opacity-50');
+            }, 3000);
+        });
+
+        // Simple parallax on scroll for avatar
+        window.addEventListener('scroll', function() {
+            const img = document.querySelector('img');
+            const scrolled = window.pageYOffset;
+            img.style.transform = `scale(${1 + scrolled/2000})`;
+        });
+    </script>
+</body></html>

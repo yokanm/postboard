@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>INDUSTRIAL_BROADSHEET // COMPANY_REGISTRY</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=DM+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#313030",
+                        "tertiary-container": "#929090",
+                        "dim": "#666666",
+                        "on-primary-fixed": "#351000",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface-bright": "#3a3939",
+                        "on-surface-variant": "#e1c0b2",
+                        "gradient-a": "#C084FC",
+                        "surface-variant": "#353534",
+                        "outline-variant": "#594237",
+                        "surface-dim": "#131313",
+                        "primary-fixed": "#ffdbcc",
+                        "on-secondary-container": "#b7b5af",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-primary": "#a14000",
+                        "gradient-b": "#60A5FA",
+                        "body": "#B8B8B8",
+                        "secondary-fixed": "#e5e2db",
+                        "tertiary-fixed": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "destructive": "#EF4444",
+                        "on-primary": "#571f00",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "gradient-c": "#34D399",
+                        "surface-tint": "#ffb694",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "secondary": "#c9c6c0",
+                        "on-tertiary": "#313030",
+                        "primary-fixed-dim": "#ffb694",
+                        "live-dim": "#14532D",
+                        "primary": "#ffb694",
+                        "surface-container-high": "#2a2a2a",
+                        "gradient-d": "#F59E0B",
+                        "surface-container-highest": "#353534",
+                        "surface-container": "#201f1f",
+                        "on-error": "#690005",
+                        "on-primary-container": "#4c1a00",
+                        "on-tertiary-container": "#2a2a29",
+                        "surface": "#131313",
+                        "live": "#22C55A",
+                        "primary-container": "#f06613",
+                        "rule": "#1A1A1A",
+                        "on-secondary-fixed": "#1c1c18",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#31312c",
+                        "muted": "#2A2A2A",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary": "#c8c6c5",
+                        "secondary-container": "#474742",
+                        "outline": "#a88a7e",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-secondary-fixed-variant": "#474742"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-v-pad": "48px",
+                        "max-width": "1280px",
+                        "gutter": "24px",
+                        "sidebar-width": "220px",
+                        "unit": "4px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-2xl": ["Playfair Display"],
+                        "mono-label": ["JetBrains Mono"],
+                        "ui-sm": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "body-base": ["DM Sans"],
+                        "ui-xl": ["DM Sans"],
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #080808;
+            color: #B8B8B8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input, select, textarea {
+            border-radius: 0px !important;
+            background-color: #080808 !important;
+            border: 1px solid #1A1A1A !important;
+            color: #e5e2e1 !important;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #E8610A !important;
+            outline: none !important;
+            ring: 0 !important;
+        }
+        .press-grid-pattern {
+            background-image: radial-gradient(#1A1A1A 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background border-b border-rule flex justify-between items-center px-gutter h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="factory">factory</span>
+<h1 class="font-headline-2xl-mobile text-headline-2xl-mobile font-black tracking-tighter text-primary">ESTABLISH_ENTITY</h1>
+</div>
+<div class="text-primary font-mono-label">ID: R-4092</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-32 px-gutter space-y-10">
+<!-- Wayfinding Header -->
+<section>
+<div class="font-mono-label text-dim uppercase mb-2 tracking-widest">// START_REGISTRATION_PROTOCOL</div>
+<p class="font-body-base text-on-surface">Please define the industrial parameters for your new entity. All fields marked with metadata requirements are mandatory for compliance.</p>
+</section>
+<!-- Form Sections -->
+<form class="space-y-12" id="company-form">
+<!-- // COMPANY_IDENTITY -->
+<section class="space-y-4">
+<div class="font-mono-label text-primary border-b border-rule pb-2 tracking-widest">// COMPANY_IDENTITY</div>
+<div class="space-y-1">
+<label class="font-mono-label text-dim block">LEGAL_ENTITY_NAME</label>
+<input class="w-full px-4 py-3 font-ui-sm" placeholder="ENTER OFFICIAL REGISTERED NAME" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-mono-label text-dim block">OFFICIAL_WEBSITE_URL</label>
+<input class="w-full px-4 py-3 font-ui-sm" placeholder="https://" type="url"/>
+</div>
+<div class="space-y-1">
+<label class="font-mono-label text-dim block">PRIMARY_INDUSTRY</label>
+<select class="w-full px-4 py-3 font-ui-sm appearance-none">
+<option value="">SELECT_SECTOR</option>
+<option value="tech">RECRUITMENT_TECH</option>
+<option value="logistics">LOGISTICS_INFRASTRUCTURE</option>
+<option value="manufacturing">HEAVY_MANUFACTURING</option>
+<option value="fintech">FINANCIAL_OPERATIONS</option>
+</select>
+</div>
+</section>
+<!-- // BRAND_ASSETS -->
+<section class="space-y-4">
+<div class="font-mono-label text-primary border-b border-rule pb-2 tracking-widest">// BRAND_ASSETS</div>
+<div class="space-y-2">
+<label class="font-mono-label text-dim block">ENTITY_LOGO</label>
+<div class="border-2 border-dashed border-rule h-32 flex flex-col items-center justify-center text-dim bg-surface-container-low cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined mb-2" data-icon="upload_file">upload_file</span>
+<span class="font-mono-label">UPLOAD_SVG_OR_PNG</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-mono-label text-dim block">PRIMARY_BRAND_COLOR</label>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary border border-rule"></div>
+<div class="flex-grow">
+<input class="w-full px-4 py-2 font-mono-label" type="text" value="#FFB694"/>
+</div>
+</div>
+</div>
+</section>
+<!-- // COMPANY_DETAILS -->
+<section class="space-y-4">
+<div class="font-mono-label text-primary border-b border-rule pb-2 tracking-widest">// COMPANY_DETAILS</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="font-mono-label text-dim block">WORKFORCE_SIZE</label>
+<select class="w-full px-4 py-3 font-ui-sm">
+<option>1-50</option>
+<option>51-200</option>
+<option>201-500</option>
+<option>500+</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-mono-label text-dim block">FOUNDED_YEAR</label>
+<input class="w-full px-4 py-3 font-ui-sm" placeholder="YYYY" type="number"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-mono-label text-dim block">HEADQUARTERS_LOCATION</label>
+<input class="w-full px-4 py-3 font-ui-sm" placeholder="CITY, COUNTRY" type="text"/>
+</div>
+</section>
+<!-- // ABOUT_THE_PRESS -->
+<section class="space-y-4">
+<div class="font-mono-label text-primary border-b border-rule pb-2 tracking-widest">// ABOUT_THE_PRESS</div>
+<div class="space-y-1">
+<label class="font-mono-label text-dim block">COMPANY_PITCH_&amp;_MISSION</label>
+<textarea class="w-full h-32 px-4 py-3 font-body-base" placeholder="Describe the entity's core objective and pipeline philosophy..."></textarea>
+</div>
+</section>
+<!-- // VERIFICATION -->
+<section class="space-y-4">
+<div class="font-mono-label text-primary border-b border-rule pb-2 tracking-widest">// VERIFICATION</div>
+<div class="bg-surface-container border border-rule p-4 space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-live" data-icon="verified_user">verified_user</span>
+<span class="font-mono-label text-on-surface">COMPLIANCE_READY_STATUS</span>
+</div>
+<div class="space-y-1">
+<label class="font-mono-label text-dim block">BUSINESS_TAX_ID</label>
+<input class="w-full px-4 py-3 font-mono-label" placeholder="TX-000-000000" type="text"/>
+<p class="font-mono-label text-[9px] text-dim mt-1">INTERNAL_USE_ONLY // ENCRYPTED_STORAGE</p>
+</div>
+</div>
+</section>
+</form>
+</main>
+<!-- Footer Action Bar -->
+<footer class="fixed bottom-0 w-full z-50 h-24 bg-surface-container border-t border-rule flex items-center px-gutter">
+<button class="w-full bg-primary-container text-on-primary-container h-14 flex items-center justify-between px-6 active:scale-[0.98] transition-transform" form="company-form" type="submit">
+<span class="font-mono-label font-bold tracking-[0.2em]">REGISTER COMPANY</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</footer>
+<!-- BottomNavBar (Hidden but logic remains for shell context) -->
+<nav class="hidden md:flex fixed bottom-0 w-full z-50 h-20 bg-surface-container border-t border-rule justify-around items-center px-4">
+<div class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-2">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-mono-label text-mono-label uppercase">DASHBOARD</span>
+</div>
+<div class="flex flex-col items-center justify-center text-dim pt-2">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-mono-label text-mono-label uppercase">PIPELINE</span>
+</div>
+<div class="flex flex-col items-center justify-center text-dim pt-2">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-mono-label text-mono-label uppercase">TALENT</span>
+</div>
+<div class="flex flex-col items-center justify-center text-dim pt-2">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-mono-label text-mono-label uppercase">SETTINGS</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for form submission
+        document.getElementById('company-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="font-mono-label tracking-widest animate-pulse">TRANSMITTING...</span>';
+            setTimeout(() => {
+                btn.innerHTML = '<span class="font-mono-label tracking-widest">REGISTRY_SUCCESS</span><span class="material-symbols-outlined">check</span>';
+                btn.style.backgroundColor = '#22C55A';
+                btn.style.color = '#FFFFFF';
+            }, 1500);
+        });
+
+        // Hover effect for the dashed upload box
+        const uploadBox = document.querySelector('.border-dashed');
+        uploadBox.addEventListener('mouseenter', () => {
+            uploadBox.style.backgroundColor = '#1A1A1A';
+        });
+        uploadBox.addEventListener('mouseleave', () => {
+            uploadBox.style.backgroundColor = 'transparent';
+        });
+    </script>
+</body></html>

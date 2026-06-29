@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | User Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..900&family=Playfair+Display:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #080808; }
+        ::-webkit-scrollbar-thumb { background: #1A1A1A; }
+        
+        .press-grid-grain {
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.05;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary-container": "#474742",
+                "muted": "#2A2A2A",
+                "dim": "#666666",
+                "error-container": "#93000a",
+                "surface-dim": "#131313",
+                "body": "#B8B8B8",
+                "primary": "#ffb694",
+                "inverse-primary": "#a14000",
+                "surface-container-low": "#1c1b1b",
+                "on-secondary-fixed": "#1c1c18",
+                "on-primary-fixed-variant": "#7b2f00",
+                "secondary-fixed-dim": "#c9c6c0",
+                "on-primary": "#571f00",
+                "tertiary-container": "#929090",
+                "on-primary-fixed": "#351000",
+                "surface-container-lowest": "#0e0e0e",
+                "gradient-d": "#F59E0B",
+                "on-tertiary": "#313030",
+                "on-secondary": "#31312c",
+                "surface-container-highest": "#353534",
+                "error": "#ffb4ab",
+                "surface-bright": "#3a3939",
+                "surface-container": "#201f1f",
+                "on-secondary-container": "#b7b5af",
+                "surface-variant": "#353534",
+                "surface-container-high": "#2a2a2a",
+                "secondary": "#c9c6c0",
+                "gradient-b": "#60A5FA",
+                "tertiary-fixed": "#e5e2e1",
+                "inverse-on-surface": "#313030",
+                "outline": "#a88a7e",
+                "on-error": "#690005",
+                "on-secondary-fixed-variant": "#474742",
+                "on-primary-container": "#4c1a00",
+                "surface": "#131313",
+                "on-tertiary-fixed": "#1c1b1b",
+                "live": "#22C55A",
+                "on-surface-variant": "#e1c0b2",
+                "gradient-c": "#34D399",
+                "rule": "#1A1A1A",
+                "primary-fixed-dim": "#ffb694",
+                "on-error-container": "#ffdad6",
+                "tertiary": "#c8c6c5",
+                "on-tertiary-container": "#2a2a29",
+                "inverse-surface": "#e5e2e1",
+                "destructive": "#EF4444",
+                "live-dim": "#14532D",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "secondary-fixed": "#e5e2db",
+                "outline-variant": "#594237",
+                "primary-fixed": "#ffdbcc",
+                "gradient-a": "#C084FC",
+                "primary-container": "#f06613",
+                "on-tertiary-fixed-variant": "#474646",
+                "surface-tint": "#ffb694",
+                "on-background": "#e5e2e1",
+                "on-surface": "#e5e2e1",
+                "background": "#131313"
+            },
+            "borderRadius": { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+            "spacing": { "margin": "32px", "gutter": "24px", "max-width": "1280px", "section-v-pad": "48px", "unit": "4px", "sidebar-width": "220px" },
+            "fontFamily": {
+                "ui-sm": ["DM Sans"], "masthead-4xl": ["Playfair Display"], "ui-lg": ["DM Sans"], "ui-xl": ["DM Sans"],
+                "mono-label": ["JetBrains Mono"], "headline-2xl-mobile": ["Playfair Display"], "headline-2xl": ["Playfair Display"], "body-base": ["DM Sans"]
+            },
+          }
+        }
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-base antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-background border-b border-rule">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<h1 class="font-masthead-4xl text-headline-2xl-mobile tracking-tighter uppercase text-primary">POSTBOARD</h1>
+</div>
+<button class="bg-primary text-on-primary px-3 py-1 font-mono-label text-mono-label font-bold tracking-widest scale-95 active:opacity-80">
+            ADMIN_MODE
+        </button>
+</header>
+<main class="pt-20 pb-24 px-4 max-w-md mx-auto">
+<!-- Breadcrumb / Section Wayfinding -->
+<div class="mb-6">
+<p class="font-mono-label text-mono-label text-dim uppercase tracking-widest">// USER_DIRECTORY</p>
+<h2 class="font-headline-2xl-mobile text-on-surface mt-1">User Management</h2>
+</div>
+<!-- Stats Grid (Stacked for Mobile) -->
+<section class="grid grid-cols-2 gap-px bg-rule border border-rule mb-8">
+<div class="bg-surface-container-lowest p-4">
+<p class="font-mono-label text-[10px] text-dim uppercase mb-1">// TOTAL_USERS</p>
+<p class="font-masthead-4xl text-3xl text-primary">1,284</p>
+</div>
+<div class="bg-surface-container-lowest p-4">
+<p class="font-mono-label text-[10px] text-dim uppercase mb-1">// ACTIVE_CANDIDATES</p>
+<p class="font-masthead-4xl text-3xl text-on-surface">842</p>
+</div>
+<div class="bg-surface-container-lowest p-4">
+<p class="font-mono-label text-[10px] text-dim uppercase mb-1">// RECRUITERS</p>
+<p class="font-masthead-4xl text-3xl text-on-surface">156</p>
+</div>
+<div class="bg-surface-container-lowest p-4">
+<p class="font-mono-label text-[10px] text-dim uppercase mb-1">// SUSPENDED</p>
+<p class="font-masthead-4xl text-3xl text-destructive">12</p>
+</div>
+</section>
+<!-- Filter Bar -->
+<section class="mb-6 sticky top-16 z-40 bg-background/95 backdrop-blur-sm py-2">
+<div class="flex flex-col gap-2">
+<div class="relative">
+<input class="w-full bg-surface-container border border-rule px-10 py-3 text-ui-sm font-ui-sm focus:border-primary focus:ring-0 placeholder:text-dim" placeholder="Search by name, email, or ID..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-dim" data-icon="search">search</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 border border-rule py-2 flex items-center justify-center gap-2 font-mono-label text-mono-label uppercase text-on-surface bg-surface-container active:bg-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span> Role: All
+                    </button>
+<button class="flex-1 border border-rule py-2 flex items-center justify-center gap-2 font-mono-label text-mono-label uppercase text-on-surface bg-surface-container active:bg-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="sort">sort</span> Status: All
+                    </button>
+</div>
+</div>
+</section>
+<!-- User List (Industrial Cards) -->
+<section class="flex flex-col gap-px bg-rule border border-rule">
+<!-- User Item 1 -->
+<div class="bg-surface-container-lowest p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border border-rule bg-surface-container flex items-center justify-center overflow-hidden">
+<img alt="User" class="w-full h-full object-cover grayscale brightness-90 contrast-125" data-alt="A high-contrast monochromatic portrait of a professional man looking directly at the camera. The lighting is dramatic and stark, reflecting an industrial, technical aesthetic. The background is pure black, emphasizing the sharp lines and high-density professional mood of a recruitment platform user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV4LJs5aK9PC96m7UYqSrxYSWJwZdnVYz65eftmCLhaPSmgbqgptaQbeuxgX2Ft6iIeAJaGBGi7IcdYgI3RP-e0mHluZKESDW_YkBaiGfrDBlYTSk7e9XI7cOJGdyMEnGP3pa2MBpRUSWddQ8oxCU_PFZXLT_w-dfx0aQ2_Jev88X7syVN0YLMvCQCOBlkw9ft-XWWj1eH1XtmPao5rHmYFGU7B-IeITF33ciUnCqCwU0bYsz9SSISyrWbdpgeVtLYN8Xfy97N3QPK"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-ui-lg text-[14px] text-on-surface leading-tight">Alexei Volkov</h4>
+<span class="bg-live-dim/20 text-live px-1.5 py-0.5 text-[9px] font-mono-label uppercase border border-live/30">OPEN</span>
+</div>
+<p class="font-mono-label text-[10px] text-dim lowercase">a.volkov@system.io</p>
+<div class="mt-1 flex items-center gap-2">
+<span class="text-[10px] font-mono-label text-primary uppercase">// CANDIDATE</span>
+<span class="text-dim text-[10px]">•</span>
+<span class="text-[10px] font-mono-label text-dim uppercase">ID: 9821-X</span>
+</div>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface p-2" onclick="toggleMenu('menu-1')">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<!-- User Item 2 (Recruiter) -->
+<div class="bg-surface-container-lowest p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border border-rule bg-surface-container flex items-center justify-center">
+<img alt="User" class="w-full h-full object-cover grayscale brightness-90 contrast-125" data-alt="A professional woman with a serious expression, captured in a stark, high-contrast black and white style. The image is framed as a tight headshot with professional studio lighting that highlights her features against a deep, dark gray background. The overall aesthetic is cold, precise, and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDChFZGW_mjkMR1d66gbwW6DlS0huCgEz_4FtJBkRUvyrH_1vS3cHjKJCijR7_JzqtXQjC9z5-eafuSldkptoAI_DYCgg58ZQPmvC0UnWYmUhAv6TMghwcW0QpJ60-FthF6sF3O9EraNxIBsCRsB1ozyQiFWjfkE1Mcd0q5EGgUej-afm80VKaVXy9KCz7wJ1IE-TPKYZQoxlrS9dBNbLTUNXMYnKYXbgDkMbc8B6lEXAxsf2_1EoUhPQJlZD1uV7PIIRSt08QSD4hV"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-ui-lg text-[14px] text-on-surface leading-tight">Sarah Jenkins</h4>
+<span class="bg-primary/10 text-primary px-1.5 py-0.5 text-[9px] font-mono-label uppercase border border-primary/30">ACTIVE</span>
+</div>
+<p class="font-mono-label text-[10px] text-dim lowercase">s.jenkins@recruit.corp</p>
+<div class="mt-1 flex items-center gap-2">
+<span class="text-[10px] font-mono-label text-on-surface-variant uppercase">// RECRUITER</span>
+<span class="text-dim text-[10px]">•</span>
+<span class="text-[10px] font-mono-label text-dim uppercase">ID: 4421-B</span>
+</div>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface p-2">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<!-- User Item 3 (Suspended) -->
+<div class="bg-surface-container-lowest p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border border-rule bg-surface-container flex items-center justify-center opacity-50">
+<span class="material-symbols-outlined text-dim" data-icon="person">person</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-ui-lg text-[14px] text-on-surface leading-tight">Marcus Thorne</h4>
+<span class="border border-destructive/50 text-destructive px-1.5 py-0.5 text-[9px] font-mono-label uppercase">SUSPENDED</span>
+</div>
+<p class="font-mono-label text-[10px] text-dim lowercase">m.thorne@legacy.net</p>
+<div class="mt-1 flex items-center gap-2">
+<span class="text-[10px] font-mono-label text-dim uppercase">// UNKNOWN</span>
+<span class="text-dim text-[10px]">•</span>
+<span class="text-[10px] font-mono-label text-dim uppercase">ID: 0012-Q</span>
+</div>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface p-2">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<!-- User Item 4 -->
+<div class="bg-surface-container-lowest p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border border-rule bg-surface-container flex items-center justify-center">
+<img alt="User" class="w-full h-full object-cover grayscale brightness-90 contrast-125" data-alt="Stark monochromatic headshot of a young professional with short hair, illuminated by single-source harsh lighting from the side. The image is gritty and high-contrast, fitting the industrial brutalist design system. Background is completely black to emphasize the form and sharp details of the face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg1-RGL85BOP3h3MhoA0bAvuEzUr_8H0oiraRqL2oErOv0gj1u_JteGLrQboC8FSqfb0XPp9DeCJOvYFR5Z-yNrmTWtAs17JJ2UpM4A9IrxwuANqHVZEbz2OmoDJJ6etJEadNUKRVcDNJ-XQU5NQef4eqszpirDtqcXg0nGQ4em4ZIMuaZ_j1bs8cFalm5EgkY_x-C1bH5F4OTshDyj8_BthMe4XWcxkrk-eeSiYex2boaO73S2AnHQExnJsj5_i6OclmKvhXia0G_"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-ui-lg text-[14px] text-on-surface leading-tight">Elena Richter</h4>
+<span class="bg-live-dim/20 text-live px-1.5 py-0.5 text-[9px] font-mono-label uppercase border border-live/30">OPEN</span>
+</div>
+<p class="font-mono-label text-[10px] text-dim lowercase">e.richter@vector.de</p>
+<div class="mt-1 flex items-center gap-2">
+<span class="text-[10px] font-mono-label text-primary uppercase">// CANDIDATE</span>
+<span class="text-dim text-[10px]">•</span>
+<span class="text-[10px] font-mono-label text-dim uppercase">ID: 8876-L</span>
+</div>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface p-2">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<!-- User Item 5 -->
+<div class="bg-surface-container-lowest p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border border-rule bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-dim" data-icon="account_circle">account_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-ui-lg text-[14px] text-on-surface leading-tight">J. Harrington</h4>
+<span class="border border-dim/50 text-dim px-1.5 py-0.5 text-[9px] font-mono-label uppercase">DRAFT</span>
+</div>
+<p class="font-mono-label text-[10px] text-dim lowercase">j.harr@pending.sys</p>
+<div class="mt-1 flex items-center gap-2">
+<span class="text-[10px] font-mono-label text-dim uppercase">// ADMIN</span>
+<span class="text-dim text-[10px]">•</span>
+<span class="text-[10px] font-mono-label text-dim uppercase">ID: 1004-A</span>
+</div>
+</div>
+</div>
+<button class="text-dim hover:text-on-surface p-2">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</section>
+<!-- Pagination or Load More (Industrial style) -->
+<div class="mt-8">
+<button class="w-full border border-rule py-4 font-mono-label text-mono-label uppercase tracking-[0.2em] text-on-surface-variant hover:bg-surface-container transition-colors">
+                Load More Entries
+            </button>
+<p class="text-center font-mono-label text-[9px] text-dim mt-4 uppercase tracking-tighter">
+                Showing 5 of 1,284 records // Index version 4.0.1
+            </p>
+</div>
+</main>
+<!-- FAB for adding new user (Mobile optimized) -->
+<button class="fixed right-6 bottom-24 w-14 h-14 bg-primary text-on-primary flex items-center justify-center z-50 shadow-2xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="person_add" style="font-variation-settings: 'FILL' 1;">person_add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 bg-surface-container-lowest border-t border-rule z-50">
+<a class="flex flex-col items-center justify-center text-dim p-unit hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-mono-label text-[9px] uppercase mt-1">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 p-unit hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-mono-label text-[9px] uppercase mt-1">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim p-unit hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="business">business</span>
+<span class="font-mono-label text-[9px] uppercase mt-1">Companies</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim p-unit hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-mono-label text-[9px] uppercase mt-1">Logs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim p-unit hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-mono-label text-[9px] uppercase mt-1">Settings</span>
+</a>
+</nav>
+<!-- Bottom Sheet / Action Menu Overlay (Hidden by default) -->
+<div class="fixed inset-0 bg-black/80 z-[60] hidden transition-opacity" id="action-sheet">
+<div class="absolute bottom-0 w-full bg-surface-container-lowest border-t border-primary p-6 translate-y-full transition-transform duration-300" id="sheet-content">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-mono-label text-mono-label uppercase text-dim tracking-widest">// USER_ACTIONS</h3>
+<button class="text-on-surface" onclick="closeMenu()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<button class="w-full text-left p-4 bg-surface-container hover:bg-surface-variant flex items-center gap-4 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="visibility">visibility</span>
+<span class="font-ui-lg text-[16px]">View Profile</span>
+</button>
+<button class="w-full text-left p-4 bg-surface-container hover:bg-surface-variant flex items-center gap-4 transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="edit">edit</span>
+<span class="font-ui-lg text-[16px]">Modify Permissions</span>
+</button>
+<button class="w-full text-left p-4 bg-surface-container hover:bg-surface-variant flex items-center gap-4 transition-colors">
+<span class="material-symbols-outlined text-destructive" data-icon="block">block</span>
+<span class="font-ui-lg text-[16px] text-destructive">Suspend User</span>
+</button>
+<button class="w-full text-left p-4 bg-surface-container-high hover:bg-destructive/20 flex items-center gap-4 border border-destructive/20 mt-2 transition-colors">
+<span class="material-symbols-outlined text-destructive" data-icon="delete_forever">delete_forever</span>
+<span class="font-ui-lg text-[16px] text-destructive">Delete Permanently</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+        function toggleMenu(id) {
+            const sheet = document.getElementById('action-sheet');
+            const content = document.getElementById('sheet-content');
+            sheet.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('translate-y-full');
+            }, 10);
+        }
+
+        function closeMenu() {
+            const sheet = document.getElementById('action-sheet');
+            const content = document.getElementById('sheet-content');
+            content.classList.add('translate-y-full');
+            setTimeout(() => {
+                sheet.classList.add('hidden');
+            }, 300);
+        }
+
+        // Click outside to close
+        document.getElementById('action-sheet').addEventListener('click', (e) => {
+            if(e.target === document.getElementById('action-sheet')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body></html>

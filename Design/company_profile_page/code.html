@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Company Profile | POSTBOARD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=DM+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #080808;
+            color: #E5E2E1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        /* Custom scrollbar for high-density feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E8610A;
+        }
+        .press-grid-pattern {
+            background-image: radial-gradient(#1A1A1A 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "inverse-on-surface": "#313030",
+                "surface-dim": "#131313",
+                "on-surface-variant": "#e1c0b2",
+                "surface-container-high": "#2a2a2a",
+                "background": "#080808",
+                "primary-container": "#f06613",
+                "on-surface": "#e5e2e1",
+                "on-secondary-fixed-variant": "#474742",
+                "on-primary-fixed-variant": "#7b2f00",
+                "outline-variant": "#594237",
+                "on-error": "#690005",
+                "tertiary": "#c8c6c5",
+                "secondary-fixed": "#e5e2db",
+                "on-secondary": "#31312c",
+                "on-secondary-fixed": "#1c1c18",
+                "inverse-surface": "#e5e2e1",
+                "primary-fixed": "#ffdbcc",
+                "secondary-container": "#474742",
+                "surface": "#0F0F0F",
+                "secondary-fixed-dim": "#c9c6c0",
+                "primary-fixed-dim": "#ffb694",
+                "tertiary-fixed": "#e5e2e1",
+                "on-background": "#e5e2e1",
+                "error": "#ffb4ab",
+                "on-secondary-container": "#b7b5af",
+                "live-dim": "#14532D",
+                "dim": "#666666",
+                "on-tertiary-fixed-variant": "#474646",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "on-tertiary": "#313030",
+                "surface-container-lowest": "#0e0e0e",
+                "on-tertiary-fixed": "#1c1b1b",
+                "surface-container": "#201f1f",
+                "on-primary": "#571f00",
+                "surface-container-low": "#1c1b1b",
+                "on-tertiary-container": "#2a2a29",
+                "gradient-c": "#34D399",
+                "tertiary-container": "#929090",
+                "surface-tint": "#ffb694",
+                "surface-container-highest": "#353534",
+                "muted": "#2A2A2A",
+                "live": "#22C55A",
+                "body": "#B8B8B8",
+                "outline": "#a88a7e",
+                "rule": "#1A1A1A",
+                "on-primary-fixed": "#351000",
+                "error-container": "#93000a",
+                "gradient-a": "#C084FC",
+                "secondary": "#c9c6c0",
+                "inverse-primary": "#a14000",
+                "surface-variant": "#353534",
+                "surface-bright": "#3a3939",
+                "gradient-b": "#60A5FA",
+                "primary": "#ffb694",
+                "on-primary-container": "#4c1a00",
+                "on-error-container": "#ffdad6",
+                "gradient-d": "#F59E0B",
+                "destructive": "#EF4444"
+              },
+              "spacing": {
+                "max-width": "1280px",
+                "margin": "32px",
+                "gutter": "24px",
+                "section-v-pad": "48px",
+                "sidebar-width": "220px",
+                "unit": "4px"
+              },
+              "fontFamily": {
+                "mono-label": ["JetBrains Mono"],
+                "headline-2xl": ["Playfair Display"],
+                "body-base": ["DM Sans"],
+                "masthead-4xl": ["Playfair Display"],
+                "ui-xl": ["DM Sans"],
+                "ui-sm": ["DM Sans"],
+                "ui-lg": ["DM Sans"]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background">
+<!-- Top Navigation Bar -->
+<header class="bg-background sticky top-0 z-50 border-b border-rule">
+<div class="flex justify-between items-center w-full px-margin py-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-masthead-4xl text-ui-xl tracking-tighter text-on-surface uppercase font-black">POSTBOARD</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-mono-label text-mono-label text-primary border-b-2 border-primary pb-1" href="#">Companies</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Marketplace</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Pricing</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex gap-4 items-center">
+<button class="font-mono-label text-mono-label text-body hover:text-on-surface transition-all px-4 py-2 border border-rule">Login</button>
+<button class="font-mono-label text-mono-label bg-primary-container text-on-primary-container px-6 py-2 transition-transform scale-95 active:scale-90">Post a Job</button>
+</div>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin py-section-v-pad">
+<!-- Company Hero Section -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<img alt="Company Logo" class="w-16 h-16 border border-rule object-cover grayscale" data-alt="A clean, minimalist monochrome geometric company logo displayed on a textured paper-like background. The lighting is harsh and direct, emphasizing the industrial brutalist aesthetic of the brand. The color palette is strictly deep blacks and stark whites, reflecting professional utility and elite technical management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAep3hWDBkZ7kOWgPfFd7appSBt1i1_DwYL7RcdEOmTRAomjs-LiZlDGgvAqul5uo75OLzHWz6xC2524PmXuUTDb2bD3cVvSwWejS6XRrNZLN9zOhyBmT1NiCwe-stxQk2Ji6pjNZ-HOoVKRYSm6Z6DazZp1DzfI5K6ExUBdeSnUaZhlS10AL3yOMhMETlYQzBE6XJuDZAE3tiDy_easIZ9f2KLY3uD2dkfF-t5WWk0Q3Yy0mhlJfnZ6Hj8gkeAZpCMuOBpbvZ2Eq5_"/>
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label text-dim uppercase tracking-widest">// ENGINEERING_ALPHA</span>
+<h1 class="font-masthead-4xl text-8xl leading-none font-black text-on-surface uppercase tracking-tighter">VOLT_TECH</h1>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="px-4 py-2 border border-rule">
+<span class="font-mono-label text-mono-label text-dim block text-[10px]">// INDUSTRY</span>
+<span class="font-ui-lg text-ui-lg text-on-surface">Renewable Grid</span>
+</div>
+<div class="px-4 py-2 border border-rule">
+<span class="font-mono-label text-mono-label text-dim block text-[10px]">// SIZE</span>
+<span class="font-ui-lg text-ui-lg text-on-surface">250-500 EMP</span>
+</div>
+</div>
+</div>
+<!-- Stats Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 border border-rule bg-surface-container-lowest">
+<div class="p-6 border-r border-rule flex flex-col justify-center">
+<span class="font-mono-label text-mono-label text-primary uppercase text-[10px] tracking-widest mb-1">// TEAM_STRENGTH</span>
+<span class="font-headline-2xl text-4xl text-on-surface font-extrabold">342+</span>
+</div>
+<div class="p-6 border-r border-rule flex flex-col justify-center">
+<span class="font-mono-label text-mono-label text-primary uppercase text-[10px] tracking-widest mb-1">// ESTABLISHED</span>
+<span class="font-headline-2xl text-4xl text-on-surface font-extrabold">2014.04</span>
+</div>
+<div class="p-6 flex flex-col justify-center">
+<span class="font-mono-label text-mono-label text-primary uppercase text-[10px] tracking-widest mb-1">// HQ_COORDINATES</span>
+<span class="font-headline-2xl text-4xl text-on-surface font-extrabold">BERLIN, DE</span>
+</div>
+</div>
+</section>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Main Content (8-cols) -->
+<div class="md:col-span-8 space-y-12">
+<!-- About Us -->
+<section>
+<h2 class="font-mono-label text-mono-label text-primary mb-4 tracking-[0.2em] uppercase">// ABOUT_US</h2>
+<div class="space-y-6">
+<p class="font-body-base text-ui-lg text-on-surface leading-relaxed max-w-3xl">
+                            At Volt_Tech, we are rebuilding the spine of European energy. Our platform leverages high-frequency trading algorithms to balance regional grids in real-time, preventing blackouts while maximizing the utility of intermittent renewable sources.
+                        </p>
+<div class="relative w-full h-[400px] border border-rule group overflow-hidden">
+<img alt="Laboratory" class="w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 transition-transform duration-700" data-alt="A high-contrast wide shot of a futuristic industrial laboratory filled with complex electrical equipment and server racks. The lighting is cool and blueish, punctuated by small amber indicator lights on the machines. The overall mood is cold, technical, and highly precise, reflecting an elite engineering environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGbLXFgIbzdXa78HUf2DQBW_it0sH4J8eoc2vge41Ts8T8dhjn_SAnuQbQLeJgvgzap4uHoxjWMzy13iGrzJpJwRGoJIz3hhIc5ur9202OUffpLm9E3_XvW5JExscG01k0t3oavAOt5kR0o2YGBJ-bJxL1XVBzfEzZl5rQotHpal5IqxFolENPEb4uiL4a1CXEDg_ZBEKTd27zWHBE1DdARNJlzJ6IGe1Tv-82QWTwxS7OYiwWUJFE5rT8GHFhWsyviK9sSvxPAUd8"/>
+<div class="absolute bottom-4 left-4 bg-background px-4 py-2 border border-rule">
+<span class="font-mono-label text-mono-label text-dim text-[10px] uppercase">// LAB_UNIT_04 / BERLIN</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Open Roles -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-mono-label text-mono-label text-primary tracking-[0.2em] uppercase">// OPEN_ROLES</h2>
+<div class="flex gap-2">
+<span class="px-3 py-1 border border-primary text-primary font-mono-label text-[10px] uppercase cursor-pointer">All</span>
+<span class="px-3 py-1 border border-rule text-dim font-mono-label text-[10px] uppercase hover:text-on-surface cursor-pointer">Engineering</span>
+<span class="px-3 py-1 border border-rule text-dim font-mono-label text-[10px] uppercase hover:text-on-surface cursor-pointer">Operations</span>
+</div>
+</div>
+<div class="flex flex-col border border-rule divide-y divide-rule">
+<!-- Job Card -->
+<div class="p-6 bg-surface-container-lowest hover:bg-surface-container transition-colors group cursor-pointer flex justify-between items-center">
+<div class="space-y-1">
+<span class="font-mono-label text-mono-label text-dim text-[10px] uppercase">ENG_SR_01</span>
+<h3 class="font-ui-lg text-ui-lg font-bold group-hover:text-primary transition-colors">Senior Grid Systems Architect</h3>
+<div class="flex gap-4 items-center">
+<span class="flex items-center gap-1 text-dim text-ui-sm font-mono-label">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Berlin
+                                    </span>
+<span class="flex items-center gap-1 text-dim text-ui-sm font-mono-label">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Full-time
+                                    </span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="font-mono-label text-mono-label text-on-surface text-[10px] border border-rule px-2 py-1">€110K - €145K</span>
+<span class="material-symbols-outlined text-dim group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</div>
+<!-- Job Card -->
+<div class="p-6 bg-surface-container-lowest hover:bg-surface-container transition-colors group cursor-pointer flex justify-between items-center">
+<div class="space-y-1">
+<span class="font-mono-label text-mono-label text-dim text-[10px] uppercase">DATA_ML_04</span>
+<h3 class="font-ui-lg text-ui-lg font-bold group-hover:text-primary transition-colors">Lead ML Engineer (Forecasting)</h3>
+<div class="flex gap-4 items-center">
+<span class="flex items-center gap-1 text-dim text-ui-sm font-mono-label">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Remote / EU
+                                    </span>
+<span class="flex items-center gap-1 text-dim text-ui-sm font-mono-label">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Full-time
+                                    </span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="font-mono-label text-mono-label text-on-surface text-[10px] border border-rule px-2 py-1">€95K - €130K</span>
+<span class="material-symbols-outlined text-dim group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</div>
+<!-- Job Card -->
+<div class="p-6 bg-surface-container-lowest hover:bg-surface-container transition-colors group cursor-pointer flex justify-between items-center">
+<div class="space-y-1">
+<span class="font-mono-label text-mono-label text-dim text-[10px] uppercase">PROD_MN_02</span>
+<h3 class="font-ui-lg text-ui-lg font-bold group-hover:text-primary transition-colors">Technical Product Manager</h3>
+<div class="flex gap-4 items-center">
+<span class="flex items-center gap-1 text-dim text-ui-sm font-mono-label">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Berlin
+                                    </span>
+<span class="flex items-center gap-1 text-dim text-ui-sm font-mono-label">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Full-time
+                                    </span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="font-mono-label text-mono-label text-on-surface text-[10px] border border-rule px-2 py-1">€80K - €105K</span>
+<span class="material-symbols-outlined text-dim group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="mt-4 text-center">
+<button class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors py-4 w-full border border-dashed border-rule">
+                            VIEW ALL 18 OPEN POSITIONS
+                        </button>
+</div>
+</section>
+</div>
+<!-- Sidebar (4-cols) -->
+<aside class="md:col-span-4 space-y-8">
+<!-- Action Card -->
+<div class="bg-primary p-6 space-y-4">
+<h3 class="font-headline-2xl text-2xl text-on-primary font-black uppercase leading-none">JOIN THE NETWORK</h3>
+<p class="font-ui-sm text-ui-sm text-on-primary opacity-90">
+                        Stay informed on our technical roadmap and upcoming private recruitment events.
+                    </p>
+<button class="w-full bg-background text-on-surface font-mono-label text-mono-label py-3 hover:bg-surface-container transition-all active:scale-95">FOLLOW VOLT_TECH</button>
+</div>
+<!-- Culture Card -->
+<div class="border border-rule p-6 space-y-4 press-grid-pattern bg-[#0F0F0F]">
+<h2 class="font-mono-label text-mono-label text-primary uppercase tracking-[0.2em] mb-4">// CULTURE_METRICS</h2>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between font-mono-label text-[10px] uppercase">
+<span class="text-on-surface">Technical Depth</span>
+<span class="text-primary">98%</span>
+</div>
+<div class="w-full h-1 bg-rule">
+<div class="bg-primary h-full" style="width: 98%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-mono-label text-[10px] uppercase">
+<span class="text-on-surface">Autonomy Index</span>
+<span class="text-primary">85%</span>
+</div>
+<div class="w-full h-1 bg-rule">
+<div class="bg-primary h-full" style="width: 85%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-mono-label text-[10px] uppercase">
+<span class="text-on-surface">Collaborative Speed</span>
+<span class="text-primary">92%</span>
+</div>
+<div class="w-full h-1 bg-rule">
+<div class="bg-primary h-full" style="width: 92%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Stack -->
+<div class="border border-rule p-6 space-y-4 bg-surface-container-lowest">
+<h2 class="font-mono-label text-mono-label text-primary uppercase tracking-[0.2em] mb-4">// TECH_STACK</h2>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 border border-rule font-mono-label text-[10px] text-body uppercase bg-background">Rust</span>
+<span class="px-3 py-1 border border-rule font-mono-label text-[10px] text-body uppercase bg-background">Kubernetes</span>
+<span class="px-3 py-1 border border-rule font-mono-label text-[10px] text-body uppercase bg-background">Python (JAX)</span>
+<span class="px-3 py-1 border border-rule font-mono-label text-[10px] text-body uppercase bg-background">PostgreSQL</span>
+<span class="px-3 py-1 border border-rule font-mono-label text-[10px] text-body uppercase bg-background">React/Next.js</span>
+<span class="px-3 py-1 border border-rule font-mono-label text-[10px] text-body uppercase bg-background">Apache Kafka</span>
+</div>
+</div>
+<!-- Leadership -->
+<div class="space-y-4">
+<h2 class="font-mono-label text-mono-label text-primary uppercase tracking-[0.2em] mb-4">// LEADERSHIP</h2>
+<div class="space-y-3">
+<div class="flex items-center gap-3 p-3 border border-rule bg-surface-container-lowest group hover:border-primary transition-colors">
+<div class="w-10 h-10 border border-rule overflow-hidden grayscale">
+<img alt="CEO" class="w-full h-full object-cover" data-alt="A professional monochrome headshot of a CEO in a high-tech corporate environment. The person has a serious expression, with sharp focus and direct eye contact. The lighting is dramatic and cinematic, using high contrast and sharp shadows to create a feeling of authority and elite professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlrA_L-ulAo5fAK6Ah9jbtMlre5aPslaE9xaU9D3VY2GEQsWjSuod7OJWMzSmxiDnhEi7U-QK-KiQ2oPguGXPq_rMB33a6sXTiT49sNH2klWSFb4OFmsWbA1qdRnQO-5rP2y_jEyv1cNIw4XLBjOYV2mmgKW1LKGXLkBG8k-11SuVikpzftuX_MAqdC8H3a8_o5klt7O7oiZPHjkkHHfJyyrFsf0yQSvksQb3N7XJlAXOaAv9UQdkCx42Y43np_KvZBxftKpnmoSEH"/>
+</div>
+<div>
+<h4 class="font-ui-sm text-ui-sm font-bold text-on-surface">Markus Voss</h4>
+<span class="font-mono-label text-[10px] text-dim uppercase">CEO / CO-FOUNDER</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 border border-rule bg-surface-container-lowest group hover:border-primary transition-colors">
+<div class="w-10 h-10 border border-rule overflow-hidden grayscale">
+<img alt="CTO" class="w-full h-full object-cover" data-alt="A sharp, black-and-white portrait of a female Chief Technology Officer in a minimalist office setting. She is wearing a modern blazer, with a confident and intelligent gaze. The background features subtle textures of glass and steel, lit with cool, neutral light to match the industrial brutalist design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-ZJP2CPXhuAm1Kdra4uBSa8Px7eECdY0StW32L9x0w4PLshnAa5kI8heF97WOGHNrRWM5pviXPR1DZvcxrFuGE1CfsD4tZXdHgTsQUoDJyLQhqOWxspRJ-uBGjuUww_i-PrLbVzcZwOtIfz6ssvDPYR-4g2LB4WNAyEu2k2ulnkEp9Znxd9SXAO4MRli1EsgKVu0QxK3sWhasZxsGTAzGtqK8QvsO2GU4hWFX41dB1o5u0rIqa3xsiWKD_LU4ED7QtOmTYMmcXIx7"/>
+</div>
+<div>
+<h4 class="font-ui-sm text-ui-sm font-bold text-on-surface">Elena Richter</h4>
+<span class="font-mono-label text-[10px] text-dim uppercase">CTO / ARCHITECT</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-rule mt-section-v-pad bg-background">
+<div class="max-w-max-width mx-auto px-margin py-12 flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-masthead-4xl text-ui-lg text-on-surface font-black uppercase tracking-tighter">POSTBOARD INDUSTRIAL</span>
+<span class="font-mono-label text-mono-label text-dim uppercase">© 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex gap-8">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-opacity hover:underline" href="#">Privacy Policy</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-opacity hover:underline" href="#">Terms of Service</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-opacity hover:underline" href="#">API Status</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-opacity hover:underline" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interactions for buttons
+        document.querySelectorAll('button, .cursor-pointer').forEach(el => {
+            el.addEventListener('mousedown', () => el.style.transform = 'scale(0.98)');
+            el.addEventListener('mouseup', () => el.style.transform = 'scale(1)');
+            el.addEventListener('mouseleave', () => el.style.transform = 'scale(1)');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | Company Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=DM+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for high-density feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        .press-grid-pattern {
+            background-image: radial-gradient(#1A1A1A 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "body": "#B8B8B8",
+                      "rule": "#1A1A1A",
+                      "outline": "#a88a7e",
+                      "on-primary-fixed": "#351000",
+                      "gradient-a": "#C084FC",
+                      "error-container": "#93000a",
+                      "surface-variant": "#353534",
+                      "secondary": "#c9c6c0",
+                      "inverse-primary": "#a14000",
+                      "surface-bright": "#3a3939",
+                      "gradient-b": "#60A5FA",
+                      "primary": "#ffb694",
+                      "on-primary-container": "#4c1a00",
+                      "on-error-container": "#ffdad6",
+                      "destructive": "#EF4444",
+                      "gradient-d": "#F59E0B",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "on-tertiary": "#313030",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "surface-container": "#201f1f",
+                      "on-primary": "#571f00",
+                      "on-tertiary-container": "#2a2a29",
+                      "gradient-c": "#34D399",
+                      "surface-container-low": "#1c1b1b",
+                      "tertiary-container": "#929090",
+                      "surface-tint": "#ffb694",
+                      "surface-container-highest": "#353534",
+                      "muted": "#2A2A2A",
+                      "live": "#22C55A",
+                      "inverse-surface": "#e5e2e1",
+                      "primary-fixed": "#ffdbcc",
+                      "secondary-container": "#474742",
+                      "surface": "#131313",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "primary-fixed-dim": "#ffb694",
+                      "on-background": "#e5e2e1",
+                      "tertiary-fixed": "#e5e2e1",
+                      "error": "#ffb4ab",
+                      "on-secondary-container": "#b7b5af",
+                      "live-dim": "#14532D",
+                      "dim": "#666666",
+                      "inverse-on-surface": "#313030",
+                      "surface-dim": "#131313",
+                      "on-surface-variant": "#e1c0b2",
+                      "background": "#131313",
+                      "surface-container-high": "#2a2a2a",
+                      "on-surface": "#e5e2e1",
+                      "primary-container": "#f06613",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "on-secondary-fixed-variant": "#474742",
+                      "outline-variant": "#594237",
+                      "on-error": "#690005",
+                      "tertiary": "#c8c6c5",
+                      "secondary-fixed": "#e5e2db",
+                      "on-secondary": "#31312c",
+                      "on-secondary-fixed": "#1c1c18"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sidebar-width": "220px",
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "gutter": "24px",
+                      "section-v-pad": "48px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "ui-xl": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "ui-lg": ["DM Sans"],
+                      "headline-2xl-mobile": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-base overflow-x-hidden pb-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 w-full bg-background border-b border-rule">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<h1 class="font-masthead-4xl text-headline-2xl-mobile tracking-tighter uppercase text-primary">POSTBOARD</h1>
+</div>
+<button class="font-mono-label text-mono-label text-primary border border-primary px-3 py-1 scale-95 active:opacity-80 transition-all">
+            ADMIN_MODE
+        </button>
+</header>
+<main class="mt-16 px-4 pt-6">
+<!-- Section Header -->
+<div class="mb-6">
+<p class="font-mono-label text-mono-label text-dim uppercase mb-1">// company_database</p>
+<h2 class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface">Company Management</h2>
+</div>
+<!-- Search & Filter Controls -->
+<div class="space-y-4 mb-8">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-dim" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border border-rule py-3 pl-10 pr-4 text-on-surface placeholder:text-muted focus:outline-none focus:border-primary-container font-mono-label text-mono-label uppercase" placeholder="SEARCH_BY_ID_OR_NAME..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex-shrink-0 bg-primary-container text-on-primary-container px-4 py-2 font-mono-label text-mono-label uppercase">Plan: ALL</button>
+<button class="flex-shrink-0 border border-rule px-4 py-2 font-mono-label text-mono-label uppercase text-dim">Status: ACTIVE</button>
+<button class="flex-shrink-0 border border-rule px-4 py-2 font-mono-label text-mono-label uppercase text-dim">Sort: NEWEST</button>
+</div>
+</div>
+<!-- Card Feed -->
+<section class="space-y-3">
+<!-- Company Card 1 -->
+<article class="bg-surface border border-rule p-4 group active:bg-surface-container transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-rule flex items-center justify-center">
+<img alt="Synthetix Logo" class="w-8 h-8 opacity-80" data-alt="A minimalist tech logo for a company called Synthetix, featuring sharp geometric lines and a monochrome black and white color scheme. The aesthetic is industrial and brutalist, perfectly fitting a high-end technical recruitment dashboard. Lighting is flat and high-contrast, evoking a professional architectural design firm's brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9qTzpZWcEdVNIuIeCTEOa2efgiK7pqK-ysK-AMeZ8gwk3rzOizGkexFSwA7R7RoKzPooo29Ul5glLKdBSD_DjW2iObunZCmyMoyCNb-ERYPLRCMCNh1BjEewF_VOp0cNuPlLLQEUxEnE6r9u4EvBBGTQzGEsXV1-gJYpeW-9OPxS_yhEv7jJJyVE2UFWxB9U3jPjyGz2CaDSc-qCZVeRxuor_gv4FINCvHlDOjxvHl13K-mWZFJa1LqsAb6ZmRSeACoqq50nifjKv"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface leading-none">Synthetix Labs</h3>
+<span class="font-mono-label text-[10px] text-dim uppercase">ID: SYN_88420</span>
+</div>
+</div>
+<span class="bg-live-dim/20 text-live px-2 py-0.5 font-mono-label text-[10px] uppercase border border-live/30">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-rule pt-4">
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// PLAN_TIER</p>
+<p class="font-ui-sm text-ui-sm text-primary uppercase font-bold">Enterprise</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// JOINED_DATE</p>
+<p class="font-ui-sm text-ui-sm text-on-surface-variant">OCT 12, 2023</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// JOB_COUNT</p>
+<p class="font-ui-sm text-ui-sm text-on-surface">142 Active</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// USER_COUNT</p>
+<p class="font-ui-sm text-ui-sm text-on-surface">28 Members</p>
+</div>
+</div>
+</article>
+<!-- Company Card 2 -->
+<article class="bg-surface border border-rule p-4 group active:bg-surface-container transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-rule flex items-center justify-center">
+<img alt="Aether Logo" class="w-8 h-8 opacity-80" data-alt="A clean, minimalist abstract logo for a company called Aether. The design uses stark geometric shapes in solid black and white, reflecting a brutalist and professional industrial aesthetic. The logo is displayed as a small mark on a textured, matte black surface with sharp studio lighting to emphasize its precision and technical nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjxVENz15lIf6WFS56bul54XaucTQQSlZT9VfWowg4x58xNfekTi2kFgMDMhvk7dsAbE2mTLRcmXBEKc-Aas2vXpuwzApEnLMSC8Gqa-JIgQ_oEvIxqkvJFXw1gKcJCvqvpUqf_R1BRci06tjhlNr---hTLrzd8opw4E69DU4kOesfXdY4lnd5MXHzWYqLgMvL-RBO1C-mX30Za85XCDdm-cufQRXQt1Fc4B5yp3y_1gDNUFb_0tCGn3u-PA6UXfrDbpI2Ni-eJc-t"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface leading-none">Aether Systems</h3>
+<span class="font-mono-label text-[10px] text-dim uppercase">ID: ATH_99122</span>
+</div>
+</div>
+<span class="bg-primary-container/10 text-primary px-2 py-0.5 font-mono-label text-[10px] uppercase border border-primary/30">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-rule pt-4">
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// PLAN_TIER</p>
+<p class="font-ui-sm text-ui-sm text-on-surface uppercase font-bold">Pro Tier</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// JOINED_DATE</p>
+<p class="font-ui-sm text-ui-sm text-on-surface-variant">JAN 05, 2024</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// JOB_COUNT</p>
+<p class="font-ui-sm text-ui-sm text-on-surface">12 Active</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// USER_COUNT</p>
+<p class="font-ui-sm text-ui-sm text-on-surface">5 Members</p>
+</div>
+</div>
+</article>
+<!-- Company Card 3 (Suspended) -->
+<article class="bg-surface border border-rule p-4 group active:bg-surface-container transition-colors opacity-70">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-rule flex items-center justify-center grayscale">
+<img alt="Vertex Logo" class="w-8 h-8 opacity-80" data-alt="A modern industrial logo for Vertex featuring a stylized 'V' made of heavy black bars. The style is strictly minimal and brutalist, set against a dark grey concrete texture background. The lighting is cold and top-down, creating sharp shadows that emphasize the logo's thickness and industrial weight within a professional UI framework." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwvLX82ZqZIW7Dbi4OIaZ68kO8hp99UemuyZYIOZus-GGFEagU0mX19lZY6KaPc7R1nAh3LBfDnKwkI9kNbRE36qOGpr_aEKnOkDrB0xLh1Y34E56U7QLNiMWKM8dqSRy9Y-t6RtE3fP1e_0fXZ9e_S0EU7IaAipSQRpFVKJp0v_w5TX-dOiU_xfoB5XchmUyFPd5eSPIhgkciYckNmhnBFc41747qSIN1URDsTZr0pN9vOukAUHzuV-kWE2JudmRfg0YrJP6YD9tN"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface leading-none">Vertex Global</h3>
+<span class="font-mono-label text-[10px] text-dim uppercase">ID: VTX_44001</span>
+</div>
+</div>
+<span class="bg-error/10 text-error px-2 py-0.5 font-mono-label text-[10px] uppercase border border-error/30">Suspended</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-rule pt-4">
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// PLAN_TIER</p>
+<p class="font-ui-sm text-ui-sm text-on-surface-variant uppercase font-bold">Free</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// JOINED_DATE</p>
+<p class="font-ui-sm text-ui-sm text-on-surface-variant">NOV 22, 2022</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// JOB_COUNT</p>
+<p class="font-ui-sm text-ui-sm text-on-surface">0 Active</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// USER_COUNT</p>
+<p class="font-ui-sm text-ui-sm text-on-surface">1 Member</p>
+</div>
+</div>
+</article>
+<!-- Company Card 4 -->
+<article class="bg-surface border border-rule p-4 group active:bg-surface-container transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-rule flex items-center justify-center">
+<img alt="Nebula Logo" class="w-8 h-8 opacity-80" data-alt="A minimalist logo for Nebula using a series of dots forming a circle. The aesthetic is monochromatic with pure blacks and off-whites, emphasizing a technical and data-driven company identity. The layout is clean and spacious, capturing the essence of high-end enterprise software within a professional, dark-mode dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-QV2EKSwBODOzZOJnEGLZGYhXRItlXg6UXSOuFtW2qFlCW3G-2_PQZJ4RiQ04bYXmYtxDoqcIftoHaqfCouBZx7DBaZNX_JjMIOVhSRuqWumsVEKzqJ2_Y6-bFhrMRpRJcmAc59da1aTCmXiedXsa3FaADBIx3-JNzihGfw603bJNe5YAahJqWKiTzVpyt980ziGrlpKbPsWLxLTPgZe1Tgv8flSZKMOwYjY2ZTo__vjp8XJrdRgbaziNBGJS1daD856PWCSLLBbm"/>
+</div>
+<div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface leading-none">Nebula Corp</h3>
+<span class="font-mono-label text-[10px] text-dim uppercase">ID: NEB_11204</span>
+</div>
+</div>
+<span class="bg-live-dim/20 text-live px-2 py-0.5 font-mono-label text-[10px] uppercase border border-live/30">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-rule pt-4">
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// PLAN_TIER</p>
+<p class="font-ui-sm text-ui-sm text-primary uppercase font-bold">Enterprise</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// JOINED_DATE</p>
+<p class="font-ui-sm text-ui-sm text-on-surface-variant">MAR 18, 2024</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// JOB_COUNT</p>
+<p class="font-ui-sm text-ui-sm text-on-surface">86 Active</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono-label text-[10px] text-dim uppercase">// USER_COUNT</p>
+<p class="font-ui-sm text-ui-sm text-on-surface">19 Members</p>
+</div>
+</div>
+</article>
+</section>
+<!-- Press Grid Decoration -->
+<div class="my-12 h-24 press-grid-pattern opacity-10"></div>
+</main>
+<!-- FAB: Add Company -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary-container text-on-primary-container flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-4 bg-surface-container-lowest border-t border-rule z-50">
+<a class="flex flex-col items-center justify-center text-dim p-1 group hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-mono-label text-[9px] uppercase">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim p-1 group hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="group">group</span>
+<span class="font-mono-label text-[9px] uppercase">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 p-1" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="business" style="font-variation-settings: 'FILL' 1;">business</span>
+<span class="font-mono-label text-[9px] uppercase">Companies</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim p-1 group hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="terminal">terminal</span>
+<span class="font-mono-label text-[9px] uppercase">Logs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim p-1 group hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-mono-label text-[9px] uppercase">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple touch feedback and micro-interactions
+        document.querySelectorAll('article').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.borderColor = '#ffb694';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.borderColor = '#1A1A1A';
+            });
+        });
+
+        // Filter button toggle visual logic
+        const filters = document.querySelectorAll('.overflow-x-auto button');
+        filters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filters.forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    b.classList.add('border-rule', 'text-dim');
+                });
+                btn.classList.add('bg-primary-container', 'text-on-primary-container');
+                btn.classList.remove('border-rule', 'text-dim');
+            });
+        });
+    </script>
+</body></html>

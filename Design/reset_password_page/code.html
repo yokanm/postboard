@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&amp;family=Playfair+Display:wght@700;900&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "dim": "#666666",
+                    "gradient-a": "#C084FC",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "on-secondary": "#31312c",
+                    "surface-bright": "#3a3939",
+                    "surface-dim": "#131313",
+                    "outline-variant": "#594237",
+                    "error-container": "#93000a",
+                    "gradient-d": "#F59E0B",
+                    "on-surface-variant": "#e1c0b2",
+                    "background": "#131313",
+                    "surface-variant": "#353534",
+                    "primary": "#ffb694",
+                    "outline": "#a88a7e",
+                    "on-tertiary-container": "#2a2a29",
+                    "on-primary": "#571f00",
+                    "surface-container-high": "#2a2a2a",
+                    "tertiary-fixed": "#e5e2e1",
+                    "rule": "#1A1A1A",
+                    "body": "#B8B8B8",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-container-low": "#1c1b1b",
+                    "secondary-container": "#474742",
+                    "inverse-on-surface": "#313030",
+                    "gradient-b": "#60A5FA",
+                    "tertiary-container": "#929090",
+                    "primary-fixed-dim": "#ffb694",
+                    "tertiary": "#c8c6c5",
+                    "on-tertiary": "#313030",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-primary-container": "#4c1a00",
+                    "secondary-fixed": "#e5e2db",
+                    "on-secondary-container": "#b7b5af",
+                    "on-primary-fixed": "#351000",
+                    "on-error-container": "#ffdad6",
+                    "live-dim": "#14532D",
+                    "secondary": "#c9c6c0",
+                    "muted": "#2A2A2A",
+                    "live": "#22C55A",
+                    "surface-container": "#201f1f",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary-fixed": "#1c1c18",
+                    "on-secondary-fixed-variant": "#474742",
+                    "secondary-fixed-dim": "#c9c6c0",
+                    "destructive": "#EF4444",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "surface-container-highest": "#353534",
+                    "surface": "#131313",
+                    "primary-container": "#f06613",
+                    "surface-tint": "#ffb694",
+                    "inverse-primary": "#a14000",
+                    "surface-container-lowest": "#0e0e0e",
+                    "error": "#ffb4ab",
+                    "gradient-c": "#34D399"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "sidebar-width": "220px",
+                    "section-v-pad": "48px",
+                    "max-width": "1280px",
+                    "margin": "32px"
+            },
+            "fontFamily": {
+                    "ui-xl": ["DM Sans"],
+                    "masthead-4xl": ["Playfair Display"],
+                    "headline-2xl": ["Playfair Display"],
+                    "ui-lg": ["DM Sans"],
+                    "ui-sm": ["DM Sans"],
+                    "mono-label": ["JetBrains Mono"],
+                    "body-base": ["DM Sans"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 1px;
+            background-color: #1A1A1A;
+        }
+        .press-tile {
+            aspect-ratio: 1;
+            background-color: #080808;
+            transition: all 0.3s ease;
+        }
+        .press-tile:hover {
+            background-color: #ffb694;
+            transform: scale(0.95);
+        }
+        .stipple-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        input:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        .segment-transition {
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-base antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<main class="flex min-h-screen">
+<!-- Left Brand Panel -->
+<section class="hidden lg:flex flex-col w-1/2 p-margin border-r border-rule relative overflow-hidden bg-surface">
+<div class="absolute inset-0 stipple-overlay"></div>
+<div class="z-10 flex flex-col h-full justify-between">
+<div>
+<h1 class="font-masthead-4xl text-masthead-4xl text-primary mb-unit">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-dim uppercase tracking-[0.2em]">// TECHNICAL_RECRUITMENT_OS</p>
+</div>
+<!-- Press Grid Component -->
+<div class="w-full max-w-md my-12">
+<div class="press-grid border border-rule">
+<!-- Tiles generated via JS for density -->
+<script>
+                            const grid = document.currentScript.parentElement;
+                            for(let i=0; i<64; i++) {
+                                const tile = document.createElement('div');
+                                tile.className = 'press-tile';
+                                if (Math.random() > 0.8) {
+                                    const gradients = ['bg-gradient-a', 'bg-gradient-b', 'bg-gradient-c', 'bg-gradient-d'];
+                                    tile.classList.add(gradients[Math.floor(Math.random() * gradients.length)]);
+                                    tile.style.opacity = '0.6';
+                                }
+                                grid.appendChild(tile);
+                            }
+                        </script>
+</div>
+</div>
+<div class="max-w-sm">
+<p class="font-headline-2xl text-headline-2xl text-on-surface leading-tight">
+                        Precision engineering for high-density talent pipelines.
+                    </p>
+<div class="mt-8 pt-8 border-t border-rule">
+<p class="font-mono-label text-mono-label text-dim uppercase tracking-widest leading-loose">
+                            AUTH_SESSION_V4.2<br/>
+                            SECURE_HANDSHAKE_PENDING...
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Form Panel -->
+<section class="flex-1 flex flex-col items-center justify-center p-gutter lg:p-margin bg-surface-container-lowest relative">
+<div class="w-full max-w-md space-y-12">
+<!-- Success/Standard State -->
+<div class="space-y-8" id="reset-form-container">
+<div>
+<span class="font-mono-label text-mono-label text-dim uppercase tracking-widest">// NEW_PASSWORD</span>
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface mt-2">Choose a new password</h2>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<div class="space-y-4">
+<!-- New Password Input -->
+<div class="space-y-2">
+<div class="relative group">
+<input class="w-full bg-background border border-rule px-4 py-4 text-on-surface placeholder:text-dim font-ui-sm focus:border-primary transition-colors pr-12" id="new-password" placeholder="New password" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-dim hover:text-on-surface transition-colors" onclick="togglePassword('new-password')" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<!-- Strength Indicator -->
+<div class="space-y-2 pt-2">
+<div class="flex gap-1 h-1">
+<div class="flex-1 bg-rule segment-transition" id="seg-1"></div>
+<div class="flex-1 bg-rule segment-transition" id="seg-2"></div>
+<div class="flex-1 bg-rule segment-transition" id="seg-3"></div>
+<div class="flex-1 bg-rule segment-transition" id="seg-4"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-mono-label text-mono-label text-dim uppercase" id="strength-label">STRENGTH: EMPTY</span>
+</div>
+</div>
+</div>
+<!-- Confirm Password Input -->
+<div class="relative group">
+<input class="w-full bg-background border border-rule px-4 py-4 text-on-surface placeholder:text-dim font-ui-sm focus:border-primary transition-colors pr-12" id="confirm-password" placeholder="Confirm password" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-dim hover:text-on-surface transition-colors" onclick="togglePassword('confirm-password')" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-ui-lg py-4 border border-primary-container hover:bg-transparent hover:text-primary transition-all active:scale-[0.98]" type="submit">
+                            SET NEW PASSWORD
+                        </button>
+<div class="text-center">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors uppercase tracking-widest inline-flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-[14px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                Back to login
+                            </a>
+</div>
+</form>
+</div>
+<!-- Error State (Hidden by default, used for demonstration) -->
+<div class="hidden border border-destructive bg-surface p-8 space-y-6" id="error-container">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-destructive">error</span>
+<div class="space-y-1">
+<span class="font-mono-label text-mono-label text-destructive uppercase tracking-widest">// LINK_EXPIRED</span>
+<p class="font-ui-lg text-on-surface">This reset link has expired or is invalid.</p>
+</div>
+</div>
+<div class="pt-4 border-t border-rule flex justify-between items-center">
+<button class="font-mono-label text-mono-label text-dim hover:text-on-surface uppercase tracking-widest border border-transparent hover:border-rule px-4 py-2 transition-all">
+                            [ REQUEST A NEW LINK ]
+                        </button>
+<button class="text-xs text-dim underline opacity-50" onclick="toggleErrorDemo()">Demo Toggle</button>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="absolute bottom-margin left-gutter right-gutter lg:left-margin lg:right-margin flex justify-between items-end pointer-events-none">
+<span class="font-mono-label text-mono-label text-dim/30 hidden lg:block">SYS_STATUS: READY</span>
+<span class="font-mono-label text-mono-label text-dim/30">POSTBOARD_V1.0.0</span>
+</div>
+</div>
+<!-- Global Demo Toggle -->
+<button class="fixed top-4 right-4 text-[10px] text-dim/20 hover:text-dim font-mono-label uppercase tracking-tighter" onclick="toggleErrorDemo()">
+                Debug: Toggle Error State
+            </button>
+</section>
+</main>
+<script>
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            const icon = input.nextElementSibling.querySelector('.material-symbols-outlined');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        }
+
+        function toggleErrorDemo() {
+            const form = document.getElementById('reset-form-container');
+            const error = document.getElementById('error-container');
+            form.classList.toggle('hidden');
+            error.classList.toggle('hidden');
+        }
+
+        const passwordInput = document.getElementById('new-password');
+        const segments = [
+            document.getElementById('seg-1'),
+            document.getElementById('seg-2'),
+            document.getElementById('seg-3'),
+            document.getElementById('seg-4')
+        ];
+        const label = document.getElementById('strength-label');
+
+        passwordInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            let strength = 0;
+            
+            if (val.length > 0) strength = 1;
+            if (val.length > 5) strength = 2;
+            if (val.length > 8 && /[A-Z]/.test(val)) strength = 3;
+            if (val.length > 10 && /[!@#$%^&*]/.test(val)) strength = 4;
+
+            segments.forEach((seg, i) => {
+                seg.className = 'flex-1 segment-transition bg-rule';
+                if (i < strength) {
+                    if (strength === 1) {
+                        seg.classList.replace('bg-rule', 'bg-destructive');
+                        label.innerText = 'STRENGTH: WEAK';
+                        label.className = 'font-mono-label text-mono-label text-destructive uppercase';
+                    } else if (strength === 2 || strength === 3) {
+                        seg.classList.replace('bg-rule', 'bg-gradient-d');
+                        label.innerText = 'STRENGTH: FAIR';
+                        label.className = 'font-mono-label text-mono-label text-gradient-d uppercase';
+                    } else if (strength === 4) {
+                        seg.classList.replace('bg-rule', 'bg-live');
+                        label.innerText = 'STRENGTH: STRONG';
+                        label.className = 'font-mono-label text-mono-label text-live uppercase';
+                    }
+                }
+            });
+
+            if (val.length === 0) {
+                label.innerText = 'STRENGTH: EMPTY';
+                label.className = 'font-mono-label text-mono-label text-dim uppercase';
+            }
+        });
+    </script>
+</body></html>

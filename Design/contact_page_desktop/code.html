@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostBoard // Contact</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#c8c6c5",
+                        "tertiary-fixed": "#e5e2e1",
+                        "secondary": "#c9c6c0",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#1c1c18",
+                        "on-secondary-container": "#b7b5af",
+                        "on-secondary-fixed-variant": "#474742",
+                        "error-container": "#93000a",
+                        "secondary-container": "#474742",
+                        "outline-variant": "#594237",
+                        "on-primary-fixed": "#351000",
+                        "primary-fixed": "#ffdbcc",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-container": "#4c1a00",
+                        "inverse-primary": "#a14000",
+                        "gradient-c": "#34D399",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#e1c0b2",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "live": "#22C55A",
+                        "tertiary-container": "#929090",
+                        "muted": "#2A2A2A",
+                        "gradient-b": "#60A5FA",
+                        "on-secondary": "#31312c",
+                        "surface-variant": "#353534",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "body": "#B8B8B8",
+                        "on-tertiary": "#313030",
+                        "primary-fixed-dim": "#ffb694",
+                        "secondary-fixed": "#e5e2db",
+                        "on-error": "#690005",
+                        "gradient-d": "#F59E0B",
+                        "surface-tint": "#ffb694",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#3a3939",
+                        "primary-container": "#f06613",
+                        "background": "#080808",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "on-primary": "#080808",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "destructive": "#EF4444",
+                        "rule": "#1A1A1A",
+                        "primary": "#E8610A",
+                        "surface-container": "#0F0F0F",
+                        "dim": "#666666",
+                        "outline": "#a88a7e",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-container": "#2a2a29",
+                        "surface-dim": "#131313",
+                        "live-dim": "#14532D",
+                        "gradient-a": "#C084FC",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "section-v-pad": "48px",
+                        "margin": "32px",
+                        "sidebar-width": "220px",
+                        "max-width": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-sm": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "body-base": ["DM Sans"],
+                        "ui-xl": ["DM Sans"],
+                        "ui-lg": ["DM Sans"],
+                        "headline-2xl-mobile": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["11px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "headline-2xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "ui-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "masthead-4xl": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "body-base": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "ui-xl": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "ui-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "headline-2xl-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .press-grid-bg {
+            background-image: 
+                linear-gradient(to right, #1A1A1A 1px, transparent 1px),
+                linear-gradient(to bottom, #1A1A1A 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        /* Custom scrollbar to fit the aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+            border-left: 1px solid #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E8610A;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-base text-body-base antialiased min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 w-full z-50 bg-background dark:bg-background border-b border-rule flat no shadows">
+<div class="flex justify-between items-center h-16 px-margin max-w-max-width mx-auto">
+<!-- Brand -->
+<a class="font-masthead-4xl text-[32px] md:text-[40px] text-primary uppercase tracking-tighter leading-none" href="#" style="font-size: 36px; line-height: 1;">
+                POSTBOARD
+            </a>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors hover:bg-surface-variant transition-all duration-75 px-2 py-1" href="#">Jobs</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors hover:bg-surface-variant transition-all duration-75 px-2 py-1" href="#">Companies</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors hover:bg-surface-variant transition-all duration-75 px-2 py-1" href="#">Features</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors hover:bg-surface-variant transition-all duration-75 px-2 py-1" href="#">Pricing</a>
+<!-- Active State Example (Assuming About/Contact is active) -->
+<a class="text-primary border-b border-primary pb-1 font-ui-sm hover:bg-surface-variant transition-all duration-75 px-2" href="#">About</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-on-background border border-rule px-4 py-1.5 font-ui-sm hover:bg-surface-variant transition-colors">
+                    Sign Up
+                </button>
+<button class="bg-primary text-on-primary px-4 py-1.5 font-ui-sm font-semibold hover:bg-primary-fixed transition-colors flex items-center gap-2">
+                    Post a Job
+                    <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">login</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[120px] pb-section-v-pad px-margin max-w-max-width mx-auto w-full relative">
+<!-- Decorative subtle background element -->
+<div class="absolute top-0 right-0 w-1/3 h-96 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none z-[-1] opacity-50 blur-3xl"></div>
+<!-- Hero Section -->
+<section class="mb-24 relative">
+<div class="flex flex-col md:flex-row justify-between items-end border-b border-rule pb-8">
+<div class="max-w-2xl">
+<p class="font-mono-label text-mono-label uppercase text-dim mb-4 tracking-widest">// CONTACT_GATEWAY</p>
+<h1 class="font-masthead-4xl text-[64px] md:text-masthead-4xl text-on-background leading-none tracking-tighter">We'd Love To Hear From You.</h1>
+</div>
+<div class="mt-8 md:mt-0 text-right">
+<p class="font-mono-label text-mono-label text-dim">SYS_STATUS: <span class="text-live">ONLINE</span></p>
+<p class="font-mono-label text-mono-label text-dim">RESPONSE_TIME: &lt;24H</p>
+</div>
+</div>
+</section>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Contact Methods & Info (4 Cols) -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- Routing Cards -->
+<div class="font-mono-label text-mono-label uppercase text-dim mb-2">// DIRECT_ROUTING</div>
+<!-- Support Card -->
+<a class="group block bg-surface-container border border-rule p-6 hover:border-primary transition-colors" href="#form-target">
+<div class="flex items-center justify-between mb-4">
+<div class="w-10 h-10 bg-background border border-rule flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-dim group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">support_agent</span>
+</div>
+<span class="material-symbols-outlined text-dim group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_outward</span>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-background mb-1">General Support</h3>
+<p class="font-ui-sm text-ui-sm text-dim">Account issues, billing, and platform navigation.</p>
+</a>
+<!-- Recruiter Card -->
+<a class="group block bg-surface-container border border-rule p-6 hover:border-primary transition-colors" href="#form-target">
+<div class="flex items-center justify-between mb-4">
+<div class="w-10 h-10 bg-background border border-rule flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-dim group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">business_center</span>
+</div>
+<span class="material-symbols-outlined text-dim group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_outward</span>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-background mb-1">Recruiter Support</h3>
+<p class="font-ui-sm text-ui-sm text-dim">Job posting limits, analytics, and enterprise features.</p>
+</a>
+<!-- Partnerships Card -->
+<a class="group block bg-surface-container border border-rule p-6 hover:border-primary transition-colors" href="#form-target">
+<div class="flex items-center justify-between mb-4">
+<div class="w-10 h-10 bg-background border border-rule flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-dim group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">handshake</span>
+</div>
+<span class="material-symbols-outlined text-dim group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_outward</span>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-background mb-1">Partnerships</h3>
+<p class="font-ui-sm text-ui-sm text-dim">API access, integrations, and strategic alliances.</p>
+</a>
+<!-- Office Info -->
+<div class="mt-8 border-t border-rule pt-6">
+<div class="font-mono-label text-mono-label uppercase text-dim mb-4">// HQ_COORDINATES</div>
+<div class="bg-surface-container border border-rule p-4">
+<p class="font-ui-sm text-ui-sm text-on-background font-semibold">PostBoard Industrial Systems</p>
+<p class="font-mono-label text-mono-label text-dim mt-2">
+                            100 Terminal Way, Floor 4<br/>
+                            San Francisco, CA 94105<br/>
+                            UNITED STATES
+                        </p>
+</div>
+</div>
+</div>
+<!-- Right Column: Form (8 Cols) -->
+<div class="md:col-span-8 mt-12 md:mt-0" id="form-target">
+<div class="bg-surface-container border border-rule p-8 relative overflow-hidden">
+<!-- Decorative Top Bar -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-gradient-b to-transparent"></div>
+<div class="font-mono-label text-mono-label uppercase text-dim mb-8 border-b border-rule pb-2 flex justify-between">
+<span>// TRANSMISSION_FORM</span>
+<span>REQ_ID: #409-A</span>
+</div>
+<form action="#" class="space-y-8" method="POST">
+<!-- Basics Section -->
+<div>
+<h4 class="font-mono-label text-mono-label text-primary mb-4">// BASICS</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase" for="full_name">Full Name</label>
+<input class="w-full bg-background border border-rule text-on-background font-ui-sm text-ui-sm px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-surface-variant transition-colors" id="full_name" name="full_name" placeholder="Jane Doe" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase" for="email">Email Address</label>
+<input class="w-full bg-background border border-rule text-on-background font-ui-sm text-ui-sm px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-surface-variant transition-colors" id="email" name="email" placeholder="jane@company.com" required="" type="email"/>
+</div>
+</div>
+</div>
+<!-- Inquiry Section -->
+<div class="border-t border-rule pt-6">
+<h4 class="font-mono-label text-mono-label text-primary mb-4">// INQUIRY</h4>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase" for="subject">Subject</label>
+<select class="w-full bg-background border border-rule text-on-background font-ui-sm text-ui-sm px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer" id="subject" name="subject">
+<option value="support">General Support</option>
+<option value="recruiter">Recruiter / Billing</option>
+<option value="api">API / Integrations</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase flex justify-between" for="message">
+<span>Message Payload</span>
+<span class="text-surface-variant">Max 2000 chars</span>
+</label>
+<textarea class="w-full bg-background border border-rule text-on-background font-mono-label text-mono-label px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-surface-variant transition-colors resize-y" id="message" name="message" placeholder="Describe your issue or inquiry in detail..." required="" rows="6"></textarea>
+</div>
+</div>
+</div>
+<!-- Submit Action -->
+<div class="border-t border-rule pt-6 flex items-center justify-between">
+<p class="font-mono-label text-mono-label text-dim hidden md:block">By transmitting, you agree to our <a class="text-on-background underline hover:text-primary" href="#">Privacy Policy</a>.</p>
+<button class="bg-primary text-on-primary px-8 py-3 font-mono-label text-mono-label uppercase font-bold hover:bg-primary-fixed transition-colors flex items-center gap-2 group w-full md:w-auto justify-center" type="submit">
+                                Transmit Message
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer from JSON -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full border-t border-rule flat no shadows mt-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter py-section-v-pad px-margin max-w-max-width mx-auto">
+<!-- Brand Column -->
+<div class="col-span-2 md:col-span-1 flex flex-col gap-4">
+<span class="font-masthead-4xl text-[32px] text-on-surface-variant leading-none tracking-tighter uppercase">PostBoard</span>
+<p class="font-mono-label text-mono-label text-dim uppercase">© 2024 POSTBOARD INDUSTRIAL SYSTEMS // ALL RIGHTS RESERVED</p>
+</div>
+<!-- Links Column 1 -->
+<div class="flex flex-col gap-2">
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Product</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Features</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Pricing</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">API</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col gap-2">
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Company</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">About</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Careers</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Press</a>
+</div>
+<!-- Links Column 3 -->
+<div class="flex flex-col gap-2">
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Legal</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Privacy</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Terms</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Security</a>
+</div>
+</div>
+</footer>
+</body></html>

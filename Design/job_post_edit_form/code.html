@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD // Job Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=DM+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for technical look */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0e0e0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffb694;
+        }
+        /* Remove default focus ring for zero-radius precision */
+        input:focus, textarea:focus, select:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        .visibility-card[data-active="true"] {
+            border-color: #f06613 !important;
+            background: #201f1f;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#e5e2e1",
+                      "on-surface-variant": "#e1c0b2",
+                      "on-primary": "#571f00",
+                      "surface-container-highest": "#353534",
+                      "dim": "#666666",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "live": "#22C55A",
+                      "muted": "#2A2A2A",
+                      "inverse-on-surface": "#313030",
+                      "surface-variant": "#353534",
+                      "gradient-d": "#F59E0B",
+                      "on-secondary": "#31312c",
+                      "body": "#B8B8B8",
+                      "inverse-primary": "#a14000",
+                      "on-secondary-fixed-variant": "#474742",
+                      "outline": "#a88a7e",
+                      "surface-tint": "#ffb694",
+                      "surface-container-high": "#2a2a2a",
+                      "secondary": "#c9c6c0",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "on-error": "#690005",
+                      "gradient-a": "#C084FC",
+                      "secondary-fixed": "#e5e2db",
+                      "primary": "#ffb694",
+                      "tertiary-container": "#929090",
+                      "on-primary-fixed": "#351000",
+                      "primary-fixed": "#ffdbcc",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "on-primary-container": "#4c1a00",
+                      "error": "#ffb4ab",
+                      "error-container": "#93000a",
+                      "tertiary": "#c8c6c5",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "primary-container": "#f06613",
+                      "tertiary-fixed": "#e5e2e1",
+                      "surface-dim": "#131313",
+                      "surface-bright": "#3a3939",
+                      "secondary-container": "#474742",
+                      "rule": "#1A1A1A",
+                      "background": "#131313",
+                      "on-secondary-fixed": "#1c1c18",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-tertiary": "#313030",
+                      "outline-variant": "#594237",
+                      "surface-container-low": "#1c1b1b",
+                      "on-tertiary-container": "#2a2a29",
+                      "surface": "#131313",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "gradient-c": "#34D399",
+                      "destructive": "#EF4444",
+                      "on-surface": "#e5e2e1",
+                      "on-background": "#e5e2e1",
+                      "on-secondary-container": "#b7b5af",
+                      "gradient-b": "#60A5FA",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed-dim": "#ffb694",
+                      "surface-container": "#201f1f",
+                      "live-dim": "#14532D"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-v-pad": "48px",
+                      "margin": "32px",
+                      "max-width": "1280px",
+                      "gutter": "24px",
+                      "unit": "4px",
+                      "sidebar-width": "220px"
+              },
+              "fontFamily": {
+                      "headline-2xl": ["Playfair Display"],
+                      "mono-label": ["JetBrains Mono"],
+                      "ui-lg": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "ui-xl": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "headline-2xl-mobile": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-base antialiased">
+<!-- SIDEBAR ANCHOR -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-lowest border-r border-rule flex flex-col py-margin px-4 z-40">
+<div class="mb-10">
+<h1 class="font-headline-2xl text-ui-lg text-primary-container tracking-tight">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-dim mt-1">// ADMIN_PANEL</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-mono-label text-mono-label uppercase">Dashboard</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors bg-primary-container text-on-primary font-bold" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_tree">account_tree</span>
+<span class="font-mono-label text-mono-label uppercase">Active Pipeline</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+<span class="font-mono-label text-mono-label uppercase">Talent Pool</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="monitoring">monitoring</span>
+<span class="font-mono-label text-mono-label uppercase">Analytics</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="domain">domain</span>
+<span class="font-mono-label text-mono-label uppercase">Company Profile</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-mono-label text-mono-label uppercase">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-margin space-y-1">
+<button class="w-full bg-primary-container text-on-primary font-mono-label text-mono-label py-3 uppercase mb-6 hover:brightness-110 transition-all active:scale-[0.98]">
+                Create New Listing
+            </button>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="help">help</span>
+<span class="font-mono-label text-mono-label uppercase">Support</span>
+</a>
+<a class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="description">description</span>
+<span class="font-mono-label text-mono-label uppercase">Documentation</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="ml-sidebar-width min-h-screen pb-24">
+<div class="max-w-[720px] mx-auto pt-20 px-6">
+<!-- HEADER -->
+<header class="mb-12 border-b border-rule pb-8">
+<span class="font-mono-label text-mono-label text-primary-container">// post_new_role</span>
+<h2 class="font-headline-2xl text-on-surface mt-2">Post a Job</h2>
+</header>
+<!-- FORM START -->
+<form class="space-y-16" id="jobForm">
+<!-- BASICS -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="font-mono-label text-mono-label text-dim uppercase">// basics</span>
+<div class="h-px bg-rule flex-grow"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">Job Title</label>
+<input class="w-full bg-background border border-rule text-on-surface p-3 focus:border-primary-container transition-colors" placeholder="e.g. Senior Systems Engineer" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">Company Name</label>
+<input class="w-full bg-background border border-rule text-on-surface p-3 focus:border-primary-container transition-colors" placeholder="Postboard Industrial" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">Location</label>
+<input class="w-full bg-background border border-rule text-on-surface p-3 focus:border-primary-container transition-colors" placeholder="Remote (Global) / Austin, TX" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">Job Type</label>
+<select class="w-full bg-background border border-rule text-on-surface p-3 focus:border-primary-container transition-colors appearance-none">
+<option>Full-time</option>
+<option>Contract</option>
+<option>Freelance</option>
+<option>Internship</option>
+</select>
+</div>
+</div>
+</section>
+<!-- DESCRIPTION -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="font-mono-label text-mono-label text-dim uppercase">// description</span>
+<div class="h-px bg-rule flex-grow"></div>
+</div>
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">Role Overview</label>
+<textarea class="w-full bg-background border border-rule text-on-surface p-3 focus:border-primary-container transition-colors resize-none" placeholder="Describe the mission, the team, and the immediate challenges..." rows="6"></textarea>
+</div>
+</section>
+<!-- REQUIREMENTS -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="font-mono-label text-mono-label text-dim uppercase">// requirements</span>
+<div class="h-px bg-rule flex-grow"></div>
+</div>
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">Technical Requirements</label>
+<textarea class="w-full bg-background border border-rule text-on-surface p-3 focus:border-primary-container transition-colors resize-none" placeholder="List essential skills, years of experience, and tech stack expectations..." rows="6"></textarea>
+</div>
+</section>
+<!-- COMPENSATION -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="font-mono-label text-mono-label text-dim uppercase">// compensation</span>
+<div class="h-px bg-rule flex-grow"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-6">
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">Min Salary (USD)</label>
+<input class="w-full bg-background border border-rule text-on-surface p-3 focus:border-primary-container transition-colors" placeholder="120000" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">Max Salary (USD)</label>
+<input class="w-full bg-background border border-rule text-on-surface p-3 focus:border-primary-container transition-colors" placeholder="180000" type="number"/>
+</div>
+</div>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-rule peer-checked:bg-primary-container transition-colors"></div>
+<div class="absolute left-0.5 top-0.5 bg-on-surface w-4 h-4 transition-transform peer-checked:translate-x-5"></div>
+</div>
+<span class="font-mono-label text-mono-label text-body uppercase group-hover:text-on-surface transition-colors">Show salary publicly</span>
+</label>
+</section>
+<!-- VISIBILITY -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="font-mono-label text-mono-label text-dim uppercase">// visibility</span>
+<div class="h-px bg-rule flex-grow"></div>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div class="visibility-card border border-rule p-6 cursor-pointer text-center group transition-all" data-active="true" onclick="setVisibility(this, 'Public')">
+<span class="material-symbols-outlined text-primary-container mb-2" data-icon="public">public</span>
+<div class="font-mono-label text-mono-label uppercase text-on-surface">Public</div>
+</div>
+<div class="visibility-card border border-rule p-6 cursor-pointer text-center group transition-all" onclick="setVisibility(this, 'Unlisted')">
+<span class="material-symbols-outlined text-dim group-hover:text-primary-container transition-colors mb-2" data-icon="visibility_off">visibility_off</span>
+<div class="font-mono-label text-mono-label uppercase text-dim group-hover:text-on-surface transition-colors">Unlisted</div>
+</div>
+<div class="visibility-card border border-rule p-6 cursor-pointer text-center group transition-all" onclick="setVisibility(this, 'Draft')">
+<span class="material-symbols-outlined text-dim group-hover:text-primary-container transition-colors mb-2" data-icon="edit_note">edit_note</span>
+<div class="font-mono-label text-mono-label uppercase text-dim group-hover:text-on-surface transition-colors">Draft</div>
+</div>
+</div>
+</section>
+<!-- SUBMIT ACTIONS -->
+<footer class="pt-12 flex justify-end items-center gap-6 border-t border-rule">
+<button class="font-mono-label text-mono-label text-dim uppercase hover:text-on-surface transition-colors" type="button">
+                        Save Draft
+                    </button>
+<button class="bg-primary-container text-on-primary font-mono-label text-mono-label px-12 py-4 uppercase font-bold hover:brightness-110 active:scale-95 transition-all" type="submit">
+                        Publish Role
+                    </button>
+</footer>
+</form>
+</div>
+</main>
+<!-- FOOTER ANCHOR -->
+<footer class="ml-sidebar-width bg-background border-t border-rule">
+<div class="max-w-max-width mx-auto px-margin py-unit flex flex-col md:flex-row justify-between items-center gap-gutter min-h-[80px]">
+<p class="font-mono-label text-mono-label text-dim uppercase">© 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-6">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-all" href="#">API Status</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-all" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        function setVisibility(el, type) {
+            // Remove active states
+            document.querySelectorAll('.visibility-card').forEach(card => {
+                card.setAttribute('data-active', 'false');
+                card.classList.remove('border-primary-container');
+                const icon = card.querySelector('.material-symbols-outlined');
+                const label = card.querySelector('.font-mono-label');
+                icon.classList.replace('text-primary-container', 'text-dim');
+                label.classList.replace('text-on-surface', 'text-dim');
+            });
+            
+            // Set new active state
+            el.setAttribute('data-active', 'true');
+            const activeIcon = el.querySelector('.material-symbols-outlined');
+            const activeLabel = el.querySelector('.font-mono-label');
+            activeIcon.classList.replace('text-dim', 'text-primary-container');
+            activeLabel.classList.replace('text-dim', 'text-on-surface');
+            
+            console.log(`Visibility set to: ${type}`);
+        }
+
+        // Simple form interception
+        document.getElementById('jobForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'PROCESSING...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerText = 'PUBLISHED ✓';
+                btn.classList.replace('bg-primary-container', 'bg-live');
+                btn.classList.replace('text-on-primary', 'text-white');
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.replace('bg-live', 'bg-primary-container');
+                    btn.classList.replace('text-white', 'text-on-primary');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1000);
+        });
+    </script>
+</body></html>

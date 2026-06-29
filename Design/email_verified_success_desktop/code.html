@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Email Verified - PostBoard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#e5e2e1",
+                        "body": "#B8B8B8",
+                        "on-surface-variant": "#e1c0b2",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#351000",
+                        "gradient-b": "#60A5FA",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "surface-bright": "#3a3939",
+                        "on-surface": "#e5e2e1",
+                        "surface-tint": "#ffb694",
+                        "on-primary": "#571f00",
+                        "dim": "#666666",
+                        "destructive": "#EF4444",
+                        "live-dim": "#14532D",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#31312c",
+                        "gradient-c": "#34D399",
+                        "surface-variant": "#353534",
+                        "secondary-fixed": "#e5e2db",
+                        "on-tertiary": "#313030",
+                        "primary": "#ffb694",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#929090",
+                        "muted": "#2A2A2A",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed": "#ffdbcc",
+                        "inverse-on-surface": "#313030",
+                        "background": "#131313",
+                        "on-secondary-fixed-variant": "#474742",
+                        "surface": "#131313",
+                        "primary-container": "#f06613",
+                        "on-secondary-container": "#b7b5af",
+                        "on-background": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "surface-container": "#201f1f",
+                        "rule": "#1A1A1A",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "secondary-container": "#474742",
+                        "on-primary-container": "#4c1a00",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "primary-fixed-dim": "#ffb694",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#594237",
+                        "error-container": "#93000a",
+                        "outline": "#a88a7e",
+                        "inverse-primary": "#a14000",
+                        "tertiary": "#c8c6c5",
+                        "live": "#22C55A",
+                        "secondary": "#c9c6c0",
+                        "gradient-d": "#F59E0B",
+                        "gradient-a": "#C084FC",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-secondary-fixed": "#1c1c18",
+                        "accent-amber": "#E8610A"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    spacing: {
+                        "unit": "4px",
+                        "section-v-pad": "48px",
+                        "max-width": "1280px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "sidebar-width": "220px"
+                    },
+                    fontFamily: {
+                        "body-base": ["DM Sans"],
+                        "ui-lg": ["DM Sans"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-sm": ["DM Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "ui-xl": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"]
+                    },
+                    fontSize: {
+                        "body-base": ["15px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "ui-lg": ["18px", { lineHeight: "1.5", fontWeight: "600" }],
+                        "headline-2xl": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "ui-sm": ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "mono-label": ["11px", { lineHeight: "1.4", letterSpacing: "0.05em", fontWeight: "400" }],
+                        "headline-2xl-mobile": ["24px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "ui-xl": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "masthead-4xl": ["96px", { lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "900" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .press-grid-bg {
+            background-image: 
+                linear-gradient(to right, #1A1A1A 1px, transparent 1px),
+                linear-gradient(to bottom, #1A1A1A 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface h-screen w-full overflow-hidden flex flex-col md:flex-row">
+<!-- Left Panel: Branding / Editorial Image -->
+<div class="hidden md:flex flex-col w-1/2 h-full border-r border-rule bg-surface-container-lowest relative overflow-hidden">
+<div class="absolute inset-0 press-grid-bg opacity-30 z-0"></div>
+<!-- Background Image overlaying grid slightly -->
+<div class="absolute inset-0 z-10 opacity-40 mix-blend-luminosity grayscale" data-alt="A highly textured, macro photograph of industrial printing press rollers in motion, stark black and white with extreme contrast. Thick ink spreading across metal cylinders. The lighting is harsh, directional, and dramatic, emphasizing the mechanical nature of mass communication. The mood is heavy, precise, and utilitarian, fitting a dark mode industrial broadsheet aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC3Sk2xlaoVgIfjvWnL2WjtArwQFAVVkEHXItuJRzZH0GqftrnSTzM7eeMJfcoAyH3e-tkbk-xCPv8DKeRIhLV5CzO8fHLXg0uJbUjJmxu_9b15acQ64uBUt3-AvrOJj7XY6qWOzQoU_0K5dG35MtPHm0BEMqVls_oOnaVaqjbQ5OVyYTkeJqaLptLtKiSCJ7FmaLuuHgXDJ1QFHbBxWcgnYKimsMilIeDfwb-AlzlLPhTtOwu7XHoZwBwZ6vtz-axJCFm-lXau7KL_')"></div>
+<div class="relative z-20 flex flex-col justify-between h-full p-margin">
+<div>
+<h1 class="font-masthead-4xl text-masthead-4xl tracking-tighter text-on-surface uppercase">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-dim mt-4 uppercase">// INDUSTRIAL_BROADSHEET_SYSTEM</p>
+</div>
+<div class="max-w-md">
+<p class="font-body-base text-body-base text-body mb-4">
+                    The preeminent platform for technical pipeline management. High-density data, low-latency execution.
+                </p>
+<div class="flex items-center gap-2 border border-rule px-3 py-1 w-fit bg-surface-container">
+<span class="w-2 h-2 rounded-none bg-live block"></span>
+<span class="font-mono-label text-mono-label text-on-surface">SYSTEM_ONLINE_STABLE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Success State -->
+<div class="flex-1 w-full h-full bg-background flex flex-col relative overflow-y-auto">
+<!-- Mobile Header (Hidden on Desktop) -->
+<div class="md:hidden w-full border-b border-rule p-4 flex justify-between items-center bg-surface-container-lowest">
+<h1 class="font-headline-2xl-mobile text-headline-2xl-mobile tracking-tighter uppercase">POSTBOARD</h1>
+</div>
+<div class="flex-1 flex items-center justify-center p-margin md:p-[10%]">
+<div class="w-full max-w-[480px] bg-surface-container-lowest border border-rule relative">
+<!-- Decorative Top Bar -->
+<div class="h-1 w-full bg-live flex"></div>
+<div class="p-8 md:p-12">
+<!-- Metadata / Context Label -->
+<div class="font-mono-label text-mono-label text-dim mb-12 uppercase tracking-widest flex items-center gap-2">
+<span>// AUTH_PROTOCOL</span>
+<span class="text-rule flex-1 overflow-hidden">----------------------------------------</span>
+</div>
+<!-- Icon & Title -->
+<div class="mb-8">
+<div class="w-16 h-16 bg-live-dim flex items-center justify-center border border-live mb-6">
+<span class="material-symbols-outlined text-live text-4xl filled">verified</span>
+</div>
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface">Email Verified.</h2>
+</div>
+<!-- Description -->
+<div class="border-l border-rule pl-4 mb-10">
+<p class="font-body-base text-body-base text-body">
+                            Your identity has been confirmed and registered in the POSTBOARD registry. Full access to the industrial dashboard is now authorized.
+                        </p>
+<!-- Mini terminal output detail -->
+<div class="mt-6 font-mono-label text-mono-label text-dim bg-surface p-3 border border-rule">
+<div>&gt; INIT_VERIFICATION_SEQ... [OK]</div>
+<div>&gt; VALIDATE_TOKEN... [OK]</div>
+<div class="text-live">&gt; IDENTITY_CONFIRMED</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-4 mt-8">
+<a class="w-full h-12 bg-accent-amber text-[#080808] font-ui-lg text-ui-lg flex items-center justify-center hover:bg-opacity-90 transition-colors uppercase tracking-wide" href="#">
+                            Continue to Login
+                        </a>
+<a class="w-full h-12 bg-transparent border border-rule text-on-surface font-ui-lg text-ui-lg flex items-center justify-center hover:bg-surface-variant transition-colors group" href="#">
+<span class="group-hover:text-white transition-colors">Go to Dashboard</span>
+</a>
+</div>
+</div>
+<!-- Footer Metadata -->
+<div class="border-t border-rule p-4 bg-surface-container">
+<div class="flex justify-between items-center w-full">
+<span class="font-mono-label text-mono-label text-dim">REQ_ID: 9X-224-A</span>
+<span class="font-mono-label text-mono-label text-dim">ENCRYPTED_256</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Application Modal - Screen 10 Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e5e2e1",
+                        "on-surface-variant": "#e1c0b2",
+                        "destructive": "#EF4444",
+                        "dim": "#666666",
+                        "on-background": "#e5e2e1",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-container-lowest": "#0e0e0e",
+                        "gradient-b": "#60A5FA",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#ffdbcc",
+                        "background": "#080808",
+                        "surface-container-highest": "#353534",
+                        "surface-container": "#0F0F0F",
+                        "tertiary-container": "#929090",
+                        "outline": "#a88a7e",
+                        "surface-bright": "#3a3939",
+                        "secondary-container": "#474742",
+                        "on-primary-fixed": "#351000",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-variant": "#353534",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "rule": "#1A1A1A",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#594237",
+                        "on-tertiary-container": "#2a2a29",
+                        "body": "#B8B8B8",
+                        "tertiary-fixed": "#e5e2e1",
+                        "secondary": "#c9c6c0",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary-fixed": "#1c1c18",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "on-primary": "#571f00",
+                        "on-tertiary": "#313030",
+                        "on-primary-container": "#4c1a00",
+                        "primary-container": "#f06613",
+                        "muted": "#2A2A2A",
+                        "live-dim": "#14532D",
+                        "live": "#22C55A",
+                        "surface-tint": "#ffb694",
+                        "tertiary": "#c8c6c5",
+                        "primary": "#E8610A",
+                        "on-secondary-container": "#b7b5af",
+                        "on-secondary-fixed-variant": "#474742",
+                        "gradient-c": "#34D399",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#ffb694",
+                        "secondary-fixed": "#e5e2db",
+                        "on-secondary": "#31312c",
+                        "surface": "#0F0F0F",
+                        "gradient-a": "#C084FC",
+                        "inverse-primary": "#a14000",
+                        "gradient-d": "#F59E0B",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "inverse-on-surface": "#313030"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "max-width": "1280px",
+                        "sidebar-width": "220px",
+                        "section-v-pad": "48px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-2xl": ["Playfair Display"],
+                        "body-base": ["DM Sans"],
+                        "ui-xl": ["DM Sans"],
+                        "ui-lg": ["DM Sans"],
+                        "ui-sm": ["DM Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "headline-2xl-mobile": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                        "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #080808;
+            color: #F0EDE6;
+            margin: 0;
+            overflow: hidden;
+        }
+        /* Hide scrollbars but allow scrolling in modal content */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-base text-body-base bg-background">
+<!-- FULL SCREEN MOBILE MODAL -->
+<div class="fixed inset-0 z-50 flex flex-col bg-background transition-transform duration-300 transform translate-y-0 h-screen" id="application-modal">
+<!-- TOP APP BAR (Shared Component Logic) -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-background border-b border-rule">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">description</span>
+<span class="font-mono-label text-mono-label uppercase text-primary tracking-widest">// APPLY</span>
+</div>
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-variant transition-colors duration-150" onclick="window.history.back()">
+<span class="material-symbols-outlined text-on-surface" data-icon="close">close</span>
+</button>
+</header>
+<!-- MODAL BODY -->
+<main class="flex-1 overflow-y-auto pt-20 pb-32 px-6 no-scrollbar">
+<!-- HEADER SECTION -->
+<section class="mb-8">
+<h1 class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface mb-1">Apply for Sr. Frontend Developer</h1>
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-mono-label text-dim uppercase">at</span>
+<span class="font-ui-lg text-ui-lg text-on-surface-variant font-bold">Stripe</span>
+</div>
+</section>
+<div class="space-y-8">
+<!-- YOUR PROFILE COMPACT CARD -->
+<article>
+<div class="font-mono-label text-mono-label text-dim mb-3 uppercase tracking-tighter">// YOUR_PROFILE</div>
+<div class="border border-rule p-4 bg-surface-container flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high border border-rule flex items-center justify-center">
+<span class="material-symbols-outlined text-dim" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div class="flex-1">
+<div class="font-ui-lg text-on-surface leading-none mb-1">Alex Chen</div>
+<div class="font-mono-label text-dim">FE_LEAD_2024.PDF</div>
+</div>
+<button class="text-primary font-mono-label text-mono-label uppercase">Edit</button>
+</div>
+</article>
+<!-- COVER LETTER -->
+<article>
+<label class="block font-mono-label text-mono-label text-dim mb-3 uppercase tracking-tighter" for="cover_letter">// COVER_LETTER</label>
+<textarea class="w-full bg-background border border-rule focus:border-primary focus:ring-0 text-on-surface p-4 font-body-base placeholder:text-dim outline-none resize-none" id="cover_letter" placeholder="Explain why you're the right fit for Stripe's engineering culture..." rows="3"></textarea>
+</article>
+<!-- QUESTIONS / METADATA -->
+<article class="space-y-4">
+<div class="font-mono-label text-mono-label text-dim mb-3 uppercase tracking-tighter">// ADDITIONAL_INFO</div>
+<div class="border border-rule p-4 space-y-4">
+<div>
+<label class="block font-ui-sm text-dim mb-2">Notice Period</label>
+<select class="w-full bg-background border border-rule text-on-surface font-ui-sm p-2 focus:border-primary outline-none">
+<option>Immediately</option>
+<option>2 Weeks</option>
+<option>1 Month</option>
+<option>Negotiable</option>
+</select>
+</div>
+<div>
+<label class="block font-ui-sm text-dim mb-2">Preferred Region</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1 border border-primary text-primary font-mono-label text-[10px]">US_REMOTE</button>
+<button class="px-3 py-1 border border-rule text-dim font-mono-label text-[10px]">EU_REMOTE</button>
+<button class="px-3 py-1 border border-rule text-dim font-mono-label text-[10px]">APAC_REMOTE</button>
+</div>
+</div>
+</div>
+</article>
+<!-- CONFIRMATION -->
+<article class="flex items-start gap-3 py-4">
+<div class="relative flex items-center">
+<input class="w-5 h-5 bg-background border-rule text-primary focus:ring-offset-0 focus:ring-0 rounded-none cursor-pointer" id="confirm" type="checkbox"/>
+</div>
+<label class="font-ui-sm text-on-surface-variant leading-tight" for="confirm">
+                        I confirm that the information provided is accurate and I agree to the <span class="text-primary underline">Data Processing Agreement</span>.
+                    </label>
+</article>
+</div>
+</main>
+<!-- STICKY FOOTER -->
+<footer class="fixed bottom-0 w-full p-6 bg-background border-t border-rule flex flex-col gap-3">
+<button class="w-full h-14 bg-primary text-background font-ui-lg font-bold uppercase tracking-widest transition-all active:scale-[0.98]">
+                Submit Application
+            </button>
+<button class="w-full h-10 text-dim font-mono-label uppercase hover:text-on-surface transition-colors">
+                Cancel / Save Draft
+            </button>
+</footer>
+<!-- DECORATIVE GRID (The Press Grid) -->
+<div class="fixed top-20 right-6 opacity-10 pointer-events-none select-none hidden sm:block">
+<div class="grid grid-cols-4 gap-1">
+<div class="w-1 h-1 bg-primary"></div>
+<div class="w-1 h-1 bg-rule"></div>
+<div class="w-1 h-1 bg-rule"></div>
+<div class="w-1 h-1 bg-rule"></div>
+<div class="w-1 h-1 bg-rule"></div>
+<div class="w-1 h-1 bg-primary"></div>
+<div class="w-1 h-1 bg-rule"></div>
+<div class="w-1 h-1 bg-rule"></div>
+</div>
+</div>
+</div>
+<!-- BACKGROUND TEXTURE -->
+<div class="fixed inset-0 z-[-1] pointer-events-none">
+
+</div>
+<script>
+        // Simple micro-interaction for the Submit button
+        const submitBtn = document.querySelector('button.bg-primary');
+        submitBtn.addEventListener('click', () => {
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'PROCESSING...';
+            submitBtn.classList.add('opacity-80');
+            
+            setTimeout(() => {
+                submitBtn.innerText = 'SUCCESS';
+                submitBtn.classList.remove('bg-primary');
+                submitBtn.classList.add('bg-live');
+                submitBtn.classList.add('text-white');
+                
+                setTimeout(() => {
+                    alert('Application sent successfully to Stripe.');
+                    submitBtn.innerText = originalText;
+                    submitBtn.classList.remove('bg-live', 'text-white', 'opacity-80');
+                    submitBtn.classList.add('bg-primary');
+                }, 1000);
+            }, 1500);
+        });
+
+        // Micro-interaction for inputs
+        const textareas = document.querySelectorAll('textarea, select');
+        textareas.forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.querySelector('label')?.classList.remove('text-dim');
+                el.parentElement.querySelector('label')?.classList.add('text-primary');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.querySelector('label')?.classList.remove('text-primary');
+                el.parentElement.querySelector('label')?.classList.add('text-dim');
+            });
+        });
+    </script>
+</body></html>

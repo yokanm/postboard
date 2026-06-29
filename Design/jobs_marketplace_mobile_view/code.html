@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JOB_MARKETPLACE | Mobile View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#131313",
+                        "on-surface-variant": "#e1c0b2",
+                        "rule": "#1A1A1A",
+                        "body": "#B8B8B8",
+                        "outline": "#a88a7e",
+                        "surface-container-high": "#2a2a2a",
+                        "live-dim": "#14532D",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#1c1c18",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-error": "#690005",
+                        "dim": "#666666",
+                        "on-tertiary": "#313030",
+                        "on-secondary": "#31312c",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-primary-container": "#4c1a00",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-container": "#b7b5af",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface-variant": "#353534",
+                        "gradient-a": "#C084FC",
+                        "error": "#ffb4ab",
+                        "gradient-b": "#60A5FA",
+                        "primary": "#ffb694",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "primary-fixed": "#ffdbcc",
+                        "on-secondary-fixed-variant": "#474742",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-fixed": "#e5e2db",
+                        "gradient-d": "#F59E0B",
+                        "gradient-c": "#34D399",
+                        "surface-tint": "#ffb694",
+                        "tertiary-container": "#929090",
+                        "secondary-container": "#474742",
+                        "on-error-container": "#ffdad6",
+                        "destructive": "#EF4444",
+                        "on-primary-fixed": "#351000",
+                        "on-background": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "background": "#131313",
+                        "live": "#22C55A",
+                        "surface-dim": "#131313",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "secondary": "#c9c6c0",
+                        "muted": "#2A2A2A",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-container": "#201f1f",
+                        "primary-container": "#f06613",
+                        "tertiary": "#c8c6c5",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "outline-variant": "#594237",
+                        "surface-container-highest": "#353534",
+                        "on-primary": "#571f00",
+                        "surface-bright": "#3a3939",
+                        "inverse-primary": "#a14000",
+                        "primary-fixed-dim": "#ffb694",
+                        "amber-accent": "#E8610A"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "section-v-pad": "48px",
+                        "sidebar-width": "220px",
+                        "max-width": "1280px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-sm": ["DM Sans"],
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"],
+                        "ui-xl": ["DM Sans"],
+                        "body-base": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                        "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for horizontal filter */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Grid accent pattern */
+        .press-grid-bg {
+            background-image: linear-gradient(#1A1A1A 1px, transparent 1px), linear-gradient(90deg, #1A1A1A 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Brutalist 0px forcing */
+        * { border-radius: 0 !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-base overflow-x-hidden pb-24">
+<!-- Top Navigation Shell -->
+<header class="sticky top-0 z-50 bg-background border-b border-rule flex justify-between items-center w-full px-gutter h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">grid_view</span>
+<h1 class="font-headline-2xl-mobile text-headline-2xl-mobile uppercase font-black text-primary tracking-tighter">
+                // JOB_MARKETPLACE
+            </h1>
+</div>
+<button class="hover:bg-surface-container-high transition-colors p-2">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+</header>
+<main class="w-full">
+<!-- Sub-header & Wayfinding -->
+<section class="px-gutter pt-8 pb-4">
+<div class="mb-4">
+<span class="font-mono-label text-mono-label text-amber-accent uppercase tracking-widest">// OPEN_ROLES</span>
+</div>
+<div class="flex items-baseline justify-between">
+<h2 class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface">All Roles</h2>
+<span class="px-3 py-1 bg-surface-container-highest border border-rule text-body font-mono-label text-[10px]">
+                    48 ACTIVE
+                </span>
+</div>
+</section>
+<!-- Horizontal Filter Bar -->
+<section class="border-y border-rule bg-surface-container-lowest overflow-x-auto no-scrollbar py-3 px-gutter flex gap-2">
+<button class="flex-shrink-0 px-4 py-2 bg-primary text-on-primary-fixed font-mono-label text-mono-label uppercase border border-primary">
+                Role Type
+            </button>
+<button class="flex-shrink-0 px-4 py-2 bg-transparent border border-rule text-body font-mono-label text-mono-label uppercase hover:border-primary transition-colors">
+                Location
+            </button>
+<button class="flex-shrink-0 px-4 py-2 bg-transparent border border-rule text-body font-mono-label text-mono-label uppercase hover:border-primary transition-colors">
+                Experience
+            </button>
+<button class="flex-shrink-0 px-4 py-2 bg-transparent border border-rule text-body font-mono-label text-mono-label uppercase hover:border-primary transition-colors">
+                Salary
+            </button>
+</section>
+<!-- High-Density Job Feed -->
+<section class="flex flex-col">
+<!-- Job Card 1 -->
+<article class="p-gutter border-b border-rule bg-surface-container-lowest hover:bg-surface-container transition-colors group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex gap-4">
+<img alt="Company Logo" class="w-8 h-8 object-cover grayscale brightness-150" data-alt="A minimalist tech company logo featuring sharp geometric lines in white on a dark charcoal background. The aesthetic is industrial and technical, following a monochromatic brutalist design philosophy. The lighting is flat and even, suggesting a high-end digital identity for a silicon valley startup." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5mAizqdPT-sb27Zq0E616UwSOx1pMhHZfRqhbQ0ffNdgRwlBIOmq7bU7C9IWkUn5bN4AbZpSLkj9KKXRvg0cRF8d_uXulTzq5YPrT8K5u_b7RjEIFxSU1JtXg5QEWuKcCKL52akEMkIA4zcJeaz9vG6JWPlFPSlOCpZTdwX5XlQA4sASRwUr5DjWFs4fcXemjtWY0XjRvGWJ5I-9Y8Pyo58Qdy-_U-8vs3RhnfQZl7kRyabmzyMtSb0HZQ3seOAL-9VcnHFC2zM2Q"/>
+<div class="flex flex-col">
+<span class="text-on-surface font-mono-label text-[12px] uppercase">Syntrix Systems</span>
+<span class="text-dim font-mono-label text-[10px] uppercase">San Francisco / Remote</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-dim group-hover:text-amber-accent transition-colors">bookmark</span>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-3 group-hover:text-primary transition-colors">Principal AI Research Engineer</h3>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 bg-surface-container-high border border-rule text-body font-mono-label text-[9px] uppercase">Full-time</span>
+<span class="px-2 py-1 bg-surface-container-high border border-rule text-body font-mono-label text-[9px] uppercase">Remote</span>
+<span class="px-2 py-1 bg-live-dim text-live font-mono-label text-[9px] uppercase border border-live/20">Urgent</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-rule/50">
+<span class="text-on-surface-variant font-mono-label text-[11px]">$180k - $240k</span>
+<span class="text-dim font-mono-label text-[10px]">2H AGO</span>
+</div>
+</article>
+<!-- Job Card 2 -->
+<article class="p-gutter border-b border-rule bg-surface-container-lowest hover:bg-surface-container transition-colors group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex gap-4">
+<img alt="Company Logo" class="w-8 h-8 object-cover grayscale brightness-150" data-alt="A clean, typographic logo for a tech platform, featuring bold sans-serif lettering in a stark white on a deep black background. The design is inspired by modern architectural signage and Swiss minimalism. The mood is professional, elite, and technically precise, perfectly aligned with a dark-mode industrial UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWmTz7u7nfJH_TpPOjm5cdVGlFJbTAa_WR7Y_1rqgSm9ckthYM2zYOXj_kff-A6jWHrX3BHj_Tt_2pJ0iuni265J4d5Q6qFTu1Ux2ETBUYLdMmwCFxZHNowGLiTX3BBC5jL8YXk9sZiupEDM_Ee_Nz9g7R7Gr_XTvK9d1e57PJyM7ANTalPy2t1aYmeXxxkY1iA1vkm5cnI4bSAfLxF7_Cl3AiTiCq6NhLo2AcRqLBQJxY2EasT12KJUUg7xCLx6MOfHrneRTcw1qq"/>
+<div class="flex flex-col">
+<span class="text-on-surface font-mono-label text-[12px] uppercase">Nebula.ai</span>
+<span class="text-dim font-mono-label text-[10px] uppercase">London / Hybrid</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-dim group-hover:text-amber-accent transition-colors">bookmark</span>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-3 group-hover:text-primary transition-colors">Senior Product Designer (UI/UX)</h3>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 bg-surface-container-high border border-rule text-body font-mono-label text-[9px] uppercase">Contract</span>
+<span class="px-2 py-1 bg-surface-container-high border border-rule text-body font-mono-label text-[9px] uppercase">Hybrid</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-rule/50">
+<span class="text-on-surface-variant font-mono-label text-[11px]">$120k - $160k</span>
+<span class="text-dim font-mono-label text-[10px]">6H AGO</span>
+</div>
+</article>
+<!-- Card 3 with Press Grid Accent -->
+<article class="p-gutter border-b border-rule bg-surface-container-lowest relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-full press-grid-bg opacity-10"></div>
+<div class="flex items-start justify-between mb-4 relative z-10">
+<div class="flex gap-4">
+<img alt="Company Logo" class="w-8 h-8 object-cover grayscale brightness-150" data-alt="An abstract corporate logo consisting of a single, thick vertical line crossed by three horizontal hairlines. The style is strictly brutalist and minimalist, rendered in high-contrast black and white. The lighting creates a subtle grain texture reminiscent of newspaper ink on heavy broadsheet paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5qVugTslNACIDEb233QSF_rInYIjWprbICti5pCjSqDiqBG7y4dMGx7Jb-V93uuofong2zIhFFBNOvYAiTGga2nz_pbxg6DsiY_00A4RHqIM8N9qSV8CiyKERImrtlCCAtRDZuOWuS0xCWh8-oEzWAu0Gx4Hf7r4WjN-YQdpz3AfAfgKNpzpVKJ_mzGvOvfK6ZTZKkVBp1bLq_Avnavru32exUbfUlX5KqRYtsWBh8QqIErGhTDS8-zSoBHekUQLB8t3Li915rbTk"/>
+<div class="flex flex-col">
+<span class="text-on-surface font-mono-label text-[12px] uppercase">Phalanx Security</span>
+<span class="text-dim font-mono-label text-[10px] uppercase">Austin, TX</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-dim group-hover:text-amber-accent transition-colors">bookmark</span>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-3 group-hover:text-primary transition-colors relative z-10">Cybersecurity Lead (GovTech)</h3>
+<div class="flex flex-wrap gap-2 mb-6 relative z-10">
+<span class="px-2 py-1 bg-surface-container-high border border-rule text-body font-mono-label text-[9px] uppercase">Full-time</span>
+<span class="px-2 py-1 bg-surface-container-high border border-rule text-body font-mono-label text-[9px] uppercase">On-site</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-rule/50 relative z-10">
+<span class="text-on-surface-variant font-mono-label text-[11px]">$210k - $275k</span>
+<span class="text-dim font-mono-label text-[10px]">12H AGO</span>
+</div>
+</article>
+<!-- Job Card 4 -->
+<article class="p-gutter border-b border-rule bg-surface-container-lowest hover:bg-surface-container transition-colors group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex gap-4">
+<img alt="Company Logo" class="w-8 h-8 object-cover grayscale brightness-150" data-alt="A bold, monochromatic logo featuring a stylized 'O' and 'D' interlocking in a technical, CAD-style drawing. The aesthetic is purely industrial, utilizing heavy black lines on a white void. The mood is authoritative and structured, designed for a high-performance recruitment platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbtBJ6v3hZAv4MifxgoTP-1W6kGh38BX--zEDUY34C4bmrqMCUjya19jwxu8BA5CzehxfN5W2PRsJW5nuG2-1tVVvU02zY3SfgBvofEA2hhO5xZeWfe0Zry3Z18czPLHoSW1lS9isUDxcmC6Lgdn-VEGEAFaQJMwcJXGOkagRp8p6E7Riy3atupVLpDd7Uw5XUwwaLdhjarFwO423M_K1vrvJOHSHHdO61SCt725IY2tfLCRiqoIC1HJukuahvNrJRC0qQ1lA1is93"/>
+<div class="flex flex-col">
+<span class="text-on-surface font-mono-label text-[12px] uppercase">Origin Dynamics</span>
+<span class="text-dim font-mono-label text-[10px] uppercase">New York / Remote</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-dim group-hover:text-amber-accent transition-colors">bookmark</span>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-3 group-hover:text-primary transition-colors">Backend Architecture Lead</h3>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 bg-surface-container-high border border-rule text-body font-mono-label text-[9px] uppercase">Full-time</span>
+<span class="px-2 py-1 bg-surface-container-high border border-rule text-body font-mono-label text-[9px] uppercase">Remote</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-rule/50">
+<span class="text-on-surface-variant font-mono-label text-[11px]">$195k - $230k</span>
+<span class="text-dim font-mono-label text-[10px]">1D AGO</span>
+</div>
+</article>
+</section>
+<!-- Load More CTA -->
+<section class="p-gutter mb-8">
+<button class="w-full py-4 border border-rule text-on-surface font-mono-label text-mono-label uppercase hover:bg-surface-container transition-all active:scale-[0.98]">
+                // LOAD_MORE_RESULTS
+            </button>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 h-16 bg-surface border-t border-rule flex justify-around items-stretch">
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary-fixed h-full w-full active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="font-mono-label text-[9px] mt-1 uppercase">JOBS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body h-full w-full hover:bg-surface-container-high active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-mono-label text-[9px] mt-1 uppercase">SAVED</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body h-full w-full hover:bg-surface-container-high active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-mono-label text-[9px] mt-1 uppercase">APPLIED</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body h-full w-full hover:bg-surface-container-high active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-mono-label text-[9px] mt-1 uppercase">PROFILE</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Active state feedback for filter buttons
+        const filters = document.querySelectorAll('section button');
+        filters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filters.forEach(f => {
+                    f.classList.remove('bg-primary', 'text-on-primary-fixed');
+                    f.classList.add('bg-transparent', 'text-body');
+                });
+                btn.classList.remove('bg-transparent', 'text-body');
+                btn.classList.add('bg-primary', 'text-on-primary-fixed');
+            });
+        });
+    </script>
+</body></html>

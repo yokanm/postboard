@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD // SUPER_ADMIN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..900&family=Playfair+Display:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for industrial aesthetic */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #080808; }
+        ::-webkit-scrollbar-thumb { background: #1A1A1A; }
+        ::-webkit-scrollbar-thumb:hover { background: #ffb694; }
+
+        .stipple-bg {
+            background-image: radial-gradient(#1A1A1A 1px, transparent 0);
+            background-size: 8px 8px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#31312c",
+                      "destructive": "#EF4444",
+                      "inverse-surface": "#e5e2e1",
+                      "primary-fixed": "#ffdbcc",
+                      "surface-container-high": "#2a2a2a",
+                      "on-background": "#e5e2e1",
+                      "surface": "#131313",
+                      "on-primary-fixed": "#351000",
+                      "gradient-c": "#34D399",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "error-container": "#93000a",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "surface-dim": "#131313",
+                      "body": "#B8B8B8",
+                      "gradient-d": "#F59E0B",
+                      "inverse-primary": "#a14000",
+                      "surface-container": "#201f1f",
+                      "surface-variant": "#353534",
+                      "surface-bright": "#3a3939",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-tint": "#ffb694",
+                      "on-error": "#690005",
+                      "dim": "#666666",
+                      "error": "#ffb4ab",
+                      "secondary-fixed": "#e5e2db",
+                      "on-surface-variant": "#e1c0b2",
+                      "secondary": "#c9c6c0",
+                      "live": "#22C55A",
+                      "surface-container-low": "#1c1b1b",
+                      "on-tertiary": "#313030",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "on-error-container": "#ffdad6",
+                      "gradient-b": "#60A5FA",
+                      "tertiary-container": "#929090",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "on-secondary-fixed-variant": "#474742",
+                      "gradient-a": "#C084FC",
+                      "on-primary": "#571f00",
+                      "on-surface": "#e5e2e1",
+                      "outline": "#a88a7e",
+                      "background": "#080808",
+                      "primary": "#ffb694",
+                      "live-dim": "#14532D",
+                      "outline-variant": "#594237",
+                      "inverse-on-surface": "#313030",
+                      "tertiary": "#c8c6c5",
+                      "on-secondary-container": "#b7b5af",
+                      "surface-container-highest": "#353534",
+                      "on-secondary-fixed": "#1c1c18",
+                      "on-primary-container": "#4c1a00",
+                      "on-tertiary-container": "#2a2a29",
+                      "tertiary-fixed": "#e5e2e1",
+                      "secondary-container": "#474742",
+                      "muted": "#2A2A2A",
+                      "primary-container": "#f06613",
+                      "primary-fixed-dim": "#ffb694",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "rule": "#1A1A1A"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin": "32px",
+                      "section-v-pad": "48px",
+                      "max-width": "1280px",
+                      "gutter": "24px",
+                      "unit": "4px",
+                      "sidebar-width": "220px"
+              },
+              "fontFamily": {
+                      "headline-2xl-mobile": ["Playfair Display"],
+                      "ui-sm": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "ui-xl": ["DM Sans"],
+                      "body-base": ["DM Sans"],
+                      "headline-2xl": ["Playfair Display"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "ui-lg": ["DM Sans"]
+              },
+              "fontSize": {
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface font-ui-sm selection:bg-primary selection:text-background">
+<!-- SideNavBar (As per JSON) -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width flex flex-col py-unit border-r border-rule bg-surface-container-lowest">
+<div class="px-6 py-8">
+<h1 class="font-headline-2xl text-headline-2xl text-primary uppercase tracking-tighter">// TECH_PIPELINE</h1>
+<p class="font-mono-label text-mono-label text-dim mt-2">v2.4.0_LATEST</p>
+</div>
+<nav class="flex-1 flex flex-col mt-4">
+<a class="flex items-center gap-3 py-3 text-primary font-bold border-l-2 border-primary pl-4 transition-colors hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-mono-label">// DASHBOARD</span>
+</a>
+<a class="flex items-center gap-3 py-3 text-body font-ui-sm pl-4 hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-mono-label">// SAVED_ROLES</span>
+</a>
+<a class="flex items-center gap-3 py-3 text-body font-ui-sm pl-4 hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">business</span>
+<span class="font-mono-label">// COMPANIES</span>
+</a>
+<a class="flex items-center gap-3 py-3 text-body font-ui-sm pl-4 hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-mono-label">// APPLICATIONS</span>
+</a>
+<a class="flex items-center gap-3 py-3 text-body font-ui-sm pl-4 hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-mono-label">// MESSAGES</span>
+</a>
+</nav>
+<div class="p-6 border-t border-rule space-y-4">
+<button class="w-full bg-primary text-background font-ui-sm py-3 font-bold hover:brightness-110 transition-all uppercase tracking-widest active:scale-[0.99]">
+                SEARCH_ROLES
+            </button>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 py-2 text-dim hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-mono-label">Settings</span>
+</a>
+<a class="flex items-center gap-3 py-2 text-dim hover:text-destructive transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-mono-label">Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopAppBar (As per JSON) -->
+<header class="fixed top-0 right-0 w-[calc(100%-220px)] h-16 flex justify-between items-center px-gutter border-b border-rule bg-surface-container-lowest z-10">
+<div class="flex items-center flex-1 max-w-xl">
+<span class="material-symbols-outlined text-dim mr-4">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-ui-lg font-mono-label w-full text-on-surface placeholder:text-muted" placeholder="QUERY_PLATFORM_ASSETS..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right mr-4">
+<div class="font-headline-2xl text-headline-2xl text-primary leading-none">// PIPELINE_CORE</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative hover:text-primary transition-all">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary"></span>
+</button>
+<button class="hover:text-primary transition-all">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width pt-16 min-h-screen">
+<div class="p-gutter max-w-[1400px] mx-auto space-y-12">
+<!-- Platform Health Section -->
+<section>
+<div class="font-mono-label text-dim mb-4">// PLATFORM_HEALTH</div>
+<div class="grid grid-cols-1 md:grid-cols-4 border border-rule divide-x divide-rule bg-surface-container-lowest">
+<div class="p-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 bg-live shadow-[0_0_8px_rgba(34,197,90,0.6)]"></span>
+<span class="font-mono-label text-on-surface">API_SERVICES</span>
+</div>
+<span class="text-dim text-[10px]">v4.2.1</span>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 bg-live shadow-[0_0_8px_rgba(34,197,90,0.6)]"></span>
+<span class="font-mono-label text-on-surface">DATABASE_CLUSTER</span>
+</div>
+<span class="text-dim text-[10px]">IDLE</span>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 bg-live shadow-[0_0_8px_rgba(34,197,90,0.6)]"></span>
+<span class="font-mono-label text-on-surface">EMAIL_RELAY</span>
+</div>
+<span class="text-dim text-[10px]">STABLE</span>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 bg-gradient-d animate-pulse"></span>
+<span class="font-mono-label text-on-surface">JOBS_QUEUE</span>
+</div>
+<span class="text-gradient-d text-[10px]">PENDING_32</span>
+</div>
+</div>
+</section>
+<!-- Platform Metrics Grid -->
+<section>
+<div class="font-mono-label text-dim mb-4">// PLATFORM_METRICS</div>
+<!-- Top Stat Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-rule border border-rule mb-px overflow-hidden">
+<div class="bg-surface-container-lowest p-8 group hover:bg-surface-container-low transition-all">
+<div class="font-mono-label text-dim mb-2">TOTAL_USERS</div>
+<div class="font-masthead-4xl text-[64px] text-primary tracking-tight leading-none">8,412</div>
+<div class="mt-4 flex items-center gap-2 text-live text-[12px]">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12.4% MONTHLY</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 group hover:bg-surface-container-low transition-all">
+<div class="font-mono-label text-dim mb-2">TOTAL_COMPANIES</div>
+<div class="font-masthead-4xl text-[64px] text-primary tracking-tight leading-none">142</div>
+<div class="mt-4 flex items-center gap-2 text-dim text-[12px]">
+<span class="material-symbols-outlined text-sm">horizontal_rule</span>
+<span>0% CHANGE</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 group hover:bg-surface-container-low transition-all relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 stipple-bg opacity-10"></div>
+<div class="font-mono-label text-dim mb-2">ACTIVE_JOBS</div>
+<div class="font-masthead-4xl text-[64px] text-primary tracking-tight leading-none">1,054</div>
+<div class="mt-4 flex items-center gap-2 text-live text-[12px]">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+4.1% WEEKLY</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 group hover:bg-surface-container-low transition-all">
+<div class="font-mono-label text-dim mb-2">APPLICATIONS_30D</div>
+<div class="font-masthead-4xl text-[64px] text-primary tracking-tight leading-none">4,892</div>
+<div class="mt-4 flex items-center gap-2 text-live text-[12px]">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+24.8% MONTHLY</span>
+</div>
+</div>
+</div>
+<!-- Bottom Stat Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-rule border border-rule">
+<div class="bg-surface-container-lowest p-6 flex flex-col justify-between h-48">
+<div>
+<div class="font-mono-label text-dim mb-2">REVENUE_INDEX</div>
+<div class="font-headline-2xl text-on-surface">$142.2k</div>
+</div>
+<div class="h-16 flex items-end gap-1">
+<div class="bg-primary w-full" style="height: 40%"></div>
+<div class="bg-primary w-full" style="height: 60%"></div>
+<div class="bg-primary w-full" style="height: 35%"></div>
+<div class="bg-primary w-full" style="height: 80%"></div>
+<div class="bg-primary w-full" style="height: 95%"></div>
+<div class="bg-primary w-full" style="height: 70%"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 h-48">
+<div class="font-mono-label text-dim mb-2">AVG_JOBS_PER_COMPANY</div>
+<div class="font-headline-2xl text-on-surface">7.42</div>
+<div class="mt-8 h-px bg-rule relative">
+<div class="absolute -top-1 left-3/4 w-2 h-2 bg-primary"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 h-48">
+<div class="font-mono-label text-dim mb-2">FLAGGED_CONTENT</div>
+<div class="font-headline-2xl text-live">0</div>
+<div class="mt-4 text-dim font-mono-label uppercase">No action required</div>
+</div>
+<div class="bg-surface-container-lowest p-6 h-48">
+<div class="font-mono-label text-dim mb-2">UPTIME_LAST_30D</div>
+<div class="font-headline-2xl text-on-surface">99.98%</div>
+<div class="mt-4 flex flex-wrap gap-1">
+<!-- Uptime grid dots -->
+<div class="w-1.5 h-6 bg-live/20"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+<div class="w-1.5 h-6 bg-destructive"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+<div class="w-1.5 h-6 bg-live"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent System Events Table -->
+<section>
+<div class="font-mono-label text-dim mb-4 flex justify-between items-center">
+<span>// RECENT_SYSTEM_EVENTS</span>
+<span class="text-[10px] animate-pulse">STREAMING_LIVE...</span>
+</div>
+<div class="border border-rule bg-surface-container-lowest overflow-x-auto">
+<table class="w-full text-left font-mono-label text-[12px] border-collapse">
+<thead>
+<tr class="border-b border-rule text-dim bg-surface-container-low">
+<th class="p-4 font-bold">TIMESTAMP</th>
+<th class="p-4 font-bold">ACTOR_UID</th>
+<th class="p-4 font-bold">ACTION_TYPE</th>
+<th class="p-4 font-bold">RESOURCE_ID</th>
+<th class="p-4 font-bold">STATUS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-rule text-body">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">2023-11-24T14:22:11Z</td>
+<td class="p-4">USR_8422</td>
+<td class="p-4 text-on-surface">job.status.updated</td>
+<td class="p-4">JOB_49220</td>
+<td class="p-4"><span class="px-2 py-0.5 bg-live-dim text-live border border-live/30">SUCCESS</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">2023-11-24T14:20:45Z</td>
+<td class="p-4">SYS_CRON</td>
+<td class="p-4 text-on-surface">analytics.cache.flush</td>
+<td class="p-4">CACHE_ALL</td>
+<td class="p-4"><span class="px-2 py-0.5 bg-live-dim text-live border border-live/30">SUCCESS</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">2023-11-24T14:18:02Z</td>
+<td class="p-4">ADM_CORE</td>
+<td class="p-4 text-on-surface">company.security.audit</td>
+<td class="p-4">CMP_1190</td>
+<td class="p-4"><span class="px-2 py-0.5 bg-surface-container-high text-dim border border-rule">PENDING</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">2023-11-24T14:15:33Z</td>
+<td class="p-4">USR_2201</td>
+<td class="p-4 text-on-surface">application.submitted</td>
+<td class="p-4">APP_0094</td>
+<td class="p-4"><span class="px-2 py-0.5 bg-live-dim text-live border border-live/30">SUCCESS</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">2023-11-24T14:12:11Z</td>
+<td class="p-4">USR_5581</td>
+<td class="p-4 text-on-surface">user.profile.locked</td>
+<td class="p-4">USR_5581</td>
+<td class="p-4"><span class="px-2 py-0.5 bg-destructive/10 text-destructive border border-destructive/30">REJECTED</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">2023-11-24T14:10:00Z</td>
+<td class="p-4">SYS_DAEMON</td>
+<td class="p-4 text-on-surface">auth.token.expired</td>
+<td class="p-4">TOK_ZZ92</td>
+<td class="p-4"><span class="px-2 py-0.5 bg-live-dim text-live border border-live/30">SUCCESS</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 text-right">
+<button class="text-[11px] font-mono-label text-dim hover:text-primary transition-colors flex items-center gap-1 ml-auto">
+                        VIEW_ALL_LOGS <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer decoration -->
+<footer class="ml-sidebar-width py-12 px-gutter border-t border-rule">
+<div class="flex justify-between items-center opacity-30">
+<div class="font-mono-label text-[10px]">
+                POSTBOARD_SYSTEM_ARCHITECTURE // NODES: 12_ACTIVE // REGION: US-EAST-1
+            </div>
+<div class="font-mono-label text-[10px]">
+                ©2023 PIPELINE_TECHNOLOGIES_INC
+            </div>
+</div>
+</footer>
+<script>
+        // Micro-interaction: Update timestamps or simulate live data stream
+        setInterval(() => {
+            const liveIndicator = document.querySelector('.animate-pulse');
+            if(liveIndicator) {
+                // Potential logic to append row or update stats
+            }
+        }, 5000);
+    </script>
+</body></html>

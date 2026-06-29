@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+
+    "module": "CommonJS",
+    "moduleResolution": "node",
+
+    "rootDir": ".",
+    "outDir": "./dist",
+
+    "strict": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "resolveJsonModule": true,
+
+    "baseUrl": ".",
+
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    "types": ["node"],
+
+    "sourceMap": true,
+
+    "declaration": false
+  },
+
+  "include": [
+    "src",
+    "prisma",
+    "generated"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

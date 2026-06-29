@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | Candidate Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "body": "#B8B8B8",
+                        "on-tertiary-container": "#2a2a29",
+                        "dim": "#666666",
+                        "secondary-container": "#474742",
+                        "gradient-c": "#34D399",
+                        "background": "#131313",
+                        "gradient-b": "#60A5FA",
+                        "surface": "#131313",
+                        "on-primary-container": "#4c1a00",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "tertiary": "#c8c6c5",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#131313",
+                        "gradient-a": "#C084FC",
+                        "on-background": "#e5e2e1",
+                        "on-primary": "#571f00",
+                        "inverse-primary": "#a14000",
+                        "secondary-fixed": "#e5e2db",
+                        "destructive": "#EF4444",
+                        "on-secondary-container": "#b7b5af",
+                        "surface-container": "#201f1f",
+                        "surface-container-highest": "#353534",
+                        "outline": "#a88a7e",
+                        "rule": "#1A1A1A",
+                        "on-error": "#690005",
+                        "secondary": "#c9c6c0",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed": "#ffdbcc",
+                        "on-secondary-fixed-variant": "#474742",
+                        "tertiary-container": "#929090",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "primary-fixed-dim": "#ffb694",
+                        "surface-container-high": "#2a2a2a",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary": "#31312c",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "surface-variant": "#353534",
+                        "gradient-d": "#F59E0B",
+                        "outline-variant": "#594237",
+                        "on-primary-fixed": "#351000",
+                        "surface-tint": "#ffb694",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-surface": "#e5e2e1",
+                        "live": "#22C55A",
+                        "primary": "#ffb694",
+                        "on-tertiary": "#313030",
+                        "surface-bright": "#3a3939",
+                        "live-dim": "#14532D",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "primary-container": "#f06613",
+                        "on-secondary-fixed": "#1c1c18",
+                        "muted": "#2A2A2A",
+                        "on-surface-variant": "#e1c0b2",
+                        "on-primary-fixed-variant": "#7b2f00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "section-v-pad": "48px",
+                        "gutter": "24px",
+                        "max-width": "1280px",
+                        "margin": "32px",
+                        "sidebar-width": "220px"
+                    },
+                    "fontFamily": {
+                        "masthead-4xl": ["Playfair Display"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "ui-xl": ["DM Sans"],
+                        "ui-sm": ["DM Sans"],
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "body-base": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                        "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131313; }
+        ::-webkit-scrollbar-thumb { background: #1A1A1A; }
+        .press-grid {
+            background-image: linear-gradient(#1A1A1A 1px, transparent 1px), linear-gradient(90deg, #1A1A1A 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .stipple-overlay {
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.05;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-base text-body-base overflow-x-hidden selection:bg-primary selection:text-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-rule h-16 flex items-center justify-between px-6">
+<h1 class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface uppercase tracking-tighter">POSTBOARD</h1>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 border border-rule flex items-center justify-center bg-surface-container-low transition-colors active:bg-primary group">
+<span class="material-symbols-outlined text-[18px] group-active:text-background">search</span>
+</button>
+<div class="w-8 h-8 bg-primary border border-rule relative">
+<img alt="Yemi" class="w-full h-full object-cover" data-alt="A close-up high-fashion portrait of a young man with a focused expression, set against a dark architectural background with sharp shadows. The lighting is dramatic and cinematic, reflecting an industrial aesthetic. The overall color palette is dominated by deep blacks and rich amber tones, maintaining a professional and elite candidate feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoJQkYRpiXIkdcUUFRv-nMiQQohM_GIL-jczbCsmgVIidS_XJkga3puASWI59MjD0K9sXcBFJIRFvUE16mWUbJZc3_dXpxSnHEwI7L7oxq96spv2ZiTET2wbw5VKM2wPwaAYkeMaalNAmVcLSjOJFcwM2HFmKqkfKVQsZEK8izeZagycGZV8gTojjyJEM9CIZAwf0CuteUdJgDzaO2qEG9DdnpUrFlW6E39mxnurvdjdR6UuE0PWQqNDr2Aravt7G9SV50HNjwzRWz"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-lg mx-auto">
+<!-- Hero Section -->
+<section class="mb-12">
+<p class="font-mono-label text-mono-label text-primary mb-2 uppercase tracking-widest">// USER_STATUS: ACTIVE</p>
+<h2 class="font-headline-2xl-mobile text-headline-2xl-mobile mb-4">Welcome back, Yemi.</h2>
+<p class="text-dim text-ui-sm leading-relaxed max-w-xs">Your technical pipeline has 4 active threads. 2 companies are requesting immediate documentation.</p>
+</section>
+<!-- Stats Grid (2x2) -->
+<section class="mb-12 grid grid-cols-2 gap-px bg-rule border border-rule">
+<div class="bg-surface-container-lowest p-5">
+<p class="font-mono-label text-mono-label text-dim mb-1 uppercase tracking-tight">// APPLIED</p>
+<p class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface">12</p>
+</div>
+<div class="bg-surface-container-lowest p-5">
+<p class="font-mono-label text-mono-label text-dim mb-1 uppercase tracking-tight">// REVIEWING</p>
+<div class="flex items-end gap-2">
+<p class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary">04</p>
+<span class="font-mono-label text-[10px] text-live pb-2">+1 New</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5">
+<p class="font-mono-label text-mono-label text-dim mb-1 uppercase tracking-tight">// INTERVIEWS</p>
+<p class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface">02</p>
+</div>
+<div class="bg-surface-container-lowest p-5">
+<p class="font-mono-label text-mono-label text-dim mb-1 uppercase tracking-tight">// PROFILE_STR</p>
+<div class="w-full h-1 bg-muted mt-4 relative">
+<div class="absolute inset-0 bg-primary w-[84%]"></div>
+</div>
+<p class="font-mono-label text-[10px] mt-2 text-dim">84% READY</p>
+</div>
+</section>
+<!-- Followed Companies (Horizontal Scroll) -->
+<section class="mb-12">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-mono-label text-mono-label text-on-surface uppercase tracking-widest">// FOLLOWED_ENTITIES</h3>
+<span class="material-symbols-outlined text-dim text-[16px]">arrow_forward</span>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 -mx-6 px-6 no-scrollbar">
+<!-- Company 1 -->
+<div class="flex-shrink-0 w-36 aspect-square border border-rule bg-surface-container-lowest p-4 flex flex-col justify-between group active:border-primary transition-colors">
+<div class="w-8 h-8 border border-rule flex items-center justify-center bg-background">
+<span class="material-symbols-outlined text-[20px] text-primary">bolt</span>
+</div>
+<div>
+<p class="font-ui-lg text-on-surface leading-none mb-1">Volt_Tech</p>
+<p class="font-mono-label text-[9px] text-dim uppercase">Active Pipeline</p>
+</div>
+</div>
+<!-- Company 2 -->
+<div class="flex-shrink-0 w-36 aspect-square border border-rule bg-surface-container-lowest p-4 flex flex-col justify-between group active:border-primary transition-colors">
+<div class="w-8 h-8 border border-rule flex items-center justify-center bg-background">
+<span class="material-symbols-outlined text-[20px] text-on-surface">payments</span>
+</div>
+<div>
+<p class="font-ui-lg text-on-surface leading-none mb-1">Stripe</p>
+<p class="font-mono-label text-[9px] text-dim uppercase">Monitoring</p>
+</div>
+</div>
+<!-- Company 3 -->
+<div class="flex-shrink-0 w-36 aspect-square border border-rule bg-surface-container-lowest p-4 flex flex-col justify-between group active:border-primary transition-colors">
+<div class="w-8 h-8 border border-rule flex items-center justify-center bg-background">
+<span class="material-symbols-outlined text-[20px] text-on-surface">terminal</span>
+</div>
+<div>
+<p class="font-ui-lg text-on-surface leading-none mb-1">Vercel</p>
+<p class="font-mono-label text-[9px] text-dim uppercase">In Review</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Activity Timeline -->
+<section class="mb-12">
+<h3 class="font-mono-label text-mono-label text-on-surface uppercase tracking-widest mb-6">// RECENT_ACTIVITY_LOG</h3>
+<div class="space-y-0 border-l border-rule ml-2">
+<!-- Timeline Item 1 -->
+<div class="relative pl-8 pb-10">
+<div class="absolute left-[-5px] top-1 w-[9px] h-[9px] bg-primary"></div>
+<div class="flex flex-col">
+<span class="font-mono-label text-[10px] text-dim uppercase mb-2">2h ago — Application Update</span>
+<h4 class="font-ui-lg text-on-surface mb-1">Volt_Tech</h4>
+<p class="text-dim text-ui-sm">Status changed to <span class="text-live font-bold uppercase">Technical Interview</span>. Schedule your slot via the dashboard.</p>
+<div class="mt-4 flex gap-2">
+<button class="px-4 py-2 bg-primary text-background text-ui-sm font-bold border border-primary active:scale-95 transition-transform">Schedule</button>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative pl-8 pb-10">
+<div class="absolute left-[-5px] top-1 w-[9px] h-[9px] bg-rule"></div>
+<div class="flex flex-col">
+<span class="font-mono-label text-[10px] text-dim uppercase mb-2">Yesterday — Network</span>
+<h4 class="font-ui-lg text-on-surface mb-1">New Connection</h4>
+<p class="text-dim text-ui-sm">Hiring Manager at <span class="text-on-surface">Linear</span> viewed your repository profile.</p>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative pl-8">
+<div class="absolute left-[-5px] top-1 w-[9px] h-[9px] bg-rule"></div>
+<div class="flex flex-col">
+<span class="font-mono-label text-[10px] text-dim uppercase mb-2">2 days ago — Alert</span>
+<h4 class="font-ui-lg text-on-surface mb-1">System Audit</h4>
+<p class="text-dim text-ui-sm">Your "Performance Engineer" resume was successfully parsed and indexed.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Decorative Press Grid Tile -->
+<section class="mt-8 border border-rule h-32 relative overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 press-grid opacity-20"></div>
+<div class="z-10 text-center">
+<p class="font-mono-label text-dim uppercase mb-2 tracking-widest">// SYSTEM_IDLE</p>
+<div class="w-12 h-0.5 bg-primary mx-auto animate-pulse"></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-t border-rule h-16 flex justify-around items-center px-4">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-[24px] text-primary" data-weight="fill">dashboard</span>
+<span class="font-mono-label text-[9px] text-primary font-bold uppercase">Overview</span>
+</a>
+<!-- My Applications -->
+<a class="flex flex-col items-center justify-center gap-1 group text-dim active:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[24px]">account_tree</span>
+<span class="font-mono-label text-[9px] uppercase">Apps</span>
+</a>
+<!-- Saved Roles -->
+<a class="flex flex-col items-center justify-center gap-1 group text-dim active:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[24px]">bookmark</span>
+<span class="font-mono-label text-[9px] uppercase">Saved</span>
+</a>
+<!-- Analytics -->
+<a class="flex flex-col items-center justify-center gap-1 group text-dim active:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[24px]">monitoring</span>
+<span class="font-mono-label text-[9px] uppercase">Stats</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center gap-1 group text-dim active:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="font-mono-label text-[9px] uppercase">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Scroll reveal logic
+        document.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-surface-container-lowest/90');
+            } else {
+                header.classList.remove('bg-surface-container-lowest/90');
+            }
+        });
+
+        // Haptic-like feedback on navigation
+        const navItems = document.querySelectorAll('nav a');
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                navItems.forEach(i => {
+                    i.classList.remove('text-primary');
+                    i.classList.add('text-dim');
+                    const icon = i.querySelector('.material-symbols-outlined');
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                });
+                item.classList.remove('text-dim');
+                item.classList.add('text-primary');
+                const activeIcon = item.querySelector('.material-symbols-outlined');
+                activeIcon.style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+    </script>
+</body></html>

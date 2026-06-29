@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "rule": "#1A1A1A",
+                      "on-secondary-fixed": "#1c1c18",
+                      "gradient-c": "#34D399",
+                      "on-tertiary": "#313030",
+                      "surface-container": "#201f1f",
+                      "on-primary": "#571f00",
+                      "surface-bright": "#3a3939",
+                      "live": "#22C55A",
+                      "tertiary-container": "#929090",
+                      "surface-container-low": "#1c1b1b",
+                      "on-secondary": "#31312c",
+                      "primary": "#ffb694",
+                      "inverse-on-surface": "#313030",
+                      "destructive": "#EF4444",
+                      "on-secondary-fixed-variant": "#474742",
+                      "gradient-b": "#60A5FA",
+                      "live-dim": "#14532D",
+                      "primary-fixed": "#ffdbcc",
+                      "surface-tint": "#ffb694",
+                      "tertiary": "#c8c6c5",
+                      "primary-fixed-dim": "#ffb694",
+                      "on-surface-variant": "#e1c0b2",
+                      "on-primary-fixed": "#351000",
+                      "error": "#ffb4ab",
+                      "surface-container-high": "#2a2a2a",
+                      "gradient-d": "#F59E0B",
+                      "surface-variant": "#353534",
+                      "inverse-primary": "#a14000",
+                      "dim": "#666666",
+                      "secondary-fixed": "#e5e2db",
+                      "on-tertiary-container": "#2a2a29",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "on-error": "#690005",
+                      "on-surface": "#e5e2e1",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "muted": "#2A2A2A",
+                      "tertiary-fixed": "#e5e2e1",
+                      "surface-container-highest": "#353534",
+                      "primary-container": "#f06613",
+                      "on-primary-container": "#4c1a00",
+                      "on-background": "#e5e2e1",
+                      "on-secondary-container": "#b7b5af",
+                      "inverse-surface": "#e5e2e1",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "gradient-a": "#C084FC",
+                      "surface-container-lowest": "#0e0e0e",
+                      "error-container": "#93000a",
+                      "surface-dim": "#131313",
+                      "outline": "#a88a7e",
+                      "surface": "#131313",
+                      "secondary-container": "#474742",
+                      "body": "#B8B8B8",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "outline-variant": "#594237",
+                      "secondary": "#c9c6c0",
+                      "background": "#131313",
+                      "accent": "#E8610A" // Adding accent based on prompt
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sidebar-width": "220px",
+                      "gutter": "24px",
+                      "unit": "4px",
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "section-v-pad": "48px"
+              },
+              "fontFamily": {
+                      "body-base": ["DM Sans", "sans-serif"],
+                      "mono-label": ["JetBrains Mono", "monospace"],
+                      "headline-2xl-mobile": ["Playfair Display", "serif"],
+                      "ui-lg": ["DM Sans", "sans-serif"],
+                      "ui-sm": ["DM Sans", "sans-serif"],
+                      "masthead-4xl": ["Playfair Display", "serif"],
+                      "ui-xl": ["DM Sans", "sans-serif"],
+                      "headline-2xl": ["Playfair Display", "serif"]
+              },
+              "fontSize": {
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Overriding tailwind rounding rule for this specific brutalist theme */
+        * { border-radius: 0 !important; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base antialiased flex min-h-screen">
+<!-- SideNavBar Component -->
+<nav class="fixed left-0 top-0 h-screen w-sidebar-width flex flex-col h-full border-r border-rule bg-surface bg-surface dark:bg-surface text-primary dark:text-primary z-40 hidden md:flex">
+<div class="p-4 border-b border-rule">
+<h1 class="font-headline-2xl text-headline-2xl font-black text-primary dark:text-primary leading-none tracking-tight">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label uppercase text-dim mt-2">// admin_mode</p>
+</div>
+<ul class="flex-grow flex flex-col pt-4">
+<li>
+<a class="flex items-center gap-3 w-full text-on-surface border-l-2 border-accent bg-surface-container-high px-4 py-3 font-ui-sm text-ui-sm uppercase tracking-wider font-mono-label text-mono-label group transition-transform scale-[0.99]" href="/admin">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+<span>// DASHBOARD</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 w-full text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 font-ui-sm text-ui-sm uppercase tracking-wider font-mono-label text-mono-label group" href="/pipeline">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+<span>// PIPELINE</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 w-full text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 font-ui-sm text-ui-sm uppercase tracking-wider font-mono-label text-mono-label group" href="/talent">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+<span>// TALENT_POOL</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 w-full text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 font-ui-sm text-ui-sm uppercase tracking-wider font-mono-label text-mono-label group" href="/analytics">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+<span>// ANALYTICS</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 w-full text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 font-ui-sm text-ui-sm uppercase tracking-wider font-mono-label text-mono-label group" href="/archive">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+<span>// ARCHIVE</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 w-full text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 font-ui-sm text-ui-sm uppercase tracking-wider font-mono-label text-mono-label group" href="/settings">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span>// SETTINGS</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto p-4 border-t border-rule">
+<button class="w-full bg-accent text-background font-ui-sm text-ui-sm uppercase font-bold py-3 hover:bg-primary-container transition-colors">
+                POST_NEW_JOB
+            </button>
+<ul class="mt-4 flex flex-col gap-2">
+<li>
+<a class="flex items-center gap-2 text-dim hover:text-on-surface transition-colors font-mono-label text-mono-label" href="#">
+<span class="material-symbols-outlined text-[14px]">help</span> Support
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-2 text-dim hover:text-on-surface transition-colors font-mono-label text-mono-label" href="#">
+<span class="material-symbols-outlined text-[14px]">logout</span> Sign Out
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow md:ml-sidebar-width w-full bg-[#080808] min-h-screen">
+<!-- TopNavBar Component (Hidden on mobile per rules, used as mobile header placeholder otherwise) -->
+<header class="sticky top-0 z-50 w-full h-16 border-b border-rule bg-surface dark:bg-surface flex items-center justify-between px-gutter md:hidden">
+<h1 class="font-headline-2xl-mobile text-headline-2xl-mobile font-bold text-on-surface uppercase">POSTBOARD</h1>
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined">notifications</span>
+<span class="material-symbols-outlined">apps</span>
+</div>
+</header>
+<div class="p-gutter max-w-max-width mx-auto space-y-margin">
+<header>
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface border-b border-rule pb-4">Admin Overview</h2>
+</header>
+<!-- 8-Tile Stat Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-unit">
+<!-- Row 1 -->
+<div class="bg-surface p-6 border border-rule group hover:border-accent transition-colors flex flex-col justify-between h-32">
+<span class="font-mono-label text-mono-label uppercase text-dim">// TOTAL_USERS</span>
+<span class="font-headline-2xl text-headline-2xl text-accent">8,412</span>
+</div>
+<div class="bg-surface p-6 border border-rule group hover:border-accent transition-colors flex flex-col justify-between h-32">
+<span class="font-mono-label text-mono-label uppercase text-dim">// COMPANIES</span>
+<span class="font-headline-2xl text-headline-2xl text-accent">142</span>
+</div>
+<div class="bg-surface p-6 border border-rule group hover:border-accent transition-colors flex flex-col justify-between h-32">
+<span class="font-mono-label text-mono-label uppercase text-dim">// ACTIVE_JOBS</span>
+<span class="font-headline-2xl text-headline-2xl text-accent">1,203</span>
+</div>
+<div class="bg-surface p-6 border border-rule group hover:border-accent transition-colors flex flex-col justify-between h-32">
+<span class="font-mono-label text-mono-label uppercase text-dim">// UPTIME</span>
+<span class="font-headline-2xl text-headline-2xl text-accent">94.3%</span>
+</div>
+<!-- Row 2 -->
+<div class="bg-surface p-4 border border-rule group hover:border-accent transition-colors h-32 flex flex-col justify-between">
+<span class="font-mono-label text-mono-label uppercase text-dim">// NEW_USERS/DAY</span>
+<div class="flex justify-between items-end">
+<span class="font-ui-xl text-ui-xl">34</span>
+<svg class="stroke-accent fill-none stroke-2" height="20" viewbox="0 0 60 20" width="60">
+<polyline points="0,15 10,18 20,10 30,12 40,5 50,8 60,2"></polyline>
+</svg>
+</div>
+</div>
+<div class="bg-surface p-4 border border-rule group hover:border-accent transition-colors h-32 flex flex-col justify-between">
+<span class="font-mono-label text-mono-label uppercase text-dim">// APPS_RECEIVED</span>
+<div class="flex justify-between items-end">
+<span class="font-ui-xl text-ui-xl">892</span>
+<svg class="stroke-accent fill-none stroke-2" height="20" viewbox="0 0 60 20" width="60">
+<polyline points="0,18 10,15 20,8 30,14 40,6 50,4 60,10"></polyline>
+</svg>
+</div>
+</div>
+<div class="bg-surface p-4 border border-rule group hover:border-accent transition-colors h-32 flex flex-col justify-between">
+<span class="font-mono-label text-mono-label uppercase text-dim">// HIRED_30D</span>
+<div class="flex justify-between items-end">
+<span class="font-ui-xl text-ui-xl">18</span>
+<svg class="stroke-accent fill-none stroke-2" height="20" viewbox="0 0 60 20" width="60">
+<polyline points="0,20 10,20 20,18 30,15 40,10 50,8 60,2"></polyline>
+</svg>
+</div>
+</div>
+<div class="bg-surface p-4 border border-accent h-32 flex flex-col justify-between bg-error-container/10">
+<span class="font-mono-label text-mono-label uppercase text-dim">// FLAGGED_ACCOUNTS</span>
+<div class="flex justify-between items-end">
+<span class="font-ui-xl text-ui-xl text-destructive font-bold">2</span>
+<span class="material-symbols-outlined text-destructive" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+</section>
+<!-- System Health Band -->
+<section class="border border-rule bg-surface p-6">
+<h3 class="font-mono-label text-mono-label uppercase text-dim mb-4 border-b border-rule pb-2 w-full">// system_status</h3>
+<div class="flex flex-wrap gap-6 font-mono-label text-mono-label text-on-surface">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-none bg-live"></div>
+<span>API Server: <span class="text-dim">Operational</span></span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-none bg-live"></div>
+<span>PostgreSQL: <span class="text-dim">Operational</span></span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-none bg-live"></div>
+<span>Redis Cache: <span class="text-dim">Operational</span></span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-none bg-destructive"></div>
+<span>Email Queue: <span class="text-dim">Degraded</span></span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-none bg-live"></div>
+<span>Job Worker: <span class="text-dim">Operational</span></span>
+</div>
+</div>
+</section>
+<!-- Recent Activity Feed -->
+<section>
+<h3 class="font-mono-label text-mono-label uppercase text-dim mb-4">// recent_platform_activity</h3>
+<div class="border border-rule bg-surface overflow-x-auto">
+<table class="w-full text-left font-mono-label text-mono-label border-collapse">
+<thead class="text-dim border-b border-rule bg-surface-container-low">
+<tr>
+<th class="py-3 px-4 font-normal">TIMESTAMP</th>
+<th class="py-3 px-4 font-normal border-l border-rule">ACTOR</th>
+<th class="py-3 px-4 font-normal border-l border-rule">ACTION</th>
+</tr>
+</thead>
+<tbody class="text-body">
+<tr class="border-b border-rule hover:bg-surface-container-highest transition-colors">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T14:32:01Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">sysadmin</a></td>
+<td class="py-2 px-4 border-l border-rule">Config_Update: Email_Provider_API_Key</td>
+</tr>
+<tr class="border-b border-rule hover:bg-surface-container-highest transition-colors">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T14:28:44Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">usr_892aF</a></td>
+<td class="py-2 px-4 border-l border-rule">Auth_Success: Session_Created</td>
+</tr>
+<tr class="border-b border-rule hover:bg-surface-container-highest transition-colors">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T14:25:12Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">cron_daemon</a></td>
+<td class="py-2 px-4 border-l border-rule">Job_Purge: 14_stale_records_removed</td>
+</tr>
+<tr class="border-b border-rule hover:bg-surface-container-highest transition-colors bg-error-container/5">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T14:15:00Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">system</a></td>
+<td class="py-2 px-4 border-l border-rule text-destructive">Warn: Rate_Limit_Exceeded (IP: 192.168.1.45)</td>
+</tr>
+<tr class="border-b border-rule hover:bg-surface-container-highest transition-colors">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T14:10:22Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">usr_441bX</a></td>
+<td class="py-2 px-4 border-l border-rule">Record_Create: Job_Posting (ID: P-9012)</td>
+</tr>
+<tr class="border-b border-rule hover:bg-surface-container-highest transition-colors">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T14:05:01Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">webhook_stripe</a></td>
+<td class="py-2 px-4 border-l border-rule">Payment_Intent_Succeeded: $499.00</td>
+</tr>
+<tr class="border-b border-rule hover:bg-surface-container-highest transition-colors">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T13:58:40Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">usr_990zQ</a></td>
+<td class="py-2 px-4 border-l border-rule">Auth_Failed: Invalid_Credentials</td>
+</tr>
+<tr class="border-b border-rule hover:bg-surface-container-highest transition-colors">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T13:45:11Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">usr_892aF</a></td>
+<td class="py-2 px-4 border-l border-rule">Profile_Update: Bio_Modified</td>
+</tr>
+<tr class="border-b border-rule hover:bg-surface-container-highest transition-colors bg-live-dim/20">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T13:30:00Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">system</a></td>
+<td class="py-2 px-4 border-l border-rule text-live">Backup_Complete: vol-0abcd1234</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="py-2 px-4 whitespace-nowrap text-dim">2023-10-27T13:12:05Z</td>
+<td class="py-2 px-4 border-l border-rule"><a class="text-accent hover:underline" href="#">usr_112cC</a></td>
+<td class="py-2 px-4 border-l border-rule">Record_Delete: Draft_Application</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 text-right">
+<a class="font-mono-label text-mono-label text-accent hover:text-primary transition-colors" href="#">
+                        [View Full Audit Log →]
+                    </a>
+</div>
+</section>
+</div>
+</main>
+</body></html>

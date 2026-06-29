@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Companies Directory - PostBoard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=JetBrains+Mono:wght@400&amp;family=DM+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "on-primary-container": "#4c1a00",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary": "#c8c6c5",
+                        "muted": "#2A2A2A",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "surface": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "outline": "#a88a7e",
+                        "on-secondary-container": "#b7b5af",
+                        "secondary": "#c9c6c0",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#ffb694",
+                        "on-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "primary-fixed-dim": "#ffb694",
+                        "gradient-c": "#34D399",
+                        "live-dim": "#14532D",
+                        "on-primary": "#571f00",
+                        "surface-container-lowest": "#0e0e0e",
+                        "body": "#B8B8B8",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "primary": "#ffb694",
+                        "dim": "#666666",
+                        "on-error": "#690005",
+                        "secondary-container": "#474742",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-tertiary": "#313030",
+                        "live": "#22C55A",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#e1c0b2",
+                        "primary-container": "#f06613",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "gradient-b": "#60A5FA",
+                        "surface-container": "#201f1f",
+                        "outline-variant": "#594237",
+                        "on-secondary-fixed-variant": "#474742",
+                        "tertiary-container": "#929090",
+                        "destructive": "#EF4444",
+                        "on-secondary": "#31312c",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "gradient-d": "#F59E0B",
+                        "primary-fixed": "#ffdbcc",
+                        "rule": "#1A1A1A",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-bright": "#3a3939",
+                        "on-secondary-fixed": "#1c1c18",
+                        "inverse-surface": "#e5e2e1",
+                        "gradient-a": "#C084FC",
+                        "inverse-primary": "#a14000",
+                        "secondary-fixed": "#e5e2db",
+                        "on-primary-fixed": "#351000",
+                        "on-background": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "section-v-pad": "48px",
+                        "max-width": "1280px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "sidebar-width": "220px"
+                    },
+                    "fontFamily": {
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "mono-label": ["JetBrains Mono"],
+                        "ui-sm": ["DM Sans"],
+                        "body-base": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-xl": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                        "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #080808;
+            color: #e5e2e1;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background border-b border-rule transition-colors duration-150">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container p-2 flex items-center justify-center transition-colors duration-150">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary tracking-tight">CANDIDATE_FILE</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-mono-label text-mono-label uppercase text-dim hover:bg-surface-container transition-colors duration-150 px-2 py-1" href="#">FEED</a>
+<a class="font-mono-label text-mono-label uppercase text-dim hover:bg-surface-container transition-colors duration-150 px-2 py-1" href="#">STAGES</a>
+<a class="font-mono-label text-mono-label uppercase text-primary hover:bg-surface-container transition-colors duration-150 px-2 py-1" href="#">SEARCH</a>
+<a class="font-mono-label text-mono-label uppercase text-dim hover:bg-surface-container transition-colors duration-150 px-2 py-1" href="#">PROFILE</a>
+</nav>
+<button class="text-primary hover:bg-surface-container p-2 flex items-center justify-center transition-colors duration-150">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<main class="flex-grow pb-24 md:pb-12">
+<div class="max-w-[1280px] mx-auto px-gutter md:px-margin pt-section-v-pad">
+<!-- Hero Section -->
+<section class="mb-section-v-pad border-b border-rule pb-12">
+<div class="mb-4">
+<span class="font-mono-label text-mono-label text-dim uppercase">// companies_directory</span>
+</div>
+<h1 class="font-headline-2xl text-headline-2xl md:font-masthead-4xl md:text-masthead-4xl text-on-surface mb-8">
+                    Discover Verified Employers
+                </h1>
+<!-- Search Box -->
+<div class="max-w-2xl mt-12 relative">
+<label class="font-mono-label text-mono-label text-dim uppercase block mb-2" for="company-search">// DIRECTORY_QUERY</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-dim">search</span>
+<input class="w-full bg-[#080808] border border-rule text-on-surface font-mono-label text-mono-label py-4 pl-12 pr-4 focus:outline-none focus:border-primary-container transition-colors duration-200 placeholder-dim" id="company-search" placeholder="SEARCH BY NAME, INDUSTRY, OR KEYWORD..." type="text"/>
+<button class="absolute right-0 top-0 bottom-0 px-6 bg-primary-container text-[#080808] font-mono-label text-mono-label hover:bg-primary transition-colors border-l border-rule">
+                            EXECUTE
+                        </button>
+</div>
+</div>
+</section>
+<!-- Grid Controls -->
+<div class="flex justify-between items-center mb-8 border-b border-rule pb-4">
+<div class="font-mono-label text-mono-label text-dim">
+                    // RESULTS_FOUND: 248
+                </div>
+<div class="flex gap-4">
+<button class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> FILTER
+                    </button>
+<button class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sort</span> SORT
+                    </button>
+</div>
+</div>
+<!-- Company Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<article class="bg-[#0F0F0F] border border-rule p-6 hover:border-primary-container transition-colors duration-200 group cursor-pointer flex flex-col h-full">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 bg-[#1A1A1A] border border-rule flex items-center justify-center p-2">
+<img class="w-full h-full object-contain mix-blend-screen opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A minimalist, geometric tech company logo featuring sharp, angular lines in pure white against a stark black background. The design is abstract, resembling a stylized letter A or a forward-pointing arrow, evoking speed and technical precision. The lighting is flat and graphic, emphasizing high-contrast brutalist design principles." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTeQcJcTfyUuSpXL_anvAGGkg2qQyiMX1-Ei6jWIMXyJaHGcu8l6mvt_ATMCwKQ41a9AlKBbox8qJD-cSkF8GPWHmjj3Im_HqJsEw6ap5gUbKFFI8GmpkssjWZ4XEnoU70kiL_J8ln2M4Paq2TyzeZX2nco4N77gmj9gD5uQCUjzXwI726uidMAqozBnW8PSs9j7lJax-L7ewG1BswnjQZ7ZOgMDg1vCsPrULwLH0U-n2NBns8vDoKd6L5d1fQhMLqD6dH6pHJLsaG"/>
+</div>
+<span class="font-mono-label text-mono-label text-primary-container border border-primary-container px-2 py-1">HIRING</span>
+</div>
+<div class="mb-auto">
+<h2 class="font-ui-xl text-ui-xl text-on-surface mb-2">Acme Corp Systems</h2>
+<div class="font-mono-label text-mono-label text-dim mb-4">// FINTECH_INFRASTRUCTURE</div>
+<p class="font-body-base text-body-base text-body line-clamp-3 mb-6">
+                            Building highly concurrent, fault-tolerant ledger systems for next-generation global financial institutions. Utilizing Rust and specialized distributed consensus algorithms.
+                        </p>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-rule pt-4 mt-4">
+<div>
+<div class="font-mono-label text-mono-label text-dim mb-1">// HEADCOUNT</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">50-200</div>
+</div>
+<div>
+<div class="font-mono-label text-mono-label text-dim mb-1">// OPEN_REQS</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">12 POSITIONS</div>
+</div>
+<div class="col-span-2">
+<div class="font-mono-label text-mono-label text-dim mb-1">// HQ</div>
+<div class="font-ui-sm text-ui-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">location_on</span> NEW YORK, NY
+                            </div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-[#0F0F0F] border border-rule p-6 hover:border-primary-container transition-colors duration-200 group cursor-pointer flex flex-col h-full">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 bg-[#1A1A1A] border border-rule flex items-center justify-center p-2">
+<img class="w-full h-full object-contain mix-blend-screen opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A bold, stark monochrome logo for a data analytics firm. The mark features overlapping hard-edged squares in stark white, forming a complex grid pattern on a deep black background. The visual aesthetic is reminiscent of early computer punch cards or brutalist architecture, conveying structure, order, and raw data." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBZsxQ-YfD51ap178QVOtpSybp3lFY33fRncwsuYP-aqxJ5fTjRMHd9mOi_qU0YERLOnnc2kMpKEPKcMKLt0X63Us1YEwxWomWq-b7G8SgN4JxoyF7TKAY7FAXB00QdQoXaqQYf53Qw-CwRcm5FrGO3mqgP19EgFo-kzLAGawozcMu80xX2VNSsbg98ZR4cgIDDS5aBEDM8qPhad9mtYrPvV4UPJp3w4XibIYmS8qU72gz10O1MDbC5zSAWs75bTm_DhAXb5nF4d7-"/>
+</div>
+</div>
+<div class="mb-auto">
+<h2 class="font-ui-xl text-ui-xl text-on-surface mb-2">Nexus Data Grid</h2>
+<div class="font-mono-label text-mono-label text-dim mb-4">// DISTRIBUTED_DATABASES</div>
+<p class="font-body-base text-body-base text-body line-clamp-3 mb-6">
+                            Developing a planetary-scale, multi-modal database engine designed for extreme write-throughput and sub-millisecond read latency.
+                        </p>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-rule pt-4 mt-4">
+<div>
+<div class="font-mono-label text-mono-label text-dim mb-1">// HEADCOUNT</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">200-500</div>
+</div>
+<div>
+<div class="font-mono-label text-mono-label text-dim mb-1">// OPEN_REQS</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">8 POSITIONS</div>
+</div>
+<div class="col-span-2">
+<div class="font-mono-label text-mono-label text-dim mb-1">// HQ</div>
+<div class="font-ui-sm text-ui-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">location_on</span> SAN FRANCISCO, CA
+                            </div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-[#0F0F0F] border border-rule p-6 hover:border-primary-container transition-colors duration-200 group cursor-pointer flex flex-col h-full">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 bg-[#1A1A1A] border border-rule flex items-center justify-center p-2">
+<img class="w-full h-full object-contain mix-blend-screen opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A stark, high-contrast logomark for a cybersecurity company. The design is a pure white, sharp-edged shield or hexagon intersected by diagonal slashes, set against a solid black background. It communicates impenetrability, aggression, and technical mastery, aligning with a high-density, brutalist editorial visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyucFO9C4TSqp0gBYaQ-pqAhfGjW7CKgjGiHb6IE4JKn18OKJrflmG-sNCFstiC7YUewSUPwD-Bbag3gmD8-UgrisImBSE6xegp_fsWMr9vvu-TYdpKpIuxvYSc0vGUfMCsNc9YLXGVdPzGc0sKmJ8Czdt4QkYluNLE9r-RkY1uu-EHkp7c0f-ZOnvtKg2_lRZUCy55M8sfUscNNjqG2tKhGdocU_9aqwwx4yq6hBGqBNySs7_5R1-fZ2bM47kf5fIOkL90PJkgZMp"/>
+</div>
+<span class="font-mono-label text-mono-label text-primary-container border border-primary-container px-2 py-1">HIRING</span>
+</div>
+<div class="mb-auto">
+<h2 class="font-ui-xl text-ui-xl text-on-surface mb-2">Vanguard Sec</h2>
+<div class="font-mono-label text-mono-label text-dim mb-4">// THREAT_INTELLIGENCE</div>
+<p class="font-body-base text-body-base text-body line-clamp-3 mb-6">
+                            Advanced zero-day threat detection leveraging novel machine learning models on network packet streams. Stealth mode startup.
+                        </p>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-rule pt-4 mt-4">
+<div>
+<div class="font-mono-label text-mono-label text-dim mb-1">// HEADCOUNT</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">10-50</div>
+</div>
+<div>
+<div class="font-mono-label text-mono-label text-dim mb-1">// OPEN_REQS</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">24 POSITIONS</div>
+</div>
+<div class="col-span-2">
+<div class="font-mono-label text-mono-label text-dim mb-1">// HQ</div>
+<div class="font-ui-sm text-ui-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">location_on</span> AUSTIN, TX (REMOTE)
+                            </div>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-[#0F0F0F] border border-rule p-6 hover:border-primary-container transition-colors duration-200 group cursor-pointer flex flex-col h-full">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 bg-[#1A1A1A] border border-rule flex items-center justify-center p-2">
+<img class="w-full h-full object-contain mix-blend-screen opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A minimalist tech logo for a machine learning startup. The icon is a pure white, sharp wireframe cube or tesseract rendered on a solid black background. The lines are extremely thin and precise. The overall aesthetic is severe, intellectual, and strictly monochrome, fitting a brutalist design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATJjPpL14vtuxR-ZmiWiLW1WfttIrarxuutG46JQGd4XQWz_25plVhcRgfUvRU64r6mm0MucClWu6IM2P9iZnOpGUBDdgi3JoiloRNZlHUBQ5mROIu8ST4qBk65rHDrEBFZs7h1PYh-tNFzEFq3HlgVwHDycujJN9WVvewfKtpSB4XMssEVgowa3CZAlI-jCo2M7yL6Lh59iYX2Y3b4vETcUbhAsz3FOycQidN_QqT96-7nHPWqHebL0-zXzvXYsqwF9CtALiCIYgR"/>
+</div>
+</div>
+<div class="mb-auto">
+<h2 class="font-ui-xl text-ui-xl text-on-surface mb-2">Cognitive Labs</h2>
+<div class="font-mono-label text-mono-label text-dim mb-4">// APPLIED_AI</div>
+<p class="font-body-base text-body-base text-body line-clamp-3 mb-6">
+                            Building domain-specific large language models for legal and regulatory compliance analysis.
+                        </p>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-rule pt-4 mt-4">
+<div>
+<div class="font-mono-label text-mono-label text-dim mb-1">// HEADCOUNT</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">50-200</div>
+</div>
+<div>
+<div class="font-mono-label text-mono-label text-dim mb-1">// OPEN_REQS</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">3 POSITIONS</div>
+</div>
+<div class="col-span-2">
+<div class="font-mono-label text-mono-label text-dim mb-1">// HQ</div>
+<div class="font-ui-sm text-ui-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-dim">location_on</span> LONDON, UK
+                            </div>
+</div>
+</div>
+</article>
+</section>
+<!-- Pagination (Terminal Style) -->
+<div class="mt-12 flex justify-center items-center gap-4 border-t border-rule pt-8">
+<button class="font-mono-label text-mono-label text-dim hover:text-on-surface disabled:opacity-50 transition-colors uppercase">&lt; PREV</button>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center border border-primary-container text-primary-container bg-[#080808] font-mono-label text-mono-label">1</button>
+<button class="w-8 h-8 flex items-center justify-center border border-rule text-dim hover:border-primary-container hover:text-on-surface bg-[#080808] transition-colors font-mono-label text-mono-label">2</button>
+<button class="w-8 h-8 flex items-center justify-center border border-rule text-dim hover:border-primary-container hover:text-on-surface bg-[#080808] transition-colors font-mono-label text-mono-label">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-dim font-mono-label text-mono-label">...</span>
+</div>
+<button class="font-mono-label text-mono-label text-on-surface hover:text-primary-container transition-colors uppercase">NEXT &gt;</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-background border-t border-rule transition-transform duration-100">
+<a class="flex flex-col items-center justify-center text-dim p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-mono-label text-mono-label mt-1">FEED</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">step</span>
+<span class="font-mono-label text-mono-label mt-1">STAGES</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary p-2" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-mono-label text-mono-label mt-1">SEARCH</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-mono-label text-mono-label mt-1">PROFILE</span>
+</a>
+</nav>
+<!-- Standard Footer -->
+<footer class="border-t border-rule bg-[#0F0F0F] py-12 mt-auto pb-24 md:pb-12">
+<div class="max-w-[1280px] mx-auto px-gutter md:px-margin grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2">
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface block mb-4">PostBoard</span>
+<p class="font-mono-label text-mono-label text-dim max-w-xs uppercase leading-relaxed">
+                    // HIGH-DENSITY RECRUITMENT INTELLIGENCE. <br/>
+                    SYSTEM_STATUS: OPERATIONAL.
+                </p>
+</div>
+<div>
+<h3 class="font-mono-label text-mono-label text-on-surface uppercase mb-4">// DIRECTORY</h3>
+<ul class="space-y-2">
+<li><a class="font-ui-sm text-ui-sm text-dim hover:text-primary-container transition-colors" href="#">Companies</a></li>
+<li><a class="font-ui-sm text-ui-sm text-dim hover:text-primary-container transition-colors" href="#">Candidates</a></li>
+<li><a class="font-ui-sm text-ui-sm text-dim hover:text-primary-container transition-colors" href="#">Analytics</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-mono-label text-mono-label text-on-surface uppercase mb-4">// LEGAL</h3>
+<ul class="space-y-2">
+<li><a class="font-ui-sm text-ui-sm text-dim hover:text-primary-container transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-ui-sm text-ui-sm text-dim hover:text-primary-container transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-ui-sm text-ui-sm text-dim hover:text-primary-container transition-colors" href="#">System Audit</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

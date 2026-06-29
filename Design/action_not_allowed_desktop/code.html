@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forbidden Access - POSTBOARD</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#e5e2e1",
+                    "body": "#B8B8B8",
+                    "on-surface-variant": "#e1c0b2",
+                    "secondary-fixed-dim": "#c9c6c0",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#351000",
+                    "gradient-b": "#60A5FA",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "surface-bright": "#3a3939",
+                    "on-surface": "#e5e2e1",
+                    "surface-tint": "#ffb694",
+                    "on-primary": "#571f00",
+                    "dim": "#666666",
+                    "destructive": "#EF4444",
+                    "live-dim": "#14532D",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary": "#31312c",
+                    "gradient-c": "#34D399",
+                    "surface-variant": "#353534",
+                    "secondary-fixed": "#e5e2db",
+                    "on-tertiary": "#313030",
+                    "primary": "#ffb694",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary-container": "#929090",
+                    "muted": "#2A2A2A",
+                    "surface-container-high": "#2a2a2a",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-fixed": "#ffdbcc",
+                    "inverse-on-surface": "#313030",
+                    "background": "#131313",
+                    "on-secondary-fixed-variant": "#474742",
+                    "surface": "#131313",
+                    "primary-container": "#f06613",
+                    "on-secondary-container": "#b7b5af",
+                    "on-background": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "error": "#ffb4ab",
+                    "surface-container": "#201f1f",
+                    "rule": "#1A1A1A",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "secondary-container": "#474742",
+                    "on-primary-container": "#4c1a00",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "primary-fixed-dim": "#ffb694",
+                    "surface-dim": "#131313",
+                    "outline-variant": "#594237",
+                    "error-container": "#93000a",
+                    "outline": "#a88a7e",
+                    "inverse-primary": "#a14000",
+                    "tertiary": "#c8c6c5",
+                    "live": "#22C55A",
+                    "secondary": "#c9c6c0",
+                    "gradient-d": "#F59E0B",
+                    "gradient-a": "#C084FC",
+                    "on-tertiary-container": "#2a2a29",
+                    "on-secondary-fixed": "#1c1c18"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0rem",
+                    "lg": "0rem",
+                    "xl": "0rem",
+                    "full": "0rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "section-v-pad": "48px",
+                    "max-width": "1280px",
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "sidebar-width": "220px"
+            },
+            "fontFamily": {
+                    "body-base": ["DM Sans"],
+                    "ui-lg": ["DM Sans"],
+                    "headline-2xl": ["Playfair Display"],
+                    "ui-sm": ["DM Sans"],
+                    "mono-label": ["JetBrains Mono"],
+                    "headline-2xl-mobile": ["Playfair Display"],
+                    "ui-xl": ["DM Sans"],
+                    "masthead-4xl": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                    "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                    "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+      /* Strict reset for components that shouldn't round */
+      * { border-radius: 0 !important; }
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background text-body font-body-base antialiased h-screen w-full overflow-hidden flex">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden md:flex flex-col h-full border-r border-rule bg-surface fixed left-0 top-0 w-sidebar-width z-40">
+<!-- Header -->
+<div class="p-gutter border-b border-rule flex flex-col items-center justify-center pt-8 pb-6">
+<div class="w-12 h-12 border border-rule bg-surface-container-high mb-4 flex items-center justify-center overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover grayscale opacity-80 mix-blend-screen" data-alt="A striking, high-contrast monochrome portrait of a professional avatar, brutalist style with intense light casting harsh shadows, pure black background, hyper-detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHSUP1fr4yMuvxF56_u6oy1kd2NtTVL__j-AoZPp_DJnVjUe264J3S8zJ7nAzrUBNg7dVB_zUzj__nKSXG4vYndzPoccH_RMcIer4lY-COgL-Nf4Il5HjjjSrJvDfC-kKjoJpyM5c1CAOxagVQScwIuV_JrFKHVrhU_-H2xFH5qLAJ1K4aQIV6Q9cHsB4xd0eIaZl7w9xvcVEUEWclfcjh6WmHmW0UX9aB1EvKir4YA9ZrD2DuPeOUuIBy2kc-jy2gkeK7hVH83AGZ"/>
+</div>
+<h1 class="font-masthead-4xl text-[24px] font-black text-primary uppercase tracking-tighter">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-dim uppercase mt-2">// Technical Recruitment</p>
+</div>
+<!-- CTA -->
+<div class="px-4 py-6 border-b border-rule">
+<button class="w-full bg-primary text-on-primary font-mono-label text-mono-label uppercase py-3 border border-primary hover:bg-surface hover:text-primary transition-colors duration-150">
+                POST_NEW_JOB
+            </button>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex-1 overflow-y-auto py-4 flex flex-col gap-1">
+<!-- Inactive due to being on a global 403 page -->
+<a class="text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+                // DASHBOARD
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+                // PIPELINE
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+                // TALENT_POOL
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+                // ANALYTICS
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+                // ARCHIVE
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                // SETTINGS
+            </a>
+</div>
+<!-- Footer Tabs -->
+<div class="mt-auto border-t border-rule py-2">
+<a class="text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                Support
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3 flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+                Sign Out
+            </a>
+</div>
+</nav>
+<!-- Main Workspace Area -->
+<div class="flex-1 flex flex-col md:ml-sidebar-width w-full md:w-[calc(100%-220px)] relative bg-background">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 z-50 w-full h-16 flex items-center justify-between px-gutter border-b border-rule bg-surface">
+<!-- Left Side: Brand (Mobile) & Search -->
+<div class="flex items-center gap-6 h-full">
+<h1 class="md:hidden font-headline-2xl-mobile text-headline-2xl-mobile font-bold text-on-surface uppercase tracking-tight">
+                    POSTBOARD
+                </h1>
+<div class="hidden md:flex items-center h-full group relative">
+<span class="material-symbols-outlined absolute left-3 text-dim text-[18px]">search</span>
+<input class="h-full bg-transparent border-none pl-10 pr-4 font-mono-label text-mono-label text-on-surface placeholder:text-dim focus:ring-0 focus:outline-none w-64 uppercase" placeholder="Search system..." type="text"/>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-transparent group-focus-within:bg-primary transition-colors"></div>
+</div>
+</div>
+<!-- Right Side: Actions -->
+<div class="flex items-center gap-4 h-full">
+<button class="hidden sm:flex h-9 px-4 items-center justify-center bg-primary text-on-primary font-mono-label text-mono-label uppercase border border-primary hover:bg-surface hover:text-primary transition-colors duration-150">
+                    Create Order
+                </button>
+<div class="flex items-center border-l border-rule pl-4 ml-2 gap-2 h-full">
+<button class="w-10 h-10 flex items-center justify-center text-body hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-body hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<button class="w-8 h-8 ml-2 border border-rule bg-surface-container-high overflow-hidden hover:border-primary transition-colors">
+<img alt="Profile Settings" class="w-full h-full object-cover grayscale opacity-80 mix-blend-screen" data-alt="A striking, high-contrast monochrome portrait of a professional avatar, brutalist style with intense light casting harsh shadows, pure black background, hyper-detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxLSlGx9Vqw6OWUvxjiE7w8890zy1KIUFbJjhnEa4IbfLLE0Vrz_CL-nbl_cs7Qxy9-BsI9U3hiiLpGx3g3UbtcJsZDrJsC7QPYRsBr_snY47RuWTil3CFpP7jvwP9kaE6yGo42azQ903DSElvn1jPeat8pJwgn5JozWCzMgpJFwimaVMaDsnzhiJ21vCBw5-aExfEpm_Ct5pUyrfJODqOp-ldcV-2sV3g3BAYbuplq17xkvDYgbESxyGVJe268cEvTdY1Q-wXrhhn"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area: 403 Forbidden -->
+<main class="flex-1 overflow-y-auto w-full flex items-center justify-center p-gutter md:p-margin relative">
+<!-- Grid Background Decorative overlay -->
+<div aria-hidden="true" class="absolute inset-0 pointer-events-none opacity-[0.03] flex flex-wrap">
+<!-- Generating a simple CSS grid pattern -->
+<div class="w-full h-full" style="background-image: linear-gradient(to right, #1A1A1A 1px, transparent 1px), linear-gradient(to bottom, #1A1A1A 1px, transparent 1px); background-size: 40px 40px;"></div>
+</div>
+<!-- Brutalist Warning Container -->
+<div class="relative w-full max-w-3xl border border-rule bg-surface p-1 shadow-none">
+<!-- Inner Border Frame -->
+<div class="border border-rule p-8 md:p-12 relative overflow-hidden bg-background">
+<!-- Top Monospace Tab -->
+<div class="absolute top-0 left-0 bg-primary text-on-primary px-3 py-1 font-mono-label text-mono-label uppercase font-bold tracking-widest border-r border-b border-rule">
+                        // ERR_403
+                    </div>
+<div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center md:items-start mt-6">
+<!-- Illustration Area -->
+<div class="w-full md:w-5/12 flex-shrink-0 relative border border-rule bg-surface-container-lowest p-2">
+<!-- Glitch / Grid visual anchor behind image -->
+<div class="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary z-10"></div>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-primary z-10"></div>
+<div class="aspect-square relative w-full overflow-hidden bg-background">
+<img alt="Warning Illustration" class="w-full h-full object-cover mix-blend-luminosity opacity-90 contrast-125" data-alt="A striking, brutalist digital illustration depicting a locked security gate or intricate forbidden access mechanical symbol. The composition uses a strict monochromatic palette of pure black and stark white, with a singular intense amber orange accent highlighting the central locking mechanism. The style is highly technical, resembling a developer terminal or blueprint schematics, with sharp geometric lines, high contrast, and zero soft shadows. The overall mood is serious, professional, and imposing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCff97HXdxbW7BySojWtKIUYUWQWSoWTxkMRI2AdCOy-mYkM_M7ZGXRhGpDQnu0Lc57jVe15h9Zhw9vpFAKJN3xTlbqc66B0wytLW89kmfOO4-bZczhLuMtjUfjNe-0yzAUftR8jwv80wB5jp_I1QSZulUBaLTHAUB7hXqYJZpQknjDpMFtxnLB4ro6nhqFHPTQXEYZar645jtcF6iTE-QW5kSVEkdm09cfYr6KjscZO4xQ0OnQ8fQ3WJP-lKlgjKSmYi7zWncRyR23"/>
+</div>
+</div>
+<!-- Content Area -->
+<div class="w-full md:w-7/12 flex flex-col justify-center py-4">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-mono-label text-mono-label text-dim uppercase tracking-widest">// ACCESS_DENIED</span>
+</div>
+<h2 class="font-headline-2xl text-headline-2xl font-bold text-on-surface mb-6 uppercase tracking-tight">
+                                Action Not Allowed
+                            </h2>
+<div class="w-12 h-1 bg-primary mb-6"></div>
+<p class="font-body-base text-body-base text-body mb-10 max-w-md">
+                                You are not permitted to perform this action. The requested resource requires elevated clearance levels or specific node assignments that are currently absent from your user profile.
+                            </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full">
+<button class="flex-1 bg-primary text-on-primary font-mono-label text-mono-label uppercase py-4 px-6 border border-primary hover:bg-surface hover:text-primary transition-all duration-150 flex items-center justify-center gap-2 group" onclick="window.history.back()">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform">arrow_left_alt</span>
+                                    Return to Previous Page
+                                </button>
+<a class="flex-1 bg-transparent text-on-surface font-mono-label text-mono-label uppercase py-4 px-6 border border-rule hover:border-primary hover:text-primary transition-colors duration-150 flex items-center justify-center gap-2" href="#">
+                                    Go to Dashboard
+                                    <span class="material-symbols-outlined text-[16px]">dashboard</span>
+</a>
+</div>
+<!-- Technical metadata terminal output -->
+<div class="mt-10 border-t border-rule pt-4">
+<p class="font-mono-label text-mono-label text-dim">
+<span class="text-primary mr-2">&gt;&gt;</span> TIMESTAMP: <span class="text-body" id="timestamp"></span><br/>
+<span class="text-primary mr-2">&gt;&gt;</span> SESSION_ID: <span class="text-body">0x8F9A2B44</span><br/>
+<span class="text-primary mr-2">&gt;&gt;</span> ERROR_CODE: <span class="text-destructive font-bold">HTTP_403_FORBIDDEN</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Set dynamic timestamp for the terminal output effect
+        document.getElementById('timestamp').textContent = new Date().toISOString();
+    </script>
+</body></html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD // My Jobs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "rule": "#1A1A1A",
+                        "on-secondary-fixed": "#1c1c18",
+                        "gradient-c": "#34D399",
+                        "on-tertiary": "#313030",
+                        "surface-container": "#201f1f",
+                        "on-primary": "#571f00",
+                        "surface-bright": "#3a3939",
+                        "live": "#22C55A",
+                        "tertiary-container": "#929090",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary": "#31312c",
+                        "primary": "#ffb694",
+                        "inverse-on-surface": "#313030",
+                        "destructive": "#EF4444",
+                        "on-secondary-fixed-variant": "#474742",
+                        "gradient-b": "#60A5FA",
+                        "live-dim": "#14532D",
+                        "primary-fixed": "#ffdbcc",
+                        "surface-tint": "#ffb694",
+                        "tertiary": "#c8c6c5",
+                        "primary-fixed-dim": "#ffb694",
+                        "on-surface-variant": "#e1c0b2",
+                        "on-primary-fixed": "#351000",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#2a2a2a",
+                        "gradient-d": "#F59E0B",
+                        "surface-variant": "#353534",
+                        "inverse-primary": "#a14000",
+                        "dim": "#666666",
+                        "secondary-fixed": "#e5e2db",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-error": "#690005",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "muted": "#2A2A2A",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#f06613",
+                        "on-primary-container": "#4c1a00",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-container": "#b7b5af",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "gradient-a": "#C084FC",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error-container": "#93000a",
+                        "surface-dim": "#131313",
+                        "outline": "#a88a7e",
+                        "surface": "#131313",
+                        "secondary-container": "#474742",
+                        "body": "#B8B8B8",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "outline-variant": "#594237",
+                        "secondary": "#c9c6c0",
+                        "background": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "sidebar-width": "220px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "max-width": "1280px",
+                        "margin": "32px",
+                        "section-v-pad": "48px"
+                    },
+                    "fontFamily": {
+                        "body-base": ["DM Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"],
+                        "ui-sm": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "ui-xl": ["DM Sans"],
+                        "headline-2xl": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                        "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #080808;
+            color: #e5e2e1;
+        }
+        .text-amber { color: #E8610A; }
+        .bg-amber { background-color: #E8610A; }
+        .border-amber { border-color: #E8610A; }
+        .bg-open { background-color: #14532D; color: #22C55A; }
+        .border-draft { border: 1px dashed #1A1A1A; color: #666666; }
+        .bg-rejected { background-color: #7f1d1d; color: #EF4444; }
+        .text-live { color: #22C55A; }
+        .bg-surface-elevated { background-color: #0F0F0F; }
+        
+        /* Monochromatic Rules */
+        .grid-lines {
+            background-image: linear-gradient(to right, #1A1A1A 1px, transparent 1px),
+                              linear-gradient(to bottom, #1A1A1A 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* Status Badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        /* Table overrides */
+        table { border-collapse: collapse; width: 100%; }
+        th, td { text-align: left; padding: 12px 16px; }
+        th { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #666666; font-weight: normal; border-bottom: 1px solid #1A1A1A; }
+        td { font-family: 'DM Sans', sans-serif; font-size: 14px; border-bottom: 1px solid #1A1A1A; color: #B8B8B8; }
+        
+        /* Interactive actions */
+        .action-menu { display: none; }
+        .action-trigger:focus + .action-menu, .action-trigger:active + .action-menu, .action-menu:hover { display: block; }
+    </style>
+</head>
+<body class="font-body-base antialiased flex bg-background text-on-surface min-h-screen">
+<!-- SideNavBar Component -->
+<nav class="hidden md:flex flex-col h-full border-r border-rule bg-surface fixed left-0 top-0 h-screen w-sidebar-width z-40">
+<!-- Brand / Header -->
+<div class="px-4 py-6 border-b border-rule">
+<h1 class="font-masthead-4xl text-[32px] font-black text-primary dark:text-primary tracking-tighter leading-none mb-1">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-dim uppercase">Technical Recruitment</p>
+</div>
+<!-- CTA -->
+<div class="p-4 border-b border-rule">
+<button class="w-full bg-amber text-[#080808] font-ui-sm text-ui-sm font-semibold uppercase tracking-wider py-3 hover:bg-surface-tint transition-colors duration-150 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                POST_NEW_JOB
+            </button>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                        // DASHBOARD
+                    </a>
+</li>
+<li>
+<!-- Active State Logic Applied Here based on exact intent match -->
+<a class="flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider text-on-surface border-l-2 border-primary bg-surface-container-high px-4 py-3 scale-[0.99] transition-transform" href="#">
+<span class="material-symbols-outlined">work</span>
+                        // MY_JOBS
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+                        // PIPELINE
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3" href="#">
+<span class="material-symbols-outlined">groups</span>
+                        // TALENT_POOL
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                        // ANALYTICS
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                        // ARCHIVE
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 font-mono-label text-mono-label uppercase tracking-wider text-body border-l-2 border-transparent hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-150 px-4 py-3" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        // SETTINGS
+                    </a>
+</li>
+</ul>
+</div>
+<!-- Footer Links -->
+<div class="p-4 border-t border-rule mt-auto">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 font-ui-sm text-ui-sm text-dim hover:text-on-surface transition-colors duration-150 px-2 py-2" href="#">
+<span class="material-symbols-outlined" style="font-size: 16px;">help</span>
+                        Support
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 font-ui-sm text-ui-sm text-dim hover:text-on-surface transition-colors duration-150 px-2 py-2" href="#">
+<span class="material-symbols-outlined" style="font-size: 16px;">logout</span>
+                        Sign Out
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-sidebar-width min-h-screen flex flex-col">
+<!-- TopNavBar Component (Mobile Only for Navigation, Web for Header context) -->
+<header class="sticky top-0 z-30 w-full h-16 flex items-center justify-between px-gutter border-b border-rule bg-surface md:hidden">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">menu</span>
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile font-bold text-on-surface uppercase">POSTBOARD</span>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="flex-1 p-gutter md:p-margin max-w-max-width mx-auto w-full flex flex-col gap-8">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-rule pb-6">
+<div>
+<span class="font-mono-label text-mono-label text-dim uppercase block mb-2">// my_jobs</span>
+<h1 class="font-headline-2xl text-headline-2xl font-bold text-on-surface uppercase tracking-tight">My Jobs</h1>
+</div>
+<div>
+<button class="bg-amber text-[#080808] font-ui-sm text-ui-sm font-semibold uppercase tracking-wider px-6 py-3 hover:bg-surface-tint transition-colors duration-150 flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                        [+ Post New Role]
+                    </button>
+</div>
+</section>
+<!-- Filter Tabs -->
+<section class="border-b border-rule flex gap-8 font-ui-sm text-ui-sm">
+<button class="pb-3 border-b-2 border-amber text-on-surface font-semibold uppercase tracking-wider relative -mb-[1px]">All</button>
+<button class="pb-3 border-b-2 border-transparent text-dim hover:text-on-surface uppercase tracking-wider transition-colors duration-150 relative -mb-[1px]">Active</button>
+<button class="pb-3 border-b-2 border-transparent text-dim hover:text-on-surface uppercase tracking-wider transition-colors duration-150 relative -mb-[1px]">Draft</button>
+<button class="pb-3 border-b-2 border-transparent text-dim hover:text-on-surface uppercase tracking-wider transition-colors duration-150 relative -mb-[1px]">Closed</button>
+<button class="pb-3 border-b-2 border-transparent text-dim hover:text-on-surface uppercase tracking-wider transition-colors duration-150 relative -mb-[1px]">Archived</button>
+</section>
+<!-- Data Table -->
+<section class="flex-1 overflow-x-auto">
+<table class="w-full text-left whitespace-nowrap">
+<thead>
+<tr>
+<th>Role Title</th>
+<th>Status</th>
+<th>Applicants</th>
+<th>Views</th>
+<th>Deadline</th>
+<th>Posted</th>
+<th class="w-10 text-center">Actions</th>
+</tr>
+</thead>
+<tbody>
+<!-- Row 1 -->
+<tr class="hover:bg-surface-elevated transition-colors group">
+<td>
+<a class="font-ui-lg text-ui-lg text-on-surface hover:text-amber transition-colors group-hover:text-amber block" href="#">Senior Backend Engineer, Systems</a>
+<span class="font-mono-label text-mono-label text-dim uppercase block mt-1">REQ-0042 // San Francisco, CA</span>
+</td>
+<td><span class="status-badge bg-open">[OPEN]</span></td>
+<td><a class="text-amber font-mono-label text-mono-label hover:underline" href="#">128 Pipeline →</a></td>
+<td class="font-mono-label text-mono-label text-dim">1,024</td>
+<td class="font-mono-label text-mono-label text-dim">2023-11-30</td>
+<td class="font-mono-label text-mono-label text-dim">14d ago</td>
+<td class="relative text-center">
+<button class="action-trigger material-symbols-outlined text-dim hover:text-on-surface">more_horiz</button>
+<div class="action-menu absolute right-0 top-full mt-1 bg-surface-elevated border border-rule z-20 shadow-2xl min-w-[160px] text-left">
+<ul class="py-1 font-ui-sm text-ui-sm">
+<li><a class="block px-4 py-2 hover:bg-surface text-on-surface" href="#">Edit</a></li>
+<li><a class="block px-4 py-2 hover:bg-surface text-on-surface" href="#">View Applicants</a></li>
+<li><a class="block px-4 py-2 hover:bg-surface text-on-surface" href="#">Duplicate</a></li>
+<li class="border-t border-rule my-1"></li>
+<li><a class="block px-4 py-2 hover:bg-surface text-on-surface" href="#">Close Role</a></li>
+<li><a class="block px-4 py-2 hover:bg-surface text-destructive" href="#">Delete</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-elevated transition-colors group">
+<td>
+<a class="font-ui-lg text-ui-lg text-on-surface hover:text-amber transition-colors group-hover:text-amber block" href="#">Staff ML Engineer, Recommendations</a>
+<span class="font-mono-label text-mono-label text-dim uppercase block mt-1">REQ-0043 // Remote, US</span>
+</td>
+<td><span class="status-badge border-draft">[DRAFT]</span></td>
+<td><span class="text-dim font-mono-label text-mono-label">0 Pipeline</span></td>
+<td class="font-mono-label text-mono-label text-dim">0</td>
+<td class="font-mono-label text-mono-label text-dim">TBD</td>
+<td class="font-mono-label text-mono-label text-dim">Just now</td>
+<td class="relative text-center">
+<button class="action-trigger material-symbols-outlined text-dim hover:text-on-surface">more_horiz</button>
+<div class="action-menu absolute right-0 top-full mt-1 bg-surface-elevated border border-rule z-20 shadow-2xl min-w-[160px] text-left">
+<ul class="py-1 font-ui-sm text-ui-sm">
+<li><a class="block px-4 py-2 hover:bg-surface text-on-surface" href="#">Edit</a></li>
+<li><a class="block px-4 py-2 hover:bg-surface text-on-surface" href="#">Duplicate</a></li>
+<li class="border-t border-rule my-1"></li>
+<li><a class="block px-4 py-2 hover:bg-surface text-destructive" href="#">Delete</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-elevated transition-colors group">
+<td>
+<a class="font-ui-lg text-ui-lg text-on-surface hover:text-amber transition-colors group-hover:text-amber block" href="#">Product Designer, Core Experience</a>
+<span class="font-mono-label text-mono-label text-dim uppercase block mt-1">REQ-0038 // New York, NY</span>
+</td>
+<td><span class="status-badge bg-open">[OPEN]</span></td>
+<td><a class="text-amber font-mono-label text-mono-label hover:underline" href="#">84 Pipeline →</a></td>
+<td class="font-mono-label text-mono-label text-dim">856</td>
+<td class="font-mono-label text-mono-label text-dim">2023-11-15</td>
+<td class="font-mono-label text-mono-label text-dim">21d ago</td>
+<td class="relative text-center">
+<button class="action-trigger material-symbols-outlined text-dim hover:text-on-surface">more_horiz</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-elevated transition-colors group">
+<td>
+<a class="font-ui-lg text-ui-lg text-body hover:text-amber transition-colors block line-through decoration-rule" href="#">Director of Engineering, Platform</a>
+<span class="font-mono-label text-mono-label text-dim uppercase block mt-1">REQ-0021 // London, UK</span>
+</td>
+<td><span class="status-badge text-dim" style="border: 1px solid #1A1A1A;">[CLOSED]</span></td>
+<td><span class="text-dim font-mono-label text-mono-label">156 Pipeline</span></td>
+<td class="font-mono-label text-mono-label text-dim">2,105</td>
+<td class="font-mono-label text-mono-label text-dim">-</td>
+<td class="font-mono-label text-mono-label text-dim">45d ago</td>
+<td class="relative text-center">
+<button class="action-trigger material-symbols-outlined text-dim hover:text-on-surface">more_horiz</button>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- Pagination -->
+<section class="mt-auto pt-6 border-t border-rule flex justify-between items-center font-mono-label text-mono-label uppercase tracking-wider text-dim">
+<button class="hover:text-on-surface transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+                    Prev
+                </button>
+<span class="text-on-surface">Page 1 of 4</span>
+<button class="hover:text-on-surface transition-colors flex items-center gap-2">
+                    Next
+                    <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</section>
+</div>
+</main>
+</body></html>

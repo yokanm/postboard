@@ -4,6 +4,9 @@ dist
 dist-ssr
 *.local
 .env
+.env.*.local
+.env.development
+.env.production.example
 .nitro
 .tanstack
 .wrangler
@@ -11,3 +14,5 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
+*.log
+nginx/logs

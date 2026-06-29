@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD // EMPTY_STATES_REFERENCE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#c8c6c5",
+                        "primary-fixed-dim": "#ffb694",
+                        "on-surface-variant": "#e1c0b2",
+                        "on-primary-fixed": "#351000",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#2a2a2a",
+                        "gradient-d": "#F59E0B",
+                        "surface-variant": "#353534",
+                        "inverse-primary": "#a14000",
+                        "dim": "#666666",
+                        "destructive": "#EF4444",
+                        "on-secondary-fixed-variant": "#474742",
+                        "gradient-b": "#60A5FA",
+                        "live-dim": "#14532D",
+                        "primary-fixed": "#ffdbcc",
+                        "surface-tint": "#ffb694",
+                        "surface-bright": "#3a3939",
+                        "live": "#22C55A",
+                        "tertiary-container": "#929090",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary": "#31312c",
+                        "primary": "#ffb694",
+                        "inverse-on-surface": "#313030",
+                        "rule": "#1A1A1A",
+                        "on-secondary-fixed": "#1c1c18",
+                        "gradient-c": "#34D399",
+                        "on-tertiary": "#313030",
+                        "surface-container": "#201f1f",
+                        "on-primary": "#571f00",
+                        "surface-dim": "#131313",
+                        "outline": "#a88a7e",
+                        "surface": "#131313",
+                        "secondary-container": "#474742",
+                        "body": "#B8B8B8",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "outline-variant": "#594237",
+                        "secondary": "#c9c6c0",
+                        "background": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "gradient-a": "#C084FC",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#f06613",
+                        "on-primary-container": "#4c1a00",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-container": "#b7b5af",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-fixed": "#e5e2db",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-error": "#690005",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "muted": "#2A2A2A"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    spacing: {
+                        "unit": "4px",
+                        "section-v-pad": "48px",
+                        "max-width": "1280px",
+                        "margin": "32px",
+                        "sidebar-width": "220px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "body-base": ["DM Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"],
+                        "ui-sm": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "ui-xl": ["DM Sans"],
+                        "headline-2xl": ["Playfair Display"]
+                    },
+                    fontSize: {
+                        "body-base": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "mono-label": ["11px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "headline-2xl-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "ui-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "ui-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "masthead-4xl": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "ui-xl": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-2xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        body {
+            background-color: #080808; /* Strict pure black ground */
+            color: #B8B8B8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .press-grid-tile {
+            width: 100%;
+            padding-bottom: 100%;
+            background-color: #131313;
+            border: 1px solid #1A1A1A;
+            transition: all 0.2s ease;
+        }
+        .press-grid-tile:hover {
+            border-color: #E8610A; /* Amber accent */
+            background: linear-gradient(135deg, rgba(232, 97, 10, 0.1) 0%, transparent 100%);
+        }
+        /* Custom scrollbar for broadsheet feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+            border-left: 1px solid #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353534;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #666666;
+        }
+    </style>
+</head>
+<body class="bg-background text-body font-body-base min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-background border-b border-rule w-full px-margin py-4 top-0 sticky z-50 flex justify-between items-center max-w-max-width mx-auto">
+<div class="flex items-center gap-gutter">
+<span class="font-masthead-4xl text-ui-xl tracking-tighter text-on-surface uppercase">POSTBOARD</span>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors uppercase" href="#">Marketplace</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors uppercase" href="#">Companies</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors uppercase" href="#">Pricing</a>
+<a class="font-mono-label text-mono-label text-primary border-b-2 border-primary pb-1 uppercase" href="#">Resources</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="font-mono-label text-mono-label text-on-surface bg-transparent border border-rule px-4 py-2 hover:bg-surface-container transition-all duration-150 uppercase">Login</button>
+<button class="font-mono-label text-mono-label text-[#080808] bg-[#E8610A] px-4 py-2 hover:bg-primary-container transition-all duration-150 uppercase">Post a Job</button>
+</div>
+</header>
+<main class="flex-1 max-w-max-width mx-auto w-full px-margin py-section-v-pad">
+<div class="mb-section-v-pad border-b border-rule pb-8">
+<h1 class="font-headline-2xl text-headline-2xl text-on-surface mb-2">// EMPTY_STATES_REFERENCE</h1>
+<p class="font-mono-label text-mono-label text-dim uppercase">Design System // The Press Pattern</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Empty State: No Saved Jobs -->
+<div class="bg-[#0F0F0F] border border-rule p-8 flex flex-col items-center text-center group hover:border-[#E8610A] transition-colors">
+<div class="w-24 h-16 grid grid-cols-3 grid-rows-2 gap-[2px] mb-6">
+<div class="press-grid-tile"></div><div class="press-grid-tile"></div><div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div><div class="press-grid-tile" style="border-color:#E8610A"></div><div class="press-grid-tile"></div>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">No Saved Jobs</h3>
+<p class="font-body-base text-body-base text-dim mb-6">You haven't bookmarked any listings yet. Discover opportunities tailored to your technical profile.</p>
+<button class="font-mono-label text-mono-label text-[#F0EDE6] bg-transparent border border-rule px-6 py-3 uppercase hover:border-[#F0EDE6] transition-colors w-full">Browse Roles</button>
+</div>
+<!-- Empty State: No Applications -->
+<div class="bg-[#0F0F0F] border border-rule p-8 flex flex-col items-center text-center group hover:border-[#E8610A] transition-colors">
+<div class="w-24 h-16 grid grid-cols-3 grid-rows-2 gap-[2px] mb-6">
+<div class="press-grid-tile"></div><div class="press-grid-tile"></div><div class="press-grid-tile"></div>
+<div class="press-grid-tile" style="border-color:#E8610A"></div><div class="press-grid-tile"></div><div class="press-grid-tile"></div>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">No Applications</h3>
+<p class="font-body-base text-body-base text-dim mb-6">Your pipeline is empty. Start submitting applications to track your progress and interview stages.</p>
+<button class="font-mono-label text-mono-label text-[#080808] bg-[#E8610A] px-6 py-3 uppercase hover:bg-primary-container transition-colors w-full">Start Applying</button>
+</div>
+<!-- Empty State: No Search Results -->
+<div class="bg-[#0F0F0F] border border-rule p-8 flex flex-col items-center text-center group hover:border-[#E8610A] transition-colors">
+<div class="w-24 h-16 grid grid-cols-3 grid-rows-2 gap-[2px] mb-6">
+<div class="press-grid-tile"></div><div class="press-grid-tile"></div><div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div><div class="press-grid-tile"></div><div class="press-grid-tile" style="border-color:#E8610A"></div>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">No Results Found</h3>
+<p class="font-body-base text-body-base text-dim mb-6">We couldn't find any matches for your query. Try adjusting your filters or expanding your search parameters.</p>
+<button class="font-mono-label text-mono-label text-[#F0EDE6] bg-transparent border border-rule px-6 py-3 uppercase hover:border-[#F0EDE6] transition-colors w-full">Clear Filters</button>
+</div>
+<!-- Empty State: No Notifications -->
+<div class="bg-[#0F0F0F] border border-rule p-8 flex flex-col items-center text-center group hover:border-[#E8610A] transition-colors">
+<div class="w-24 h-16 grid grid-cols-3 grid-rows-2 gap-[2px] mb-6">
+<div class="press-grid-tile" style="border-color:#E8610A"></div><div class="press-grid-tile"></div><div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div><div class="press-grid-tile"></div><div class="press-grid-tile"></div>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">All Caught Up</h3>
+<p class="font-body-base text-body-base text-dim mb-6">You have no new notifications. Your alert queue is currently clear.</p>
+<button class="font-mono-label text-mono-label text-[#B8B8B8] bg-transparent border-none px-6 py-3 uppercase hover:text-white transition-colors w-full">Manage Preferences</button>
+</div>
+<!-- Empty State: No Messages -->
+<div class="bg-[#0F0F0F] border border-rule p-8 flex flex-col items-center text-center group hover:border-[#E8610A] transition-colors">
+<div class="w-24 h-16 grid grid-cols-3 grid-rows-2 gap-[2px] mb-6">
+<div class="press-grid-tile"></div><div class="press-grid-tile" style="border-color:#E8610A"></div><div class="press-grid-tile"></div>
+<div class="press-grid-tile"></div><div class="press-grid-tile"></div><div class="press-grid-tile"></div>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">No Messages</h3>
+<p class="font-body-base text-body-base text-dim mb-6">Your inbox is empty. Communications with recruiters and teams will appear here.</p>
+<button class="font-mono-label text-mono-label text-[#F0EDE6] bg-transparent border border-rule px-6 py-3 uppercase hover:border-[#F0EDE6] transition-colors w-full">Update Profile</button>
+</div>
+<!-- Empty State: Offline -->
+<div class="bg-[#0F0F0F] border border-rule p-8 flex flex-col items-center text-center group hover:border-[#EF4444] transition-colors">
+<div class="w-24 h-16 grid grid-cols-3 grid-rows-2 gap-[2px] mb-6">
+<div class="press-grid-tile" style="border-color:#EF4444"></div><div class="press-grid-tile"></div><div class="press-grid-tile" style="border-color:#EF4444"></div>
+<div class="press-grid-tile"></div><div class="press-grid-tile" style="border-color:#EF4444"></div><div class="press-grid-tile"></div>
+</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Connection Lost</h3>
+<p class="font-body-base text-body-base text-dim mb-6">Unable to reach the server. Please check your network connection and try again.</p>
+<button class="font-mono-label text-mono-label text-[#080808] bg-[#E8610A] px-6 py-3 uppercase hover:bg-primary-container transition-colors w-full">Reconnect</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background border-t border-rule mt-section-v-pad max-w-max-width mx-auto px-margin py-unit flex flex-col md:flex-row justify-between items-center gap-gutter w-full">
+<div class="font-masthead-4xl text-ui-lg text-on-surface tracking-tighter uppercase">POSTBOARD</div>
+<div class="font-mono-label text-mono-label text-dim uppercase">© 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.</div>
+<nav class="flex gap-4">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200 uppercase" href="#">Privacy Policy</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200 uppercase" href="#">Terms of Service</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200 uppercase" href="#">API Status</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200 uppercase" href="#">Contact</a>
+</nav>
+</footer>
+</body></html>

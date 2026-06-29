@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD // Industrial Pipeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#c8c6c5",
+                      "tertiary-fixed": "#e5e2e1",
+                      "secondary": "#c9c6c0",
+                      "on-surface": "#e5e2e1",
+                      "on-secondary-fixed": "#1c1c18",
+                      "on-secondary-container": "#b7b5af",
+                      "on-secondary-fixed-variant": "#474742",
+                      "error-container": "#93000a",
+                      "secondary-container": "#474742",
+                      "outline-variant": "#594237",
+                      "on-primary-fixed": "#351000",
+                      "primary-fixed": "#ffdbcc",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "surface": "#131313",
+                      "surface-container-high": "#2a2a2a",
+                      "on-primary-container": "#4c1a00",
+                      "inverse-primary": "#a14000",
+                      "gradient-c": "#34D399",
+                      "error": "#ffb4ab",
+                      "on-surface-variant": "#e1c0b2",
+                      "inverse-on-surface": "#313030",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "live": "#22C55A",
+                      "tertiary-container": "#929090",
+                      "muted": "#2A2A2A",
+                      "gradient-b": "#60A5FA",
+                      "on-secondary": "#31312c",
+                      "surface-variant": "#353534",
+                      "surface-container-highest": "#353534",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "body": "#B8B8B8",
+                      "on-tertiary": "#313030",
+                      "primary-fixed-dim": "#ffb694",
+                      "secondary-fixed": "#e5e2db",
+                      "on-error": "#690005",
+                      "gradient-d": "#F59E0B",
+                      "surface-tint": "#ffb694",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-bright": "#3a3939",
+                      "primary-container": "#f06613",
+                      "background": "#131313",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "on-primary": "#571f00",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-container-low": "#1c1b1b",
+                      "destructive": "#EF4444",
+                      "rule": "#1A1A1A",
+                      "primary": "#ffb694",
+                      "surface-container": "#201f1f",
+                      "dim": "#666666",
+                      "outline": "#a88a7e",
+                      "on-background": "#e5e2e1",
+                      "on-tertiary-container": "#2a2a29",
+                      "surface-dim": "#131313",
+                      "live-dim": "#14532D",
+                      "gradient-a": "#C084FC",
+                      "on-error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "section-v-pad": "48px",
+                      "margin": "16px",
+                      "sidebar-width": "220px",
+                      "max-width": "1280px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "mono-label": ["JetBrains Mono", "monospace"],
+                      "headline-2xl": ["Playfair Display", "serif"],
+                      "ui-sm": ["DM Sans", "sans-serif"],
+                      "masthead-4xl": ["Playfair Display", "serif"],
+                      "body-base": ["DM Sans", "sans-serif"],
+                      "ui-xl": ["DM Sans", "sans-serif"],
+                      "ui-lg": ["DM Sans", "sans-serif"],
+                      "headline-2xl-mobile": ["Playfair Display", "serif"]
+              },
+              "fontSize": {
+                      "mono-label": ["11px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                      "headline-2xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                      "ui-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "masthead-4xl": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                      "body-base": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "ui-xl": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                      "ui-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                      "headline-2xl-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Iridescent Data Gradients */
+        .press-grid-tile {
+            background-size: 200% 200%;
+            transition: all 0.3s ease;
+        }
+        .bg-grad-a { background-image: linear-gradient(45deg, var(--tw-colors-surface), var(--tw-colors-gradient-a)); }
+        .bg-grad-b { background-image: linear-gradient(45deg, var(--tw-colors-surface), var(--tw-colors-gradient-b)); }
+        .bg-grad-c { background-image: linear-gradient(45deg, var(--tw-colors-surface), var(--tw-colors-gradient-c)); }
+        .bg-grad-d { background-image: linear-gradient(45deg, var(--tw-colors-surface), var(--tw-colors-gradient-d)); }
+        
+        .press-grid-tile:hover {
+            background-position: 100% 100%;
+            filter: invert(1);
+        }
+
+        /* Hide scrollbar for clean minimal look */
+        ::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-base antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-background dark:bg-background border-b border-rule h-16 flex justify-between items-center px-margin max-w-max-width mx-auto">
+<!-- Brand -->
+<a class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary uppercase tracking-tighter shrink-0" href="#">
+            POSTBOARD
+        </a>
+<!-- Mobile Menu Trigger -->
+<button aria-label="Open Menu" class="text-on-surface hover:text-primary transition-colors flex items-center justify-center p-2 rounded-none focus:outline-none focus:ring-1 focus:ring-rule">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<!-- Hidden Desktop Elements (Satisfying JSON Schema) -->
+<div class="hidden">
+<a class="text-primary border-b border-primary pb-1" href="#">Jobs</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Companies</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Features</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Pricing</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">About</a>
+<button class="bg-primary-container text-on-primary-container font-ui-sm text-ui-sm">Post a Job</button>
+<button class="text-on-surface border border-rule font-ui-sm text-ui-sm">Sign Up</button>
+<span class="material-symbols-outlined" data-icon="login">login</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-16 flex flex-col w-full">
+<!-- Hero Section -->
+<section class="relative border-b border-rule flex flex-col items-center justify-center pt-24 pb-16 px-margin text-center overflow-hidden">
+<!-- Decorative Press Grid Background (Subtle) -->
+<div class="absolute inset-0 grid grid-cols-4 grid-rows-4 opacity-10 pointer-events-none z-0">
+<div class="border-r border-b border-rule"></div>
+<div class="border-r border-b border-rule"></div>
+<div class="border-r border-b border-rule press-grid-tile bg-grad-d"></div>
+<div class="border-b border-rule"></div>
+<div class="border-r border-b border-rule"></div>
+<div class="border-r border-b border-rule"></div>
+<div class="border-r border-b border-rule"></div>
+<div class="border-b border-rule press-grid-tile bg-grad-a"></div>
+<div class="border-r border-b border-rule press-grid-tile bg-grad-b"></div>
+<div class="border-r border-b border-rule"></div>
+<div class="border-r border-b border-rule"></div>
+<div class="border-b border-rule"></div>
+<div class="border-r border-rule"></div>
+<div class="border-r border-rule press-grid-tile bg-grad-c"></div>
+<div class="border-r border-rule"></div>
+<div class="border-rule"></div>
+</div>
+<div class="relative z-10 w-full max-w-md mx-auto flex flex-col items-center gap-6">
+<div class="font-mono-label text-mono-label text-dim tracking-widest uppercase">
+                    // SYSTEM_ONLINE
+                </div>
+<h1 class="font-masthead-4xl text-headline-2xl-mobile text-on-surface tracking-tighter uppercase leading-none">
+                    Industrial <br/> Grade <br/> Recruitment
+                </h1>
+<p class="font-body-base text-body-base text-body max-w-sm mt-2">
+                    High-density pipeline management for technical teams. Cut through the noise with deterministic sourcing.
+                </p>
+<div class="flex flex-col w-full gap-4 mt-8">
+<button class="w-full bg-primary-container text-on-primary-container font-ui-sm text-ui-sm h-12 uppercase tracking-wider rounded-none hover:bg-primary transition-colors focus:outline-none focus:ring-1 focus:ring-on-surface focus:ring-offset-1 focus:ring-offset-background">
+                        Deploy Pipeline
+                    </button>
+<button class="w-full bg-transparent text-on-surface border border-rule font-ui-sm text-ui-sm h-12 uppercase tracking-wider rounded-none hover:bg-surface-variant hover:border-surface-variant transition-all focus:outline-none focus:ring-1 focus:ring-on-surface focus:ring-offset-1 focus:ring-offset-background">
+                        Read Manifesto
+                    </button>
+</div>
+</div>
+</section>
+<!-- Metrics Grid (2x2) -->
+<section class="grid grid-cols-2 border-b border-rule bg-background">
+<div class="p-6 border-r border-b border-rule flex flex-col justify-end min-h-[120px]">
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary leading-none">14.2k</span>
+<span class="font-mono-label text-mono-label text-dim mt-2 uppercase">// ACTIVE_NODES</span>
+</div>
+<div class="p-6 border-b border-rule flex flex-col justify-end min-h-[120px]">
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary leading-none">99.9%</span>
+<span class="font-mono-label text-mono-label text-dim mt-2 uppercase">// UPTIME</span>
+</div>
+<div class="p-6 border-r border-rule flex flex-col justify-end min-h-[120px]">
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary leading-none">8ms</span>
+<span class="font-mono-label text-mono-label text-dim mt-2 uppercase">// LATENCY</span>
+</div>
+<div class="p-6 border-rule flex flex-col justify-end min-h-[120px]">
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary leading-none">2.4m</span>
+<span class="font-mono-label text-mono-label text-dim mt-2 uppercase">// DEPLOYS</span>
+</div>
+</section>
+<!-- Featured Jobs List -->
+<section class="py-12 px-margin border-b border-rule flex flex-col gap-6 bg-surface-container-lowest">
+<h2 class="font-mono-label text-mono-label text-dim uppercase tracking-widest">
+                // RECENT_POSITIONS
+            </h2>
+<div class="flex flex-col border border-rule bg-background">
+<!-- Job Item -->
+<a class="group block p-5 border-b border-rule last:border-b-0 hover:bg-surface-variant transition-colors relative" href="#">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<h3 class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary transition-colors">Senior Rust Engineer</h3>
+<span class="font-ui-sm text-ui-sm text-body mt-1">Stellar Dynamics Inc.</span>
+</div>
+<span class="bg-live-dim text-live px-2 py-1 font-mono-label text-mono-label uppercase rounded-none border border-live/20 shrink-0">
+                            OPEN
+                        </span>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="font-mono-label text-mono-label text-dim bg-surface px-2 py-1 border border-rule">SAN FRANCISCO</span>
+<span class="font-mono-label text-mono-label text-dim bg-surface px-2 py-1 border border-rule">ONSITE</span>
+<span class="font-mono-label text-mono-label text-dim bg-surface px-2 py-1 border border-rule">$180K-$220K</span>
+</div>
+</a>
+<!-- Job Item -->
+<a class="group block p-5 border-b border-rule last:border-b-0 hover:bg-surface-variant transition-colors relative" href="#">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<h3 class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary transition-colors">Distributed Systems Arch</h3>
+<span class="font-ui-sm text-ui-sm text-body mt-1">Nexus Data Corportation</span>
+</div>
+<span class="bg-live-dim text-live px-2 py-1 font-mono-label text-mono-label uppercase rounded-none border border-live/20 shrink-0">
+                            OPEN
+                        </span>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="font-mono-label text-mono-label text-dim bg-surface px-2 py-1 border border-rule">REMOTE</span>
+<span class="font-mono-label text-mono-label text-dim bg-surface px-2 py-1 border border-rule">INFRA</span>
+</div>
+</a>
+<!-- Job Item -->
+<a class="group block p-5 border-b border-rule last:border-b-0 hover:bg-surface-variant transition-colors relative" href="#">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<h3 class="font-ui-lg text-ui-lg text-body group-hover:text-on-surface transition-colors">Frontend Lead</h3>
+<span class="font-ui-sm text-ui-sm text-dim mt-1">Aura Interfaces</span>
+</div>
+<span class="bg-transparent text-dim border border-rule border-dashed px-2 py-1 font-mono-label text-mono-label uppercase rounded-none shrink-0">
+                            DRAFT
+                        </span>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="font-mono-label text-mono-label text-dim bg-surface px-2 py-1 border border-rule">NEW YORK</span>
+<span class="font-mono-label text-mono-label text-dim bg-surface px-2 py-1 border border-rule">HYBRID</span>
+</div>
+</a>
+</div>
+<button class="w-full bg-transparent text-body border border-rule font-ui-sm text-ui-sm h-10 uppercase tracking-wider rounded-none hover:bg-surface hover:text-on-surface transition-all">
+                View Audit Log
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-rule py-section-v-pad px-margin">
+<div class="max-w-max-width mx-auto flex flex-col gap-12">
+<!-- Brand & Legal -->
+<div class="flex flex-col gap-4">
+<span class="font-masthead-4xl text-headline-2xl-mobile text-on-surface-variant uppercase tracking-tighter">
+                    POSTBOARD
+                </span>
+<span class="font-mono-label text-mono-label text-dim">
+                    © 2024 POSTBOARD INDUSTRIAL SYSTEMS // ALL RIGHTS RESERVED
+                </span>
+</div>
+<!-- Links Grid -->
+<div class="grid grid-cols-2 gap-x-gutter gap-y-8">
+<div class="flex flex-col gap-3">
+<span class="font-mono-label text-mono-label text-on-surface uppercase">// PRODUCT</span>
+<a class="font-ui-sm text-ui-sm text-dim hover:text-body transition-colors" href="#">Features</a>
+<a class="font-ui-sm text-ui-sm text-dim hover:text-body transition-colors" href="#">Pricing</a>
+<a class="font-ui-sm text-ui-sm text-dim hover:text-body transition-colors" href="#">API</a>
+<a class="font-ui-sm text-ui-sm text-dim hover:text-body transition-colors" href="#">Security</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-mono-label text-mono-label text-on-surface uppercase">// COMPANY</span>
+<a class="font-ui-sm text-ui-sm text-dim hover:text-body transition-colors" href="#">About</a>
+<a class="font-ui-sm text-ui-sm text-dim hover:text-body transition-colors" href="#">Careers</a>
+<a class="font-ui-sm text-ui-sm text-dim hover:text-body transition-colors" href="#">Press</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-mono-label text-mono-label text-on-surface uppercase">// LEGAL</span>
+<a class="font-ui-sm text-ui-sm text-dim hover:text-body transition-colors" href="#">Privacy</a>
+<a class="font-ui-sm text-ui-sm text-dim hover:text-body transition-colors" href="#">Terms</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

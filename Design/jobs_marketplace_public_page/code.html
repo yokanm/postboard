@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostBoard // Jobs Marketplace</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&amp;family=JetBrains+Mono:wght@400;700&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "on-primary-container": "#4c1a00",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary": "#c8c6c5",
+                        "muted": "#2A2A2A",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "surface": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "outline": "#a88a7e",
+                        "on-secondary-container": "#b7b5af",
+                        "secondary": "#c9c6c0",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#ffb694",
+                        "on-surface": "#e5e2e1",
+                        "background": "#080808", /* Adjusted to match Industrial Broadsheet spec */
+                        "primary-fixed-dim": "#ffb694",
+                        "gradient-c": "#34D399",
+                        "live-dim": "#14532D",
+                        "on-primary": "#080808", /* Adjusted for text on amber primary */
+                        "surface-container-lowest": "#0e0e0e",
+                        "body": "#B8B8B8",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "primary": "#E8610A", /* Forced amber primary from prompt/spec */
+                        "dim": "#666666",
+                        "on-error": "#690005",
+                        "secondary-container": "#474742",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-tertiary": "#313030",
+                        "live": "#22C55A",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#e1c0b2",
+                        "primary-container": "#f06613",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "gradient-b": "#60A5FA",
+                        "surface-container": "#0F0F0F", /* Adjusted for cards/surface containers */
+                        "outline-variant": "#594237",
+                        "on-secondary-fixed-variant": "#474742",
+                        "tertiary-container": "#929090",
+                        "destructive": "#EF4444",
+                        "on-secondary": "#31312c",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "gradient-d": "#F59E0B",
+                        "primary-fixed": "#ffdbcc",
+                        "rule": "#1A1A1A",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-bright": "#3a3939",
+                        "on-secondary-fixed": "#1c1c18",
+                        "inverse-surface": "#e5e2e1",
+                        "gradient-a": "#C084FC",
+                        "inverse-primary": "#a14000",
+                        "secondary-fixed": "#e5e2db",
+                        "on-primary-fixed": "#351000",
+                        "on-background": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "section-v-pad": "48px",
+                        "max-width": "1280px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "sidebar-width": "220px"
+                    },
+                    "fontFamily": {
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "mono-label": ["JetBrains Mono"],
+                        "ui-sm": ["DM Sans"],
+                        "body-base": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-xl": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "headline-2xl-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "mono-label": ["11px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "ui-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-base": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "masthead-4xl": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "ui-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "headline-2xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "ui-xl": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        /* Grid system background for header/hero area */
+        .bg-grid-pattern {
+            background-size: 24px 24px;
+            background-image:
+                linear-gradient(to right, theme('colors.rule') 1px, transparent 1px),
+                linear-gradient(to bottom, theme('colors.rule') 1px, transparent 1px);
+        }
+
+        /* Iridescent gradients from style guidance */
+        .press-gradient {
+            background: linear-gradient(135deg, theme('colors.primary') 0%, theme('colors.gradient-d') 100%);
+        }
+
+        /* Hover state for job cards to invert border to primary */
+        .job-card:hover {
+            border-color: theme('colors.primary');
+        }
+        .job-card:hover .job-title {
+            color: theme('colors.primary');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-base text-body-base bg-background text-on-background selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background/95 backdrop-blur-sm border-b border-rule h-16 flex justify-between items-center px-gutter">
+<div class="flex items-center space-x-8">
+<a class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-background tracking-tight" href="#">POSTBOARD</a>
+<nav class="hidden md:flex space-x-6 border-l border-rule pl-8 h-8 items-center">
+<a class="font-mono-label text-mono-label text-primary uppercase" href="#">Jobs</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-background transition-colors uppercase" href="#">Companies</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-background transition-colors uppercase" href="#">Features</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-background transition-colors uppercase" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-background transition-colors uppercase hidden md:inline-block" href="#">Login</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-background transition-colors uppercase hidden md:inline-block" href="#">Sign Up</a>
+<a class="bg-primary text-on-primary px-4 py-2 font-mono-label text-mono-label uppercase hover:bg-gradient-d transition-colors border border-primary flex items-center gap-2" href="#">
+                Post a Job
+                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-background">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-16">
+<!-- Hero Section -->
+<section class="w-full border-b border-rule bg-grid-pattern relative overflow-hidden">
+<!-- Decorative gradient orb for 'Iridescent Data' feel -->
+<div class="absolute top-0 right-1/4 w-96 h-96 bg-primary opacity-5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="max-w-[1280px] mx-auto px-gutter py-section-v-pad relative z-10">
+<div class="max-w-2xl">
+<span class="font-mono-label text-mono-label text-dim block mb-4 uppercase">// job_discovery</span>
+<h1 class="font-masthead-4xl text-masthead-4xl text-on-background mb-6">Explore<br/>Opportunities.</h1>
+<p class="font-ui-lg text-ui-lg text-body mb-8 max-w-xl">
+                        A high-density technical pipeline for elite professionals. Filter signal from noise and find the roles shaping the industrial vanguard.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Sticky Filter Bar -->
+<div class="sticky top-16 z-40 w-full bg-surface-container border-b border-rule">
+<div class="max-w-[1280px] mx-auto px-gutter py-3 flex flex-wrap gap-4 items-center justify-between">
+<div class="flex-grow max-w-md flex items-center bg-background border border-rule px-3 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-dim text-[18px]">search</span>
+<input class="w-full bg-transparent border-none text-on-background font-ui-sm text-ui-sm focus:ring-0 placeholder:text-dim py-2" placeholder="Search by keyword or company..." type="text"/>
+</div>
+<div class="flex flex-wrap gap-3 items-center">
+<!-- Custom Selects styled as Brutalist Dropdowns -->
+<div class="relative group">
+<button class="flex items-center gap-2 bg-background border border-rule px-3 py-2 font-mono-label text-mono-label text-body uppercase hover:border-dim transition-colors">
+                            Role Type
+                            <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-2 bg-background border border-rule px-3 py-2 font-mono-label text-mono-label text-body uppercase hover:border-dim transition-colors">
+                            Location
+                            <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-2 bg-background border border-rule px-3 py-2 font-mono-label text-mono-label text-body uppercase hover:border-dim transition-colors">
+                            Salary
+                            <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+</div>
+<button class="text-primary font-mono-label text-mono-label uppercase hover:underline underline-offset-4 decoration-primary">
+                        Clear All
+                    </button>
+</div>
+</div>
+</div>
+<!-- Job Grid Canvas -->
+<section class="max-w-[1280px] mx-auto px-gutter py-8">
+<div class="flex justify-between items-end mb-6">
+<span class="font-mono-label text-mono-label text-dim uppercase">// 1,042_active_listings</span>
+<div class="flex items-center gap-2 font-mono-label text-mono-label text-body">
+                    Sort by: 
+                    <select class="bg-transparent border-none text-on-background p-0 pr-6 focus:ring-0 cursor-pointer uppercase">
+<option>Most Recent</option>
+<option>Relevance</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<!-- Job Card 1 -->
+<article class="job-card bg-surface-container border border-rule p-6 flex flex-col gap-4 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-background border border-rule flex items-center justify-center">
+<!-- Placeholder for Company Logo -->
+<img class="w-8 h-8 object-contain opacity-80 filter grayscale group-hover:grayscale-0 transition-all" data-alt="A stark, minimalist corporate logo consisting of a rigid geometric triangle rendered in high-contrast stark white against a pure black background. The design is brutalist, flat, and highly technical, fitting a serious industrial software company aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUgxX0dn1_8xrNoGmfOoXhdOwNR7JCLcPgvTX_U5fjBaSMc7Zxr6-i01556frMcbtQUxSyJAkGE3eJJkwBZUWcw16Ic_LsPeopDx-l_5r0I_LG_KzOm106sAOVRMc2hCGg4OFlDsiXVce2nJIRqE8ofEEm37GYpHDaEkkaCPDwqjNCb45-kY576Tdo2TaV1GCbKQSnLA83VbLJM7qcaeNtbNF8KnJbNW8BO6KVf94-rFDm3U9kLGA1vNgVgLlPWfOCV2fEL2BvqphO"/>
+</div>
+<div>
+<h3 class="font-mono-label text-mono-label text-dim uppercase mb-1">Stark Industries</h3>
+<h2 class="job-title font-ui-xl text-ui-xl text-on-background transition-colors">Lead System Architect</h2>
+</div>
+</div>
+<button class="text-dim hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-body uppercase">Full-Time</span>
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-body uppercase">Remote</span>
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-primary uppercase border-primary/30 bg-primary/5">$180k - $220k</span>
+</div>
+<div class="flex justify-between items-end mt-2 pt-4 border-t border-rule border-dashed">
+<span class="font-mono-label text-mono-label text-dim">Posted 3 days ago</span>
+<div class="flex -space-x-2">
+<!-- Team members avatars placeholder -->
+<img class="w-6 h-6 border border-rule bg-background object-cover" data-alt="A small, circular avatar portrait of a technical professional looking stoically at the camera. The image uses dramatic, moody lighting with deep shadows and a muted, desaturated color palette, heavily emphasizing stark contrast and an industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3q0VU9GsZmrXYdW1N0rZaki19sYQ2cOGUDFK6BjcJIt8XHOny6mtnZu-mTAoi_u5M9D-zyMvQ2domlDEC7xB3oQ4nvHa_PHJKQAQcHsU6Tu_60zm3p3Eh9sqMAC6tJ-cw7AwiKF1ozNPH_B-m5WWyw22SBJPBNgpLd_38W-9Pom_WccUT9gMrUqjERIj2NbOQKPCJ_Uur0k1G4WjdfpB5NpZLycW3xZOpWbyIpvxf4EBC0r9QHqIayG7cVlLwEQV5Nn-MMdHbCuFY"/>
+<img class="w-6 h-6 border border-rule bg-background object-cover" data-alt="A small, circular avatar portrait of a technical professional looking stoically at the camera. The image uses dramatic, moody lighting with deep shadows and a muted, desaturated color palette, heavily emphasizing stark contrast and an industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYW6j04UDT426Iy4DzgIBrKa8-HtWk60wl5eI4g3uS2uV4YIJzl_m_LZcRdbZWNLULSZUFFDcFzZbdt6BOKm_TIna4-aDjODiiakh7g2Drc71rT63OkFJu7yVk09ZkH-hUQ82FLifwvHlaPbrW0WR80-H5xQfRuZbIFiD71wHjFQ6TFHuTWjNQyhkvZjlt3SNTBRM3fFsLo7406dGVFTSUuVHpPmKHPzvELWHRMamdR1ayYOaQ4b0smbaSu2U-WYYMMOpZOVc35XZW"/>
+</div>
+</div>
+</article>
+<!-- Job Card 2 -->
+<article class="job-card bg-surface-container border border-rule p-6 flex flex-col gap-4 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-background border border-rule flex items-center justify-center">
+<img class="w-8 h-8 object-contain opacity-80 filter grayscale group-hover:grayscale-0 transition-all" data-alt="A minimalist logo design featuring a bold, monolithic 'V' shape formed by thick, heavy sans-serif lines. The logo is stark white on a pure black background, conveying a sense of imposing, brutalist corporate authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_HLfhySM1t-pNGG3IyroAg4eZg_YUBrVJwZv7wfBMfyS5drctB36dBEpg6wtBcURAmrS6p8eHgHEH04lkPy_nwMYBiYylrm1VabScTdFhcld2SHvh2zilfcqFVjZkUmQbkXe8MdcBHU7YCoyc8RI86KCp-ObsAI5hosZQEjQFVlGvGm2n0WApdSK0REkPqzd1Z2tQ_5QxyJcTUPN_Bv_BMVwFGr9WpT1H624ZOr7i-jlpiElvhpCR_GbZXRdkLj7yiD0gTYpcSxHs"/>
+</div>
+<div>
+<h3 class="font-mono-label text-mono-label text-dim uppercase mb-1">Vercel</h3>
+<h2 class="job-title font-ui-xl text-ui-xl text-on-background transition-colors">Senior Frontend Engineer</h2>
+</div>
+</div>
+<button class="text-dim hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-body uppercase">Full-Time</span>
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-body uppercase">San Francisco</span>
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-primary uppercase border-primary/30 bg-primary/5">$160k - $190k</span>
+</div>
+<div class="flex justify-between items-end mt-2 pt-4 border-t border-rule border-dashed">
+<span class="font-mono-label text-mono-label text-dim">Posted 1 day ago</span>
+<span class="font-mono-label text-mono-label text-live flex items-center gap-1">
+<span class="w-2 h-2 bg-live rounded-full animate-pulse"></span>
+                            Actively Interviewing
+                        </span>
+</div>
+</article>
+<!-- Job Card 3 -->
+<article class="job-card bg-surface-container border border-rule p-6 flex flex-col gap-4 transition-colors cursor-pointer group relative overflow-hidden">
+<!-- Subte gradient for promoted/featured -->
+<div class="absolute top-0 left-0 w-1 h-full press-gradient"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-background border border-rule flex items-center justify-center">
+<span class="material-symbols-outlined text-on-background">terminal</span>
+</div>
+<div>
+<h3 class="font-mono-label text-mono-label text-dim uppercase mb-1">Linear</h3>
+<h2 class="job-title font-ui-xl text-ui-xl text-on-background transition-colors">Data Scientist, Growth</h2>
+</div>
+</div>
+<span class="bg-primary text-on-primary px-2 py-1 font-mono-label text-mono-label uppercase text-[9px]">Featured</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-body uppercase">Full-Time</span>
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-body uppercase">Remote (EU)</span>
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-primary uppercase border-primary/30 bg-primary/5">€120k - €150k</span>
+</div>
+<div class="flex justify-between items-end mt-2 pt-4 border-t border-rule border-dashed">
+<span class="font-mono-label text-mono-label text-dim">Posted 5 days ago</span>
+</div>
+</article>
+<!-- Job Card 4 -->
+<article class="job-card bg-surface-container border border-rule p-6 flex flex-col gap-4 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-background border border-rule flex items-center justify-center">
+<span class="material-symbols-outlined text-on-background">cloud_sync</span>
+</div>
+<div>
+<h3 class="font-mono-label text-mono-label text-dim uppercase mb-1">Neon Database</h3>
+<h2 class="job-title font-ui-xl text-ui-xl text-on-background transition-colors">DevOps Reliability Engineer</h2>
+</div>
+</div>
+<button class="text-dim hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-body uppercase">Contract</span>
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-body uppercase">Remote</span>
+<span class="border border-rule px-2 py-1 font-mono-label text-mono-label text-primary uppercase border-primary/30 bg-primary/5">$90/hr - $120/hr</span>
+</div>
+<div class="flex justify-between items-end mt-2 pt-4 border-t border-rule border-dashed">
+<span class="font-mono-label text-mono-label text-dim">Posted 12 hours ago</span>
+</div>
+</article>
+</div>
+<!-- Pagination/Load More -->
+<div class="mt-8 flex justify-center">
+<button class="bg-transparent border border-rule text-body font-mono-label text-mono-label uppercase px-8 py-3 hover:bg-surface-container-high transition-colors">
+                    Load More Roles
+                </button>
+</div>
+</section>
+</main>
+<!-- Industrial Footer -->
+<footer class="border-t border-rule bg-surface-container mt-auto">
+<div class="max-w-[1280px] mx-auto px-gutter py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2">
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-background block mb-4">POSTBOARD</span>
+<p class="font-mono-label text-mono-label text-dim max-w-sm mb-6">
+                        // THE DEFINITIVE INDUSTRIAL BROADSHEET FOR TECHNICAL RECRUITMENT AND PIPELINE MANAGEMENT. SYSTEM ONLINE.
+                    </p>
+<div class="flex space-x-4">
+<a class="text-dim hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">language</span></a>
+<a class="text-dim hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">code</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-mono-label text-mono-label text-on-background uppercase mb-4 border-b border-rule pb-2 inline-block">Platform</h4>
+<ul class="space-y-3 font-mono-label text-mono-label text-dim">
+<li><a class="hover:text-on-background transition-colors" href="#">Search Jobs</a></li>
+<li><a class="hover:text-on-background transition-colors" href="#">Company Profiles</a></li>
+<li><a class="hover:text-on-background transition-colors" href="#">Pricing &amp; Plans</a></li>
+<li><a class="hover:text-on-background transition-colors" href="#">API Documentation</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-mono-label text-mono-label text-on-background uppercase mb-4 border-b border-rule pb-2 inline-block">Governance</h4>
+<ul class="space-y-3 font-mono-label text-mono-label text-dim">
+<li><a class="hover:text-on-background transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-on-background transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-on-background transition-colors" href="#">Audit Logs</a></li>
+<li><a class="hover:text-on-background transition-colors" href="#">System Status</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-rule flex flex-col md:flex-row justify-between items-center gap-4 font-mono-label text-mono-label text-dim">
+<span>© 2024 POSTBOARD ENTITY. ALL RIGHTS RESERVED.</span>
+<span class="flex items-center gap-2">
+                    SYS_STATUS: <span class="w-2 h-2 bg-live block"></span> <span class="text-live">OPERATIONAL</span>
+</span>
+</div>
+</div>
+</footer>
+</body></html>

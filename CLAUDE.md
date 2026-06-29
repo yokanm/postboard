@@ -9,705 +9,267 @@ POSTBOARD is a frontend-only application.
 Backend already exists and is maintained separately.
 
 Frontend Responsibilities:
-
-* UI Rendering
-* Routing
-* Authentication Experience
-* API Consumption
-* State Management
-* Dashboard Experiences
-* Data Visualization
-* Multi-Tenant User Experience
+- UI Rendering
+- Routing
+- Authentication Experience
+- API Consumption
+- State Management
+- Dashboard Experiences
+- Data Visualization
+- Multi-Tenant User Experience
 
 The frontend must never implement backend business logic.
 
 ---
 
-# Core Technology Stack
+## Architecture Principles
 
-## Application Framework
-
-TanStack Start
-
-Required:
-
-* File-based routing
-* SSR-ready architecture
-* Route-based code splitting
-* Modern React patterns
+1. **Feature-based** — Every feature owns its API, hooks, components, pages, types, and utils in one directory under `src/features/`
+2. **Single source of truth** — Server state flows through TanStack Query; client state through Zustand; never mix
+3. **Route as orchestration** — Route files only import pages; no business logic in route files
+4. **No direct HTTP outside apiFetch** — Every request goes through `src/shared/api/client.ts`
+5. **Symmetric error handling** — All errors flow through `ApiError` type; no ad-hoc error formats
 
 ---
 
-## Data Layer
+## Coding Standards
 
-TanStack Query
+### Naming Conventions
+- Files: `kebab-case.ts` for utilities, `PascalCase.tsx` for components, `camelCase.ts` for API/hooks
+- Exports: named exports only (no default exports)
+- Components: `PascalCase`
+- Functions: `camelCase`
+- Types/Interfaces: `PascalCase`
+- Hooks: `use*` prefix
+- Query keys: factory pattern (`queryKeys.job.detail(id)`)
+- Stores: `use*Store` pattern
 
-Used for:
+### Folder Conventions
+```
+features/{name}/
+├── api/index.ts        — feature API functions
+├── components/         — feature components
+├── hooks/index.ts      — TanStack Query hooks
+├── pages/              — page-level components
+├── types/index.ts      — TypeScript types
+├── schemas/index.ts    — Zod schemas
+├── utils/              — utilities
+└── layout/             — layout components
+```
 
-* API caching
-* mutations
-* optimistic updates
-* invalidation
-* background refetching
-
-TanStack Query is the source of truth for all server state.
-
----
-
-## Routing
-
-TanStack Router
-
-Used for:
-
-* route protection
-* layouts
-* search params
-* role-based navigation
-* data loading
-
-Do not introduce alternative routing solutions.
-
----
-
-## Tables
-
-TanStack Table
-
-Required for:
-
-* Jobs
-* Applicants
-* Companies
-* Users
-* Audit Logs
+### Imports
+- Use `@/` alias for all source imports (e.g., `@/features/auth/hooks`)
+- Use `#/` alias for deep imports from src root (e.g., `#/shared/api/client`)
+- Feature imports from other features: `@/features/{name}/...`
+- Never import from `../../` relative paths (use aliases)
+- Barrel files (`index.ts`) at each directory level
 
 ---
 
-## UI Layer
+## React Best Practices
 
-shadcn/ui
-
-Built on:
-
-* Radix UI
-
-Use existing shadcn primitives first.
-
-Custom components must extend design-system patterns.
-
----
-
-## Styling
-
-Tailwind CSS
-
-Required:
-
-* utility-first styling
-* design token usage
-* responsive layouts
-
-Avoid custom CSS files unless absolutely necessary.
+- Components are functions (no classes except ErrorBoundary)
+- Props are typed with interfaces
+- Destructure props in function signature
+- Use `useMemo` / `useCallback` intentionally (not prophylactically)
+- No `dangerouslySetInnerHTML`
+- No inline styles (use Tailwind classes)
+- Event handlers use `useCallback` when passed as props
+- Prefer composition over inheritance
+- Every data-fetching component handles loading, empty, and error states
 
 ---
 
-## Forms
+## TanStack Query Patterns
 
-React Hook Form
-+
-Zod
+### Query Keys
+Always use the factory from `src/lib/api/query-keys.ts`:
+```typescript
+// ✅ Correct
+queryKeys.job.detail(id)
+queryKeys.job.list(params)
 
-All forms must use:
+// ❌ Wrong
+["jobs", id]
+```
 
-* schema validation
-* typed form values
-* reusable field patterns
+### Mutations
+```typescript
+// ✅ Pattern
+export function useUpdateCompany() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (input: UpdateCompanyInput) => updateCompany(input),
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: queryKeys.company.current() })
+    },
+  })
+}
+```
 
----
+### Infinite Queries
+Use cursor-based pagination with `useInfiniteQuery`:
+```typescript
+export function useJobs(params?: ListJobsParams) {
+  return useInfiniteQuery({
+    queryKey: queryKeys.job.list(params as Record<string, unknown>),
+    queryFn: ({ pageParam }) =>
+      listJobs({ ...params, cursor: pageParam as string | undefined }),
+    initialPageParam: undefined as string | undefined,
+    getNextPageParam: (lastPage) =>
+      lastPage.hasNextPage ? lastPage.nextCursor : undefined,
+  })
+}
+```
 
-## Charts
+### Cache Invalidation
+- Invalidate only affected keys
+- Use factory (`queryKeys.*`), not literal arrays
+- Invalidate list + detail for mutations
 
-Recharts
-
-Only approved charting solution.
-
----
-
-# Forbidden Technologies
-
-Do not introduce:
-
-* Axios
-* Lucide Icons
-* Redux
-* MobX
-* Context-based server state
-* Styled Components
-* Material UI
-* Chakra UI
-
-Without explicit architectural approval.
-
----
-
-# API Rules
-
-All API communication must use:
-
-Fetch API
-
-Architecture:
-
-Feature Hook
-→ API Function
-→ Request Layer
-→ Backend
-
-Never call fetch() directly inside components.
-
-Required structure:
-
-lib/api/
-
-client.ts
-request.ts
-auth.ts
-errors.ts
-endpoints.ts
+### Stale Time
+- Default: 0ms (refetch on mount)
+- Auth user: 5 minutes
+- Tags: 10 minutes
+- Dashboard stats: 60 seconds
+- List queries: 30 seconds minimum
 
 ---
 
-# Design System Compliance
+## Fetch Client Usage
 
-The official design language is:
+### apiFetch
+- Single entry point: `src/shared/api/client.ts`
+- All HTTP goes through this file
+- Auto-injects `Authorization: Bearer` from Zustand
+- Auto-unwraps `{ data: T }` envelope
+- 30-second timeout via AbortController
+- Auto-refresh on 401 with queue pattern
 
-Industrial Broadsheet
+### Legacy http object
+- Backward-compatible wrapper: `src/lib/api/request.ts`
+- Still used by all feature API files
+- Delegates to `apiFetch` internally
+- New code should import from `#/shared/api/client` directly
 
-Required characteristics:
-
-* Zero-radius geometry
-* Dense information layouts
-* Editorial hierarchy
-* Visible structural borders
-* Technical metadata visibility
-* Flat visual hierarchy
-
-Avoid:
-
-* glassmorphism
-* neumorphism
-* floating cards
-* oversized spacing
-* excessive shadows
-
-DESIGN.md is the visual source of truth.
+### mapPaginated
+- Helper to rename `data` to feature-specific key
+- Usage: `mapPaginated<JobsListResponse>(response, "jobs")`
 
 ---
 
-# State Management
-
-## Server State
-
-TanStack Query only.
-
-Examples:
-
-* User
-* Jobs
-* Applications
-* Companies
-* Analytics
-
----
-
-## Client State
-
-Zustand only.
-
-Examples:
-
-* Sidebar
-* Theme
-* Modal
-* Filters
-
-Never duplicate server state in Zustand.
-
----
-
-# Component Rules
-
-Shared UI:
-
-src/components
-
-Feature Components:
-
-src/features/*/components
-
-Never place business logic inside reusable UI components.
-
----
-
-# Accessibility
-
-Required:
-
-* Keyboard navigation
-* Semantic HTML
-* Focus states
-* ARIA attributes
-* WCAG-compliant contrast
-
-Accessibility failures block release.
-
----
-
-# Performance Standards
-
-Required:
-
-* Route-level splitting
-* Lazy loading
-* Query caching
-* Bundle awareness
-
-Avoid premature memoization.
-
-Profile first.
-
----
-
-# Multi-Tenant Awareness
-
-Every feature must consider:
-
-* Tenant isolation
-* Recruiter ownership
-* Candidate ownership
-* Platform administration
-
-Never assume a single company environment.
-
----
-# Dependency Governance
-
-## Package Verification Policy
-
-Before recommending, installing, upgrading, or using ANY package, framework, library, plugin, SDK, or tooling dependency, Claude must verify:
-
-1. Official Website
-2. Official Documentation
-3. Official NPM Package
-4. Official GitHub Repository
-5. Current Stable Version
-6. Maintenance Activity
-7. Security Status
-8. Community Adoption
-9. Compatibility With Existing Stack
-10. Long-Term Viability
-
-Verification is mandatory.
-
-Never assume package versions.
-
-Always check the latest stable release before suggesting installation.
-
----
-
-## Package Selection Criteria
-
-A package may only be introduced when:
-
-* Actively maintained
-* Production-ready
-* Well documented
-* Compatible with React and TanStack Start
-* Compatible with TypeScript
-* Compatible with SSR
-* Compatible with current architecture
-
-Prefer fewer dependencies.
-
-Avoid introducing packages that solve problems already covered by:
-
-* React
-* TanStack
-* Tailwind
-* shadcn/ui
-* Radix UI
-* Existing internal utilities
-
----
-
-## Dependency Review Process
-
-Before adding a dependency, document:
-
-Purpose:
-Why is the package needed?
-
-Alternative:
-Can existing tools solve the problem?
-
-Bundle Impact:
-Expected bundle increase.
-
-Maintenance:
-Last active release date.
-
-Security:
-Known vulnerabilities.
-
-Decision:
-Approved or Rejected.
-
----
-
-## Version Policy
-
-Always use:
-
-* Latest stable version
-
-Avoid:
-
-* Alpha releases
-* Experimental releases
-* Release candidates
-* Unmaintained packages
-
-Unless explicitly approved.
-
----
-
-## Package Replacement Policy
-
-If a package becomes:
-
-* Deprecated
-* Unmaintained
-* Security Risk
-
-It must be reviewed for replacement.
-
-Technical debt should not accumulate indefinitely.
-
----
-
-# Frontend Engineering Standards
-
-## Component Design
-
-Prefer:
-
-Small focused components.
-
-Target:
-
-* Single responsibility
-* Reusable
-* Composable
-
-Avoid:
-
-* Massive components
-* God components
-* Deep prop chains
-
----
-
-## Composition Over Inheritance
-
-Always prefer:
-
-Composition
-
-Over:
-
-Inheritance
-
-Build reusable primitives.
-
----
-
-## Feature Isolation
-
-Business logic belongs inside features.
-
-Never place feature-specific business logic in:
-
-src/components
-
-Shared components must remain generic.
-
----
-
-## TypeScript Standards
-
-Forbidden:
-
-any
-
-ts-ignore
-
-ts-nocheck
-
-unsafe casting
-
-Required:
-
-* Strict typing
-* Explicit interfaces
-* Explicit return types for public functions
-* Type-safe APIs
+## State Management
+
+### Zustand — Client State Only
+```
+auth-store.ts               → access token (memory only)
+superadmin-auth-store.ts    → superadmin access token (memory only)
+theme-store.ts              → theme preference (persisted)
+sidebar-store.ts            → sidebar toggle (transient)
+saved-jobs-store.ts         → saved job IDs (persisted, client-only)
+```
+
+### TanStack Query — Server State
+- All API data
+- Auth user profile
+- Jobs, applications, companies
+- Notifications, analytics
+- Admin/superadmin data
+
+### Never
+- Store API responses in Zustand
+- Store tokens in localStorage/sessionStorage
+- Use React Context for global state
 
 ---
 
 ## Error Handling
 
-Every API interaction must support:
+### ApiError Shape
+```typescript
+{
+  message: string
+  status: number
+  code: ErrorCode
+  details: Array<{ field: string; message: string }>
+}
+```
 
-* Loading
-* Error
-* Retry
-* Success
+### Error Handling Pattern
+```typescript
+try {
+  await someApiFunction()
+} catch (error) {
+  if (isApiRequestError(error)) {
+    toast.error(error.message)
+  }
+}
+```
 
-Never silently swallow errors.
-
----
-
-## Code Quality
-
-Required:
-
-* Readable code
-* Self-documenting code
-* Small functions
-* Clear naming
-
-Optimize for maintainability.
-
----
-
-## Performance Standards
-
-Measure before optimizing.
-
-Required:
-
-* Route splitting
-* Query caching
-* Lazy loading
-* Bundle awareness
-
-Avoid premature optimization.
+### Error States
+- **ErrorState component**: used for inline errors with retry
+- **ErrorBoundary**: class component wrapping route trees
+- **Route errorComponent**: route-level error handling
+- **Toast**: used for mutation errors
 
 ---
 
-## Accessibility Standards
+## Testing Rules
 
-Required:
-
-* Keyboard support
-* Semantic HTML
-* ARIA labels
-* Focus management
-* Screen reader support
-
-Accessibility is a release blocker.
+- New API functions need test coverage
+- New hooks need test coverage
+- Tests use MSW for API mocking
+- Test files go in `tests/unit/`
+- MSW handlers in `tests/fixtures/handlers.ts`
+- Run: `npm test` (vitest)
+- All 26 tests must pass before committing
 
 ---
 
-# Security Standards
+## Performance Expectations
 
-## Authentication
-
-Never trust frontend state.
-
-Authentication state must always be validated against backend responses.
-
-Frontend authorization is UX only.
-
-Backend remains the source of truth.
+- Route-level code splitting (TanStack Router auto)
+- Recharts lazy-loaded with `React.lazy()` + Suspense
+- List staleTime >= 30s to avoid refetch on navigation
+- No unnecessary re-renders (use selectors in Zustand)
+- Infinite scroll with cursor pagination (no offset-based)
+- Devtools stripped in production builds
 
 ---
 
-## Token Security
+## Refactoring Rules
 
-Never:
-
-* Log tokens
-* Expose tokens in UI
-* Store secrets in source code
-* Commit secrets to repositories
-
-Use environment variables appropriately.
+- DRY: Deduplicated code must be centralized in `shared/` or the owning feature
+- Dead code: Remove unused exports, parameters, and files
+- Feature boundaries: Role-specific code stays in the feature; shared code goes to `shared/`
+- Consistency: Follow existing patterns (same file structure, same import style)
+- TypeScript: No `any` without justification; prefer `unknown` + type guards
 
 ---
 
-## API Security
+## Do/Don't Examples
 
-All requests must:
+### DO
+- Import from `@/features/applications/hooks` for application hooks
+- Use `queryKeys.*` factory for all query key references
+- Handle loading/empty/error states in every data component
+- Use `mapPaginated` for paginated API responses
+- Type all props with interfaces
 
-* Validate input
-* Handle unauthorized responses
-* Handle expired sessions
-
-Sensitive endpoints must be protected by backend authorization.
-
----
-
-## XSS Protection
-
-Never use:
-
-dangerouslySetInnerHTML
-
-Unless explicitly reviewed and sanitized.
-
-All user-generated content must be treated as untrusted.
+### DON'T
+- Import application hooks from `@/features/jobs/hooks` (duplicated — use applications feature)
+- Use literal arrays for query key invalidation
+- Use `any` casts (use `unknown` + type guards instead)
+- Store API data in Zustand
+- Import from relative paths crossing feature boundaries (use `@/` alias)
+- Write page components in `components/` directories — use `pages/`
 
 ---
 
-## Injection Protection
-
-Never build URLs, queries, or HTML using unsanitized user input.
-
-Validate all user input.
-
----
-
-## File Upload Security
-
-Validate:
-
-* File type
-* File size
-* Upload status
-
-Never trust client-side validation alone.
-
----
-
-## Sensitive Data Handling
-
-Never expose:
-
-* Tokens
-* Internal IDs
-* Secrets
-* Environment Variables
-* Security Configuration
-
-To end users.
-
----
-
-## Security Headers Awareness
-
-Frontend must be compatible with:
-
-* CSP
-* CORS
-* X-Frame-Options
-* HSTS
-* Referrer Policy
-
-Do not introduce features that break security headers.
-
----
-
-## Dependency Security
-
-Regularly review:
-
-* npm audit
-* package advisories
-* GitHub security advisories
-
-Security vulnerabilities must be addressed promptly.
-
----
-
-# Architecture Protection Rules
-
-## No Architectural Drift
-
-New features must follow existing patterns.
-
-Do not introduce:
-
-* New state management solutions
-* New form libraries
-* New routing libraries
-* New UI frameworks
-
-Without architecture approval.
-
----
-
-## Design System Enforcement
-
-All UI must follow:
-
-Industrial Broadsheet
-
-No exceptions.
-
-Design consistency is more important than individual screen creativity.
-
----
-
-## Documentation Requirement
-
-Major changes must update:
-
-* DESIGN.md
-* CLAUDE.md
-* AGENTS.md
-
-Documentation must remain synchronized with implementation.
-
----
-
-## Production Mindset
-
-Every implementation decision should assume:
-
-* Thousands of users
-* Large datasets
-* Multi-tenant operation
-* Long-term maintenance
-
-Build for scalability from the beginning.
-
-
-# Definition Of Done
-
-A feature is complete only when:
-
-✓ Typed
-
-✓ Accessible
-
-✓ Responsive
-
-✓ Loading State
-
-✓ Empty State
-
-✓ Error State
-
-✓ Success State
-
-✓ Query Integrated
-
-✓ Role Protected
-
-✓ Design System Compliant
-
-✓ Tested
-
-✓ Production Ready
+## Project Commands
+- `npm run dev` — Start dev server (port 3000)
+- `npm run build` — Production build
+- `npm test` — Run test suite
+- `npm run generate-routes` — Regenerate route tree after adding route files
+- `npm run check` — Biome lint + format check
+- `npx tsc --noEmit` — TypeScript type check

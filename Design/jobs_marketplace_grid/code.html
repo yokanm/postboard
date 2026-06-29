@@ -1,0 +1,387 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>POSTBOARD | All Roles</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..900&amp;family=Playfair+Display:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #080808;
+            color: #E5E2E1;
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#131313",
+                        "rule": "#1A1A1A",
+                        "primary-container": "#f06613",
+                        "on-surface-variant": "#e1c0b2",
+                        "on-secondary-fixed": "#1c1c18",
+                        "tertiary-fixed": "#e5e2e1",
+                        "destructive": "#EF4444",
+                        "secondary-fixed": "#e5e2db",
+                        "on-background": "#e5e2e1",
+                        "on-primary-fixed": "#351000",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-variant": "#353534",
+                        "on-secondary-container": "#b7b5af",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-secondary-fixed-variant": "#474742",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-container": "#929090",
+                        "inverse-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "gradient-c": "#34D399",
+                        "surface-container": "#201f1f",
+                        "gradient-d": "#F59E0B",
+                        "on-primary-container": "#4c1a00",
+                        "surface-container-lowest": "#0e0e0e",
+                        "dim": "#666666",
+                        "gradient-b": "#60A5FA",
+                        "primary": "#ffb694",
+                        "surface-bright": "#3a3939",
+                        "surface-container-highest": "#353534",
+                        "muted": "#2A2A2A",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "gradient-a": "#C084FC",
+                        "surface-tint": "#ffb694",
+                        "on-primary": "#571f00",
+                        "live": "#22C55A",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "surface-container-high": "#2a2a2a",
+                        "body": "#B8B8B8",
+                        "on-tertiary": "#313030",
+                        "primary-fixed-dim": "#ffb694",
+                        "primary-fixed": "#ffdbcc",
+                        "inverse-primary": "#a14000",
+                        "on-secondary": "#31312c",
+                        "live-dim": "#14532D",
+                        "outline-variant": "#594237",
+                        "tertiary": "#c8c6c5",
+                        "secondary": "#c9c6c0",
+                        "secondary-container": "#474742",
+                        "on-error": "#690005",
+                        "outline": "#a88a7e",
+                        "surface-dim": "#131313",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e5e2e1",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#474646"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "sidebar-width": "220px",
+                        "section-v-pad": "48px",
+                        "max-width": "1280px"
+                    },
+                    "fontFamily": {
+                        "ui-xl": ["DM Sans"],
+                        "body-base": ["DM Sans"],
+                        "headline-2xl": ["Playfair Display"],
+                        "mono-label": ["JetBrains Mono"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "ui-sm": ["DM Sans"],
+                        "ui-lg": ["DM Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#080808]">
+<!-- Shared TopNavBar -->
+<header class="bg-background dark:bg-background border-b border-rule docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin py-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-masthead-4xl text-ui-xl tracking-tighter text-on-surface uppercase">POSTBOARD</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-mono-label text-mono-label text-primary border-b-2 border-primary pb-1" href="#">Marketplace</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Companies</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Pricing</a>
+<a class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-mono-label text-mono-label text-body hover:text-on-surface transition-colors px-4 py-2">Login</button>
+<button class="font-mono-label text-mono-label bg-primary-container text-on-primary-container px-6 py-2 hover:bg-opacity-90 transition-all active:scale-95">Post a Job</button>
+</div>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin">
+<!-- Page Header -->
+<section class="pt-12 pb-6 border-b border-rule flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-2">
+<span class="font-mono-label text-mono-label text-dim uppercase tracking-widest tracking-tighter">// open_roles</span>
+<h1 class="font-headline-2xl text-[48px] md:text-[64px] text-on-surface leading-none">All Roles</h1>
+</div>
+<div class="flex items-center">
+<span class="bg-muted text-on-surface px-4 py-1.5 font-mono-label text-[14px]">8,412 roles</span>
+</div>
+</section>
+<!-- Filter Bar (Sticky) -->
+<div class="w-full border-b border-rule bg-[#080808] py-4">
+    <div class="relative flex items-center">
+        <span class="material-symbols-outlined absolute left-4 text-dim text-[20px]">search</span>
+        <input type="text" placeholder="SEARCH_BY_ROLE_OR_KEYWORD..." class="w-full bg-black border border-rule rounded-none py-4 pl-12 pr-4 font-mono-label text-mono-label text-on-surface placeholder:text-dim focus:border-primary-container focus:ring-0 transition-colors">
+    </div>
+</div><div class="sticky top-[73px] bg-[#080808] z-40 py-4 border-b border-rule flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex items-center gap-2 overflow-x-auto hide-scrollbar w-full md:w-auto">
+<button class="whitespace-nowrap px-4 py-2 border border-rule font-mono-label text-mono-label text-body hover:border-dim transition-colors">Role Type</button>
+<button class="whitespace-nowrap px-4 py-2 border border-rule font-mono-label text-mono-label text-body hover:border-dim transition-colors">Location</button>
+<button class="whitespace-nowrap px-4 py-2 border border-primary-container text-primary-container font-mono-label text-mono-label">Experience</button>
+<button class="whitespace-nowrap px-4 py-2 border border-rule font-mono-label text-mono-label text-body hover:border-dim transition-colors">Salary Range</button>
+<label class="flex items-center gap-3 px-4 py-2 border border-rule cursor-pointer hover:bg-surface-container transition-all">
+<input class="w-4 h-4 rounded-none bg-black border-rule text-primary-container focus:ring-0" type="checkbox">
+<span class="font-mono-label text-mono-label text-body uppercase whitespace-nowrap">Remote Only</span>
+</label>
+</div>
+<div class="flex items-center gap-2 w-full md:w-auto justify-end">
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 border border-rule font-mono-label text-mono-label text-body">
+                        Sort: Newest
+                        <span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Job Card Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-rule my-margin border-x border-rule border-b border-rule">
+<!-- Job Card 1 -->
+<div class="group bg-[#080808] p-margin border-t border-rule hover:border-l-4 hover:border-l-primary-container transition-all duration-75 flex flex-col gap-6 relative">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center border border-rule">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<p class="font-ui-lg text-on-surface leading-tight">Neural Systems</p>
+<span class="font-mono-label text-mono-label text-dim uppercase">// berlin, de</span>
+</div>
+</div>
+<span class="font-mono-label text-mono-label text-dim">3 days ago</span>
+</div>
+<div>
+<h3 class="font-ui-xl text-on-surface group-hover:text-primary transition-colors">Senior Kernel Engineer</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Full-time</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Hybrid</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Rust</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">C++</span>
+</div>
+<div class="mt-auto pt-4 border-t border-rule flex justify-between items-center">
+<span class="font-mono-label text-on-surface">$160k — $220k</span>
+<button class="text-primary-container font-mono-label text-mono-label uppercase tracking-widest hover:underline transition-all">Apply Role</button>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="group bg-[#080808] p-margin border-t border-rule hover:border-l-4 hover:border-l-primary-container transition-all duration-75 flex flex-col gap-6 relative">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center border border-rule">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">token</span>
+</div>
+<div>
+<p class="font-ui-lg text-on-surface leading-tight">Stripe Industrial</p>
+<span class="font-mono-label text-mono-label text-dim uppercase">// remote</span>
+</div>
+</div>
+<span class="font-mono-label text-mono-label text-dim">5 hours ago</span>
+</div>
+<div>
+<h3 class="font-ui-xl text-on-surface group-hover:text-primary transition-colors">Staff Product Designer</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Full-time</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Remote</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Design Systems</span>
+</div>
+<div class="mt-auto pt-4 border-t border-rule flex justify-between items-center">
+<span class="font-mono-label text-on-surface">$180k — $240k</span>
+<button class="text-primary-container font-mono-label text-mono-label uppercase tracking-widest hover:underline transition-all">Apply Role</button>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="group bg-[#080808] p-margin border-t border-rule hover:border-l-4 hover:border-l-primary-container transition-all duration-75 flex flex-col gap-6 relative">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center border border-rule">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">factory</span>
+</div>
+<div>
+<p class="font-ui-lg text-on-surface leading-tight">Ironclad Dynamics</p>
+<span class="font-mono-label text-mono-label text-dim uppercase">// chicago, usa</span>
+</div>
+</div>
+<span class="font-mono-label text-mono-label text-dim">1 day ago</span>
+</div>
+<div>
+<h3 class="font-ui-xl text-on-surface group-hover:text-primary transition-colors">Robotics Software Lead</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Contract</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">On-Site</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">ROS</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Python</span>
+</div>
+<div class="mt-auto pt-4 border-t border-rule flex justify-between items-center">
+<span class="font-mono-label text-on-surface">$200k — $250k</span>
+<button class="text-primary-container font-mono-label text-mono-label uppercase tracking-widest hover:underline transition-all">Apply Role</button>
+</div>
+</div>
+<!-- Job Card 4 -->
+<div class="group bg-[#080808] p-margin border-t border-rule hover:border-l-4 hover:border-l-primary-container transition-all duration-75 flex flex-col gap-6 relative">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center border border-rule">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">encrypted</span>
+</div>
+<div>
+<p class="font-ui-lg text-on-surface leading-tight">Vault Security</p>
+<span class="font-mono-label text-mono-label text-dim uppercase">// london, uk</span>
+</div>
+</div>
+<span class="font-mono-label text-mono-label text-dim">2 days ago</span>
+</div>
+<div>
+<h3 class="font-ui-xl text-on-surface group-hover:text-primary transition-colors">Infrastructure Architect</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Full-time</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Hybrid</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">AWS</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Terraform</span>
+</div>
+<div class="mt-auto pt-4 border-t border-rule flex justify-between items-center">
+<span class="font-mono-label text-on-surface">$140k — $190k</span>
+<button class="text-primary-container font-mono-label text-mono-label uppercase tracking-widest hover:underline transition-all">Apply Role</button>
+</div>
+</div>
+<!-- Job Card 5 -->
+<div class="group bg-[#080808] p-margin border-t border-rule hover:border-l-4 hover:border-l-primary-container transition-all duration-75 flex flex-col gap-6 relative">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center border border-rule">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<div>
+<p class="font-ui-lg text-on-surface leading-tight">Scale Logic</p>
+<span class="font-mono-label text-mono-label text-dim uppercase">// san francisco</span>
+</div>
+</div>
+<span class="font-mono-label text-mono-label text-dim">4 days ago</span>
+</div>
+<div>
+<h3 class="font-ui-xl text-on-surface group-hover:text-primary transition-colors">ML Research Scientist</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Full-time</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Remote</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">PyTorch</span>
+</div>
+<div class="mt-auto pt-4 border-t border-rule flex justify-between items-center">
+<span class="font-mono-label text-on-surface">$210k — $300k</span>
+<button class="text-primary-container font-mono-label text-mono-label uppercase tracking-widest hover:underline transition-all">Apply Role</button>
+</div>
+</div>
+<!-- Job Card 6 -->
+<div class="group bg-[#080808] p-margin border-t border-rule hover:border-l-4 hover:border-l-primary-container transition-all duration-75 flex flex-col gap-6 relative">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center border border-rule">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">database</span>
+</div>
+<div>
+<p class="font-ui-lg text-on-surface leading-tight">Data Mesh Co.</p>
+<span class="font-mono-label text-mono-label text-dim uppercase">// amsterdam, nl</span>
+</div>
+</div>
+<span class="font-mono-label text-mono-label text-dim">1 week ago</span>
+</div>
+<div>
+<h3 class="font-ui-xl text-on-surface group-hover:text-primary transition-colors">Principal Backend Engineer</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Full-time</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Hybrid</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Go</span>
+<span class="px-2 py-1 border border-rule font-mono-label text-[10px] text-body uppercase">Postgres</span>
+</div>
+<div class="mt-auto pt-4 border-t border-rule flex justify-between items-center">
+<span class="font-mono-label text-on-surface">$175k — $230k</span>
+<button class="text-primary-container font-mono-label text-mono-label uppercase tracking-widest hover:underline transition-all">Apply Role</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<nav class="flex items-center justify-center gap-8 py-margin border-t border-rule">
+<button class="flex items-center gap-2 font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                Prev
+            </button>
+<span class="font-mono-label text-mono-label text-on-surface">Page 2 of 47</span>
+<button class="flex items-center gap-2 font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors">
+                Next
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</nav>
+</main>
+<!-- Shared Footer -->
+<footer class="bg-background dark:bg-background full-width border-t border-rule mt-section-v-pad">
+<div class="max-w-max-width mx-auto px-margin py-unit flex flex-col md:flex-row justify-between items-center gap-gutter min-h-[120px]">
+<div class="flex flex-col gap-2">
+<span class="font-masthead-4xl text-ui-lg text-on-surface uppercase font-black">POSTBOARD</span>
+<span class="font-mono-label text-mono-label text-dim">© 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex gap-6">
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">API Status</a>
+<a class="font-mono-label text-mono-label text-dim hover:text-on-surface hover:underline transition-opacity duration-200" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for active filter states
+        const filterButtons = document.querySelectorAll('.filter-pill');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('border-primary-container');
+                btn.classList.toggle('text-primary-container');
+                btn.classList.toggle('border-rule');
+                btn.classList.toggle('text-body');
+            });
+        });
+    </script>
+
+
+</body></html>

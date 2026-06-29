@@ -1,0 +1,44 @@
+# ─── Postboard Email Worker — Production Multi-Stage Dockerfile ───────────────
+# BullMQ worker that processes email jobs from Redis.
+
+FROM node:20-slim AS base
+
+WORKDIR /app
+
+COPY package*.json ./
+
+# ─────────────── deps (ALL — needed for tsc) ───────────────
+FROM base AS deps
+RUN npm ci
+
+# ─────────────── builder ───────────────
+FROM base AS builder
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+RUN npx prisma generate
+RUN npm run build
+
+# ─────────────── production ───────────────
+FROM base AS production
+
+ENV NODE_ENV=production
+
+RUN addgroup --system --gid 1001 appgroup && \
+    adduser --system --uid 1001 appuser
+
+RUN npm ci --omit=dev
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/generated ./generated
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+COPY package*.json ./
+
+USER appuser
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+    CMD node -e "process.exit(0)"
+
+CMD ["node", "dist/src/workers/email.worker.js"]

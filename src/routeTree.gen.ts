@@ -9,50 +9,1453 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as VerifyEmailRouteImport } from './routes/verify-email'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as SuperadminRouteImport } from './routes/_superadmin'
+import { Route as PublicRouteImport } from './routes/_public'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
+import { Route as PublicIndexRouteImport } from './routes/_public/index'
+import { Route as SuperadminLoginRouteImport } from './routes/superadmin/login'
+import { Route as PublicTermsRouteImport } from './routes/_public/terms'
+import { Route as PublicPrivacyRouteImport } from './routes/_public/privacy'
+import { Route as PublicPricingRouteImport } from './routes/_public/pricing'
+import { Route as PublicMaintenanceRouteImport } from './routes/_public/maintenance'
+import { Route as PublicJobsRouteImport } from './routes/_public/jobs'
+import { Route as PublicFeaturesRouteImport } from './routes/_public/features'
+import { Route as PublicCookiesRouteImport } from './routes/_public/cookies'
+import { Route as PublicContactRouteImport } from './routes/_public/contact'
+import { Route as PublicCompaniesRouteImport } from './routes/_public/companies'
+import { Route as PublicAboutRouteImport } from './routes/_public/about'
+import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated/notifications'
+import { Route as AuthenticatedCompanyRouteRouteImport } from './routes/_authenticated/company/route'
+import { Route as AuthenticatedRecruiterIndexRouteImport } from './routes/_authenticated/recruiter/index'
+import { Route as AuthenticatedCompanyIndexRouteImport } from './routes/_authenticated/company/index'
+import { Route as SuperadminSuperadminUsersRouteImport } from './routes/_superadmin/superadmin/users'
+import { Route as SuperadminSuperadminSecurityRouteImport } from './routes/_superadmin/superadmin/security'
+import { Route as SuperadminSuperadminPlatformRouteImport } from './routes/_superadmin/superadmin/platform'
+import { Route as SuperadminSuperadminJobsRouteImport } from './routes/_superadmin/superadmin/jobs'
+import { Route as SuperadminSuperadminDashboardRouteImport } from './routes/_superadmin/superadmin/dashboard'
+import { Route as SuperadminSuperadminCompaniesRouteImport } from './routes/_superadmin/superadmin/companies'
+import { Route as SuperadminSuperadminAuditLogsRouteImport } from './routes/_superadmin/superadmin/audit-logs'
+import { Route as PublicJobsJobIdRouteImport } from './routes/_public/jobs.$jobId'
+import { Route as PublicCompaniesCompanyIdRouteImport } from './routes/_public/companies.$companyId'
+import { Route as AuthenticatedRecruiterProfileRouteImport } from './routes/_authenticated/recruiter/profile'
+import { Route as AuthenticatedRecruiterNotificationsRouteImport } from './routes/_authenticated/recruiter/notifications'
+import { Route as AuthenticatedRecruiterJobsRouteImport } from './routes/_authenticated/recruiter/jobs'
+import { Route as AuthenticatedRecruiterDashboardRouteImport } from './routes/_authenticated/recruiter/dashboard'
+import { Route as AuthenticatedRecruiterCompanyRouteImport } from './routes/_authenticated/recruiter/company'
+import { Route as AuthenticatedRecruiterAnalyticsRouteImport } from './routes/_authenticated/recruiter/analytics'
+import { Route as AuthenticatedCompanyTeamRouteImport } from './routes/_authenticated/company/team'
+import { Route as AuthenticatedCompanyProfileRouteImport } from './routes/_authenticated/company/profile'
+import { Route as AuthenticatedCompanyNotificationsRouteImport } from './routes/_authenticated/company/notifications'
+import { Route as AuthenticatedCompanyAuditLogsRouteImport } from './routes/_authenticated/company/audit-logs'
+import { Route as AuthenticatedCompanyAnalyticsRouteImport } from './routes/_authenticated/company/analytics'
+import { Route as AuthenticatedCompanyCompanyIdRouteImport } from './routes/_authenticated/company.$companyId'
+import { Route as AuthenticatedCandidateProfileRouteImport } from './routes/_authenticated/candidate/profile'
+import { Route as AuthenticatedCandidateJobsRouteImport } from './routes/_authenticated/candidate/jobs'
+import { Route as AuthenticatedCandidateDashboardRouteImport } from './routes/_authenticated/candidate/dashboard'
+import { Route as AuthenticatedCandidateApplicationsRouteImport } from './routes/_authenticated/candidate/applications'
+import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
+import { Route as AuthenticatedAdminJobsRouteImport } from './routes/_authenticated/admin/jobs'
+import { Route as AuthenticatedAdminDashboardRouteImport } from './routes/_authenticated/admin/dashboard'
+import { Route as AuthenticatedAdminCompaniesRouteImport } from './routes/_authenticated/admin/companies'
+import { Route as AuthenticatedAdminAnalyticsRouteImport } from './routes/_authenticated/admin/analytics'
+import { Route as AuthenticatedRecruiterJobsCreateRouteImport } from './routes/_authenticated/recruiter/jobs.create'
+import { Route as AuthenticatedRecruiterJobsJobIdRouteImport } from './routes/_authenticated/recruiter/jobs.$jobId'
+import { Route as AuthenticatedRecruiterApplicationsApplicationIdRouteImport } from './routes/_authenticated/recruiter/applications.$applicationId'
+import { Route as AuthenticatedCandidateJobsSavedRouteImport } from './routes/_authenticated/candidate/jobs.saved'
+import { Route as AuthenticatedCandidateApplicationsApplicationIdRouteImport } from './routes/_authenticated/candidate/applications/$applicationId'
+import { Route as AuthenticatedRecruiterJobsJobIdEditRouteImport } from './routes/_authenticated/recruiter/jobs.$jobId.edit'
+import { Route as AuthenticatedRecruiterJobsJobIdApplicationsRouteImport } from './routes/_authenticated/recruiter/jobs.$jobId.applications'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const VerifyEmailRoute = VerifyEmailRouteImport.update({
+  id: '/verify-email',
+  path: '/verify-email',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminRoute = SuperadminRouteImport.update({
+  id: '/_superadmin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicRoute = PublicRouteImport.update({
+  id: '/_public',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicIndexRoute = PublicIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const SuperadminLoginRoute = SuperadminLoginRouteImport.update({
+  id: '/superadmin/login',
+  path: '/superadmin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicTermsRoute = PublicTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPrivacyRoute = PublicPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPricingRoute = PublicPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicMaintenanceRoute = PublicMaintenanceRouteImport.update({
+  id: '/maintenance',
+  path: '/maintenance',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicJobsRoute = PublicJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicFeaturesRoute = PublicFeaturesRouteImport.update({
+  id: '/features',
+  path: '/features',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicCookiesRoute = PublicCookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicContactRoute = PublicContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicCompaniesRoute = PublicCompaniesRouteImport.update({
+  id: '/companies',
+  path: '/companies',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicAboutRoute = PublicAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => PublicRoute,
+} as any)
+const AuthenticatedNotificationsRoute =
+  AuthenticatedNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCompanyRouteRoute =
+  AuthenticatedCompanyRouteRouteImport.update({
+    id: '/company',
+    path: '/company',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedRecruiterIndexRoute =
+  AuthenticatedRecruiterIndexRouteImport.update({
+    id: '/recruiter/',
+    path: '/recruiter/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCompanyIndexRoute =
+  AuthenticatedCompanyIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedCompanyRouteRoute,
+  } as any)
+const SuperadminSuperadminUsersRoute =
+  SuperadminSuperadminUsersRouteImport.update({
+    id: '/superadmin/users',
+    path: '/superadmin/users',
+    getParentRoute: () => SuperadminRoute,
+  } as any)
+const SuperadminSuperadminSecurityRoute =
+  SuperadminSuperadminSecurityRouteImport.update({
+    id: '/superadmin/security',
+    path: '/superadmin/security',
+    getParentRoute: () => SuperadminRoute,
+  } as any)
+const SuperadminSuperadminPlatformRoute =
+  SuperadminSuperadminPlatformRouteImport.update({
+    id: '/superadmin/platform',
+    path: '/superadmin/platform',
+    getParentRoute: () => SuperadminRoute,
+  } as any)
+const SuperadminSuperadminJobsRoute =
+  SuperadminSuperadminJobsRouteImport.update({
+    id: '/superadmin/jobs',
+    path: '/superadmin/jobs',
+    getParentRoute: () => SuperadminRoute,
+  } as any)
+const SuperadminSuperadminDashboardRoute =
+  SuperadminSuperadminDashboardRouteImport.update({
+    id: '/superadmin/dashboard',
+    path: '/superadmin/dashboard',
+    getParentRoute: () => SuperadminRoute,
+  } as any)
+const SuperadminSuperadminCompaniesRoute =
+  SuperadminSuperadminCompaniesRouteImport.update({
+    id: '/superadmin/companies',
+    path: '/superadmin/companies',
+    getParentRoute: () => SuperadminRoute,
+  } as any)
+const SuperadminSuperadminAuditLogsRoute =
+  SuperadminSuperadminAuditLogsRouteImport.update({
+    id: '/superadmin/audit-logs',
+    path: '/superadmin/audit-logs',
+    getParentRoute: () => SuperadminRoute,
+  } as any)
+const PublicJobsJobIdRoute = PublicJobsJobIdRouteImport.update({
+  id: '/$jobId',
+  path: '/$jobId',
+  getParentRoute: () => PublicJobsRoute,
+} as any)
+const PublicCompaniesCompanyIdRoute =
+  PublicCompaniesCompanyIdRouteImport.update({
+    id: '/$companyId',
+    path: '/$companyId',
+    getParentRoute: () => PublicCompaniesRoute,
+  } as any)
+const AuthenticatedRecruiterProfileRoute =
+  AuthenticatedRecruiterProfileRouteImport.update({
+    id: '/recruiter/profile',
+    path: '/recruiter/profile',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedRecruiterNotificationsRoute =
+  AuthenticatedRecruiterNotificationsRouteImport.update({
+    id: '/recruiter/notifications',
+    path: '/recruiter/notifications',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedRecruiterJobsRoute =
+  AuthenticatedRecruiterJobsRouteImport.update({
+    id: '/recruiter/jobs',
+    path: '/recruiter/jobs',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedRecruiterDashboardRoute =
+  AuthenticatedRecruiterDashboardRouteImport.update({
+    id: '/recruiter/dashboard',
+    path: '/recruiter/dashboard',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedRecruiterCompanyRoute =
+  AuthenticatedRecruiterCompanyRouteImport.update({
+    id: '/recruiter/company',
+    path: '/recruiter/company',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedRecruiterAnalyticsRoute =
+  AuthenticatedRecruiterAnalyticsRouteImport.update({
+    id: '/recruiter/analytics',
+    path: '/recruiter/analytics',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCompanyTeamRoute =
+  AuthenticatedCompanyTeamRouteImport.update({
+    id: '/team',
+    path: '/team',
+    getParentRoute: () => AuthenticatedCompanyRouteRoute,
+  } as any)
+const AuthenticatedCompanyProfileRoute =
+  AuthenticatedCompanyProfileRouteImport.update({
+    id: '/profile',
+    path: '/profile',
+    getParentRoute: () => AuthenticatedCompanyRouteRoute,
+  } as any)
+const AuthenticatedCompanyNotificationsRoute =
+  AuthenticatedCompanyNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedCompanyRouteRoute,
+  } as any)
+const AuthenticatedCompanyAuditLogsRoute =
+  AuthenticatedCompanyAuditLogsRouteImport.update({
+    id: '/audit-logs',
+    path: '/audit-logs',
+    getParentRoute: () => AuthenticatedCompanyRouteRoute,
+  } as any)
+const AuthenticatedCompanyAnalyticsRoute =
+  AuthenticatedCompanyAnalyticsRouteImport.update({
+    id: '/analytics',
+    path: '/analytics',
+    getParentRoute: () => AuthenticatedCompanyRouteRoute,
+  } as any)
+const AuthenticatedCompanyCompanyIdRoute =
+  AuthenticatedCompanyCompanyIdRouteImport.update({
+    id: '/$companyId',
+    path: '/$companyId',
+    getParentRoute: () => AuthenticatedCompanyRouteRoute,
+  } as any)
+const AuthenticatedCandidateProfileRoute =
+  AuthenticatedCandidateProfileRouteImport.update({
+    id: '/candidate/profile',
+    path: '/candidate/profile',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCandidateJobsRoute =
+  AuthenticatedCandidateJobsRouteImport.update({
+    id: '/candidate/jobs',
+    path: '/candidate/jobs',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCandidateDashboardRoute =
+  AuthenticatedCandidateDashboardRouteImport.update({
+    id: '/candidate/dashboard',
+    path: '/candidate/dashboard',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCandidateApplicationsRoute =
+  AuthenticatedCandidateApplicationsRouteImport.update({
+    id: '/candidate/applications',
+    path: '/candidate/applications',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedAdminJobsRoute = AuthenticatedAdminJobsRouteImport.update({
+  id: '/admin/jobs',
+  path: '/admin/jobs',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedAdminDashboardRoute =
+  AuthenticatedAdminDashboardRouteImport.update({
+    id: '/admin/dashboard',
+    path: '/admin/dashboard',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAdminCompaniesRoute =
+  AuthenticatedAdminCompaniesRouteImport.update({
+    id: '/admin/companies',
+    path: '/admin/companies',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAdminAnalyticsRoute =
+  AuthenticatedAdminAnalyticsRouteImport.update({
+    id: '/admin/analytics',
+    path: '/admin/analytics',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedRecruiterJobsCreateRoute =
+  AuthenticatedRecruiterJobsCreateRouteImport.update({
+    id: '/create',
+    path: '/create',
+    getParentRoute: () => AuthenticatedRecruiterJobsRoute,
+  } as any)
+const AuthenticatedRecruiterJobsJobIdRoute =
+  AuthenticatedRecruiterJobsJobIdRouteImport.update({
+    id: '/$jobId',
+    path: '/$jobId',
+    getParentRoute: () => AuthenticatedRecruiterJobsRoute,
+  } as any)
+const AuthenticatedRecruiterApplicationsApplicationIdRoute =
+  AuthenticatedRecruiterApplicationsApplicationIdRouteImport.update({
+    id: '/recruiter/applications/$applicationId',
+    path: '/recruiter/applications/$applicationId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedCandidateJobsSavedRoute =
+  AuthenticatedCandidateJobsSavedRouteImport.update({
+    id: '/saved',
+    path: '/saved',
+    getParentRoute: () => AuthenticatedCandidateJobsRoute,
+  } as any)
+const AuthenticatedCandidateApplicationsApplicationIdRoute =
+  AuthenticatedCandidateApplicationsApplicationIdRouteImport.update({
+    id: '/$applicationId',
+    path: '/$applicationId',
+    getParentRoute: () => AuthenticatedCandidateApplicationsRoute,
+  } as any)
+const AuthenticatedRecruiterJobsJobIdEditRoute =
+  AuthenticatedRecruiterJobsJobIdEditRouteImport.update({
+    id: '/edit',
+    path: '/edit',
+    getParentRoute: () => AuthenticatedRecruiterJobsJobIdRoute,
+  } as any)
+const AuthenticatedRecruiterJobsJobIdApplicationsRoute =
+  AuthenticatedRecruiterJobsJobIdApplicationsRouteImport.update({
+    id: '/applications',
+    path: '/applications',
+    getParentRoute: () => AuthenticatedRecruiterJobsJobIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof PublicIndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/company': typeof AuthenticatedCompanyRouteRouteWithChildren
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/about': typeof PublicAboutRoute
+  '/companies': typeof PublicCompaniesRouteWithChildren
+  '/contact': typeof PublicContactRoute
+  '/cookies': typeof PublicCookiesRoute
+  '/features': typeof PublicFeaturesRoute
+  '/jobs': typeof PublicJobsRouteWithChildren
+  '/maintenance': typeof PublicMaintenanceRoute
+  '/pricing': typeof PublicPricingRoute
+  '/privacy': typeof PublicPrivacyRoute
+  '/terms': typeof PublicTermsRoute
+  '/superadmin/login': typeof SuperadminLoginRoute
+  '/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
+  '/admin/companies': typeof AuthenticatedAdminCompaniesRoute
+  '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
+  '/admin/jobs': typeof AuthenticatedAdminJobsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/candidate/applications': typeof AuthenticatedCandidateApplicationsRouteWithChildren
+  '/candidate/dashboard': typeof AuthenticatedCandidateDashboardRoute
+  '/candidate/jobs': typeof AuthenticatedCandidateJobsRouteWithChildren
+  '/candidate/profile': typeof AuthenticatedCandidateProfileRoute
+  '/company/$companyId': typeof AuthenticatedCompanyCompanyIdRoute
+  '/company/analytics': typeof AuthenticatedCompanyAnalyticsRoute
+  '/company/audit-logs': typeof AuthenticatedCompanyAuditLogsRoute
+  '/company/notifications': typeof AuthenticatedCompanyNotificationsRoute
+  '/company/profile': typeof AuthenticatedCompanyProfileRoute
+  '/company/team': typeof AuthenticatedCompanyTeamRoute
+  '/recruiter/analytics': typeof AuthenticatedRecruiterAnalyticsRoute
+  '/recruiter/company': typeof AuthenticatedRecruiterCompanyRoute
+  '/recruiter/dashboard': typeof AuthenticatedRecruiterDashboardRoute
+  '/recruiter/jobs': typeof AuthenticatedRecruiterJobsRouteWithChildren
+  '/recruiter/notifications': typeof AuthenticatedRecruiterNotificationsRoute
+  '/recruiter/profile': typeof AuthenticatedRecruiterProfileRoute
+  '/companies/$companyId': typeof PublicCompaniesCompanyIdRoute
+  '/jobs/$jobId': typeof PublicJobsJobIdRoute
+  '/superadmin/audit-logs': typeof SuperadminSuperadminAuditLogsRoute
+  '/superadmin/companies': typeof SuperadminSuperadminCompaniesRoute
+  '/superadmin/dashboard': typeof SuperadminSuperadminDashboardRoute
+  '/superadmin/jobs': typeof SuperadminSuperadminJobsRoute
+  '/superadmin/platform': typeof SuperadminSuperadminPlatformRoute
+  '/superadmin/security': typeof SuperadminSuperadminSecurityRoute
+  '/superadmin/users': typeof SuperadminSuperadminUsersRoute
+  '/company/': typeof AuthenticatedCompanyIndexRoute
+  '/recruiter/': typeof AuthenticatedRecruiterIndexRoute
+  '/candidate/applications/$applicationId': typeof AuthenticatedCandidateApplicationsApplicationIdRoute
+  '/candidate/jobs/saved': typeof AuthenticatedCandidateJobsSavedRoute
+  '/recruiter/applications/$applicationId': typeof AuthenticatedRecruiterApplicationsApplicationIdRoute
+  '/recruiter/jobs/$jobId': typeof AuthenticatedRecruiterJobsJobIdRouteWithChildren
+  '/recruiter/jobs/create': typeof AuthenticatedRecruiterJobsCreateRoute
+  '/recruiter/jobs/$jobId/applications': typeof AuthenticatedRecruiterJobsJobIdApplicationsRoute
+  '/recruiter/jobs/$jobId/edit': typeof AuthenticatedRecruiterJobsJobIdEditRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/': typeof PublicIndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/about': typeof PublicAboutRoute
+  '/companies': typeof PublicCompaniesRouteWithChildren
+  '/contact': typeof PublicContactRoute
+  '/cookies': typeof PublicCookiesRoute
+  '/features': typeof PublicFeaturesRoute
+  '/jobs': typeof PublicJobsRouteWithChildren
+  '/maintenance': typeof PublicMaintenanceRoute
+  '/pricing': typeof PublicPricingRoute
+  '/privacy': typeof PublicPrivacyRoute
+  '/terms': typeof PublicTermsRoute
+  '/superadmin/login': typeof SuperadminLoginRoute
+  '/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
+  '/admin/companies': typeof AuthenticatedAdminCompaniesRoute
+  '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
+  '/admin/jobs': typeof AuthenticatedAdminJobsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/candidate/applications': typeof AuthenticatedCandidateApplicationsRouteWithChildren
+  '/candidate/dashboard': typeof AuthenticatedCandidateDashboardRoute
+  '/candidate/jobs': typeof AuthenticatedCandidateJobsRouteWithChildren
+  '/candidate/profile': typeof AuthenticatedCandidateProfileRoute
+  '/company/$companyId': typeof AuthenticatedCompanyCompanyIdRoute
+  '/company/analytics': typeof AuthenticatedCompanyAnalyticsRoute
+  '/company/audit-logs': typeof AuthenticatedCompanyAuditLogsRoute
+  '/company/notifications': typeof AuthenticatedCompanyNotificationsRoute
+  '/company/profile': typeof AuthenticatedCompanyProfileRoute
+  '/company/team': typeof AuthenticatedCompanyTeamRoute
+  '/recruiter/analytics': typeof AuthenticatedRecruiterAnalyticsRoute
+  '/recruiter/company': typeof AuthenticatedRecruiterCompanyRoute
+  '/recruiter/dashboard': typeof AuthenticatedRecruiterDashboardRoute
+  '/recruiter/jobs': typeof AuthenticatedRecruiterJobsRouteWithChildren
+  '/recruiter/notifications': typeof AuthenticatedRecruiterNotificationsRoute
+  '/recruiter/profile': typeof AuthenticatedRecruiterProfileRoute
+  '/companies/$companyId': typeof PublicCompaniesCompanyIdRoute
+  '/jobs/$jobId': typeof PublicJobsJobIdRoute
+  '/superadmin/audit-logs': typeof SuperadminSuperadminAuditLogsRoute
+  '/superadmin/companies': typeof SuperadminSuperadminCompaniesRoute
+  '/superadmin/dashboard': typeof SuperadminSuperadminDashboardRoute
+  '/superadmin/jobs': typeof SuperadminSuperadminJobsRoute
+  '/superadmin/platform': typeof SuperadminSuperadminPlatformRoute
+  '/superadmin/security': typeof SuperadminSuperadminSecurityRoute
+  '/superadmin/users': typeof SuperadminSuperadminUsersRoute
+  '/company': typeof AuthenticatedCompanyIndexRoute
+  '/recruiter': typeof AuthenticatedRecruiterIndexRoute
+  '/candidate/applications/$applicationId': typeof AuthenticatedCandidateApplicationsApplicationIdRoute
+  '/candidate/jobs/saved': typeof AuthenticatedCandidateJobsSavedRoute
+  '/recruiter/applications/$applicationId': typeof AuthenticatedRecruiterApplicationsApplicationIdRoute
+  '/recruiter/jobs/$jobId': typeof AuthenticatedRecruiterJobsJobIdRouteWithChildren
+  '/recruiter/jobs/create': typeof AuthenticatedRecruiterJobsCreateRoute
+  '/recruiter/jobs/$jobId/applications': typeof AuthenticatedRecruiterJobsJobIdApplicationsRoute
+  '/recruiter/jobs/$jobId/edit': typeof AuthenticatedRecruiterJobsJobIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/_public': typeof PublicRouteWithChildren
+  '/_superadmin': typeof SuperadminRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/_authenticated/company': typeof AuthenticatedCompanyRouteRouteWithChildren
+  '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
+  '/_public/about': typeof PublicAboutRoute
+  '/_public/companies': typeof PublicCompaniesRouteWithChildren
+  '/_public/contact': typeof PublicContactRoute
+  '/_public/cookies': typeof PublicCookiesRoute
+  '/_public/features': typeof PublicFeaturesRoute
+  '/_public/jobs': typeof PublicJobsRouteWithChildren
+  '/_public/maintenance': typeof PublicMaintenanceRoute
+  '/_public/pricing': typeof PublicPricingRoute
+  '/_public/privacy': typeof PublicPrivacyRoute
+  '/_public/terms': typeof PublicTermsRoute
+  '/superadmin/login': typeof SuperadminLoginRoute
+  '/_public/': typeof PublicIndexRoute
+  '/_authenticated/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
+  '/_authenticated/admin/companies': typeof AuthenticatedAdminCompaniesRoute
+  '/_authenticated/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
+  '/_authenticated/admin/jobs': typeof AuthenticatedAdminJobsRoute
+  '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/_authenticated/candidate/applications': typeof AuthenticatedCandidateApplicationsRouteWithChildren
+  '/_authenticated/candidate/dashboard': typeof AuthenticatedCandidateDashboardRoute
+  '/_authenticated/candidate/jobs': typeof AuthenticatedCandidateJobsRouteWithChildren
+  '/_authenticated/candidate/profile': typeof AuthenticatedCandidateProfileRoute
+  '/_authenticated/company/$companyId': typeof AuthenticatedCompanyCompanyIdRoute
+  '/_authenticated/company/analytics': typeof AuthenticatedCompanyAnalyticsRoute
+  '/_authenticated/company/audit-logs': typeof AuthenticatedCompanyAuditLogsRoute
+  '/_authenticated/company/notifications': typeof AuthenticatedCompanyNotificationsRoute
+  '/_authenticated/company/profile': typeof AuthenticatedCompanyProfileRoute
+  '/_authenticated/company/team': typeof AuthenticatedCompanyTeamRoute
+  '/_authenticated/recruiter/analytics': typeof AuthenticatedRecruiterAnalyticsRoute
+  '/_authenticated/recruiter/company': typeof AuthenticatedRecruiterCompanyRoute
+  '/_authenticated/recruiter/dashboard': typeof AuthenticatedRecruiterDashboardRoute
+  '/_authenticated/recruiter/jobs': typeof AuthenticatedRecruiterJobsRouteWithChildren
+  '/_authenticated/recruiter/notifications': typeof AuthenticatedRecruiterNotificationsRoute
+  '/_authenticated/recruiter/profile': typeof AuthenticatedRecruiterProfileRoute
+  '/_public/companies/$companyId': typeof PublicCompaniesCompanyIdRoute
+  '/_public/jobs/$jobId': typeof PublicJobsJobIdRoute
+  '/_superadmin/superadmin/audit-logs': typeof SuperadminSuperadminAuditLogsRoute
+  '/_superadmin/superadmin/companies': typeof SuperadminSuperadminCompaniesRoute
+  '/_superadmin/superadmin/dashboard': typeof SuperadminSuperadminDashboardRoute
+  '/_superadmin/superadmin/jobs': typeof SuperadminSuperadminJobsRoute
+  '/_superadmin/superadmin/platform': typeof SuperadminSuperadminPlatformRoute
+  '/_superadmin/superadmin/security': typeof SuperadminSuperadminSecurityRoute
+  '/_superadmin/superadmin/users': typeof SuperadminSuperadminUsersRoute
+  '/_authenticated/company/': typeof AuthenticatedCompanyIndexRoute
+  '/_authenticated/recruiter/': typeof AuthenticatedRecruiterIndexRoute
+  '/_authenticated/candidate/applications/$applicationId': typeof AuthenticatedCandidateApplicationsApplicationIdRoute
+  '/_authenticated/candidate/jobs/saved': typeof AuthenticatedCandidateJobsSavedRoute
+  '/_authenticated/recruiter/applications/$applicationId': typeof AuthenticatedRecruiterApplicationsApplicationIdRoute
+  '/_authenticated/recruiter/jobs/$jobId': typeof AuthenticatedRecruiterJobsJobIdRouteWithChildren
+  '/_authenticated/recruiter/jobs/create': typeof AuthenticatedRecruiterJobsCreateRoute
+  '/_authenticated/recruiter/jobs/$jobId/applications': typeof AuthenticatedRecruiterJobsJobIdApplicationsRoute
+  '/_authenticated/recruiter/jobs/$jobId/edit': typeof AuthenticatedRecruiterJobsJobIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/verify-email'
+    | '/company'
+    | '/notifications'
+    | '/about'
+    | '/companies'
+    | '/contact'
+    | '/cookies'
+    | '/features'
+    | '/jobs'
+    | '/maintenance'
+    | '/pricing'
+    | '/privacy'
+    | '/terms'
+    | '/superadmin/login'
+    | '/admin/analytics'
+    | '/admin/companies'
+    | '/admin/dashboard'
+    | '/admin/jobs'
+    | '/admin/users'
+    | '/candidate/applications'
+    | '/candidate/dashboard'
+    | '/candidate/jobs'
+    | '/candidate/profile'
+    | '/company/$companyId'
+    | '/company/analytics'
+    | '/company/audit-logs'
+    | '/company/notifications'
+    | '/company/profile'
+    | '/company/team'
+    | '/recruiter/analytics'
+    | '/recruiter/company'
+    | '/recruiter/dashboard'
+    | '/recruiter/jobs'
+    | '/recruiter/notifications'
+    | '/recruiter/profile'
+    | '/companies/$companyId'
+    | '/jobs/$jobId'
+    | '/superadmin/audit-logs'
+    | '/superadmin/companies'
+    | '/superadmin/dashboard'
+    | '/superadmin/jobs'
+    | '/superadmin/platform'
+    | '/superadmin/security'
+    | '/superadmin/users'
+    | '/company/'
+    | '/recruiter/'
+    | '/candidate/applications/$applicationId'
+    | '/candidate/jobs/saved'
+    | '/recruiter/applications/$applicationId'
+    | '/recruiter/jobs/$jobId'
+    | '/recruiter/jobs/create'
+    | '/recruiter/jobs/$jobId/applications'
+    | '/recruiter/jobs/$jobId/edit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/verify-email'
+    | '/notifications'
+    | '/about'
+    | '/companies'
+    | '/contact'
+    | '/cookies'
+    | '/features'
+    | '/jobs'
+    | '/maintenance'
+    | '/pricing'
+    | '/privacy'
+    | '/terms'
+    | '/superadmin/login'
+    | '/admin/analytics'
+    | '/admin/companies'
+    | '/admin/dashboard'
+    | '/admin/jobs'
+    | '/admin/users'
+    | '/candidate/applications'
+    | '/candidate/dashboard'
+    | '/candidate/jobs'
+    | '/candidate/profile'
+    | '/company/$companyId'
+    | '/company/analytics'
+    | '/company/audit-logs'
+    | '/company/notifications'
+    | '/company/profile'
+    | '/company/team'
+    | '/recruiter/analytics'
+    | '/recruiter/company'
+    | '/recruiter/dashboard'
+    | '/recruiter/jobs'
+    | '/recruiter/notifications'
+    | '/recruiter/profile'
+    | '/companies/$companyId'
+    | '/jobs/$jobId'
+    | '/superadmin/audit-logs'
+    | '/superadmin/companies'
+    | '/superadmin/dashboard'
+    | '/superadmin/jobs'
+    | '/superadmin/platform'
+    | '/superadmin/security'
+    | '/superadmin/users'
+    | '/company'
+    | '/recruiter'
+    | '/candidate/applications/$applicationId'
+    | '/candidate/jobs/saved'
+    | '/recruiter/applications/$applicationId'
+    | '/recruiter/jobs/$jobId'
+    | '/recruiter/jobs/create'
+    | '/recruiter/jobs/$jobId/applications'
+    | '/recruiter/jobs/$jobId/edit'
+  id:
+    | '__root__'
+    | '/_authenticated'
+    | '/_public'
+    | '/_superadmin'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/verify-email'
+    | '/_authenticated/company'
+    | '/_authenticated/notifications'
+    | '/_public/about'
+    | '/_public/companies'
+    | '/_public/contact'
+    | '/_public/cookies'
+    | '/_public/features'
+    | '/_public/jobs'
+    | '/_public/maintenance'
+    | '/_public/pricing'
+    | '/_public/privacy'
+    | '/_public/terms'
+    | '/superadmin/login'
+    | '/_public/'
+    | '/_authenticated/admin/analytics'
+    | '/_authenticated/admin/companies'
+    | '/_authenticated/admin/dashboard'
+    | '/_authenticated/admin/jobs'
+    | '/_authenticated/admin/users'
+    | '/_authenticated/candidate/applications'
+    | '/_authenticated/candidate/dashboard'
+    | '/_authenticated/candidate/jobs'
+    | '/_authenticated/candidate/profile'
+    | '/_authenticated/company/$companyId'
+    | '/_authenticated/company/analytics'
+    | '/_authenticated/company/audit-logs'
+    | '/_authenticated/company/notifications'
+    | '/_authenticated/company/profile'
+    | '/_authenticated/company/team'
+    | '/_authenticated/recruiter/analytics'
+    | '/_authenticated/recruiter/company'
+    | '/_authenticated/recruiter/dashboard'
+    | '/_authenticated/recruiter/jobs'
+    | '/_authenticated/recruiter/notifications'
+    | '/_authenticated/recruiter/profile'
+    | '/_public/companies/$companyId'
+    | '/_public/jobs/$jobId'
+    | '/_superadmin/superadmin/audit-logs'
+    | '/_superadmin/superadmin/companies'
+    | '/_superadmin/superadmin/dashboard'
+    | '/_superadmin/superadmin/jobs'
+    | '/_superadmin/superadmin/platform'
+    | '/_superadmin/superadmin/security'
+    | '/_superadmin/superadmin/users'
+    | '/_authenticated/company/'
+    | '/_authenticated/recruiter/'
+    | '/_authenticated/candidate/applications/$applicationId'
+    | '/_authenticated/candidate/jobs/saved'
+    | '/_authenticated/recruiter/applications/$applicationId'
+    | '/_authenticated/recruiter/jobs/$jobId'
+    | '/_authenticated/recruiter/jobs/create'
+    | '/_authenticated/recruiter/jobs/$jobId/applications'
+    | '/_authenticated/recruiter/jobs/$jobId/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  PublicRoute: typeof PublicRouteWithChildren
+  SuperadminRoute: typeof SuperadminRouteWithChildren
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  VerifyEmailRoute: typeof VerifyEmailRoute
+  SuperadminLoginRoute: typeof SuperadminLoginRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/verify-email': {
+      id: '/verify-email'
+      path: '/verify-email'
+      fullPath: '/verify-email'
+      preLoaderRoute: typeof VerifyEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_superadmin': {
+      id: '/_superadmin'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof SuperadminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public/': {
+      id: '/_public/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/superadmin/login': {
+      id: '/superadmin/login'
+      path: '/superadmin/login'
+      fullPath: '/superadmin/login'
+      preLoaderRoute: typeof SuperadminLoginRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_public/terms': {
+      id: '/_public/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof PublicTermsRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/privacy': {
+      id: '/_public/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PublicPrivacyRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/pricing': {
+      id: '/_public/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PublicPricingRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/maintenance': {
+      id: '/_public/maintenance'
+      path: '/maintenance'
+      fullPath: '/maintenance'
+      preLoaderRoute: typeof PublicMaintenanceRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/jobs': {
+      id: '/_public/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof PublicJobsRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/features': {
+      id: '/_public/features'
+      path: '/features'
+      fullPath: '/features'
+      preLoaderRoute: typeof PublicFeaturesRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/cookies': {
+      id: '/_public/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof PublicCookiesRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/contact': {
+      id: '/_public/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof PublicContactRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/companies': {
+      id: '/_public/companies'
+      path: '/companies'
+      fullPath: '/companies'
+      preLoaderRoute: typeof PublicCompaniesRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/about': {
+      id: '/_public/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof PublicAboutRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_authenticated/notifications': {
+      id: '/_authenticated/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/company': {
+      id: '/_authenticated/company'
+      path: '/company'
+      fullPath: '/company'
+      preLoaderRoute: typeof AuthenticatedCompanyRouteRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/recruiter/': {
+      id: '/_authenticated/recruiter/'
+      path: '/recruiter'
+      fullPath: '/recruiter/'
+      preLoaderRoute: typeof AuthenticatedRecruiterIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/company/': {
+      id: '/_authenticated/company/'
+      path: '/'
+      fullPath: '/company/'
+      preLoaderRoute: typeof AuthenticatedCompanyIndexRouteImport
+      parentRoute: typeof AuthenticatedCompanyRouteRoute
+    }
+    '/_superadmin/superadmin/users': {
+      id: '/_superadmin/superadmin/users'
+      path: '/superadmin/users'
+      fullPath: '/superadmin/users'
+      preLoaderRoute: typeof SuperadminSuperadminUsersRouteImport
+      parentRoute: typeof SuperadminRoute
+    }
+    '/_superadmin/superadmin/security': {
+      id: '/_superadmin/superadmin/security'
+      path: '/superadmin/security'
+      fullPath: '/superadmin/security'
+      preLoaderRoute: typeof SuperadminSuperadminSecurityRouteImport
+      parentRoute: typeof SuperadminRoute
+    }
+    '/_superadmin/superadmin/platform': {
+      id: '/_superadmin/superadmin/platform'
+      path: '/superadmin/platform'
+      fullPath: '/superadmin/platform'
+      preLoaderRoute: typeof SuperadminSuperadminPlatformRouteImport
+      parentRoute: typeof SuperadminRoute
+    }
+    '/_superadmin/superadmin/jobs': {
+      id: '/_superadmin/superadmin/jobs'
+      path: '/superadmin/jobs'
+      fullPath: '/superadmin/jobs'
+      preLoaderRoute: typeof SuperadminSuperadminJobsRouteImport
+      parentRoute: typeof SuperadminRoute
+    }
+    '/_superadmin/superadmin/dashboard': {
+      id: '/_superadmin/superadmin/dashboard'
+      path: '/superadmin/dashboard'
+      fullPath: '/superadmin/dashboard'
+      preLoaderRoute: typeof SuperadminSuperadminDashboardRouteImport
+      parentRoute: typeof SuperadminRoute
+    }
+    '/_superadmin/superadmin/companies': {
+      id: '/_superadmin/superadmin/companies'
+      path: '/superadmin/companies'
+      fullPath: '/superadmin/companies'
+      preLoaderRoute: typeof SuperadminSuperadminCompaniesRouteImport
+      parentRoute: typeof SuperadminRoute
+    }
+    '/_superadmin/superadmin/audit-logs': {
+      id: '/_superadmin/superadmin/audit-logs'
+      path: '/superadmin/audit-logs'
+      fullPath: '/superadmin/audit-logs'
+      preLoaderRoute: typeof SuperadminSuperadminAuditLogsRouteImport
+      parentRoute: typeof SuperadminRoute
+    }
+    '/_public/jobs/$jobId': {
+      id: '/_public/jobs/$jobId'
+      path: '/$jobId'
+      fullPath: '/jobs/$jobId'
+      preLoaderRoute: typeof PublicJobsJobIdRouteImport
+      parentRoute: typeof PublicJobsRoute
+    }
+    '/_public/companies/$companyId': {
+      id: '/_public/companies/$companyId'
+      path: '/$companyId'
+      fullPath: '/companies/$companyId'
+      preLoaderRoute: typeof PublicCompaniesCompanyIdRouteImport
+      parentRoute: typeof PublicCompaniesRoute
+    }
+    '/_authenticated/recruiter/profile': {
+      id: '/_authenticated/recruiter/profile'
+      path: '/recruiter/profile'
+      fullPath: '/recruiter/profile'
+      preLoaderRoute: typeof AuthenticatedRecruiterProfileRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/recruiter/notifications': {
+      id: '/_authenticated/recruiter/notifications'
+      path: '/recruiter/notifications'
+      fullPath: '/recruiter/notifications'
+      preLoaderRoute: typeof AuthenticatedRecruiterNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/recruiter/jobs': {
+      id: '/_authenticated/recruiter/jobs'
+      path: '/recruiter/jobs'
+      fullPath: '/recruiter/jobs'
+      preLoaderRoute: typeof AuthenticatedRecruiterJobsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/recruiter/dashboard': {
+      id: '/_authenticated/recruiter/dashboard'
+      path: '/recruiter/dashboard'
+      fullPath: '/recruiter/dashboard'
+      preLoaderRoute: typeof AuthenticatedRecruiterDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/recruiter/company': {
+      id: '/_authenticated/recruiter/company'
+      path: '/recruiter/company'
+      fullPath: '/recruiter/company'
+      preLoaderRoute: typeof AuthenticatedRecruiterCompanyRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/recruiter/analytics': {
+      id: '/_authenticated/recruiter/analytics'
+      path: '/recruiter/analytics'
+      fullPath: '/recruiter/analytics'
+      preLoaderRoute: typeof AuthenticatedRecruiterAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/company/team': {
+      id: '/_authenticated/company/team'
+      path: '/team'
+      fullPath: '/company/team'
+      preLoaderRoute: typeof AuthenticatedCompanyTeamRouteImport
+      parentRoute: typeof AuthenticatedCompanyRouteRoute
+    }
+    '/_authenticated/company/profile': {
+      id: '/_authenticated/company/profile'
+      path: '/profile'
+      fullPath: '/company/profile'
+      preLoaderRoute: typeof AuthenticatedCompanyProfileRouteImport
+      parentRoute: typeof AuthenticatedCompanyRouteRoute
+    }
+    '/_authenticated/company/notifications': {
+      id: '/_authenticated/company/notifications'
+      path: '/notifications'
+      fullPath: '/company/notifications'
+      preLoaderRoute: typeof AuthenticatedCompanyNotificationsRouteImport
+      parentRoute: typeof AuthenticatedCompanyRouteRoute
+    }
+    '/_authenticated/company/audit-logs': {
+      id: '/_authenticated/company/audit-logs'
+      path: '/audit-logs'
+      fullPath: '/company/audit-logs'
+      preLoaderRoute: typeof AuthenticatedCompanyAuditLogsRouteImport
+      parentRoute: typeof AuthenticatedCompanyRouteRoute
+    }
+    '/_authenticated/company/analytics': {
+      id: '/_authenticated/company/analytics'
+      path: '/analytics'
+      fullPath: '/company/analytics'
+      preLoaderRoute: typeof AuthenticatedCompanyAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedCompanyRouteRoute
+    }
+    '/_authenticated/company/$companyId': {
+      id: '/_authenticated/company/$companyId'
+      path: '/$companyId'
+      fullPath: '/company/$companyId'
+      preLoaderRoute: typeof AuthenticatedCompanyCompanyIdRouteImport
+      parentRoute: typeof AuthenticatedCompanyRouteRoute
+    }
+    '/_authenticated/candidate/profile': {
+      id: '/_authenticated/candidate/profile'
+      path: '/candidate/profile'
+      fullPath: '/candidate/profile'
+      preLoaderRoute: typeof AuthenticatedCandidateProfileRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/candidate/jobs': {
+      id: '/_authenticated/candidate/jobs'
+      path: '/candidate/jobs'
+      fullPath: '/candidate/jobs'
+      preLoaderRoute: typeof AuthenticatedCandidateJobsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/candidate/dashboard': {
+      id: '/_authenticated/candidate/dashboard'
+      path: '/candidate/dashboard'
+      fullPath: '/candidate/dashboard'
+      preLoaderRoute: typeof AuthenticatedCandidateDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/candidate/applications': {
+      id: '/_authenticated/candidate/applications'
+      path: '/candidate/applications'
+      fullPath: '/candidate/applications'
+      preLoaderRoute: typeof AuthenticatedCandidateApplicationsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/users': {
+      id: '/_authenticated/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/jobs': {
+      id: '/_authenticated/admin/jobs'
+      path: '/admin/jobs'
+      fullPath: '/admin/jobs'
+      preLoaderRoute: typeof AuthenticatedAdminJobsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/dashboard': {
+      id: '/_authenticated/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AuthenticatedAdminDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/companies': {
+      id: '/_authenticated/admin/companies'
+      path: '/admin/companies'
+      fullPath: '/admin/companies'
+      preLoaderRoute: typeof AuthenticatedAdminCompaniesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/analytics': {
+      id: '/_authenticated/admin/analytics'
+      path: '/admin/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AuthenticatedAdminAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/recruiter/jobs/create': {
+      id: '/_authenticated/recruiter/jobs/create'
+      path: '/create'
+      fullPath: '/recruiter/jobs/create'
+      preLoaderRoute: typeof AuthenticatedRecruiterJobsCreateRouteImport
+      parentRoute: typeof AuthenticatedRecruiterJobsRoute
+    }
+    '/_authenticated/recruiter/jobs/$jobId': {
+      id: '/_authenticated/recruiter/jobs/$jobId'
+      path: '/$jobId'
+      fullPath: '/recruiter/jobs/$jobId'
+      preLoaderRoute: typeof AuthenticatedRecruiterJobsJobIdRouteImport
+      parentRoute: typeof AuthenticatedRecruiterJobsRoute
+    }
+    '/_authenticated/recruiter/applications/$applicationId': {
+      id: '/_authenticated/recruiter/applications/$applicationId'
+      path: '/recruiter/applications/$applicationId'
+      fullPath: '/recruiter/applications/$applicationId'
+      preLoaderRoute: typeof AuthenticatedRecruiterApplicationsApplicationIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/candidate/jobs/saved': {
+      id: '/_authenticated/candidate/jobs/saved'
+      path: '/saved'
+      fullPath: '/candidate/jobs/saved'
+      preLoaderRoute: typeof AuthenticatedCandidateJobsSavedRouteImport
+      parentRoute: typeof AuthenticatedCandidateJobsRoute
+    }
+    '/_authenticated/candidate/applications/$applicationId': {
+      id: '/_authenticated/candidate/applications/$applicationId'
+      path: '/$applicationId'
+      fullPath: '/candidate/applications/$applicationId'
+      preLoaderRoute: typeof AuthenticatedCandidateApplicationsApplicationIdRouteImport
+      parentRoute: typeof AuthenticatedCandidateApplicationsRoute
+    }
+    '/_authenticated/recruiter/jobs/$jobId/edit': {
+      id: '/_authenticated/recruiter/jobs/$jobId/edit'
+      path: '/edit'
+      fullPath: '/recruiter/jobs/$jobId/edit'
+      preLoaderRoute: typeof AuthenticatedRecruiterJobsJobIdEditRouteImport
+      parentRoute: typeof AuthenticatedRecruiterJobsJobIdRoute
+    }
+    '/_authenticated/recruiter/jobs/$jobId/applications': {
+      id: '/_authenticated/recruiter/jobs/$jobId/applications'
+      path: '/applications'
+      fullPath: '/recruiter/jobs/$jobId/applications'
+      preLoaderRoute: typeof AuthenticatedRecruiterJobsJobIdApplicationsRouteImport
+      parentRoute: typeof AuthenticatedRecruiterJobsJobIdRoute
     }
   }
 }
 
+interface AuthenticatedCompanyRouteRouteChildren {
+  AuthenticatedCompanyCompanyIdRoute: typeof AuthenticatedCompanyCompanyIdRoute
+  AuthenticatedCompanyAnalyticsRoute: typeof AuthenticatedCompanyAnalyticsRoute
+  AuthenticatedCompanyAuditLogsRoute: typeof AuthenticatedCompanyAuditLogsRoute
+  AuthenticatedCompanyNotificationsRoute: typeof AuthenticatedCompanyNotificationsRoute
+  AuthenticatedCompanyProfileRoute: typeof AuthenticatedCompanyProfileRoute
+  AuthenticatedCompanyTeamRoute: typeof AuthenticatedCompanyTeamRoute
+  AuthenticatedCompanyIndexRoute: typeof AuthenticatedCompanyIndexRoute
+}
+
+const AuthenticatedCompanyRouteRouteChildren: AuthenticatedCompanyRouteRouteChildren =
+  {
+    AuthenticatedCompanyCompanyIdRoute: AuthenticatedCompanyCompanyIdRoute,
+    AuthenticatedCompanyAnalyticsRoute: AuthenticatedCompanyAnalyticsRoute,
+    AuthenticatedCompanyAuditLogsRoute: AuthenticatedCompanyAuditLogsRoute,
+    AuthenticatedCompanyNotificationsRoute:
+      AuthenticatedCompanyNotificationsRoute,
+    AuthenticatedCompanyProfileRoute: AuthenticatedCompanyProfileRoute,
+    AuthenticatedCompanyTeamRoute: AuthenticatedCompanyTeamRoute,
+    AuthenticatedCompanyIndexRoute: AuthenticatedCompanyIndexRoute,
+  }
+
+const AuthenticatedCompanyRouteRouteWithChildren =
+  AuthenticatedCompanyRouteRoute._addFileChildren(
+    AuthenticatedCompanyRouteRouteChildren,
+  )
+
+interface AuthenticatedCandidateApplicationsRouteChildren {
+  AuthenticatedCandidateApplicationsApplicationIdRoute: typeof AuthenticatedCandidateApplicationsApplicationIdRoute
+}
+
+const AuthenticatedCandidateApplicationsRouteChildren: AuthenticatedCandidateApplicationsRouteChildren =
+  {
+    AuthenticatedCandidateApplicationsApplicationIdRoute:
+      AuthenticatedCandidateApplicationsApplicationIdRoute,
+  }
+
+const AuthenticatedCandidateApplicationsRouteWithChildren =
+  AuthenticatedCandidateApplicationsRoute._addFileChildren(
+    AuthenticatedCandidateApplicationsRouteChildren,
+  )
+
+interface AuthenticatedCandidateJobsRouteChildren {
+  AuthenticatedCandidateJobsSavedRoute: typeof AuthenticatedCandidateJobsSavedRoute
+}
+
+const AuthenticatedCandidateJobsRouteChildren: AuthenticatedCandidateJobsRouteChildren =
+  {
+    AuthenticatedCandidateJobsSavedRoute: AuthenticatedCandidateJobsSavedRoute,
+  }
+
+const AuthenticatedCandidateJobsRouteWithChildren =
+  AuthenticatedCandidateJobsRoute._addFileChildren(
+    AuthenticatedCandidateJobsRouteChildren,
+  )
+
+interface AuthenticatedRecruiterJobsJobIdRouteChildren {
+  AuthenticatedRecruiterJobsJobIdApplicationsRoute: typeof AuthenticatedRecruiterJobsJobIdApplicationsRoute
+  AuthenticatedRecruiterJobsJobIdEditRoute: typeof AuthenticatedRecruiterJobsJobIdEditRoute
+}
+
+const AuthenticatedRecruiterJobsJobIdRouteChildren: AuthenticatedRecruiterJobsJobIdRouteChildren =
+  {
+    AuthenticatedRecruiterJobsJobIdApplicationsRoute:
+      AuthenticatedRecruiterJobsJobIdApplicationsRoute,
+    AuthenticatedRecruiterJobsJobIdEditRoute:
+      AuthenticatedRecruiterJobsJobIdEditRoute,
+  }
+
+const AuthenticatedRecruiterJobsJobIdRouteWithChildren =
+  AuthenticatedRecruiterJobsJobIdRoute._addFileChildren(
+    AuthenticatedRecruiterJobsJobIdRouteChildren,
+  )
+
+interface AuthenticatedRecruiterJobsRouteChildren {
+  AuthenticatedRecruiterJobsJobIdRoute: typeof AuthenticatedRecruiterJobsJobIdRouteWithChildren
+  AuthenticatedRecruiterJobsCreateRoute: typeof AuthenticatedRecruiterJobsCreateRoute
+}
+
+const AuthenticatedRecruiterJobsRouteChildren: AuthenticatedRecruiterJobsRouteChildren =
+  {
+    AuthenticatedRecruiterJobsJobIdRoute:
+      AuthenticatedRecruiterJobsJobIdRouteWithChildren,
+    AuthenticatedRecruiterJobsCreateRoute:
+      AuthenticatedRecruiterJobsCreateRoute,
+  }
+
+const AuthenticatedRecruiterJobsRouteWithChildren =
+  AuthenticatedRecruiterJobsRoute._addFileChildren(
+    AuthenticatedRecruiterJobsRouteChildren,
+  )
+
+interface AuthenticatedRouteChildren {
+  AuthenticatedCompanyRouteRoute: typeof AuthenticatedCompanyRouteRouteWithChildren
+  AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
+  AuthenticatedAdminAnalyticsRoute: typeof AuthenticatedAdminAnalyticsRoute
+  AuthenticatedAdminCompaniesRoute: typeof AuthenticatedAdminCompaniesRoute
+  AuthenticatedAdminDashboardRoute: typeof AuthenticatedAdminDashboardRoute
+  AuthenticatedAdminJobsRoute: typeof AuthenticatedAdminJobsRoute
+  AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
+  AuthenticatedCandidateApplicationsRoute: typeof AuthenticatedCandidateApplicationsRouteWithChildren
+  AuthenticatedCandidateDashboardRoute: typeof AuthenticatedCandidateDashboardRoute
+  AuthenticatedCandidateJobsRoute: typeof AuthenticatedCandidateJobsRouteWithChildren
+  AuthenticatedCandidateProfileRoute: typeof AuthenticatedCandidateProfileRoute
+  AuthenticatedRecruiterAnalyticsRoute: typeof AuthenticatedRecruiterAnalyticsRoute
+  AuthenticatedRecruiterCompanyRoute: typeof AuthenticatedRecruiterCompanyRoute
+  AuthenticatedRecruiterDashboardRoute: typeof AuthenticatedRecruiterDashboardRoute
+  AuthenticatedRecruiterJobsRoute: typeof AuthenticatedRecruiterJobsRouteWithChildren
+  AuthenticatedRecruiterNotificationsRoute: typeof AuthenticatedRecruiterNotificationsRoute
+  AuthenticatedRecruiterProfileRoute: typeof AuthenticatedRecruiterProfileRoute
+  AuthenticatedRecruiterIndexRoute: typeof AuthenticatedRecruiterIndexRoute
+  AuthenticatedRecruiterApplicationsApplicationIdRoute: typeof AuthenticatedRecruiterApplicationsApplicationIdRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedCompanyRouteRoute: AuthenticatedCompanyRouteRouteWithChildren,
+  AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
+  AuthenticatedAdminAnalyticsRoute: AuthenticatedAdminAnalyticsRoute,
+  AuthenticatedAdminCompaniesRoute: AuthenticatedAdminCompaniesRoute,
+  AuthenticatedAdminDashboardRoute: AuthenticatedAdminDashboardRoute,
+  AuthenticatedAdminJobsRoute: AuthenticatedAdminJobsRoute,
+  AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
+  AuthenticatedCandidateApplicationsRoute:
+    AuthenticatedCandidateApplicationsRouteWithChildren,
+  AuthenticatedCandidateDashboardRoute: AuthenticatedCandidateDashboardRoute,
+  AuthenticatedCandidateJobsRoute: AuthenticatedCandidateJobsRouteWithChildren,
+  AuthenticatedCandidateProfileRoute: AuthenticatedCandidateProfileRoute,
+  AuthenticatedRecruiterAnalyticsRoute: AuthenticatedRecruiterAnalyticsRoute,
+  AuthenticatedRecruiterCompanyRoute: AuthenticatedRecruiterCompanyRoute,
+  AuthenticatedRecruiterDashboardRoute: AuthenticatedRecruiterDashboardRoute,
+  AuthenticatedRecruiterJobsRoute: AuthenticatedRecruiterJobsRouteWithChildren,
+  AuthenticatedRecruiterNotificationsRoute:
+    AuthenticatedRecruiterNotificationsRoute,
+  AuthenticatedRecruiterProfileRoute: AuthenticatedRecruiterProfileRoute,
+  AuthenticatedRecruiterIndexRoute: AuthenticatedRecruiterIndexRoute,
+  AuthenticatedRecruiterApplicationsApplicationIdRoute:
+    AuthenticatedRecruiterApplicationsApplicationIdRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
+interface PublicCompaniesRouteChildren {
+  PublicCompaniesCompanyIdRoute: typeof PublicCompaniesCompanyIdRoute
+}
+
+const PublicCompaniesRouteChildren: PublicCompaniesRouteChildren = {
+  PublicCompaniesCompanyIdRoute: PublicCompaniesCompanyIdRoute,
+}
+
+const PublicCompaniesRouteWithChildren = PublicCompaniesRoute._addFileChildren(
+  PublicCompaniesRouteChildren,
+)
+
+interface PublicJobsRouteChildren {
+  PublicJobsJobIdRoute: typeof PublicJobsJobIdRoute
+}
+
+const PublicJobsRouteChildren: PublicJobsRouteChildren = {
+  PublicJobsJobIdRoute: PublicJobsJobIdRoute,
+}
+
+const PublicJobsRouteWithChildren = PublicJobsRoute._addFileChildren(
+  PublicJobsRouteChildren,
+)
+
+interface PublicRouteChildren {
+  PublicAboutRoute: typeof PublicAboutRoute
+  PublicCompaniesRoute: typeof PublicCompaniesRouteWithChildren
+  PublicContactRoute: typeof PublicContactRoute
+  PublicCookiesRoute: typeof PublicCookiesRoute
+  PublicFeaturesRoute: typeof PublicFeaturesRoute
+  PublicJobsRoute: typeof PublicJobsRouteWithChildren
+  PublicMaintenanceRoute: typeof PublicMaintenanceRoute
+  PublicPricingRoute: typeof PublicPricingRoute
+  PublicPrivacyRoute: typeof PublicPrivacyRoute
+  PublicTermsRoute: typeof PublicTermsRoute
+  PublicIndexRoute: typeof PublicIndexRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
+  PublicAboutRoute: PublicAboutRoute,
+  PublicCompaniesRoute: PublicCompaniesRouteWithChildren,
+  PublicContactRoute: PublicContactRoute,
+  PublicCookiesRoute: PublicCookiesRoute,
+  PublicFeaturesRoute: PublicFeaturesRoute,
+  PublicJobsRoute: PublicJobsRouteWithChildren,
+  PublicMaintenanceRoute: PublicMaintenanceRoute,
+  PublicPricingRoute: PublicPricingRoute,
+  PublicPrivacyRoute: PublicPrivacyRoute,
+  PublicTermsRoute: PublicTermsRoute,
+  PublicIndexRoute: PublicIndexRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
+interface SuperadminRouteChildren {
+  SuperadminSuperadminAuditLogsRoute: typeof SuperadminSuperadminAuditLogsRoute
+  SuperadminSuperadminCompaniesRoute: typeof SuperadminSuperadminCompaniesRoute
+  SuperadminSuperadminDashboardRoute: typeof SuperadminSuperadminDashboardRoute
+  SuperadminSuperadminJobsRoute: typeof SuperadminSuperadminJobsRoute
+  SuperadminSuperadminPlatformRoute: typeof SuperadminSuperadminPlatformRoute
+  SuperadminSuperadminSecurityRoute: typeof SuperadminSuperadminSecurityRoute
+  SuperadminSuperadminUsersRoute: typeof SuperadminSuperadminUsersRoute
+}
+
+const SuperadminRouteChildren: SuperadminRouteChildren = {
+  SuperadminSuperadminAuditLogsRoute: SuperadminSuperadminAuditLogsRoute,
+  SuperadminSuperadminCompaniesRoute: SuperadminSuperadminCompaniesRoute,
+  SuperadminSuperadminDashboardRoute: SuperadminSuperadminDashboardRoute,
+  SuperadminSuperadminJobsRoute: SuperadminSuperadminJobsRoute,
+  SuperadminSuperadminPlatformRoute: SuperadminSuperadminPlatformRoute,
+  SuperadminSuperadminSecurityRoute: SuperadminSuperadminSecurityRoute,
+  SuperadminSuperadminUsersRoute: SuperadminSuperadminUsersRoute,
+}
+
+const SuperadminRouteWithChildren = SuperadminRoute._addFileChildren(
+  SuperadminRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
+  PublicRoute: PublicRouteWithChildren,
+  SuperadminRoute: SuperadminRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  VerifyEmailRoute: VerifyEmailRoute,
+  SuperadminLoginRoute: SuperadminLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

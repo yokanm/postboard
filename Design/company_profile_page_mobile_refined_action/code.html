@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=DM+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffdbcc",
+                        "surface-variant": "#353534",
+                        "secondary": "#c9c6c0",
+                        "primary": "#ffb694",
+                        "background": "#080808", // Overridden to match "The Ground" mandate
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "inverse-primary": "#a14000",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary": "#571f00",
+                        "body": "#B8B8B8",
+                        "outline": "#a88a7e",
+                        "destructive": "#EF4444",
+                        "gradient-d": "#F59E0B",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-tertiary": "#313030",
+                        "surface-bright": "#3a3939",
+                        "surface-dim": "#131313",
+                        "on-surface-variant": "#e1c0b2",
+                        "on-primary-container": "#4c1a00",
+                        "secondary-container": "#474742",
+                        "surface-tint": "#ffb694",
+                        "surface-container-highest": "#353534",
+                        "live": "#22C55A",
+                        "on-tertiary-container": "#2a2a29",
+                        "tertiary": "#c8c6c5",
+                        "outline-variant": "#594237",
+                        "gradient-b": "#60A5FA",
+                        "gradient-a": "#C084FC",
+                        "surface": "#0F0F0F",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-container": "#b7b5af",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "surface-container": "#201f1f",
+                        "secondary-fixed": "#e5e2db",
+                        "primary-container": "#f06613",
+                        "primary-fixed-dim": "#ffb694",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#e5e2e1",
+                        "tertiary-container": "#929090",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "error": "#ffb4ab",
+                        "muted": "#2A2A2A",
+                        "on-secondary-fixed-variant": "#474742",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed": "#351000",
+                        "rule": "#1A1A1A",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "gradient-c": "#34D399",
+                        "on-secondary-fixed": "#1c1c18",
+                        "dim": "#666666",
+                        "on-secondary": "#31312c",
+                        "surface-container-lowest": "#0e0e0e",
+                        "live-dim": "#14532D",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e2e1",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "accent": "#E8610A"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "max-width": "1280px",
+                        "section-v-pad": "48px",
+                        "sidebar-width": "220px",
+                        "margin": "32px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-xl": ["DM Sans"],
+                        "ui-lg": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "ui-sm": ["DM Sans"],
+                        "body-base": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                        "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .press-grid {
+            background-image: 
+                linear-gradient(to right, #1A1A1A 1px, transparent 1px),
+                linear-gradient(to bottom, #1A1A1A 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .stipple-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        .shimmer-amber {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-amber::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(232, 97, 10, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-base overflow-x-hidden selection:bg-accent selection:text-background">
+<!-- The Press Grid Background -->
+<div class="fixed inset-0 press-grid opacity-20 pointer-events-none z-0"></div>
+<div class="fixed inset-0 stipple-overlay z-10"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center px-6 h-12 bg-background border-b border-rule">
+<button class="mr-4 text-primary transition-colors duration-150 hover:bg-surface-variant p-1">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-mono-label text-mono-label uppercase text-primary flex-1 tracking-widest">
+            // COMPANY_PROFILE
+        </h1>
+<button class="text-primary transition-colors duration-150 hover:bg-surface-variant p-1">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</header>
+<main class="relative z-20 pt-12 pb-24">
+<!-- Hero Section -->
+<section class="border-b border-rule bg-surface p-6">
+<div class="flex flex-col items-center text-center mb-8">
+<div class="w-24 h-24 bg-rule mb-6 flex items-center justify-center border border-rule relative">
+<img alt="Syntrix Systems Logo" class="w-16 h-16 object-contain grayscale" data-alt="A high-contrast, minimalist corporate logo for a technology company named Syntrix Systems. The mark consists of abstract, interlocking geometric lines forming a stylized 'S', rendered in a stark white on a deep charcoal background. The visual style is clinical, professional, and architectural, reflecting industrial brutalism and technical precision within a modern tech landscape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGtnH3-Gd3kmI-_L1Mq2NP-iJFPMjrtly83VebucFbZJCg_w0pMSrgwVMPYS0G0CuZid0neU3Ng_GLJeM6cJfMx18d_SiQsBwwS0bSYB-qH-5N-fMJH62L742H011vHe7JCuiF8F862U2cEGSQa7cKzEvE4MRXUJaaSelllBjpoiYu1-t1ztkhpKGdVn1CvHZdolxUCx58mqTp1G6D8ELbaoq5Bi426oXZQAjMHypVIoU7_v3eHv101H03UDGcDkIU3CQFmbzThBHd"/>
+<div class="absolute inset-0 border border-accent opacity-20"></div>
+</div>
+<h2 class="font-masthead-4xl text-[32px] leading-tight text-on-surface mb-2 tracking-tighter uppercase">
+                    SYNTRIX SYSTEMS
+                </h2>
+<div class="font-mono-label text-dim uppercase tracking-widest text-[10px] mb-6">
+                    [ INFRASTRUCTURE // INTELLIGENCE ]
+                </div>
+<div class="flex gap-3 w-full">
+<button class="flex-1 bg-transparent border border-rule text-body font-mono-label text-[12px] h-10 flex items-center justify-center uppercase tracking-widest transition-all hover:text-on-surface active:scale-[0.98]">
+                        [VIEW JOBS]
+                    </button>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-3 gap-px bg-rule border border-rule">
+<div class="bg-surface p-4 flex flex-col items-center">
+<span class="font-mono-label text-[16px] text-primary">48</span>
+<span class="font-mono-label text-[9px] text-dim uppercase tracking-tighter">Open Roles</span>
+</div>
+<div class="bg-surface p-4 flex flex-col items-center">
+<span class="font-mono-label text-[16px] text-primary">1.2k</span>
+<span class="font-mono-label text-[9px] text-dim uppercase tracking-tighter">Followers</span>
+</div>
+<div class="bg-surface p-4 flex flex-col items-center">
+<span class="font-mono-label text-[16px] text-primary">2018</span>
+<span class="font-mono-label text-[9px] text-dim uppercase tracking-tighter">Founded</span>
+</div>
+</div>
+</section>
+<!-- About Us -->
+<section class="p-6 border-b border-rule">
+<h3 class="font-mono-label text-mono-label text-primary uppercase mb-4 tracking-widest">// ABOUT_US</h3>
+<p class="font-body-base text-body leading-relaxed text-justify">
+                SYNTRIX is the foundational architecture for the next era of autonomous intelligence. We build high-density computing clusters and low-latency data pipelines that power the world's most demanding AI research environments. Our mission is to eliminate the infrastructure bottleneck, enabling researchers to scale models from concept to production with architectural integrity and zero performance compromise.
+            </p>
+</section>
+<!-- Active Roles -->
+<section class="p-6 border-b border-rule">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-mono-label text-mono-label text-primary uppercase tracking-widest">// ACTIVE_ROLES</h3>
+<span class="text-accent font-mono-label text-[10px] animate-pulse">LIVE_FEED</span>
+</div>
+<div class="space-y-4">
+<!-- Job Card 1 -->
+<div class="border border-rule bg-surface p-4 hover:border-accent transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-ui-lg text-on-surface group-hover:text-primary transition-colors uppercase text-sm tracking-tight">Principal AI Research Engineer</h4>
+<span class="font-mono-label text-[9px] text-dim uppercase bg-rule px-1.5 py-0.5">12h ago</span>
+</div>
+<div class="flex flex-wrap gap-x-4 gap-y-1">
+<div class="flex items-center gap-1.5 text-dim font-mono-label text-[10px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                            SAN FRANCISCO, CA
+                        </div>
+<div class="flex items-center gap-1.5 text-dim font-mono-label text-[10px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="payments">payments</span>
+                            $240K — $320K
+                        </div>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="border border-rule bg-surface p-4 hover:border-accent transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-ui-lg text-on-surface group-hover:text-primary transition-colors uppercase text-sm tracking-tight">Senior Backend Engineer</h4>
+<span class="font-mono-label text-[9px] text-dim uppercase bg-rule px-1.5 py-0.5">12h ago</span>
+</div>
+<div class="flex flex-wrap gap-x-4 gap-y-1">
+<div class="flex items-center gap-1.5 text-dim font-mono-label text-[10px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                            REMOTE [US/EU]
+                        </div>
+<div class="flex items-center gap-1.5 text-dim font-mono-label text-[10px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="payments">payments</span>
+                            $180K — $240K
+                        </div>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="border border-rule bg-surface p-4 hover:border-accent transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-ui-lg text-on-surface group-hover:text-primary transition-colors uppercase text-sm tracking-tight">Infrastructure Lead</h4>
+<span class="font-mono-label text-[9px] text-dim uppercase bg-rule px-1.5 py-0.5">12h ago</span>
+</div>
+<div class="flex flex-wrap gap-x-4 gap-y-1">
+<div class="flex items-center gap-1.5 text-dim font-mono-label text-[10px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                            LONDON, UK
+                        </div>
+<div class="flex items-center gap-1.5 text-dim font-mono-label text-[10px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="payments">payments</span>
+                            £140K — £190K
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Culture -->
+<section class="p-6">
+<h3 class="font-mono-label text-mono-label text-primary uppercase mb-4 tracking-widest">// CULTURE</h3>
+<div class="border-l-2 border-accent pl-4">
+<p class="font-body-base text-body italic leading-relaxed">
+                    "We are engineering-first, process-second. At Syntrix, we optimize for shipping quality infrastructure and empowering individual contributors to take absolute ownership of critical systems."
+                </p>
+<div class="mt-4 font-mono-label text-[10px] text-dim uppercase tracking-widest">
+                    [ INTERNAL_PROTOCOL // VERIFIED ]
+                </div>
+</div>
+</section>
+<!-- Visual Decorative Anchor -->
+<section class="px-6 py-12">
+<div class="h-1 bg-rule w-full relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-1/3 bg-accent animate-[move_5s_infinite_linear]"></div>
+</div>
+<style>
+                @keyframes move {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(300%); }
+                }
+            </style>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 bg-background border-t border-rule">
+<button class="flex flex-col items-center justify-center text-dim hover:text-on-surface transition-all duration-75">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-mono-label text-[9px] mt-1 uppercase tracking-tighter">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-surface-container-high px-4 h-full transition-all duration-75 border-x border-rule">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+<span class="font-mono-label text-[9px] mt-1 uppercase tracking-tighter">Jobs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-dim hover:text-on-surface transition-all duration-75">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-mono-label text-[9px] mt-1 uppercase tracking-tighter">Saved</span>
+</button>
+<button class="flex flex-col items-center justify-center text-dim hover:text-on-surface transition-all duration-75">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-mono-label text-[9px] mt-1 uppercase tracking-tighter">Profile</span>
+</button>
+</nav>
+<script>
+        // Add small hover effect to grid squares via JS for "The Press" vibe
+        const container = document.body;
+        container.addEventListener('mousemove', (e) => {
+            // Optional: subtle interactive lighting effect
+        });
+    </script>
+</body></html>

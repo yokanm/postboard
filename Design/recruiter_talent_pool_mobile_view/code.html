@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "gradient-b": "#60A5FA",
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-secondary-container": "#b7b5af",
+                      "surface-variant": "#353534",
+                      "surface-container-high": "#2a2a2a",
+                      "secondary": "#c9c6c0",
+                      "inverse-on-surface": "#313030",
+                      "outline": "#a88a7e",
+                      "on-error": "#690005",
+                      "surface-container-lowest": "#0e0e0e",
+                      "gradient-d": "#F59E0B",
+                      "tertiary-container": "#929090",
+                      "on-primary-fixed": "#351000",
+                      "error": "#ffb4ab",
+                      "surface-bright": "#3a3939",
+                      "surface-container": "#201f1f",
+                      "on-tertiary": "#313030",
+                      "on-secondary": "#31312c",
+                      "surface-container-highest": "#353534",
+                      "primary": "#ffb694",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "on-primary": "#571f00",
+                      "inverse-primary": "#a14000",
+                      "surface-container-low": "#1c1b1b",
+                      "on-secondary-fixed": "#1c1c18",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "muted": "#2A2A2A",
+                      "dim": "#666666",
+                      "error-container": "#93000a",
+                      "secondary-container": "#474742",
+                      "body": "#B8B8B8",
+                      "surface-dim": "#131313",
+                      "primary-container": "#f06613",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "primary-fixed": "#ffdbcc",
+                      "gradient-a": "#C084FC",
+                      "on-surface": "#e5e2e1",
+                      "background": "#131313",
+                      "surface-tint": "#ffb694",
+                      "on-background": "#e5e2e1",
+                      "destructive": "#EF4444",
+                      "live-dim": "#14532D",
+                      "outline-variant": "#594237",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "secondary-fixed": "#e5e2db",
+                      "primary-fixed-dim": "#ffb694",
+                      "on-surface-variant": "#e1c0b2",
+                      "gradient-c": "#34D399",
+                      "rule": "#1A1A1A",
+                      "tertiary": "#c8c6c5",
+                      "on-tertiary-container": "#2a2a29",
+                      "inverse-surface": "#e5e2e1",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-container": "#4c1a00",
+                      "surface": "#131313",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "live": "#22C55A",
+                      "on-secondary-fixed-variant": "#474742"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "0px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "sidebar-width": "220px",
+                      "section-v-pad": "48px",
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-2xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "ui-lg": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "ui-xl": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl-mobile": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-base overflow-x-hidden pb-32">
+<!-- Top AppBar (from Shared Components JSON) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background dark:bg-background border-b border-rule dark:border-rule">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary">menu</span>
+<span class="font-mono-label text-mono-label uppercase text-primary dark:text-primary tracking-widest">CANDIDATE_FILE</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary dark:text-primary">more_vert</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-16 px-gutter pt-8">
+<!-- Header Section -->
+<section class="mb-8">
+<p class="font-mono-label text-mono-label text-dim uppercase tracking-tighter mb-2">// talent_pool</p>
+<h1 class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface">Talent Pool</h1>
+</section>
+<!-- Filter Bar Collapsible trigger -->
+<div class="mb-8">
+<button class="w-full flex items-center justify-between border border-rule py-3 px-4 bg-surface-container-low hover:bg-surface-container transition-colors" onclick="document.getElementById('filter-sheet').classList.toggle('translate-y-full')">
+<span class="font-mono-label text-mono-label text-dim uppercase">[ Filter &amp; Sort ]</span>
+<span class="material-symbols-outlined text-dim">expand_more</span>
+</button>
+</div>
+<!-- Talent List Stack -->
+<div class="flex flex-col gap-6">
+<!-- Candidate Card 01 -->
+<article class="border border-rule bg-surface p-4 flex flex-col gap-4">
+<div class="flex gap-4 items-start">
+<img alt="Candidate Avatar" class="w-16 h-16 object-cover border border-rule grayscale" data-alt="A sharp, professional headshot of a technical recruiter with short dark hair, wearing a high-collared black technical garment. The background is a stark, monochromatic dark grey with high contrast lighting typical of an industrial editorial magazine. Deep shadows and bright highlights emphasize clean, geometric facial features in a brutalist photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPyY6-Mv-NwaUIkPVVfqdymliXDLX3kRW5u4WzyNPf4t3Ao_Xic1qmFYrKLeSlPHDa99LBCoFl8NxiEWzje4yQXAtPon5vVCWR0We_geL5EX-gfobbNN3z5qYbMawtjMijQyOfa4m9EOrgg_r-tz6lnbe2fFzH7dGQEFqJ0Q6ksn9xMP9iN4z_cfURlq2RtP0Bk3MsUhHlrJvwLr7ur0qi87lCR1bUsVGXhT5whyyKWP0TH6cMKd46MYyHPbVq6pkHruMYB7JnZPHR"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h2 class="font-headline-2xl-mobile text-[18px] text-on-surface uppercase leading-tight">Marcus Vane</h2>
+<span class="font-mono-label text-mono-label text-live bg-live-dim px-2 py-0.5 border border-live">LIVE</span>
+</div>
+<p class="font-mono-label text-mono-label text-dim uppercase mt-1">Lead Backend Systems</p>
+<p class="text-ui-sm text-dim flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Berlin, DE
+                        </p>
+</div>
+</div>
+<!-- Skills Chips -->
+<div class="flex flex-wrap gap-2 py-2 border-y border-rule/50">
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">RUST</span>
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">K8S</span>
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">POSTGRES</span>
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">GRPC</span>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-2">
+<button class="w-full bg-primary-container text-on-primary-container font-mono-label text-mono-label py-3 font-bold uppercase tracking-wider transition-all active:scale-[0.98]">
+                        View Profile
+                    </button>
+<button class="w-full border border-rule text-body font-mono-label text-mono-label py-3 uppercase tracking-wider hover:bg-surface-container transition-all">
+                        Move to Pipeline
+                    </button>
+</div>
+</article>
+<!-- Candidate Card 02 -->
+<article class="border border-rule bg-surface p-4 flex flex-col gap-4">
+<div class="flex gap-4 items-start">
+<img alt="Candidate Avatar" class="w-16 h-16 object-cover border border-rule grayscale" data-alt="Close up portrait of a senior technical architect with a focused expression, set against a dark architectural concrete wall. The lighting is dramatic and directional, casting long shadows to create a high-contrast cinematic look. The overall aesthetic is monochromatic and industrial, matching a professional high-end recruitment platform with an amber accent glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKetUKO-MWoaQ3cLT9UGPcBNASBWYFL1cdCXpEQaSnU1C04M2xFGIYEdOudxJFNP7VuWKjzCGQmghbu-lkxz1yS7ME7rrBgZHkD7Th39ZIkqeaILcOFeZe3iFd7fevzPDgDmQMhbvQ1POqEgqvvltIcMwViybWX0SdPnb1rrP2-PbGBhZe4FqkEOHl0emDkogwMnEL_rMpvGfS-LtSxd-dOl5tWk-N2JOcUae5e700KndfcdguF6Gi4qqyV-LDU22wAxs3snmaXjaq"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h2 class="font-headline-2xl-mobile text-[18px] text-on-surface uppercase leading-tight">Elena Sato</h2>
+<span class="font-mono-label text-mono-label text-dim border border-rule px-2 py-0.5">DRAFT</span>
+</div>
+<p class="font-mono-label text-mono-label text-dim uppercase mt-1">Full-Stack Engineer</p>
+<p class="text-ui-sm text-dim flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Tokyo, JP
+                        </p>
+</div>
+</div>
+<!-- Skills Chips -->
+<div class="flex flex-wrap gap-2 py-2 border-y border-rule/50">
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">REACT</span>
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">TYPESCRIPT</span>
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">NODE.JS</span>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-2">
+<button class="w-full bg-primary-container text-on-primary-container font-mono-label text-mono-label py-3 font-bold uppercase tracking-wider transition-all active:scale-[0.98]">
+                        View Profile
+                    </button>
+<button class="w-full border border-rule text-body font-mono-label text-mono-label py-3 uppercase tracking-wider hover:bg-surface-container transition-all">
+                        Move to Pipeline
+                    </button>
+</div>
+</article>
+<!-- Candidate Card 03 -->
+<article class="border border-rule bg-surface p-4 flex flex-col gap-4">
+<div class="flex gap-4 items-start">
+<img alt="Candidate Avatar" class="w-16 h-16 object-cover border border-rule grayscale" data-alt="Minimalist professional portrait of a tech professional wearing black apparel, photographed against a dark textured background with subtle amber light leakage on the edge. The style is sharp, clean, and brutalist, emphasizing high density and professional precision. Monochromatic color palette with high saturation amber highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaKsRwZrqJFT3Yw5oZAF5EM-6H8lJWg4u_lXLow4Bve1XMiZLaatqZBIaC7h2auTgqhhfZEKULvq2NbQUJNosvWbXBIdSzo3EpTsZJlmosmXHSJx-ZQuzDYRL7kE2EIaRM6pVGtla5lox9HrtrpVQf_ZySqCCvulYG0smGEHGWfZ7YwFhFnHBSkQ5DbMKpsASFfQxMEeuhMxN35swWwUEImZCh92izj3ptrsn6y10tVaGIZXW0k5ks0QGohu53vcLf7vI_KEQgKAsd"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h2 class="font-headline-2xl-mobile text-[18px] text-on-surface uppercase leading-tight">Arjun Mehta</h2>
+<span class="font-mono-label text-mono-label text-live bg-live-dim px-2 py-0.5 border border-live">LIVE</span>
+</div>
+<p class="font-mono-label text-mono-label text-dim uppercase mt-1">DevOps / SRE</p>
+<p class="text-ui-sm text-dim flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> London, UK
+                        </p>
+</div>
+</div>
+<!-- Skills Chips -->
+<div class="flex flex-wrap gap-2 py-2 border-y border-rule/50">
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">AWS</span>
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">TERRAFORM</span>
+<span class="font-mono-label text-[10px] border border-rule px-2 py-1 bg-surface-container-low">PYTHON</span>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-2">
+<button class="w-full bg-primary-container text-on-primary-container font-mono-label text-mono-label py-3 font-bold uppercase tracking-wider transition-all active:scale-[0.98]">
+                        View Profile
+                    </button>
+<button class="w-full border border-rule text-body font-mono-label text-mono-label py-3 uppercase tracking-wider hover:bg-surface-container transition-all">
+                        Move to Pipeline
+                    </button>
+</div>
+</article>
+</div>
+</main>
+<!-- FAB: Add Candidate -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary-container text-on-primary-container flex items-center justify-center shadow-none z-40 transition-transform active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- Filter Bottom Sheet (Mockup) -->
+<div class="fixed inset-x-0 bottom-0 z-[60] bg-surface-container border-t border-rule translate-y-full transition-transform duration-300" id="filter-sheet">
+<div class="p-gutter pb-12">
+<div class="flex justify-between items-center mb-6">
+<span class="font-mono-label text-mono-label text-primary uppercase">// FILTER_CONFIG</span>
+<button onclick="document.getElementById('filter-sheet').classList.add('translate-y-full')">
+<span class="material-symbols-outlined text-on-surface">close</span>
+</button>
+</div>
+<div class="space-y-6">
+<div>
+<label class="font-mono-label text-mono-label text-dim block mb-2">SEARCH_QUERY</label>
+<input class="w-full bg-background border border-rule text-on-surface p-3 font-mono-label focus:border-primary outline-none" placeholder="Filter by name or skill..." type="text"/>
+</div>
+<div>
+<label class="font-mono-label text-mono-label text-dim block mb-2">AVAILABILITY</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 border border-primary text-primary font-mono-label">ACTIVE</button>
+<button class="flex-1 py-2 border border-rule text-dim font-mono-label">PASSIVE</button>
+<button class="flex-1 py-2 border border-rule text-dim font-mono-label">DRAFT</button>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-mono-label py-4 uppercase tracking-widest font-bold">Apply Parameters</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (from Shared Components JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-background dark:bg-background border-t border-rule dark:border-rule">
+<a class="flex flex-col items-center justify-center text-dim dark:text-dim p-2 scale-95 transition-transform duration-100 hover:text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-mono-label text-mono-label">FEED</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim dark:text-dim p-2 scale-95 transition-transform duration-100 hover:text-primary" href="#">
+<span class="material-symbols-outlined">step</span>
+<span class="font-mono-label text-mono-label">STAGES</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary p-2 scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-mono-label text-mono-label">TALENT</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dim dark:text-dim p-2 scale-95 transition-transform duration-100 hover:text-primary" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-mono-label text-mono-label">PROFILE</span>
+</a>
+</nav>
+<!-- Background Decoration: Press Grid Segment -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-5">
+<div class="grid grid-cols-12 h-full w-full">
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+<div class="border-r border-rule h-full"></div>
+</div>
+</div>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('article').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.borderColor = '#ffb694';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.borderColor = '#1A1A1A';
+            });
+        });
+    </script>
+</body></html>

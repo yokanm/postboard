@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TECH_PIPELINE // SAVED_ROLES</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#a88a7e",
+                    "live": "#22C55A",
+                    "surface": "#131313",
+                    "on-secondary-container": "#b7b5af",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-primary": "#571f00",
+                    "gradient-b": "#60A5FA",
+                    "on-primary-container": "#4c1a00",
+                    "surface-variant": "#353534",
+                    "error": "#ffb4ab",
+                    "surface-tint": "#ffb694",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-secondary-fixed-variant": "#474742",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "tertiary": "#c8c6c5",
+                    "background": "#131313",
+                    "gradient-c": "#34D399",
+                    "dim": "#666666",
+                    "surface-container-high": "#2a2a2a",
+                    "inverse-surface": "#e5e2e1",
+                    "error-container": "#93000a",
+                    "destructive": "#EF4444",
+                    "surface-bright": "#3a3939",
+                    "on-error": "#690005",
+                    "on-background": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary-container": "#474742",
+                    "outline-variant": "#594237",
+                    "secondary": "#c9c6c0",
+                    "body": "#B8B8B8",
+                    "muted": "#2A2A2A",
+                    "on-tertiary": "#313030",
+                    "gradient-a": "#C084FC",
+                    "secondary-fixed-dim": "#c9c6c0",
+                    "inverse-primary": "#a14000",
+                    "on-secondary": "#31312c",
+                    "secondary-fixed": "#e5e2db",
+                    "rule": "#1A1A1A",
+                    "on-surface": "#e5e2e1",
+                    "on-surface-variant": "#e1c0b2",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-container": "#f06613",
+                    "on-secondary-fixed": "#1c1c18",
+                    "surface-container": "#201f1f",
+                    "primary": "#ffb694",
+                    "on-primary-fixed": "#351000",
+                    "live-dim": "#14532D",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "surface-dim": "#131313",
+                    "tertiary-container": "#929090",
+                    "surface-container-highest": "#353534",
+                    "primary-fixed-dim": "#ffb694",
+                    "primary-fixed": "#ffdbcc",
+                    "inverse-on-surface": "#313030",
+                    "gradient-d": "#F59E0B",
+                    "on-tertiary-container": "#2a2a29"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "max-width": "1280px",
+                    "sidebar-width": "220px",
+                    "section-v-pad": "48px",
+                    "margin": "32px"
+            },
+            "fontFamily": {
+                    "ui-sm": ["DM Sans"],
+                    "mono-label": ["JetBrains Mono"],
+                    "headline-2xl": ["Playfair Display"],
+                    "ui-xl": ["DM Sans"],
+                    "body-base": ["DM Sans"],
+                    "ui-lg": ["DM Sans"],
+                    "masthead-4xl": ["Playfair Display"],
+                    "headline-2xl-mobile": ["Playfair Display"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        /* Custom scrollbar for followed companies */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Press Grid Animation */
+        .stipple-grid {
+            background-image: radial-gradient(circle, #1A1A1A 1px, transparent 1px);
+            background-size: 12px 12px;
+        }
+
+        .press-tile {
+            transition: background-color 0.1s ease;
+        }
+        .press-tile:hover {
+            background-color: #f06613;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base overflow-x-hidden">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-screen w-sidebar-width flex flex-col py-unit border-r border-rule bg-surface-container-lowest z-50">
+<div class="px-gutter mb-12">
+<h2 class="font-headline-2xl text-headline-2xl text-primary uppercase tracking-tighter leading-none">// TECH_PIPELINE</h2>
+<p class="font-mono-label text-mono-label text-dim mt-2">v2.4.0_LATEST</p>
+</div>
+<div class="flex-grow flex flex-col gap-2">
+<a class="flex items-center gap-3 py-3 px-4 text-body font-ui-sm pl-4 hover:text-on-surface hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+<span>// DASHBOARD</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 text-primary font-bold border-l-2 border-primary pl-4 hover:text-on-surface hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+<span class="font-bold">// SAVED_ROLES</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 text-body font-ui-sm pl-4 hover:text-on-surface hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px]">business</span>
+<span>// COMPANIES</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 text-body font-ui-sm pl-4 hover:text-on-surface hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px]">assignment</span>
+<span>// APPLICATIONS</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 text-body font-ui-sm pl-4 hover:text-on-surface hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>// MESSAGES</span>
+</a>
+</div>
+<div class="mt-auto px-gutter mb-6">
+<button class="w-full bg-primary-container text-on-primary-container font-ui-sm py-3 font-bold hover:brightness-110 transition-all">
+                SEARCH_ROLES
+            </button>
+</div>
+<div class="border-t border-rule pt-4 pb-2">
+<a class="flex items-center gap-3 py-2 px-gutter text-body font-ui-sm hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 py-2 px-gutter text-body font-ui-sm hover:text-destructive transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-220px)] h-16 bg-surface-container-lowest border-b border-rule flex justify-between items-center px-gutter z-40">
+<div class="flex items-center flex-1 max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-dim text-[18px]">search</span>
+<input class="w-full bg-background border border-rule py-1.5 pl-10 pr-4 font-mono-label text-mono-label text-on-surface focus:border-primary outline-none" placeholder="SEARCH_DATABASE..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-mono-label text-mono-label text-primary uppercase tracking-widest">// PIPELINE_CORE</span>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-dim hover:text-primary transition-all">notifications</button>
+<button class="material-symbols-outlined text-dim hover:text-primary transition-all">account_circle</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[220px] pt-16 min-h-screen">
+<div class="p-gutter max-w-[1200px] mx-auto">
+<!-- Page Header -->
+<div class="mb-10 flex flex-col gap-2">
+<span class="font-mono-label text-mono-label text-primary">// SAVED_ROLES</span>
+<h1 class="font-headline-2xl text-[64px] leading-none tracking-tight">Your Bookmarks</h1>
+</div>
+<!-- Filters -->
+<div class="flex gap-8 border-b border-rule mb-12">
+<button class="pb-4 font-mono-label text-mono-label text-primary border-b-2 border-primary">ALL</button>
+<button class="pb-4 font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors">ACTIVE</button>
+<button class="pb-4 font-mono-label text-mono-label text-dim hover:text-on-surface transition-colors">EXPIRED</button>
+</div>
+<!-- Dashboard Content: 2-Column Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-px bg-rule border border-rule">
+<!-- Card 01 -->
+<div class="bg-surface-container-lowest p-gutter hover:bg-surface-container-low transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<img alt="Acme Corp" class="w-8 h-8 object-cover border border-rule" data-alt="A minimalist tech company logo for a brand called Acme, featuring sharp geometric shapes and high-contrast black and white colors. The aesthetic is brutalist and professional, set against a solid dark grey background to fit a premium developer tool interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByvDw0Cc2Y3O4LgUQ1ospVUuP9r83BBFYw83AWTC5QCJiA5BOERWqB2gKGQYG1LklTerVZDE3av3x8dcsJga_lKhr5cuCY5IvmPT_nuLY3roxwoN7kP6QkgrqsHq6Il05N7cljliNEbHXkSEWz9BObQ4nvm-ROsKch579g-dxf-5feEphpdiSq39ZGOvlW1fw-W-O69N_jqQ0Q_RQWh_xIoCogRITPl6YX9b20AqB9CeUjLqS-4Q_Pym_BKRWmR2QYJk4Rwit1zl2A"/>
+<div>
+<h4 class="font-mono-label text-mono-label text-dim uppercase">Acme_Systems</h4>
+<h3 class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary transition-colors">Senior Protocol Engineer</h3>
+</div>
+</div>
+<span class="bg-live-dim/20 text-live text-[10px] font-mono-label px-2 py-0.5 border border-live/30">OPEN</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high border border-rule font-mono-label text-[10px] text-body tracking-wider">[REMOTE]</span>
+<span class="px-2 py-1 bg-surface-container-high border border-rule font-mono-label text-[10px] text-body tracking-wider">[FULL-TIME]</span>
+<span class="px-2 py-1 bg-surface-container-high border border-rule font-mono-label text-[10px] text-body tracking-wider">[$180K - $220K]</span>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-mono-label text-mono-label text-dim">POSTED: 24_OCT_2023</span>
+<div class="flex gap-4">
+<button class="text-destructive font-mono-label text-mono-label hover:underline">UNSAVE</button>
+<button class="bg-primary text-on-primary font-ui-sm font-bold px-6 py-2 hover:brightness-110 transition-all">VIEW ROLE</button>
+</div>
+</div>
+</div>
+<!-- Card 02 -->
+<div class="bg-surface-container-lowest p-gutter hover:bg-surface-container-low transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<img alt="Zeta Data" class="w-8 h-8 object-cover border border-rule" data-alt="A tech company logo for a company called Zeta Data, utilizing abstract digital wave patterns and a monospace font. The lighting is low-key, emphasizing sharp white lines on a dark charcoal background, maintaining a serious industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9BiLWlM-Sr3tfSMwgrrzgcQxD555eZAxJ6z51-11fuvyhTcSqcX8Dtkd5SLYOGQr_7jh7WXR5UtikJgYSyvtPI6-suOy_JOa6UoYuoWf551s9HsjVL27FEC4uhyeFu7u5SBB93WUx3nko75KyGM8DehbCRvGYI4wwxZJoZD8iIjx49IihcsgiShX8x8-3FZpiHQ4LTSVLxb5QB8fEQE6HffHmujqx1tXcVtdlnLDxQERx_w5ikb99wtleULwi7aEgFRylsqOsz7kc"/>
+<div>
+<h4 class="font-mono-label text-mono-label text-dim uppercase">Zeta_Data_Labs</h4>
+<h3 class="font-ui-lg text-ui-lg text-on-surface group-hover:text-primary transition-colors">Distributed Systems Lead</h3>
+</div>
+</div>
+<span class="bg-live-dim/20 text-live text-[10px] font-mono-label px-2 py-0.5 border border-live/30">OPEN</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high border border-rule font-mono-label text-[10px] text-body tracking-wider">[HYBRID]</span>
+<span class="px-2 py-1 bg-surface-container-high border border-rule font-mono-label text-[10px] text-body tracking-wider">[CONTRACT]</span>
+<span class="px-2 py-1 bg-surface-container-high border border-rule font-mono-label text-[10px] text-body tracking-wider">[$250/HR]</span>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-mono-label text-mono-label text-dim">POSTED: 21_OCT_2023</span>
+<div class="flex gap-4">
+<button class="text-destructive font-mono-label text-mono-label hover:underline">UNSAVE</button>
+<button class="bg-primary text-on-primary font-ui-sm font-bold px-6 py-2 hover:brightness-110 transition-all">VIEW ROLE</button>
+</div>
+</div>
+</div>
+<!-- Card 03 (Expired State Example) -->
+<div class="bg-surface-container-lowest p-gutter opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<img alt="Nebula" class="w-8 h-8 object-cover border border-rule" data-alt="A cosmic-themed tech logo for Nebula, featuring a stylized vortex made of geometric lines. The palette is monochromatic blacks and whites, capturing a high-tech and somewhat mysterious scientific research atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB64a4vclLFmZBsVAthhMSRfJTvVoccNCaTePCP1X2nwEjd8Bg-KkXF7C8pUVzgHc9kLA4I-B75rpYUi_LCvmQBmhB5WIBJolCtQwWJnqezE1xHtEZYsjvq49wKZltazOWoGbqP0UO-AXS-yoValG1nsf8kst2sftVrvMNVPkjRaM8ItgjrHFZjiQCu4p2EzpkDphzribAucbfSM882nPK77nAqpHuKY4Psj8hpAsrLyS4oIFiTCn_LnwMyR729R7ssdnWZJZwGvNPK"/>
+<div>
+<h4 class="font-mono-label text-mono-label text-dim uppercase">Nebula_Cloud</h4>
+<h3 class="font-ui-lg text-ui-lg text-on-surface">Cloud Architect</h3>
+</div>
+</div>
+<span class="bg-rule text-dim text-[10px] font-mono-label px-2 py-0.5 border border-rule">EXPIRED</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high border border-rule font-mono-label text-[10px] text-body tracking-wider">[REMOTE]</span>
+<span class="px-2 py-1 bg-surface-container-high border border-rule font-mono-label text-[10px] text-body tracking-wider">[FULL-TIME]</span>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-mono-label text-mono-label text-dim">POSTED: 05_SEP_2023</span>
+<div class="flex gap-4">
+<button class="text-destructive font-mono-label text-mono-label hover:underline">UNSAVE</button>
+<button class="bg-surface-container-high text-on-secondary-container font-ui-sm font-bold px-6 py-2 cursor-not-allowed">CLOSED</button>
+</div>
+</div>
+</div>
+<!-- Empty State Block / Decorative Press Grid Placeholder -->
+<div class="bg-surface-container-lowest p-gutter flex flex-col items-center justify-center min-h-[300px] border-l border-rule">
+<div class="w-48 h-48 relative mb-6 overflow-hidden">
+<div class="absolute inset-0 stipple-grid opacity-20"></div>
+<div class="absolute inset-0 grid grid-cols-6 grid-rows-6 gap-0">
+<!-- JS will populate some tiles or we can hardcode -->
+<div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div>
+<div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30 bg-primary/20"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div>
+<div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30 bg-primary/40"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div>
+<div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div>
+<div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div><div class="press-tile border border-rule/30"></div>
+</div>
+</div>
+<p class="font-mono-label text-mono-label text-dim uppercase tracking-widest">// SLOT_AVAILABLE</p>
+</div>
+</div>
+<!-- Followed Companies Section -->
+<section class="mt-20">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-mono-label text-mono-label text-primary uppercase tracking-widest">// followed_companies</h2>
+<div class="flex gap-2">
+<button class="w-8 h-8 border border-rule flex items-center justify-center hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 border border-rule flex items-center justify-center hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-px bg-rule border border-rule no-scrollbar overflow-x-auto">
+<!-- Company Card 01 -->
+<div class="flex-shrink-0 w-[240px] bg-surface-container-lowest p-6 flex flex-col items-center group cursor-pointer hover:bg-surface-container-low transition-all">
+<img class="w-16 h-16 border border-rule mb-4 p-2" data-alt="A graphic design agency logo featuring a minimalist monogram in high-contrast black and white. The background is a grainy dark texture, suggesting a high-end, artistic, and modern professional brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBStsafN0Gjf9tBK8M3z6I-Z_V0bnlZ99F9qrRVBh3V4A9YMBWJYUMtRZHXmctqrWXxMAkO8AN3PcxMexYUr2kb7iF_bUjsyGQ5oZtcwiGT9kj6Chybd8Vgonsinr-DND63JjYAp917BRiD61AyUcahD1J6RLjdP8TYxonxHK0U6vYvC1bShEzuVD8cAZJGnNR_6lfbCREO_Pl8i6FdJeD_JHOJBLvBDXBsMmccYmV_F_ELMuUMkLz_GSwtVL58sPRUFiW2z-IpGgM5"/>
+<h4 class="font-ui-lg text-ui-lg text-on-surface mb-1">Logos Logic</h4>
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="font-mono-label text-mono-label uppercase">Following</span>
+</div>
+</div>
+<!-- Company Card 02 -->
+<div class="flex-shrink-0 w-[240px] bg-surface-container-lowest p-6 flex flex-col items-center group cursor-pointer hover:bg-surface-container-low transition-all">
+<img class="w-16 h-16 border border-rule mb-4 p-2" data-alt="A tech venture capital logo called Vector, with a simple arrow pointing up-right. The style is strictly brutalist with no curves, using thick white lines on a black background, reflecting a fast-paced and aggressive business environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuQ9f-YyE5_xkK4HYy53Zuv4omVjXDGrBaiFrow-h7K2iOv4F8-AbuK3NZNHXvQJuZWyg8G4G6DfbEWpJ1CMrtoH1ZWBv7kGsJA_2Rg5E6RhYqmUYYo7U8j8FqrvfnA35JfFS5fLyBywRiZhmB1iCDoaggf_pt_OMc7ciuGwGw6iEv-wOe2RHx89l5RiWdXotL_QfktaYJ4ZtGebignZ4ktljy1tbfp-dH6Q0yK4-uuNzR78V9uh5FQqRcWSZXSLjQP-nWKY3bedGt"/>
+<h4 class="font-ui-lg text-ui-lg text-on-surface mb-1">Vector Scale</h4>
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="font-mono-label text-mono-label uppercase">Following</span>
+</div>
+</div>
+<!-- Company Card 03 -->
+<div class="flex-shrink-0 w-[240px] bg-surface-container-lowest p-6 flex flex-col items-center group cursor-pointer hover:bg-surface-container-low transition-all">
+<img class="w-16 h-16 border border-rule mb-4 p-2" data-alt="A software development studio logo for Origin, featuring a simple circle with a line through it. The imagery is captured with high-definition sharpness and a monochromatic aesthetic to convey precision and technical depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi-SRFdiuyyIu6NbiqAXZBKUenRrTNmICA1_HCdz3EF7TRFnGhFSi4KnWVbE9Vhj4-uqA1kBD1elfCrHf8L-wOjJrWwmJvoLc_CgoIksIF1p1Yj2_xV65kP4H6VOhBR_dCQpRYvZjrq1QbBYVXRUq-0GCoFxwYg5VtD-fgC_uvQcBr59y6IAG03g6NtO9dGXV_I_xaPciXCQA3GDcB_DwrTVlqUqrFyRwdK2HBOYmh0HRa7cDmqCgLvIoNZzBVBli6xhTctsnt2PSY"/>
+<h4 class="font-ui-lg text-ui-lg text-on-surface mb-1">Origin Build</h4>
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="font-mono-label text-mono-label uppercase">Following</span>
+</div>
+</div>
+<!-- Company Card 04 -->
+<div class="flex-shrink-0 w-[240px] bg-surface-container-lowest p-6 flex flex-col items-center group cursor-pointer hover:bg-surface-container-low transition-all">
+<img class="w-16 h-16 border border-rule mb-4 p-2" data-alt="A creative technology brand logo for Flux, showcasing a fluid-like shape but constructed from rigid pixels. The contrast is extreme with pure white on pitch black, maintaining the design's industrial and technical core identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByhUwCtxg6VDS88GoN4k2-EYveOEfw2kvJb-I7KwXwMtQF9Gcfqo7bvDEmtAHFFa2_NOZoOXy4mEex3oOR8JRHZvTA-7UE2fPPPGV8W9DGmGH635oWqfM0EcKC_iZCmsnK8r_OJ4akMemr3w2xx4O59119PTIyWMNMyA7C-D9OxcRFp2o5Pm5iXMp5VLvsWhmGwYQ2EFnzQ1wsCH_BciM2EPL_z1HLIn2jbs_wZkOMeDnWP-zi23gQaqAQGlVUM7mtuIPfUIH3PRef"/>
+<h4 class="font-ui-lg text-ui-lg text-on-surface mb-1">Flux Studio</h4>
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="font-mono-label text-mono-label uppercase">Following</span>
+</div>
+</div>
+<!-- Company Card 05 -->
+<div class="flex-shrink-0 w-[240px] bg-surface-container-lowest p-6 flex flex-col items-center group cursor-pointer hover:bg-surface-container-low transition-all">
+<img class="w-16 h-16 border border-rule mb-4 p-2" data-alt="A robotics company logo named Kinetik, with a heavy-duty industrial look. The symbol is an stylized gear or joint, rendered in high contrast monochromatic tones with a focus on geometric perfection and power." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCFh3_1gMno6iZZbN2Mfw96c2o-QzXSN7GGF9cobL6Vd4vpQpsyHORjYUAERhcjSLERxSNyMYcDpTDkVfHYd70RyNZpVP5xUnnNBEfSR66ipWjnJkKDY6NtePeqHjsb7N3oKHyS8f21-YyJLO_26lM1wCv7CWT7dqscj5sx6rJ0AknO5X-wWgollUIQQM-5xPpFM87N0Guki5U5Pqw7dKXhez0Q9tP0Jim0F_R_-jr-kYCXP--njWFcUnkwsfSb05UPkgmkjaFkHOE"/>
+<h4 class="font-ui-lg text-ui-lg text-on-surface mb-1">Kinetik Robotics</h4>
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="font-mono-label text-mono-label uppercase">Following</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.press-tile').forEach(tile => {
+            tile.addEventListener('mouseenter', () => {
+                const randomGradient = ['#f06613', '#C084FC', '#60A5FA', '#34D399'][Math.floor(Math.random() * 4)];
+                tile.style.backgroundColor = randomGradient;
+            });
+            tile.addEventListener('mouseleave', () => {
+                tile.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
+</body></html>

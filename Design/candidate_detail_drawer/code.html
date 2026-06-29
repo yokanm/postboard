@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffb694;
+        }
+        .stipple-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#1c1c18",
+                      "error": "#ffb4ab",
+                      "secondary": "#c9c6c0",
+                      "on-tertiary": "#313030",
+                      "gradient-a": "#C084FC",
+                      "secondary-fixed": "#e5e2db",
+                      "outline": "#a88a7e",
+                      "surface-container-lowest": "#0e0e0e",
+                      "rule": "#1A1A1A",
+                      "inverse-surface": "#e5e2e1",
+                      "gradient-b": "#60A5FA",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "secondary-container": "#474742",
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-secondary-container": "#b7b5af",
+                      "on-secondary-fixed-variant": "#474742",
+                      "primary-fixed-dim": "#ffb694",
+                      "tertiary": "#c8c6c5",
+                      "surface-container-low": "#1c1b1b",
+                      "on-background": "#e5e2e1",
+                      "background": "#131313",
+                      "surface-bright": "#3a3939",
+                      "inverse-primary": "#a14000",
+                      "surface-tint": "#ffb694",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "gradient-c": "#34D399",
+                      "surface-container-highest": "#353534",
+                      "live": "#22C55A",
+                      "inverse-on-surface": "#313030",
+                      "dim": "#666666",
+                      "surface-container": "#201f1f",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "primary-fixed": "#ffdbcc",
+                      "on-secondary": "#31312c",
+                      "on-primary-fixed": "#351000",
+                      "tertiary-container": "#929090",
+                      "surface-container-high": "#2a2a2a",
+                      "on-tertiary-container": "#2a2a29",
+                      "outline-variant": "#594237",
+                      "destructive": "#EF4444",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "surface-dim": "#131313",
+                      "primary-container": "#f06613",
+                      "on-surface": "#e5e2e1",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "on-error": "#690005",
+                      "on-primary-container": "#4c1a00",
+                      "error-container": "#93000a",
+                      "on-primary": "#571f00",
+                      "muted": "#2A2A2A",
+                      "on-surface-variant": "#e1c0b2",
+                      "gradient-d": "#F59E0B",
+                      "primary": "#ffb694",
+                      "surface-variant": "#353534",
+                      "live-dim": "#14532D",
+                      "body": "#B8B8B8",
+                      "surface": "#131313"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "section-v-pad": "48px",
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "sidebar-width": "220px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "ui-xl": ["DM Sans"],
+                      "ui-sm": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "headline-2xl-mobile": ["Playfair Display"],
+                      "ui-lg": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"]
+              },
+              "fontSize": {
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-base overflow-hidden">
+<!-- Pipeline Background (Kanban View Simulation) -->
+<div class="flex h-screen w-full">
+<!-- Sidebar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-lowest border-r border-rule flex flex-col py-margin px-4">
+<div class="font-headline-2xl text-ui-lg text-primary mb-8">POSTBOARD</div>
+<nav class="space-y-1">
+<div class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-mono-label text-mono-label">Dashboard</span>
+</div>
+<div class="inline-flex items-center gap-3 w-full p-3 transition-colors bg-primary text-on-primary font-bold">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-mono-label text-mono-label">Active Pipeline</span>
+</div>
+<div class="inline-flex items-center gap-3 w-full p-3 transition-colors text-body hover:bg-surface-variant">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-mono-label text-mono-label">Talent Pool</span>
+</div>
+</nav>
+</aside>
+<!-- Main Pipeline Canvas -->
+<main class="ml-[220px] w-full p-8 grid grid-cols-4 gap-gutter opacity-40 grayscale pointer-events-none">
+<!-- Kanban Columns (Visual Representation Only) -->
+<div class="space-y-4">
+<div class="font-mono-label text-mono-label mb-2">// SCREENING</div>
+<div class="bg-surface-container-low border border-rule h-32 w-full"></div>
+<div class="bg-surface-container-low border border-rule h-32 w-full"></div>
+</div>
+<div class="space-y-4">
+<div class="font-mono-label text-mono-label mb-2">// TECHNICAL</div>
+<div class="bg-surface-container-low border border-rule h-32 w-full border-primary/50"></div>
+</div>
+<div class="space-y-4">
+<div class="font-mono-label text-mono-label mb-2">// ON-SITE</div>
+<div class="bg-surface-container-low border border-rule h-32 w-full"></div>
+</div>
+<div class="space-y-4">
+<div class="font-mono-label text-mono-label mb-2">// OFFER</div>
+<div class="bg-surface-container-low border border-rule h-32 w-full"></div>
+</div>
+</main>
+</div>
+<!-- Drawer Overlay -->
+<div class="fixed inset-0 bg-black/60 z-40 backdrop-brightness-50" id="drawer-overlay"></div>
+<!-- Candidate Detail Drawer -->
+<div class="fixed top-0 right-0 h-full w-[480px] bg-background border-l border-rule z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out transform translate-x-0" id="detail-drawer">
+<!-- Drawer Header -->
+<div class="p-8 border-b border-rule relative overflow-hidden">
+<div class="stipple-overlay absolute inset-0"></div>
+<div class="flex justify-between items-start mb-6 relative z-10">
+<span class="font-mono-label text-mono-label text-primary">// CANDIDATE_DETAIL</span>
+<button class="text-body hover:text-on-surface transition-colors" onclick="document.getElementById('detail-drawer').style.transform='translateX(100%)'; document.getElementById('drawer-overlay').style.display='none';">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="relative z-10">
+<h1 class="font-headline-2xl text-headline-2xl text-on-surface leading-none mb-2">Elena V. Druskilla</h1>
+<p class="font-mono-label text-mono-label text-dim uppercase">Senior Systems Architect — ID: PB-8829</p>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- Contact Grid -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="space-y-1">
+<div class="font-mono-label text-mono-label text-dim">// EMAIL</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">e.druskilla@tech-node.io</div>
+</div>
+<div class="space-y-1">
+<div class="font-mono-label text-mono-label text-dim">// LOCATION</div>
+<div class="font-ui-sm text-ui-sm text-on-surface">Berlin, DE</div>
+</div>
+<div class="col-span-2 space-y-1">
+<div class="font-mono-label text-mono-label text-dim">// DOCUMENTS</div>
+<a class="flex items-center gap-2 font-ui-sm text-ui-sm text-primary hover:underline group" href="#">
+<span class="material-symbols-outlined text-[18px]">description</span>
+                        DRUSKILLA_CV_2024_TECHNICAL.PDF
+                        <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Skills Section -->
+<div class="space-y-4">
+<div class="font-mono-label text-mono-label text-dim">// SKILLS</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container border border-rule font-mono-label text-mono-label text-on-surface">RUST</span>
+<span class="px-2 py-1 bg-surface-container border border-rule font-mono-label text-mono-label text-on-surface">DISTRIBUTED_SYSTEMS</span>
+<span class="px-2 py-1 bg-surface-container border border-rule font-mono-label text-mono-label text-on-surface">KUBERNETES</span>
+<span class="px-2 py-1 bg-surface-container border border-rule font-mono-label text-mono-label text-on-surface">WASM</span>
+<span class="px-2 py-1 bg-surface-container border border-rule font-mono-label text-mono-label text-on-surface">GRPC</span>
+<span class="px-2 py-1 bg-surface-container border border-rule font-mono-label text-mono-label text-on-surface">POSTGRESQL</span>
+</div>
+</div>
+<!-- Application Notes -->
+<div class="space-y-4">
+<div class="font-mono-label text-mono-label text-dim">// APPLICATION_NOTE</div>
+<div class="relative">
+<textarea class="w-full h-32 bg-surface-container-lowest border border-rule p-4 font-mono-label text-mono-label text-body focus:outline-none focus:border-primary transition-colors resize-none" placeholder="Enter recruitment session notes...">Exceptional grasp of memory management. Candidate demonstrated a custom implementation of an actor-based concurrency model during the initial screening. Strongly recommended for the HPC infrastructure squad.</textarea>
+<div class="absolute bottom-2 right-2 font-mono-label text-[9px] text-dim">AUTO_SAVED_14:02</div>
+</div>
+</div>
+<!-- Pipeline Status Selector -->
+<div class="space-y-4">
+<div class="font-mono-label text-mono-label text-dim">// PIPELINE_STAGE</div>
+<div class="relative group">
+<select class="w-full appearance-none bg-surface-container-lowest border border-rule p-4 pr-12 font-mono-label text-mono-label text-on-surface focus:outline-none focus:border-primary cursor-pointer">
+<option>SCREENING_QUALIFIED</option>
+<option selected="">TECHNICAL_INTERVIEW_01</option>
+<option>TECHNICAL_INTERVIEW_02</option>
+<option>CULTURAL_FIT</option>
+<option>EXECUTIVE_REVIEW</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-dim group-hover:text-primary transition-colors">expand_more</span>
+</div>
+</div>
+<!-- Visual Asset: Process Heatmap -->
+<div class="pt-4">
+<div class="font-mono-label text-mono-label text-dim mb-4">// EVALUATION_METRIC</div>
+<div class="h-16 w-full border border-rule grid grid-cols-12 overflow-hidden">
+<div class="bg-primary/20 border-r border-rule"></div>
+<div class="bg-primary/40 border-r border-rule"></div>
+<div class="bg-primary/60 border-r border-rule"></div>
+<div class="bg-primary/80 border-r border-rule"></div>
+<div class="bg-primary border-r border-rule"></div>
+<div class="bg-primary border-r border-rule"></div>
+<div class="bg-primary border-r border-rule"></div>
+<div class="bg-primary border-r border-rule"></div>
+<div class="bg-primary/60 border-r border-rule"></div>
+<div class="bg-primary/40 border-r border-rule"></div>
+<div class="bg-primary/20 border-r border-rule"></div>
+<div class="bg-primary/10"></div>
+</div>
+<div class="flex justify-between mt-2 font-mono-label text-[9px] text-dim">
+<span>TECHNICAL_FLOOR</span>
+<span>98TH_PERCENTILE</span>
+</div>
+</div>
+</div>
+<!-- Drawer Footer (Actions) -->
+<div class="p-8 border-t border-rule bg-surface-container-lowest">
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-primary text-on-primary font-mono-label text-mono-label font-bold py-4 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+                    SEND TO OFFER
+                </button>
+<button class="text-destructive font-mono-label text-mono-label font-bold py-4 hover:bg-destructive/10 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+                    REJECT
+                </button>
+</div>
+<div class="mt-4 text-center">
+<button class="font-mono-label text-[10px] text-dim hover:text-on-surface transition-colors underline uppercase">Schedule Next Round</button>
+</div>
+</div>
+</div>
+<!-- Script for interaction simulation -->
+<script>
+        // Ensure the drawer can be closed by clicking the overlay
+        document.getElementById('drawer-overlay').addEventListener('click', function() {
+            document.getElementById('detail-drawer').style.transform = 'translateX(100%)';
+            this.style.display = 'none';
+        });
+
+        // Small animation trigger on load
+        window.onload = () => {
+            const drawer = document.getElementById('detail-drawer');
+            drawer.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                drawer.style.transform = 'translateX(0)';
+            }, 300);
+        };
+    </script>
+</body></html>

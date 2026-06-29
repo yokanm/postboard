@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostBoard // About Us</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#c8c6c5",
+                        "tertiary-fixed": "#e5e2e1",
+                        "secondary": "#c9c6c0",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#1c1c18",
+                        "on-secondary-container": "#b7b5af",
+                        "on-secondary-fixed-variant": "#474742",
+                        "error-container": "#93000a",
+                        "secondary-container": "#474742",
+                        "outline-variant": "#594237",
+                        "on-primary-fixed": "#351000",
+                        "primary-fixed": "#ffdbcc",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-container": "#4c1a00",
+                        "inverse-primary": "#a14000",
+                        "gradient-c": "#34D399",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#e1c0b2",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "live": "#22C55A",
+                        "tertiary-container": "#929090",
+                        "muted": "#2A2A2A",
+                        "gradient-b": "#60A5FA",
+                        "on-secondary": "#31312c",
+                        "surface-variant": "#353534",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "body": "#B8B8B8",
+                        "on-tertiary": "#313030",
+                        "primary-fixed-dim": "#ffb694",
+                        "secondary-fixed": "#e5e2db",
+                        "on-error": "#690005",
+                        "gradient-d": "#F59E0B",
+                        "surface-tint": "#ffb694",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#3a3939",
+                        "primary-container": "#f06613",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "on-primary": "#571f00",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "destructive": "#EF4444",
+                        "rule": "#1A1A1A",
+                        "primary": "#ffb694",
+                        "surface-container": "#201f1f",
+                        "dim": "#666666",
+                        "outline": "#a88a7e",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-container": "#2a2a29",
+                        "surface-dim": "#131313",
+                        "live-dim": "#14532D",
+                        "gradient-a": "#C084FC",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "section-v-pad": "48px",
+                        "margin": "32px",
+                        "sidebar-width": "220px",
+                        "max-width": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["JetBrains Mono", "monospace"],
+                        "headline-2xl": ["Playfair Display", "serif"],
+                        "ui-sm": ["DM Sans", "sans-serif"],
+                        "masthead-4xl": ["Playfair Display", "serif"],
+                        "body-base": ["DM Sans", "sans-serif"],
+                        "ui-xl": ["DM Sans", "sans-serif"],
+                        "ui-lg": ["DM Sans", "sans-serif"],
+                        "headline-2xl-mobile": ["Playfair Display", "serif"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["11px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "headline-2xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "ui-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "masthead-4xl": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "body-base": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "ui-xl": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "ui-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "headline-2xl-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .press-grid-tile { transition: background-color 0.2s, transform 0.1s; }
+        .press-grid-tile:hover { transform: scale(0.95); background-color: theme('colors.primary'); border-color: theme('colors.primary'); z-index: 10; position: relative;}
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base min-h-screen flex flex-col noise-bg">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-rule bg-background flex justify-between items-center h-16 px-margin max-w-max-width mx-auto left-0 right-0">
+<div class="flex items-center gap-8">
+<a class="font-masthead-4xl text-[32px] text-primary uppercase tracking-tighter leading-none" href="#">POSTBOARD</a>
+<div class="hidden md:flex gap-6 items-center pt-1">
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Jobs</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Companies</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Features</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Pricing</a>
+<a class="text-primary border-b border-primary pb-1 font-ui-sm" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-body font-ui-sm hover:text-on-surface transition-colors hidden md:block">Sign Up</button>
+<button class="bg-primary text-background px-4 py-2 font-ui-sm rounded-none hover:bg-surface-tint transition-colors flex items-center gap-2">
+                Post a Job
+                <span class="material-symbols-outlined text-[16px]" data-icon="login">login</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-24 px-margin max-w-max-width mx-auto w-full">
+<!-- Hero Section -->
+<header class="py-section-v-pad border-b border-rule grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end">
+<div class="lg:col-span-8">
+<div class="font-mono-label text-mono-label text-dim mb-4 uppercase">// POSTBOARD_ORIGINS</div>
+<h1 class="font-masthead-4xl text-masthead-4xl md:text-[120px] text-on-surface uppercase tracking-tighter leading-[0.9] mb-8 break-words">
+                    Connecting<br/>
+<span class="text-primary italic">Talent</span> With<br/>
+                    Opportunity
+                </h1>
+</div>
+<div class="lg:col-span-4 border-l border-rule pl-gutter h-full flex flex-col justify-end pb-4">
+<p class="font-body-base text-body text-body-base max-w-md">
+                    We are engineering the infrastructure for human capital. A high-density pipeline bridging elite technical proficiency with rigorous industrial demands. No noise, just signal.
+                </p>
+<div class="mt-8 flex gap-4">
+<div class="w-8 h-8 border border-rule press-grid-tile bg-surface-container"></div>
+<div class="w-8 h-8 border border-rule press-grid-tile bg-surface-container"></div>
+<div class="w-8 h-8 border border-rule press-grid-tile bg-surface-container"></div>
+</div>
+</div>
+</header>
+<!-- Mission & Values Bento Grid -->
+<section class="py-section-v-pad border-b border-rule">
+<div class="font-mono-label text-mono-label text-dim mb-8 uppercase">// CORE_OPERATING_PRINCIPLES</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-rule bg-rule">
+<!-- Mission -->
+<div class="md:col-span-3 lg:col-span-2 bg-surface p-8 border-b lg:border-b-0 lg:border-r border-rule relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
+<h2 class="font-headline-2xl text-headline-2xl mb-4 relative z-10">Simplifying Hiring</h2>
+<p class="font-body-base text-body-base text-body max-w-xl relative z-10">
+                        The recruitment landscape is cluttered with friction. Our mission is to distill the process down to its fundamental components. We provide a stark, undeniable conduit between capability and requirement, stripping away the superfluous to reveal raw potential.
+                    </p>
+</div>
+<!-- Values -->
+<div class="bg-surface p-8 flex flex-col gap-6">
+<div>
+<div class="font-mono-label text-mono-label text-primary mb-1 uppercase">// VALUE_01</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface">Transparency</h3>
+<p class="font-ui-sm text-ui-sm text-body mt-1">Opaque systems breed inefficiency. We surface all variables.</p>
+</div>
+<div class="h-px w-full bg-rule"></div>
+<div>
+<div class="font-mono-label text-mono-label text-primary mb-1 uppercase">// VALUE_02</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface">Accessibility</h3>
+<p class="font-ui-sm text-ui-sm text-body mt-1">Opportunity must be ubiquitous, not gated by antiquated networks.</p>
+</div>
+<div class="h-px w-full bg-rule"></div>
+<div>
+<div class="font-mono-label text-mono-label text-primary mb-1 uppercase">// VALUE_03</div>
+<h3 class="font-ui-lg text-ui-lg text-on-surface">Innovation</h3>
+<p class="font-ui-sm text-ui-sm text-body mt-1">Continuous iteration on the mechanics of connection.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Journey Timeline -->
+<section class="py-section-v-pad border-b border-rule">
+<div class="font-mono-label text-mono-label text-dim mb-8 uppercase">// CHRONOLOGY</div>
+<div class="relative border-l border-rule ml-4 md:ml-margin">
+<!-- Timeline Item 1 -->
+<div class="mb-12 relative pl-8">
+<div class="absolute w-3 h-3 bg-primary -left-[6px] top-1.5 rounded-none"></div>
+<div class="font-mono-label text-mono-label text-dim mb-2">Q1 2023 // INCEPTION</div>
+<h3 class="font-ui-xl text-ui-xl mb-2">The Idea</h3>
+<p class="font-body-base text-body-base text-body max-w-2xl">
+                        Recognizing the critical failure points in traditional job boards, the initial architecture for PostBoard was drafted. A focus on high-fidelity data and minimal UI noise was established as the baseline.
+                    </p>
+</div>
+<!-- Timeline Item 2 -->
+<div class="mb-12 relative pl-8">
+<div class="absolute w-3 h-3 bg-surface border border-rule -left-[6px] top-1.5 rounded-none"></div>
+<div class="font-mono-label text-mono-label text-dim mb-2">Q4 2023 // DEPLOYMENT</div>
+<h3 class="font-ui-xl text-ui-xl mb-2">Beta Launch</h3>
+<p class="font-body-base text-body-base text-body max-w-2xl">
+                        Initial deployment to a closed cohort of 50 enterprise partners. The system processed over 10,000 matches with a 40% increase in signal-to-noise ratio compared to legacy platforms.
+                    </p>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative pl-8">
+<div class="absolute w-3 h-3 bg-surface border border-rule -left-[6px] top-1.5 rounded-none"></div>
+<div class="font-mono-label text-mono-label text-primary mb-2">CURRENT // VISION</div>
+<h3 class="font-ui-xl text-ui-xl mb-2">Scaling the Pipeline</h3>
+<p class="font-body-base text-body-base text-body max-w-2xl">
+                        Expanding the infrastructure to support global technical talent markets. Integrating advanced filtering algorithms while maintaining absolute adherence to our brutalist, content-first design philosophy.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Leadership Team -->
+<section class="py-section-v-pad">
+<div class="font-mono-label text-mono-label text-dim mb-8 uppercase">// SYSTEM_ARCHITECTS</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Profile Card 1 -->
+<div class="border border-rule bg-surface p-0 flex flex-col group hover:border-primary transition-colors">
+<div class="aspect-square bg-surface-container-high relative overflow-hidden border-b border-rule">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 mix-blend-luminosity opacity-80 group-hover:opacity-100" data-alt="A stark, high-contrast black and white portrait of a tech executive. The lighting is harsh and dramatic, creating deep shadows reminiscent of editorial fashion photography. The subject is looking directly at the camera with a serious expression against a pure black background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSHFsFTwGut7hDU8_ZeGD3prJpCKObxtY-MJFdrURk6IXkOGOkNusBBbTQIMuKYTYvZ4Zc7OHNzZHJLCqxmKq4tkxG_qmOy9fHcMXsMI2diCQX5sYUGjOmxkYah5Xwpec_3QstTs2-VC1REl51nQ2BIXePkwjpS0IlwlrmtlrKVob8f_wKEV-2q6Q67tf9e3eMIGx_jUxHn-sCa63cq5F9muGjXVALdarUioqSPtRxgKBf5fi0akvgJ6tPTkJxXGTBTaYXSgx-Gspz"/>
+</div>
+<div class="p-4">
+<h4 class="font-ui-lg text-ui-lg text-on-surface">Alex Mercer</h4>
+<div class="font-mono-label text-mono-label text-primary mt-1">CHIEF_EXECUTIVE</div>
+</div>
+</div>
+<!-- Profile Card 2 -->
+<div class="border border-rule bg-surface p-0 flex flex-col group hover:border-primary transition-colors">
+<div class="aspect-square bg-surface-container-high relative overflow-hidden border-b border-rule">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 mix-blend-luminosity opacity-80 group-hover:opacity-100" data-alt="A stark, high-contrast black and white portrait of a female lead engineer. The lighting is harsh and dramatic, creating deep shadows reminiscent of editorial fashion photography. She is looking slightly off-camera with a focused expression against a dark industrial background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqfWXvcimGZacxEf8jiY1hUKycO1qVk7BOKKowq_XetO9tQmb6j0tWMQ4JjLwVsY9BNj6Z1ty_d1tpHj1nsgLKVuH2aHkSM7_hejabp-YOUtDIlIo_jU7pRTftN1ZpW-F45gM8lX3fiuxrOLAPOFV1pXP5oyPji8RAXcyhs-9YDUKGS_KXzWGkKqRfsnXO1-7Yhqytowj7WhZGQtFfyXDzPn2ph1ZTMW_DWB76VWLWfe_wgxsY46f1diFLenMoz7Xp_ExKwypmdHg4"/>
+</div>
+<div class="p-4">
+<h4 class="font-ui-lg text-ui-lg text-on-surface">Sarah Chen</h4>
+<div class="font-mono-label text-mono-label text-primary mt-1">HEAD_OF_ENGINEERING</div>
+</div>
+</div>
+<!-- Profile Card 3 -->
+<div class="border border-rule bg-surface p-0 flex flex-col group hover:border-primary transition-colors">
+<div class="aspect-square bg-surface-container-high relative overflow-hidden border-b border-rule">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 mix-blend-luminosity opacity-80 group-hover:opacity-100" data-alt="A stark, high-contrast black and white portrait of a male product designer. The lighting is harsh and dramatic, emphasizing geometric shapes and sharp lines. He wears dark clothing and looks thoughtfully towards the lens against a pure black background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApIsOiA_AwkoY0xZGifteHa3sjFo_AvJrMmgH2uNm-LtAJLhC5O9d93-dDa0K_OH8Qj_cA0Lh7CN9NgIQKnrdXrOjcOityY35F-yRsEcKFLxE-OM7E2ClOz-BrbYLa9jTE-Qp1NZNvw3OrjnF4FC0gM01NugepGueN_hHJvDG8BO48MxDjJBYKc5YDNLRuEWD_t6ztjYpJ1E3KVkp5eghGkoTgs_GWpf26wCZXjyNhM-zVzDx0d8JuCky4-TasLhdsFCRZPZ05_mqo"/>
+</div>
+<div class="p-4">
+<h4 class="font-ui-lg text-ui-lg text-on-surface">Marcus Vance</h4>
+<div class="font-mono-label text-mono-label text-primary mt-1">PRODUCT_DIRECTOR</div>
+</div>
+</div>
+<!-- Profile Card 4 -->
+<div class="border border-rule bg-surface p-0 flex flex-col group hover:border-primary transition-colors">
+<div class="aspect-square bg-surface-container-high relative overflow-hidden border-b border-rule">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 mix-blend-luminosity opacity-80 group-hover:opacity-100" data-alt="A stark, high-contrast black and white portrait of a data scientist. The lighting is harsh and dramatic, casting stark shadows. The subject is wearing minimalist attire and looking intensely at the camera against a textured dark grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB05X2K4fYg6VfFmC22R_jthU4HiGtaSH1sf7KOLbpUlOI5Gvt4-sDNR-MfCGADUUVh2TGcIUmfMkqbJi1-hZPZmHdgRPjC98CSxvokjgS9L4xdHgmEqOwa9TK4y6bTL0TM-WBkWc4Nb41-9u3MUqObNCujryjR7TsHyHYEm9pwQhEMah5BWFuC9wpFBT97G8ooxe1WZ2Tog7BeTib-ISKCearAhM5EqncQ_LXkWuN8g8Unl34uyjoS5n9403KO1eCOGOm1ZDszEeMR"/>
+</div>
+<div class="p-4">
+<h4 class="font-ui-lg text-ui-lg text-on-surface">Elena Rostova</h4>
+<div class="font-mono-label text-mono-label text-primary mt-1">DATA_ARCHITECT</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-rule w-full mt-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter py-section-v-pad px-margin max-w-max-width mx-auto">
+<div class="col-span-2 md:col-span-4 mb-8">
+<div class="font-masthead-4xl text-[48px] text-on-surface-variant uppercase tracking-tighter leading-none">POSTBOARD</div>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Product</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Features</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Pricing</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">API</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Company</a>
+<a class="text-primary font-ui-sm hover:text-primary transition-colors" href="#">About</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Careers</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Press</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Legal</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Privacy</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Terms</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Security</a>
+</div>
+<div class="col-span-2 md:col-span-4 mt-8 pt-8 border-t border-rule">
+<p class="font-mono-label text-mono-label text-dim uppercase">© 2024 POSTBOARD INDUSTRIAL SYSTEMS // ALL RIGHTS RESERVED</p>
+</div>
+</div>
+</footer>
+</body></html>

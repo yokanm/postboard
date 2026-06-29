@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>404 // Page Not Found - PostBoard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;600&amp;family=JetBrains+Mono:wght@400;700&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "on-primary-container": "#4c1a00",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary": "#c8c6c5",
+                        "muted": "#2A2A2A",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "surface": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "outline": "#a88a7e",
+                        "on-secondary-container": "#b7b5af",
+                        "secondary": "#c9c6c0",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#ffb694",
+                        "on-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "primary-fixed-dim": "#ffb694",
+                        "gradient-c": "#34D399",
+                        "live-dim": "#14532D",
+                        "on-primary": "#571f00",
+                        "surface-container-lowest": "#0e0e0e",
+                        "body": "#B8B8B8",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "primary": "#ffb694",
+                        "dim": "#666666",
+                        "on-error": "#690005",
+                        "secondary-container": "#474742",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-tertiary": "#313030",
+                        "live": "#22C55A",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#e1c0b2",
+                        "primary-container": "#f06613",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "gradient-b": "#60A5FA",
+                        "surface-container": "#201f1f",
+                        "outline-variant": "#594237",
+                        "on-secondary-fixed-variant": "#474742",
+                        "tertiary-container": "#929090",
+                        "destructive": "#EF4444",
+                        "on-secondary": "#31312c",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "gradient-d": "#F59E0B",
+                        "primary-fixed": "#ffdbcc",
+                        "rule": "#1A1A1A",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-bright": "#3a3939",
+                        "on-secondary-fixed": "#1c1c18",
+                        "inverse-surface": "#e5e2e1",
+                        "gradient-a": "#C084FC",
+                        "inverse-primary": "#a14000",
+                        "secondary-fixed": "#e5e2db",
+                        "on-primary-fixed": "#351000",
+                        "on-background": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "section-v-pad": "48px",
+                        "max-width": "1280px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "sidebar-width": "220px"
+                    },
+                    "fontFamily": {
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "mono-label": ["JetBrains Mono"],
+                        "ui-sm": ["DM Sans"],
+                        "body-base": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-xl": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "headline-2xl-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "mono-label": ["11px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "ui-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-base": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "masthead-4xl": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "ui-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "headline-2xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "ui-xl": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Keyframes for Glitch/Broken Effect */
+        @keyframes subtle-flicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 1; }
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.4; }
+        }
+        @keyframes noise-shift {
+            0% { transform: translate(0, 0); }
+            10% { transform: translate(-2px, -2px); }
+            20% { transform: translate(2px, 2px); }
+            30% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            50% { transform: translate(-1px, 1px); }
+            60% { transform: translate(1px, -1px); }
+            70% { transform: translate(-1px, -1px); }
+            80% { transform: translate(1px, 1px); }
+            90% { transform: translate(-2px, 0); }
+            100% { transform: translate(0, 0); }
+        }
+        .glitch-tile {
+            animation: subtle-flicker 4s infinite, noise-shift 0.2s infinite steps(2);
+            mix-blend-mode: exclusion;
+        }
+        
+        /* Iridescent pseudo-texture */
+        .texture-grain {
+            position: relative;
+        }
+        .texture-grain::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-base selection:bg-primary-container selection:text-on-primary-container">
+<!-- 
+      Navigation Shell Suppressed:
+      Per architecture rules, transactional/error screens completely suppress the global nav shell (TopAppBar, SideNav) 
+      to maintain focus and indicate a break in standard flow.
+    -->
+<main class="flex-grow flex flex-col items-center justify-center p-gutter relative overflow-hidden">
+<!-- Ambient Grid Background Lines -->
+<div aria-hidden="true" class="absolute inset-0 pointer-events-none opacity-20">
+<div class="w-full h-full" style="background-image: linear-gradient(to right, #1A1A1A 1px, transparent 1px), linear-gradient(to bottom, #1A1A1A 1px, transparent 1px); background-size: 64px 64px;"></div>
+</div>
+<div class="z-10 flex flex-col items-center max-w-2xl w-full">
+<!-- Illustration: Broken Press Grid -->
+<div aria-hidden="true" class="mb-section-v-pad relative">
+<!-- Data identifier label -->
+<div class="absolute -top-6 left-0 font-mono-label text-mono-label text-dim uppercase">
+                    // ERR_VISUAL_RENDER
+                </div>
+<div class="grid grid-cols-3 gap-0 border border-rule bg-surface-container-lowest">
+<!-- Row 1 -->
+<div class="w-20 h-20 md:w-24 md:h-24 border-r border-b border-rule bg-[#C084FC] opacity-80 texture-grain transition-transform duration-300 hover:scale-[0.98] hover:invert"></div>
+<div class="w-20 h-20 md:w-24 md:h-24 border-r border-b border-rule bg-[#60A5FA] opacity-90 texture-grain transition-transform duration-300 hover:scale-[0.98] hover:invert"></div>
+<!-- Broken/Empty Tile -->
+<div class="w-20 h-20 md:w-24 md:h-24 border-b border-rule bg-background flex items-center justify-center overflow-hidden">
+<div class="w-full h-px bg-rule rotate-45"></div>
+</div>
+<!-- Row 2 -->
+<!-- Glitched Tile -->
+<div class="w-20 h-20 md:w-24 md:h-24 border-r border-rule bg-[#34D399] opacity-70 texture-grain glitch-tile translate-y-2 translate-x-1 shadow-[4px_4px_0_0_#1A1A1A]"></div>
+<div class="w-20 h-20 md:w-24 md:h-24 border-r border-rule bg-surface-container hover:bg-surface-variant transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-dim" style="font-variation-settings: 'FILL' 0;">warning</span>
+</div>
+<div class="w-20 h-20 md:w-24 md:h-24 bg-[#F59E0B] opacity-80 texture-grain transition-transform duration-300 hover:scale-[0.98] hover:invert"></div>
+</div>
+<!-- Coordinate mapping decorative -->
+<div class="absolute -bottom-6 right-0 font-mono-label text-mono-label text-dim uppercase flex gap-4">
+<span>X: NULL</span>
+<span>Y: NULL</span>
+</div>
+</div>
+<!-- Content -->
+<div class="text-center w-full mt-8">
+<!-- Title -->
+<h1 class="font-headline-2xl text-headline-2xl md:font-masthead-4xl md:text-masthead-4xl text-on-background uppercase tracking-tighter mb-6">
+<span class="text-primary-container inline-block transform hover:-translate-y-1 transition-transform cursor-default">404</span> <span class="opacity-50 mx-2">//</span> PAGE_NOT_FOUND
+                </h1>
+<!-- Monochromatic Rule -->
+<div class="w-full h-px bg-rule mb-6"></div>
+<!-- Description -->
+<div class="font-mono-label text-mono-label text-body uppercase leading-relaxed mb-10 max-w-lg mx-auto">
+<p>The directory you requested does not exist in our infrastructure logs.</p>
+<p class="text-dim mt-2 bg-surface-container inline-block px-2 py-1">
+                        // TRACE_ID: <span class="text-primary">A7B2-99FX-0000</span>
+</p>
+</div>
+<!-- CTAs -->
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<!-- Primary Button -->
+<button class="w-full sm:w-auto bg-primary-container text-on-primary-container font-mono-label text-mono-label uppercase px-8 py-4 border border-primary-container hover:bg-background hover:text-primary-container transition-colors focus:outline-none focus:ring-1 focus:ring-primary-container focus:ring-offset-1 focus:ring-offset-background group flex items-center justify-center gap-2" onclick="window.location.href='/'" type="button">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                        Return Home
+                        <span class="opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 ml-2">_</span>
+</button>
+<!-- Secondary Ghost Button -->
+<button class="w-full sm:w-auto bg-transparent text-body font-mono-label text-mono-label uppercase px-8 py-4 hover:text-on-background hover:bg-surface-container transition-colors focus:outline-none focus:ring-1 focus:ring-body border border-transparent" onclick="window.location.href='/jobs'" type="button">
+                        Browse Jobs
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Minimal Footer -->
+<footer class="w-full border-t border-rule bg-surface-container-lowest p-gutter flex flex-col sm:flex-row justify-between items-center gap-4 z-10 relative">
+<div class="font-mono-label text-mono-label text-dim uppercase flex items-center gap-2">
+<span class="w-2 h-2 bg-error-container block animate-pulse"></span>
+            // POSTBOARD_SYSTEMS_OFFLINE
+        </div>
+<div class="font-mono-label text-mono-label text-dim uppercase">
+            SYS.VER 4.0.1
+        </div>
+</footer>
+</body></html>

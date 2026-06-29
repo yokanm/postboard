@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | Recruiter Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..900&family=Playfair+Display:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #E5E2E1;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0E0E0E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+        .press-grid-pattern {
+            background-image: radial-gradient(#1A1A1A 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#201f1f",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-secondary-container": "#b7b5af",
+                      "primary-fixed-dim": "#ffb694",
+                      "on-background": "#e5e2e1",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "secondary-fixed": "#e5e2db",
+                      "on-secondary": "#31312c",
+                      "muted": "#2A2A2A",
+                      "surface": "#131313",
+                      "inverse-surface": "#e5e2e1",
+                      "on-error": "#690005",
+                      "on-surface-variant": "#e1c0b2",
+                      "background": "#131313",
+                      "outline-variant": "#594237",
+                      "live-dim": "#14532D",
+                      "on-secondary-fixed-variant": "#474742",
+                      "live": "#22C55A",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "primary-fixed": "#ffdbcc",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "primary-container": "#f06613",
+                      "surface-container-highest": "#353534",
+                      "outline": "#a88a7e",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "surface-tint": "#ffb694",
+                      "secondary": "#c9c6c0",
+                      "on-tertiary-container": "#2a2a29",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "on-primary-fixed": "#351000",
+                      "gradient-d": "#F59E0B",
+                      "body": "#B8B8B8",
+                      "gradient-b": "#60A5FA",
+                      "tertiary-container": "#929090",
+                      "tertiary": "#c8c6c5",
+                      "surface-container-low": "#1c1b1b",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-variant": "#353534",
+                      "inverse-primary": "#a14000",
+                      "on-surface": "#e5e2e1",
+                      "surface-bright": "#3a3939",
+                      "primary": "#ffb694",
+                      "dim": "#666666",
+                      "destructive": "#EF4444",
+                      "on-primary-container": "#4c1a00",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#1c1c18",
+                      "on-primary": "#571f00",
+                      "gradient-a": "#C084FC",
+                      "surface-dim": "#131313",
+                      "on-tertiary": "#313030",
+                      "gradient-c": "#34D399",
+                      "inverse-on-surface": "#313030",
+                      "rule": "#1A1A1A",
+                      "secondary-container": "#474742"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "0px"
+              },
+              "spacing": {
+                      "sidebar-width": "220px",
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "section-v-pad": "48px",
+                      "unit": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-2xl-mobile": ["Playfair Display"],
+                      "headline-2xl": ["Playfair Display"],
+                      "ui-sm": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "ui-xl": ["DM Sans"],
+                      "ui-lg": ["DM Sans"]
+              },
+              "fontSize": {
+                      "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-background border-b border-rule flex justify-between items-center w-full px-6 py-4">
+<h1 class="font-masthead-4xl text-ui-xl tracking-tighter text-on-surface uppercase leading-none">
+            POSTBOARD
+        </h1>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-on-surface transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary-container"></span>
+</button>
+<div class="w-8 h-8 border border-rule overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsKP6PUERPFAaEMwWYz-iUk_ziPtjcz1TFFH89o9Pho1c3b3kbpzkDXs0Ebex6zUdXEoy0tE4r5ckRpuHIwe6U-zNKMgafz-gno3k6mDqAo4gMJftmGHLnwJIVfAUjIJGlldYomth1nXIzh9_9XsXXlNNe0wfHjIdG7jLB946MHLevr1BwUsmm7E8g7Tlyvu6AxsZWHRQhdcKk9xQN028Ub8t3e2veyCci6tIFvABH-mJeTmtp-Z1HpEP4sM9475hJIXcsATCKExic"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto px-6 pt-8 pb-32">
+<!-- Dashboard Header -->
+<div class="mb-8">
+<span class="font-mono-label text-mono-label text-dim uppercase tracking-widest block mb-2">// recruiter_overview</span>
+<h2 class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface">Welcome back, Admin.</h2>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 gap-px bg-rule border border-rule mb-10">
+<div class="bg-surface-container-lowest p-6 flex flex-col gap-2">
+<span class="font-mono-label text-mono-label text-dim uppercase">Active Jobs</span>
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary">12</span>
+<div class="flex items-center gap-1 text-[10px] text-live font-mono-label">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> +2 this week
+                </div>
+</div>
+<div class="bg-surface-container-lowest p-6 flex flex-col gap-2">
+<span class="font-mono-label text-mono-label text-dim uppercase">Applicants</span>
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary">842</span>
+<div class="flex items-center gap-1 text-[10px] text-live font-mono-label">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> +14% growth
+                </div>
+</div>
+<div class="bg-surface-container-lowest p-6 flex flex-col gap-2">
+<span class="font-mono-label text-mono-label text-dim uppercase">Interviews</span>
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary">28</span>
+<div class="flex items-center gap-1 text-[10px] text-dim font-mono-label uppercase">
+                    Scheduled today: 4
+                </div>
+</div>
+<div class="bg-surface-container-lowest p-6 flex flex-col gap-2">
+<span class="font-mono-label text-mono-label text-dim uppercase">Time to Hire</span>
+<span class="font-headline-2xl-mobile text-headline-2xl-mobile text-primary">18d</span>
+<div class="flex items-center gap-1 text-[10px] text-live font-mono-label">
+<span class="material-symbols-outlined text-[12px]">bolt</span> Optimal pace
+                </div>
+</div>
+</div>
+<!-- Quick Actions -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-mono-label text-mono-label text-on-surface uppercase tracking-widest">// Quick Actions</h3>
+</div>
+<div class="space-y-4">
+<button class="w-full bg-primary-container text-on-primary-container py-4 flex items-center justify-center gap-3 active:scale-95 transition-transform font-ui-lg text-ui-lg">
+<span class="material-symbols-outlined">add_circle</span>
+                    Post New Role
+                </button>
+<div class="grid grid-cols-2 gap-4">
+<button class="w-full border border-rule text-on-surface py-3 flex items-center justify-center gap-2 font-ui-sm text-ui-sm hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">group</span> Talent Pool
+                    </button>
+<button class="w-full border border-rule text-on-surface py-3 flex items-center justify-center gap-2 font-ui-sm text-ui-sm hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span> Reports
+                    </button>
+</div>
+</div>
+</section>
+<!-- Recent Activity -->
+<section class="mb-10">
+<h3 class="font-mono-label text-mono-label text-on-surface uppercase tracking-widest mb-4">// Recent Activity</h3>
+<div class="border border-rule divide-y divide-rule">
+<!-- Activity Item -->
+<div class="p-4 bg-surface-container-lowest flex gap-4">
+<div class="w-2 bg-live-dim h-auto"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-ui-sm text-ui-sm text-on-surface font-semibold">New Applicant: Senior Rust Engineer</p>
+<span class="font-mono-label text-[10px] text-dim">2m ago</span>
+</div>
+<p class="font-ui-sm text-ui-sm text-dim mt-1">Erik Sorensen applied via Referral</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="p-4 bg-surface-container-lowest flex gap-4">
+<div class="w-2 bg-primary h-auto"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-ui-sm text-ui-sm text-on-surface font-semibold">Interview Scheduled</p>
+<span class="font-mono-label text-[10px] text-dim">45m ago</span>
+</div>
+<p class="font-ui-sm text-ui-sm text-dim mt-1">Lead Architect - Pipeline Sync Stage</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="p-4 bg-surface-container-lowest flex gap-4">
+<div class="w-2 bg-rule h-auto"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-ui-sm text-ui-sm text-on-surface font-semibold">Job Listing Closed</p>
+<span class="font-mono-label text-[10px] text-dim">2h ago</span>
+</div>
+<p class="font-ui-sm text-ui-sm text-dim mt-1">Junior Frontend Developer (Filled)</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-2 font-mono-label text-mono-label text-dim uppercase hover:text-on-surface transition-colors">
+                View All Activity →
+            </button>
+</section>
+<!-- Decorative Press Grid Element -->
+<div class="w-full h-24 press-grid-pattern opacity-20 border-t border-b border-rule my-8"></div>
+</main>
+<!-- BottomNavBar (Mobile Only Anchor) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest border-t border-rule md:hidden">
+<div class="flex justify-around items-center h-20 px-2">
+<!-- Active State: Overview -->
+<a class="flex flex-col items-center gap-1 text-primary p-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-mono-label text-[9px] uppercase font-bold">Overview</span>
+</a>
+<!-- Inactive States -->
+<a class="flex flex-col items-center gap-1 text-dim p-2 hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-mono-label text-[9px] uppercase">Jobs</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-dim p-2 hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-mono-label text-[9px] uppercase">Pipeline</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-dim p-2 hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-mono-label text-[9px] uppercase">Company</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-dim p-2 hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-mono-label text-[9px] uppercase">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Footer Meta -->
+<footer class="mb-24 px-6 py-4 flex flex-col gap-2">
+<p class="font-mono-label text-[10px] text-dim">© 2024 POSTBOARD INDUSTRIAL. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-4">
+<a class="font-mono-label text-[10px] text-dim hover:text-primary transition-colors uppercase" href="#">Status: 200 OK</a>
+<a class="font-mono-label text-[10px] text-dim hover:text-primary transition-colors uppercase" href="#">API Docs</a>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for active states
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('touchstart', () => {
+                link.classList.add('scale-95');
+            });
+            link.addEventListener('touchend', () => {
+                link.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

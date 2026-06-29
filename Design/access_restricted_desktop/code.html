@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Postboard // Access Restricted</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&amp;family=JetBrains+Mono:wght@400;700&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#e5e2e1",
+                    "body": "#B8B8B8",
+                    "on-surface-variant": "#e1c0b2",
+                    "secondary-fixed-dim": "#c9c6c0",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#351000",
+                    "gradient-b": "#60A5FA",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "surface-bright": "#3a3939",
+                    "on-surface": "#e5e2e1",
+                    "surface-tint": "#ffb694",
+                    "on-primary": "#571f00",
+                    "dim": "#666666",
+                    "destructive": "#EF4444",
+                    "live-dim": "#14532D",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary": "#31312c",
+                    "gradient-c": "#34D399",
+                    "surface-variant": "#353534",
+                    "secondary-fixed": "#e5e2db",
+                    "on-tertiary": "#313030",
+                    "primary": "#ffb694",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary-container": "#929090",
+                    "muted": "#2A2A2A",
+                    "surface-container-high": "#2a2a2a",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-fixed": "#ffdbcc",
+                    "inverse-on-surface": "#313030",
+                    "background": "#131313",
+                    "on-secondary-fixed-variant": "#474742",
+                    "surface": "#131313",
+                    "primary-container": "#f06613",
+                    "on-secondary-container": "#b7b5af",
+                    "on-background": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "error": "#ffb4ab",
+                    "surface-container": "#201f1f",
+                    "rule": "#1A1A1A",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "secondary-container": "#474742",
+                    "on-primary-container": "#4c1a00",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "primary-fixed-dim": "#ffb694",
+                    "surface-dim": "#131313",
+                    "outline-variant": "#594237",
+                    "error-container": "#93000a",
+                    "outline": "#a88a7e",
+                    "inverse-primary": "#a14000",
+                    "tertiary": "#c8c6c5",
+                    "live": "#22C55A",
+                    "secondary": "#c9c6c0",
+                    "gradient-d": "#F59E0B",
+                    "gradient-a": "#C084FC",
+                    "on-tertiary-container": "#2a2a29",
+                    "on-secondary-fixed": "#1c1c18"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "section-v-pad": "48px",
+                    "max-width": "1280px",
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "sidebar-width": "220px"
+            },
+            "fontFamily": {
+                    "body-base": ["DM Sans"],
+                    "ui-lg": ["DM Sans"],
+                    "headline-2xl": ["Playfair Display"],
+                    "ui-sm": ["DM Sans"],
+                    "mono-label": ["JetBrains Mono"],
+                    "headline-2xl-mobile": ["Playfair Display"],
+                    "ui-xl": ["DM Sans"],
+                    "masthead-4xl": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                    "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                    "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Brutalist overrides - enforcing 0 radius globally */
+        * { border-radius: 0 !important; }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, #1A1A1A 1px, transparent 1px),
+                linear-gradient(to bottom, #1A1A1A 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-body font-body-base min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (JSON Derived) -->
+<nav class="hidden md:flex flex-col h-full border-r border-rule bg-surface fixed left-0 top-0 h-screen w-sidebar-width z-40">
+<!-- Header -->
+<div class="px-4 py-8 border-b border-rule">
+<h1 class="font-masthead-4xl text-masthead-4xl font-black text-primary truncate" style="font-size: 32px; letter-spacing: -0.02em;">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-dim uppercase mt-2">Technical Recruitment</p>
+</div>
+<!-- CTA -->
+<div class="p-4 border-b border-rule">
+<button class="w-full bg-primary-container text-on-primary-container px-4 py-3 font-mono-label text-mono-label uppercase tracking-wider hover:bg-surface-container-highest hover:text-primary transition-colors duration-150 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                POST_NEW_JOB
+            </button>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-4 flex flex-col gap-1 font-ui-sm text-ui-sm uppercase tracking-wider font-mono-label text-mono-label">
+<!-- No active state applied as intent is "Unauthorized Access" -->
+<a class="text-body border-l-2 border-transparent hover:text-on-surface px-4 py-3 hover:bg-surface-container-highest transition-colors duration-150 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+                // DASHBOARD
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface px-4 py-3 hover:bg-surface-container-highest transition-colors duration-150 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+                // PIPELINE
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface px-4 py-3 hover:bg-surface-container-highest transition-colors duration-150 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+                // TALENT_POOL
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface px-4 py-3 hover:bg-surface-container-highest transition-colors duration-150 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+                // ANALYTICS
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface px-4 py-3 hover:bg-surface-container-highest transition-colors duration-150 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+                // ARCHIVE
+            </a>
+<a class="text-body border-l-2 border-transparent hover:text-on-surface px-4 py-3 hover:bg-surface-container-highest transition-colors duration-150 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                // SETTINGS
+            </a>
+</div>
+<!-- Footer -->
+<div class="border-t border-rule font-ui-sm text-ui-sm uppercase tracking-wider font-mono-label text-mono-label">
+<a class="text-body hover:text-on-surface px-4 py-4 hover:bg-surface-container-highest transition-colors duration-150 flex items-center gap-3 border-b border-rule" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                Support
+            </a>
+<a class="text-body hover:text-on-surface px-4 py-4 hover:bg-surface-container-highest transition-colors duration-150 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+                Sign Out
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-sidebar-width w-full">
+<!-- TopNavBar (JSON Derived) -->
+<header class="sticky top-0 z-50 w-full h-16 flex items-center justify-between px-gutter border-b border-rule bg-surface">
+<!-- Left: Mobile Brand / Search -->
+<div class="flex items-center gap-4">
+<div class="md:hidden font-headline-2xl-mobile text-headline-2xl-mobile font-bold text-on-surface uppercase">
+                    POSTBOARD
+                </div>
+<div class="hidden md:flex items-center gap-2 text-dim hover:text-on-surface transition-colors cursor-text">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span class="font-mono-label text-mono-label uppercase">/Search...</span>
+</div>
+</div>
+<!-- Right: Actions -->
+<div class="flex items-center gap-6">
+<button class="hidden md:block bg-primary-container text-on-primary-container px-4 py-2 font-mono-label text-mono-label uppercase tracking-wider hover:bg-primary transition-colors">
+                    Create Order
+                </button>
+<div class="flex items-center gap-4 text-body border-l border-rule pl-6">
+<button class="hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<button class="w-8 h-8 bg-surface-container-high border border-rule flex items-center justify-center hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-[18px] group-hover:text-primary">person</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Canvas: Unauthorized Access State -->
+<main class="flex-1 relative flex items-center justify-center p-gutter bg-grid-pattern bg-background">
+<!-- Central Restricted Card -->
+<div class="relative z-10 bg-surface border border-rule p-8 md:p-12 w-full max-w-2xl flex flex-col items-center text-center shadow-[16px_16px_0px_0px_rgba(26,26,26,1)]">
+<!-- Icon/Illustration Area -->
+<div class="mb-8 relative w-24 h-24 border border-rule flex items-center justify-center bg-background overflow-hidden group">
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+</div>
+<!-- Content -->
+<div class="font-mono-label text-mono-label text-primary uppercase mb-4 tracking-[0.2em] border border-primary/30 px-3 py-1 bg-primary/5 inline-block">
+                    // ERR_403_FORBIDDEN
+                </div>
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface uppercase mb-6 tracking-tight">
+                    Access Restricted
+                </h2>
+<p class="font-body-base text-body-base text-body max-w-md mb-10 border-l-2 border-rule pl-4 text-left mx-auto">
+                    System logs indicate you do not possess the requisite clearance matrix to view this directory. All access attempts are recorded.
+                </p>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+<button class="bg-primary-container text-on-primary-container font-mono-label text-mono-label uppercase tracking-widest px-8 py-4 hover:bg-primary transition-colors border border-primary-container hover:border-primary">
+                        Return to Dashboard
+                    </button>
+<button class="bg-transparent text-on-surface border border-rule font-mono-label text-mono-label uppercase tracking-widest px-8 py-4 hover:bg-surface-container-high hover:border-dim transition-colors">
+                        Contact Administrator
+                    </button>
+</div>
+</div>
+<!-- Atmospheric Decoration -->
+<div class="absolute bottom-8 left-8 font-mono-label text-mono-label text-dim uppercase tracking-widest hidden lg:block">
+                SYS.STAT: <span class="text-on-error">LOCKED</span> <br/>
+                TERM.ID: 0x4B2A
+            </div>
+</main>
+</div>
+</body></html>

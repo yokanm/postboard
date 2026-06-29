@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: none !important;
+        }
+        .strength-segment {
+            transition: background-color 0.3s ease;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "dim": "#666666",
+                        "gradient-a": "#C084FC",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-secondary": "#31312c",
+                        "surface-bright": "#3a3939",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#594237",
+                        "error-container": "#93000a",
+                        "gradient-d": "#F59E0B",
+                        "on-surface-variant": "#e1c0b2",
+                        "background": "#131313",
+                        "surface-variant": "#353534",
+                        "primary": "#ffb694",
+                        "outline": "#a88a7e",
+                        "on-tertiary-container": "#2a2a29",
+                        "on-primary": "#571f00",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-fixed": "#e5e2e1",
+                        "rule": "#1A1A1A",
+                        "body": "#B8B8B8",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "primary-fixed": "#ffdbcc",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#474742",
+                        "inverse-on-surface": "#313030",
+                        "gradient-b": "#60A5FA",
+                        "tertiary-container": "#929090",
+                        "primary-fixed-dim": "#ffb694",
+                        "tertiary": "#c8c6c5",
+                        "on-tertiary": "#313030",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-primary-container": "#4c1a00",
+                        "secondary-fixed": "#e5e2db",
+                        "on-secondary-container": "#b7b5af",
+                        "on-primary-fixed": "#351000",
+                        "on-error-container": "#ffdad6",
+                        "live-dim": "#14532D",
+                        "secondary": "#c9c6c0",
+                        "muted": "#2A2A2A",
+                        "live": "#22C55A",
+                        "surface-container": "#201f1f",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#1c1c18",
+                        "on-secondary-fixed-variant": "#474742",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "destructive": "#EF4444",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-container-highest": "#353534",
+                        "surface": "#131313",
+                        "primary-container": "#f06613",
+                        "surface-tint": "#ffb694",
+                        "inverse-primary": "#a14000",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error": "#ffb4ab",
+                        "gradient-c": "#34D399"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "ui-xl": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-lg": ["DM Sans"],
+                        "ui-sm": ["DM Sans"],
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-2xl-mobile": ["Playfair Display"],
+                        "body-base": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "ui-xl": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "masthead-4xl": ["96px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "ui-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                        "ui-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "mono-label": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "headline-2xl-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-base": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-base">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-rule flex justify-between items-center h-16 px-4 bg-background">
+<div class="font-masthead-4xl text-headline-2xl-mobile text-primary">CANDIDATE_EDITOR</div>
+<button class="text-primary active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">save</span>
+</button>
+</header>
+<!-- Content Canvas -->
+<main class="flex-1 mt-16 px-4 py-12 max-w-md mx-auto w-full">
+<!-- Label & Headline -->
+<div class="mb-12">
+<p class="font-mono-label text-mono-label uppercase text-primary mb-2">// NEW_PASSWORD</p>
+<h1 class="font-headline-2xl-mobile text-headline-2xl-mobile text-on-surface">Choose a new password</h1>
+<p class="font-ui-sm text-ui-sm text-dim mt-2">Ensure your account remains secure with a complex technical credential.</p>
+</div>
+<!-- Form Area -->
+<form class="space-y-8" onsubmit="return false;">
+<!-- Password Field 1 -->
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">// INPUT_FIELD_01</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-lowest border border-rule px-4 py-4 text-on-surface font-mono-label focus:border-primary transition-colors duration-200" id="pwd-1" oninput="updateStrength(this.value)" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-dim hover:text-on-surface" onclick="toggleVisibility('pwd-1')" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<!-- Strength Meter -->
+<div class="flex gap-1 pt-2" id="strength-meter">
+<div class="strength-segment h-1 flex-1 bg-muted"></div>
+<div class="strength-segment h-1 flex-1 bg-muted"></div>
+<div class="strength-segment h-1 flex-1 bg-muted"></div>
+<div class="strength-segment h-1 flex-1 bg-muted"></div>
+</div>
+<p class="font-mono-label text-[10px] text-dim uppercase mt-1" id="strength-text">Complexity: Null</p>
+</div>
+<!-- Password Field 2 -->
+<div class="space-y-2">
+<label class="font-mono-label text-mono-label text-dim uppercase">// VERIFY_FIELD_02</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-rule px-4 py-4 text-on-surface font-mono-label focus:border-primary transition-colors duration-200" id="pwd-2" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-dim hover:text-on-surface" onclick="toggleVisibility('pwd-2')" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-4">
+<button class="w-full bg-primary text-on-primary py-4 font-ui-lg text-ui-lg hover:brightness-110 active:scale-[0.98] transition-all">
+                    Set New Password
+                </button>
+<a class="block text-center mt-6 text-dim hover:text-primary font-mono-label text-mono-label uppercase tracking-widest transition-colors" href="#">
+                    Back to login
+                </a>
+</div>
+</form>
+<!-- Decorative Press Grid (Minimalist version for mobile context) -->
+<div class="mt-16 border-t border-rule pt-8">
+<div class="grid grid-cols-8 gap-1 opacity-20">
+<script>
+                    for(let i=0; i<16; i++) {
+                        document.write('<div class="aspect-square bg-muted"></div>');
+                    }
+                </script>
+</div>
+<p class="font-mono-label text-[9px] text-dim mt-4">TERMINAL_REF: PW_RESET_SEQ_0091</p>
+</div>
+</main>
+<!-- Bottom Navigation Suppressed as per "Transactional" rule -->
+<script>
+        function toggleVisibility(id) {
+            const el = document.getElementById(id);
+            const icon = el.nextElementSibling.querySelector('.material-symbols-outlined');
+            if (el.type === "password") {
+                el.type = "text";
+                icon.innerText = "visibility_off";
+            } else {
+                el.type = "password";
+                icon.innerText = "visibility";
+            }
+        }
+
+        function updateStrength(val) {
+            const segments = document.querySelectorAll('.strength-segment');
+            const text = document.getElementById('strength-text');
+            
+            // Clear all
+            segments.forEach(s => s.className = 'strength-segment h-1 flex-1 bg-muted');
+            
+            if (val.length === 0) {
+                text.innerText = "Complexity: Null";
+                return;
+            }
+
+            let score = 0;
+            if (val.length > 6) score++;
+            if (/[A-Z]/.test(val)) score++;
+            if (/[0-9]/.test(val)) score++;
+            if (/[^A-Za-z0-9]/.test(val)) score++;
+
+            const colors = [
+                'bg-destructive', // Weak
+                'bg-gradient-d',  // Fair
+                'bg-gradient-b',  // Good
+                'bg-live'        // Strong
+            ];
+
+            const labels = ["WEAK", "FAIR", "GOOD", "STRONG"];
+
+            for (let i = 0; i < score; i++) {
+                segments[i].classList.remove('bg-muted');
+                segments[i].classList.add(colors[score - 1]);
+            }
+            
+            text.innerText = "Complexity: " + labels[score - 1];
+            text.className = `font-mono-label text-[10px] uppercase mt-1 text-${colors[score-1].replace('bg-', '')}`;
+        }
+    </script>
+</body></html>

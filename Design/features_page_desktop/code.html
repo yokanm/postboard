@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostBoard // Features</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar for terminal aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+            border-left: 1px solid #1A1A1A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353534;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #666666;
+        }
+        
+        /* Grid container for contiguous borders */
+        .contiguous-grid {
+            display: grid;
+            border-top: 1px solid #1A1A1A;
+            border-left: 1px solid #1A1A1A;
+        }
+        .contiguous-grid > div {
+            border-right: 1px solid #1A1A1A;
+            border-bottom: 1px solid #1A1A1A;
+        }
+    </style>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#c8c6c5",
+                        "tertiary-fixed": "#e5e2e1",
+                        "secondary": "#c9c6c0",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#1c1c18",
+                        "on-secondary-container": "#b7b5af",
+                        "on-secondary-fixed-variant": "#474742",
+                        "error-container": "#93000a",
+                        "secondary-container": "#474742",
+                        "outline-variant": "#594237",
+                        "on-primary-fixed": "#351000",
+                        "primary-fixed": "#ffdbcc",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-container": "#4c1a00",
+                        "inverse-primary": "#a14000",
+                        "gradient-c": "#34D399",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#e1c0b2",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "live": "#22C55A",
+                        "tertiary-container": "#929090",
+                        "muted": "#2A2A2A",
+                        "gradient-b": "#60A5FA",
+                        "on-secondary": "#31312c",
+                        "surface-variant": "#353534",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "body": "#B8B8B8",
+                        "on-tertiary": "#313030",
+                        "primary-fixed-dim": "#ffb694",
+                        "secondary-fixed": "#e5e2db",
+                        "on-error": "#690005",
+                        "gradient-d": "#F59E0B",
+                        "surface-tint": "#ffb694",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#3a3939",
+                        "primary-container": "#f06613",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "on-primary": "#571f00",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "destructive": "#EF4444",
+                        "rule": "#1A1A1A",
+                        "primary": "#ffb694",
+                        "surface-container": "#201f1f",
+                        "dim": "#666666",
+                        "outline": "#a88a7e",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-container": "#2a2a29",
+                        "surface-dim": "#131313",
+                        "live-dim": "#14532D",
+                        "gradient-a": "#C084FC",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "section-v-pad": "48px",
+                        "margin": "32px",
+                        "sidebar-width": "220px",
+                        "max-width": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-2xl": ["Playfair Display"],
+                        "ui-sm": ["DM Sans"],
+                        "masthead-4xl": ["Playfair Display"],
+                        "body-base": ["DM Sans"],
+                        "ui-xl": ["DM Sans"],
+                        "ui-lg": ["DM Sans"],
+                        "headline-2xl-mobile": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["11px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "headline-2xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "ui-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "masthead-4xl": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900" }],
+                        "body-base": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "ui-xl": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "ui-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "headline-2xl-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen pt-16 font-body-base text-body-base selection:bg-primary selection:text-on-primary antialiased">
+<!-- Shared Component: TopAppBar -->
+<header class="bg-background dark:bg-background fixed top-0 w-full z-50 border-b border-rule">
+<div class="flex justify-between items-center h-16 px-margin max-w-max-width mx-auto">
+<div class="flex items-center gap-8">
+<!-- Brand Logo -->
+<a class="font-masthead-4xl text-masthead-4xl text-primary uppercase tracking-tighter text-[28px] leading-none" href="#">
+                    POSTBOARD
+                </a>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Jobs</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Companies</a>
+<a class="text-primary border-b border-primary pb-1 font-ui-sm font-medium" href="#">Features</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">Pricing</a>
+<a class="text-body font-ui-sm hover:text-on-surface transition-colors" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-body font-ui-sm hover:text-on-surface transition-colors uppercase tracking-widest text-[11px]">
+                    Sign Up
+                </button>
+<button class="bg-primary text-on-primary font-ui-sm text-ui-sm px-4 py-2 hover:bg-primary-fixed-dim transition-colors uppercase tracking-widest font-bold">
+                    Post a Job
+                </button>
+<button class="text-body hover:text-on-surface transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="login">login</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full">
+<!-- Hero Section -->
+<section class="max-w-max-width mx-auto px-margin py-[120px] md:py-[180px] border-b border-rule relative overflow-hidden">
+<!-- Decorative Press Grid Background (Subtle) -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 1px 1px, #e5e2e1 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative z-10 max-w-4xl">
+<div class="mb-8 inline-flex items-center gap-2 border border-rule px-3 py-1 bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[14px]" data-icon="terminal">terminal</span>
+<span class="font-mono-label text-mono-label text-dim uppercase tracking-widest">// SYSTEM_OVERVIEW</span>
+</div>
+<h1 class="font-masthead-4xl text-masthead-4xl text-on-surface mb-8">
+                    Everything You Need To Hire And Get Hired
+                </h1>
+<p class="font-ui-xl text-ui-xl text-body max-w-2xl border-l-2 border-primary pl-4">
+                    A high-density, technical pipeline management platform designed for elite recruitment. Speed, clarity, and precision built natively into every interaction.
+                </p>
+</div>
+</section>
+<!-- Candidate Features Section -->
+<section class="max-w-max-width mx-auto px-margin py-section-v-pad">
+<div class="mb-8 flex items-end justify-between border-b border-rule pb-4">
+<h2 class="font-mono-label text-mono-label text-on-surface uppercase tracking-widest">
+                    // candidate_features
+                </h2>
+<span class="font-mono-label text-mono-label text-dim">05 MODULES ACTIVE</span>
+</div>
+<div class="contiguous-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+<!-- Feature Card: Job Discovery -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="north_east">north_east</span>
+</div>
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="manage_search">manage_search</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Job Discovery</h3>
+<p class="font-body-base text-body-base text-body">Advanced querying and filtering capabilities. Cut through the noise and surface highly relevant technical roles instantly.</p>
+</div>
+<!-- Feature Card: Saved Jobs -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="north_east">north_east</span>
+</div>
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="bookmarks">bookmarks</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Saved Jobs</h3>
+<p class="font-body-base text-body-base text-body">Maintain a curated ledger of potential opportunities. Organize targets with customizable tags and urgency indicators.</p>
+</div>
+<!-- Feature Card: Application Tracking -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="north_east">north_east</span>
+</div>
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="track_changes">track_changes</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Application Tracking</h3>
+<p class="font-body-base text-body-base text-body">Real-time pipeline visibility. Monitor status changes, interview schedules, and feedback loops across all active applications.</p>
+</div>
+<!-- Feature Card: Resume Management -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="north_east">north_east</span>
+</div>
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="description">description</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Resume Management</h3>
+<p class="font-body-base text-body-base text-body">Version control for your professional history. Upload, parse, and deploy targeted resumes for specific role categories.</p>
+</div>
+<!-- Feature Card: Notifications -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="north_east">north_east</span>
+</div>
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="notifications_active">notifications_active</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Event Notifications</h3>
+<p class="font-body-base text-body-base text-body">Granular alert configurations. Receive critical updates via email, SMS, or webhooks for state changes.</p>
+</div>
+<!-- Empty Fill to complete grid visually -->
+<div class="bg-surface-container-lowest p-6 hidden lg:block opacity-50 relative overflow-hidden">
+<div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, #1A1A1A 0, #1A1A1A 1px, transparent 1px, transparent 8px);"></div>
+</div>
+</div>
+</section>
+<!-- Recruiter Features Section -->
+<section class="max-w-max-width mx-auto px-margin py-section-v-pad">
+<div class="mb-8 flex items-end justify-between border-b border-rule pb-4">
+<h2 class="font-mono-label text-mono-label text-on-surface uppercase tracking-widest">
+                    // recruiter_features
+                </h2>
+<span class="font-mono-label text-mono-label text-dim">06 MODULES ACTIVE</span>
+</div>
+<div class="contiguous-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+<!-- Recruiter Card 1 -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group border-l-4 border-l-transparent hover:border-l-primary">
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="domain">domain</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Company Management</h3>
+<p class="font-body-base text-body-base text-body">Centralized organizational profiles. Manage brand assets, team hierarchies, and billing structures from a single dashboard.</p>
+</div>
+<!-- Recruiter Card 2 -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group border-l-4 border-l-transparent hover:border-l-primary">
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="post_add">post_add</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Job Posting Engine</h3>
+<p class="font-body-base text-body-base text-body">Streamlined requisition creation. Syndicate structured job data across multiple technical channels with markdown support.</p>
+</div>
+<!-- Recruiter Card 3 -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group border-l-4 border-l-transparent hover:border-l-primary">
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="view_kanban">view_kanban</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Applicant Pipeline</h3>
+<p class="font-body-base text-body-base text-body">Drag-and-drop state management. Visualize candidate progression through customizable stages with automated trigger actions.</p>
+</div>
+<!-- Recruiter Card 4 -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group border-l-4 border-l-transparent hover:border-l-primary">
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="schema">schema</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Hiring Workflow</h3>
+<p class="font-body-base text-body-base text-body">Programmable assessment logic. Define required technical screens, panel interviews, and standard operating procedures per role.</p>
+</div>
+<!-- Recruiter Card 5 -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group border-l-4 border-l-transparent hover:border-l-primary">
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="groups">groups</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Team Collaboration</h3>
+<p class="font-body-base text-body-base text-body">Asynchronous evaluation protocols. Capture structured feedback, conduct blind reviews, and reach consensus faster.</p>
+</div>
+<!-- Recruiter Card 6 -->
+<div class="bg-surface p-6 hover:bg-surface-container-high transition-colors group border-l-4 border-l-transparent hover:border-l-primary">
+<span class="material-symbols-outlined text-on-surface mb-6 text-[32px] group-hover:text-primary transition-colors" data-icon="monitoring">monitoring</span>
+<h3 class="font-ui-lg text-ui-lg text-on-surface mb-2">Yield Analytics</h3>
+<p class="font-body-base text-body-base text-body">Deep telemetry on hiring velocity. Measure time-to-fill, source quality, and bottleneck metrics with exportable reports.</p>
+</div>
+</div>
+</section>
+<!-- Technical Platform Details -->
+<section class="max-w-max-width mx-auto px-margin py-section-v-pad mb-16">
+<div class="bg-surface border border-rule overflow-hidden">
+<!-- Terminal Header -->
+<div class="bg-surface-container-high border-b border-rule p-3 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="font-mono-label text-mono-label text-on-surface uppercase tracking-widest">
+                            // platform_core
+                        </span>
+<div class="flex gap-2">
+<span class="w-2 h-2 bg-rule rounded-full"></span>
+<span class="w-2 h-2 bg-rule rounded-full"></span>
+<span class="w-2 h-2 bg-rule rounded-full"></span>
+</div>
+</div>
+<span class="font-mono-label text-mono-label text-dim">sys_status: <span class="text-live">operational</span></span>
+</div>
+<!-- Terminal Content Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-rule">
+<!-- Auth Detail -->
+<div class="p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<h4 class="font-mono-label text-mono-label text-on-surface text-lg">Secure Auth Infrastructure</h4>
+</div>
+<ul class="space-y-4 font-mono-label text-mono-label text-body leading-relaxed">
+<li class="flex items-start gap-2">
+<span class="text-dim mt-1">&gt;</span>
+<span>Enterprise-grade SSO integration (SAML 2.0, OIDC).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-dim mt-1">&gt;</span>
+<span>Enforced Multi-Factor Authentication (MFA) via WebAuthn or TOTP.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-dim mt-1">&gt;</span>
+<span>Session anomaly detection and automated termination protocols.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-dim mt-1">&gt;</span>
+<span>Data encrypted at rest (AES-256) and in transit (TLS 1.3).</span>
+</li>
+</ul>
+</div>
+<!-- RBAC Detail -->
+<div class="p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<h4 class="font-mono-label text-mono-label text-on-surface text-lg">Role-Based Access Control</h4>
+</div>
+<ul class="space-y-4 font-mono-label text-mono-label text-body leading-relaxed">
+<li class="flex items-start gap-2">
+<span class="text-dim mt-1">&gt;</span>
+<span>Granular permission matrices down to the object level.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-dim mt-1">&gt;</span>
+<span>Custom role definitions separating Hiring Managers from Recruiters.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-dim mt-1">&gt;</span>
+<span>Immutable audit logging for all permission escalations and data access.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-dim mt-1">&gt;</span>
+<span>Automated provisioning via SCIM integration.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full border-t border-rule">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter py-section-v-pad px-margin max-w-max-width mx-auto">
+<!-- Brand Column -->
+<div class="col-span-2 md:col-span-1 flex flex-col justify-between">
+<div>
+<span class="font-masthead-4xl text-masthead-4xl text-on-surface-variant text-[24px] leading-none mb-4 block">
+                        POSTBOARD
+                    </span>
+<p class="font-mono-label text-mono-label text-dim max-w-[200px]">
+                        Industrial-grade pipeline management.
+                    </p>
+</div>
+<div class="mt-12 font-mono-label text-mono-label text-dim">
+                    © 2024 POSTBOARD INDUSTRIAL SYSTEMS // ALL RIGHTS RESERVED
+                </div>
+</div>
+<!-- Links Column 1 -->
+<div class="flex flex-col gap-3">
+<span class="font-mono-label text-mono-label text-on-surface mb-2 uppercase tracking-widest">// Platform</span>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Product</a>
+<a class="text-primary font-ui-sm transition-colors" href="#">Features</a> <!-- Active Context -->
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Pricing</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">API</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col gap-3">
+<span class="font-mono-label text-mono-label text-on-surface mb-2 uppercase tracking-widest">// Organization</span>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Company</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">About</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Careers</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Press</a>
+</div>
+<!-- Links Column 3 -->
+<div class="flex flex-col gap-3">
+<span class="font-mono-label text-mono-label text-on-surface mb-2 uppercase tracking-widest">// Compliance</span>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Legal</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Privacy</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Terms</a>
+<a class="text-dim font-ui-sm hover:text-body transition-colors hover:text-primary" href="#">Security</a>
+</div>
+</div>
+</footer>
+</body></html>

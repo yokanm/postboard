@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POSTBOARD | Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #131313;
+            color: #E5E2E1;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .press-grid-pattern {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1px;
+            background-color: #1A1A1A;
+            width: 100%;
+            height: 100%;
+        }
+        .press-grid-tile {
+            background-color: #080808;
+            aspect-ratio: 1;
+            transition: all 0.3s ease;
+        }
+        .press-grid-tile:hover {
+            background-color: #E8610A;
+            transform: scale(0.95);
+        }
+        .stipple-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        .role-card-active {
+            border: 2px solid #ffb694 !important;
+            background-color: #1c1b1b !important;
+        }
+        input:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#e5e2db",
+                      "on-secondary": "#31312c",
+                      "on-secondary-fixed": "#1c1c18",
+                      "outline-variant": "#594237",
+                      "on-error": "#690005",
+                      "tertiary": "#c8c6c5",
+                      "primary-container": "#f06613",
+                      "on-surface": "#e5e2e1",
+                      "on-secondary-fixed-variant": "#474742",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "surface-container-high": "#2a2a2a",
+                      "background": "#131313",
+                      "inverse-on-surface": "#313030",
+                      "surface-dim": "#131313",
+                      "on-surface-variant": "#e1c0b2",
+                      "on-secondary-container": "#b7b5af",
+                      "live-dim": "#14532D",
+                      "dim": "#666666",
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-background": "#e5e2e1",
+                      "error": "#ffb4ab",
+                      "primary-fixed-dim": "#ffb694",
+                      "surface": "#131313",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "primary-fixed": "#ffdbcc",
+                      "secondary-container": "#474742",
+                      "inverse-surface": "#e5e2e1",
+                      "live": "#22C55A",
+                      "tertiary-container": "#929090",
+                      "surface-tint": "#ffb694",
+                      "surface-container-highest": "#353534",
+                      "muted": "#2A2A2A",
+                      "surface-container-low": "#1c1b1b",
+                      "on-tertiary-container": "#2a2a29",
+                      "gradient-c": "#34D399",
+                      "surface-container": "#201f1f",
+                      "on-primary": "#571f00",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "on-tertiary": "#313030",
+                      "gradient-d": "#F59E0B",
+                      "destructive": "#EF4444",
+                      "on-error-container": "#ffdad6",
+                      "primary": "#ffb694",
+                      "on-primary-container": "#4c1a00",
+                      "surface-bright": "#3a3939",
+                      "gradient-b": "#60A5FA",
+                      "secondary": "#c9c6c0",
+                      "inverse-primary": "#a14000",
+                      "surface-variant": "#353534",
+                      "on-primary-fixed": "#351000",
+                      "error-container": "#93000a",
+                      "gradient-a": "#C084FC",
+                      "body": "#B8B8B8",
+                      "outline": "#a88a7e",
+                      "rule": "#1A1A1A"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "sidebar-width": "220px",
+                      "max-width": "1280px",
+                      "margin": "32px",
+                      "gutter": "24px",
+                      "section-v-pad": "48px"
+              },
+              "fontFamily": {
+                      "ui-sm": ["DM Sans"],
+                      "ui-lg": ["DM Sans"],
+                      "masthead-4xl": ["Playfair Display"],
+                      "ui-xl": ["DM Sans"],
+                      "mono-label": ["JetBrains Mono"],
+                      "headline-2xl": ["Playfair Display"],
+                      "body-base": ["DM Sans"]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="flex min-h-screen">
+<!-- LEFT 50%: Brand Panel -->
+<section class="hidden md:flex md:w-1/2 bg-surface-container-lowest relative overflow-hidden flex-col justify-between p-margin border-r border-rule">
+<!-- The Press Grid Pattern Background -->
+<div class="absolute inset-0 z-0">
+<div class="press-grid-pattern opacity-40">
+<!-- Tiles generated by script for density -->
+<script>
+                    const grid = document.querySelector('.press-grid-pattern');
+                    for (let i = 0; i < 144; i++) {
+                        const tile = document.createElement('div');
+                        tile.className = 'press-grid-tile';
+                        grid.appendChild(tile);
+                    }
+                </script>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="absolute inset-0 stipple-overlay"></div>
+</div>
+<div class="relative z-10">
+<h1 class="font-masthead-4xl text-ui-xl tracking-tighter text-on-surface uppercase mb-unit">POSTBOARD</h1>
+<p class="font-mono-label text-mono-label text-primary tracking-widest">// SYSTEM_ACCESS_V4.0</p>
+</div>
+<div class="relative z-10 mt-auto">
+<div class="max-w-md">
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface mb-gutter">The industry standard for high-density talent pipelines.</h2>
+<div class="flex gap-gutter">
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label text-dim uppercase">Active Nodes</span>
+<span class="font-ui-lg text-ui-lg text-on-surface">1,240</span>
+</div>
+<div class="flex flex-col border-l border-rule pl-gutter">
+<span class="font-mono-label text-mono-label text-dim uppercase">Uptime</span>
+<span class="font-ui-lg text-ui-lg text-on-surface">99.98%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- RIGHT 50%: Form Panel -->
+<section class="w-full md:w-1/2 bg-background flex flex-col justify-center items-center px-margin py-section-v-pad relative">
+<!-- Mobile Masthead -->
+<div class="md:hidden absolute top-margin left-margin">
+<h1 class="font-masthead-4xl text-[32px] tracking-tighter text-on-surface uppercase">POSTBOARD</h1>
+</div>
+<div class="w-full max-w-[440px]">
+<header class="mb-section-v-pad">
+<span class="font-mono-label text-mono-label text-dim uppercase block mb-unit">// REGISTER_NEW_USER</span>
+<h2 class="font-headline-2xl text-headline-2xl text-on-surface">Initialize Account</h2>
+<p class="font-body-base text-body-base text-body mt-unit">Enter your credentials to access the broadsheet network.</p>
+</header>
+<form class="space-y-gutter" id="registration-form">
+<!-- Full Name -->
+<div class="group">
+<label class="font-mono-label text-mono-label text-dim uppercase block mb-2">Full Name</label>
+<input class="w-full bg-surface-container-lowest border border-rule px-4 py-3 font-ui-sm text-on-surface placeholder:text-muted focus:border-primary transition-colors rounded-none" placeholder="ERIK LARSSON" type="text"/>
+</div>
+<!-- Email -->
+<div class="group">
+<label class="font-mono-label text-mono-label text-dim uppercase block mb-2">Email Address</label>
+<input class="w-full bg-surface-container-lowest border border-rule px-4 py-3 font-ui-sm text-on-surface placeholder:text-muted focus:border-primary transition-colors rounded-none" placeholder="E.LARSSON@POSTBOARD.IND" type="email"/>
+</div>
+<!-- Password -->
+<div class="group">
+<label class="font-mono-label text-mono-label text-dim uppercase block mb-2">Password</label>
+<input class="w-full bg-surface-container-lowest border border-rule px-4 py-3 font-ui-sm text-on-surface placeholder:text-muted focus:border-primary transition-colors rounded-none" placeholder="••••••••••••" type="password"/>
+</div>
+<!-- Role Selector -->
+<div>
+<label class="font-mono-label text-mono-label text-dim uppercase block mb-2">Operational Role</label>
+<div class="grid grid-cols-2 gap-unit">
+<!-- Candidate Card -->
+<button class="role-card flex flex-col items-start p-4 border border-rule bg-surface-container-low text-left transition-all hover:bg-surface-container" id="role-candidate" onclick="selectRole('candidate')" type="button">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="person_search">person_search</span>
+<span class="font-ui-sm text-ui-sm font-bold text-on-surface block">Candidate</span>
+<span class="font-mono-label text-[10px] text-dim uppercase">Find placement</span>
+</button>
+<!-- Recruiter Card -->
+<button class="role-card flex flex-col items-start p-4 border border-rule bg-surface-container-low text-left transition-all hover:bg-surface-container" id="role-recruiter" onclick="selectRole('recruiter')" type="button">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="corporate_fare">corporate_fare</span>
+<span class="font-ui-sm text-ui-sm font-bold text-on-surface block">Recruiter</span>
+<span class="font-mono-label text-[10px] text-dim uppercase">Manage pipeline</span>
+</button>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary-container hover:bg-primary text-on-primary-container font-ui-lg text-ui-lg py-4 transition-all uppercase tracking-tight flex justify-between items-center px-6 group active:scale-[0.98]" type="submit">
+<span>Create Account</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Footer Link -->
+<div class="pt-gutter flex justify-center">
+<p class="font-ui-sm text-ui-sm text-body">
+                        Already have an account? 
+                        <a class="text-primary hover:underline font-bold ml-1" href="#">Login</a>
+</p>
+</div>
+</form>
+</div>
+<!-- Decorative Footer Rule -->
+<div class="absolute bottom-margin left-margin right-margin h-px bg-rule hidden md:block"></div>
+<div class="absolute bottom-4 left-margin right-margin flex justify-between items-center">
+<span class="font-mono-label text-[9px] text-dim uppercase">© 2024 POSTBOARD INDUSTRIAL</span>
+<div class="flex gap-4">
+<a class="font-mono-label text-[9px] text-dim uppercase hover:text-on-surface" href="#">Legal</a>
+<a class="font-mono-label text-[9px] text-dim uppercase hover:text-on-surface" href="#">Status</a>
+</div>
+</div>
+</section>
+<script>
+        function selectRole(role) {
+            const candidateBtn = document.getElementById('role-candidate');
+            const recruiterBtn = document.getElementById('role-recruiter');
+            
+            if (role === 'candidate') {
+                candidateBtn.classList.add('role-card-active');
+                recruiterBtn.classList.remove('role-card-active');
+            } else {
+                recruiterBtn.classList.add('role-card-active');
+                candidateBtn.classList.remove('role-card-active');
+            }
+        }
+
+        // Default selection
+        selectRole('candidate');
+
+        // Form submission micro-interaction
+        document.getElementById('registration-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span>Processing...</span><span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span>';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,131 @@
+# docker-compose.yml
+#
+# FIX #9: All secrets and credentials are read from environment variables.
+# No hardcoded passwords, connection strings, or tokens remain in this file.
+#
+# USAGE:
+#   1. Copy .env.example → .env
+#   2. Fill in all required values (marked with <REQUIRED>)
+#   3. docker compose up -d
+#
+# The `env_file: .env` directive loads the file automatically so you do not
+# need to re-export variables in your shell before running compose commands.
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: jobboard-api
+    env_file: .env
+
+    ports:
+      - "${API_PORT:-3000}:3000"
+
+    environment:
+      # Use the Docker service name as the DB host — not localhost.
+      # The value is constructed from individual env vars so the compose
+      # file itself never contains credentials.
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}"
+      REDIS_URL:    "redis://redis:6379"
+      NODE_ENV:     "${NODE_ENV:-production}"
+
+      # Auth secrets — all sourced from .env / host environment
+      JWT_ACCESS_SECRET:     "${JWT_ACCESS_SECRET}"
+      JWT_REFRESH_SECRET:    "${JWT_REFRESH_SECRET}"
+      JWT_SUPERADMIN_SECRET: "${JWT_SUPERADMIN_SECRET}"
+      ACCESS_EXPIRES:        "${ACCESS_EXPIRES:-15m}"
+      REFRESH_EXPIRES:       "${REFRESH_EXPIRES:-7d}"
+
+      # Application
+      APP_URL:     "${APP_URL:-http://localhost:3000}"
+      PORT:        "3000"
+      LOG_LEVEL:   "${LOG_LEVEL:-info}"
+      ALLOW_ORIGINS: "${ALLOW_ORIGINS:-}"
+
+      # Email
+      RESEND_API_KEY: "${RESEND_API_KEY:-}"
+      EMAIL_FROM:     "${EMAIL_FROM:-no-reply@yourdomain.com}"
+
+      # Cloudinary
+      CLOUDINARY_CLOUD_NAME: "${CLOUDINARY_CLOUD_NAME:-}"
+      CLOUDINARY_API_KEY:    "${CLOUDINARY_API_KEY:-}"
+      CLOUDINARY_API_SECRET: "${CLOUDINARY_API_SECRET:-}"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+    restart: unless-stopped
+
+  # ─── Email worker ──────────────────────────────────────────────────────────────
+  email-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+      target: production
+    container_name: jobboard-email-worker
+    env_file: .env
+
+    environment:
+      REDIS_URL:  "redis://redis:6379"
+      NODE_ENV:   "${NODE_ENV:-production}"
+      RESEND_API_KEY: "${RESEND_API_KEY:-}"
+      EMAIL_FROM:     "${EMAIL_FROM:-no-reply@yourdomain.com}"
+      APP_URL:        "${APP_URL:-http://localhost:3000}"
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    restart: unless-stopped
+
+  # ─── PostgreSQL ────────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: jobboard-postgres
+
+    environment:
+      POSTGRES_USER:     "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB:       "${POSTGRES_DB}"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    ports:
+      - "${POSTGRES_HOST_PORT:-5432}:5432"
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout:  5s
+      retries:  5
+
+    restart: unless-stopped
+
+  # ─── Redis ─────────────────────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: jobboard-redis
+
+    volumes:
+      - redis_data:/data
+
+    ports:
+      - "${REDIS_HOST_PORT:-6379}:6379"
+
+    healthcheck:
+      test:     ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout:  5s
+      retries:  3
+
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -1,1086 +1,301 @@
 # DESIGN.md
 
-# POSTBOARD
+# POSTBOARD Design System — Industrial Broadsheet
 
-## Frontend Architecture & Design System
-
-Version: 2.0
+Version: 3.0
 
 ---
 
-# 1. Product Vision
+## 1. Design Identity
 
-## Platform Overview
+**Industrial Broadsheet** is a high-density, typography-first design language inspired by:
+- Financial terminals (Bloomberg Terminal)
+- Print broadsheet newspapers (The Guardian, The New York Times)
+- Modern operational software (Linear, Notion, Vercel)
 
-PostBoard is a multi-tenant recruitment platform combining:
+### Rejects
+- ❌ Rounded SaaS UI
+- ❌ Glassmorphism
+- ❌ Neumorphism
+- ❌ Shadow-heavy interfaces
+- ❌ Gradient overload
+- ❌ Decorative illustrations
 
-* Public Job Marketplace
-* Candidate Portal
-* Recruiter Workspace
-* Platform Administration
-
-The platform is designed for:
-
-* Technical hiring
-* Enterprise recruitment
-* Talent operations
-* Workforce intelligence
-* Multi-company hiring workflows
-
----
-
-## Experience Principles
-
-The experience should feel closer to:
-
-* Linear
-* Vercel
-* Notion
-* Bloomberg Terminal
-* Modern operational software
-
-Than:
-
-* Traditional job boards
-* Generic SaaS dashboards
-* Consumer-focused marketplaces
-
-Priorities:
-
-1. Information Density
-2. Operational Efficiency
-3. Technical Transparency
-4. Fast Navigation
-5. Enterprise Scalability
+### Prioritizes
+- ✅ Information density
+- ✅ Typographic hierarchy
+- ✅ Monochrome + single accent
+- ✅ Zero border-radius
+- ✅ Border-based delineation
+- ✅ High contrast
+- ✅ Fast scanability
 
 ---
 
-# 2. Technology Stack
-
-## Core Framework
-
-* TanStack Start
-* React
-* TypeScript
-
----
-
-## Routing
-
-* TanStack Router
-
----
-
-## Server State
-
-* TanStack Query
-
----
-
-## Tables
-
-* TanStack Table
-
----
-
-## UI
-
-* Radix UI
-* shadcn/ui
-
----
-
-## Styling
-
-* Tailwind CSS
-
----
-
-## Forms
-
-* React Hook Form
-* Zod
-
----
-
-## Charts
-
-* Recharts
-
----
-
-## Client State
-
-* Zustand
-
----
-
-## API
-
-* Native Fetch API
-
----
-
-# 3. Architectural Constraints
-
-## Forbidden Technologies
-
-Do not introduce:
-
-* Axios
-* Lucide Icons
-* Redux
-* MobX
-* Chakra UI
-* Material UI
-* Styled Components
-
-Without architectural approval.
-
----
-
-## Backend Ownership
-
-Backend already exists.
-
-Frontend acts only as:
-
-* Consumer
-* Presenter
-* Orchestrator
-
-Frontend must never duplicate backend business logic.
-
----
-
-# 4. Design Language
-
-## Industrial Broadsheet
-
-The official design system.
-
-Core Traits:
-
-* Editorial
-* Technical
-* Brutalist
-* Enterprise
-* High Density
-* Data-Centric
-
-Avoid:
-
-* Glassmorphism
-* Neumorphism
-* Soft Shadows
-* Oversized Cards
-* Excessive White Space
-* Rounded SaaS Aesthetics
-
----
-
-## Key Attributes
-
-* Zero Radius Geometry
-* Editorial Hierarchy
-* Technical Metadata Visibility
-* Monochromatic Structure
-* System Transparency
-* Operational Density
-
----
-
-# 5. Design Tokens
-
-[KEEP ALL COLOR TOKENS FROM CURRENT DESIGN]
-
-* Surface System
-* Text System
-* Primary System
-* Secondary System
-* Tertiary System
-* Error System
-* Fixed Colors
-* Structural Colors
-* Status Colors
-* Data Gradient Palette
-
-No modifications.
-# Design Tokens
-
-## Colors
-
-### Surface System
-
-| Token                     | Value   |
-| ------------------------- | ------- |
-| surface                   | #131313 |
-| surface-dim               | #131313 |
-| surface-bright            | #3a3939 |
-| surface-container-lowest  | #0e0e0e |
-| surface-container-low     | #1c1b1b |
-| surface-container         | #201f1f |
-| surface-container-high    | #2a2a2a |
-| surface-container-highest | #353534 |
-
-### Text System
-
-| Token              | Value   |
-| ------------------ | ------- |
-| on-surface         | #e5e2e1 |
-| on-surface-variant | #e1c0b2 |
-| on-background      | #e5e2e1 |
-| body               | #B8B8B8 |
-| dim                | #666666 |
-
-### Primary System
-
-| Token                | Value   |
-| -------------------- | ------- |
-| primary              | #ffb694 |
-| on-primary           | #571f00 |
-| primary-container    | #f06613 |
-| on-primary-container | #4c1a00 |
-| inverse-primary      | #a14000 |
-| surface-tint         | #ffb694 |
-
-### Secondary System
-
-| Token                  | Value   |
-| ---------------------- | ------- |
-| secondary              | #c9c6c0 |
-| on-secondary           | #31312c |
-| secondary-container    | #474742 |
-| on-secondary-container | #b7b5af |
-
-### Tertiary System
-
-| Token                 | Value   |
-| --------------------- | ------- |
-| tertiary              | #c8c6c5 |
-| on-tertiary           | #313030 |
-| tertiary-container    | #929090 |
-| on-tertiary-container | #2a2a29 |
-
-### Error System
-
-| Token              | Value   |
-| ------------------ | ------- |
-| error              | #ffb4ab |
-| on-error           | #690005 |
-| error-container    | #93000a |
-| on-error-container | #ffdad6 |
-
-### Fixed Colors
-
-| Token                      | Value   |
-| -------------------------- | ------- |
-| primary-fixed              | #ffdbcc |
-| primary-fixed-dim          | #ffb694 |
-| on-primary-fixed           | #351000 |
-| on-primary-fixed-variant   | #7b2f00 |
-| secondary-fixed            | #e5e2db |
-| secondary-fixed-dim        | #c9c6c0 |
-| on-secondary-fixed         | #1c1c18 |
-| on-secondary-fixed-variant | #474742 |
-| tertiary-fixed             | #e5e2e1 |
-| tertiary-fixed-dim         | #c8c6c5 |
-| on-tertiary-fixed          | #1c1b1b |
-| on-tertiary-fixed-variant  | #474646 |
-
-### Structural Colors
-
-| Token           | Value   |
-| --------------- | ------- |
-| background      | #131313 |
-| surface-variant | #353534 |
-| rule            | #1A1A1A |
-| muted           | #2A2A2A |
-| outline         | #a88a7e |
-| outline-variant | #594237 |
-
-### Status Colors
-
-| Token       | Value   |
-| ----------- | ------- |
-| live        | #22C55A |
-| live-dim    | #14532D |
-| destructive | #EF4444 |
-
-### Data Gradient Palette
-
-| Token      | Value   |
-| ---------- | ------- |
-| gradient-a | #C084FC |
-| gradient-b | #60A5FA |
-| gradient-c | #34D399 |
-| gradient-d | #F59E0B |
-
----
-
-# 6. Typography System
-
-## Font Families
-
-### Primary Serif
-
-Playfair Display
-
-Used for:
-
-* Landing page mastheads
-* Hero statistics
-* Editorial section titles
-* Marketing content
-
-### Primary Sans
-
-DM Sans
-
-Used for:
-
-* Application UI
-* Forms
-* Tables
-* Navigation
-* Buttons
-
-### Technical Mono
-
-JetBrains Mono
-
-Used for:
-
-* Metadata
-* IDs
-* Audit logs
-* Timestamps
-* Technical labels
-* Section wayfinding
-
-All technical section labels must use:
-
-```text
-// SECTION_NAME
+## 2. Typography
+
+### Primary — DM Sans
+Used for UI text, navigation, labels, body copy.
+- Weights: 400 (Regular), 500 (Medium), 600 (Semibold)
+- Sizing: 11px–16px for UI, larger for headings
+
+### Display — Playfair Display
+Used for large headings, hero text, masthead elements.
+- Weights: 400 (Regular), 700 (Bold)
+- Reserved for prominent text only
+
+### Monospace — JetBrains Mono
+Used for code, system labels, data values, terminal-style UI.
+- Weights: 400 (Regular), 500 (Medium)
+- Used for `mono-label` class (uppercase, tracked-out)
+
+### Type Scale
 ```
+--font-sans: DM Sans, system-ui, sans-serif
+--font-serif: Playfair Display, Georgia, serif
+--font-mono: JetBrains Mono, Fira Code, monospace
+--font-masthead: Playfair Display (hero headings)
 
-Examples:
-
-```text
-// PIPELINE_STATUS
-// AUDIT_LOG
-// APPLICATION_QUEUE
+font-ui-sm:   11px  (secondary labels, metadata)
+font-ui:      12px  (small UI, table cells)
+font-ui-base: 13px  (body text, default)
+font-ui-md:   14px  (section headers, nav)
+font-ui-lg:   16px  (card titles)
+font-heading: 24px  (page headings)
+font-masthead: 64px (hero, landing)
 ```
 
 ---
 
-## Typography Scale
+## 3. Color Palette
 
-### Masthead 4XL
-
-* Font: Playfair Display
-* Size: 96px
-* Weight: 900
-* Line Height: 1.1
-* Letter Spacing: -0.04em
-
-### Headline 2XL
-
-* Font: Playfair Display
-* Size: 32px
-* Weight: 700
-* Line Height: 1.2
-
-### Headline 2XL Mobile
-
-* Font: Playfair Display
-* Size: 24px
-* Weight: 700
-* Line Height: 1.2
-
-### UI XL
-
-* Font: DM Sans
-* Size: 24px
-* Weight: 600
-* Line Height: 1.3
-
-### UI LG
-
-* Font: DM Sans
-* Size: 18px
-* Weight: 600
-* Line Height: 1.5
-
-### Body Base
-
-* Font: DM Sans
-* Size: 15px
-* Weight: 400
-* Line Height: 1.6
-
-### UI SM
-
-* Font: DM Sans
-* Size: 13px
-* Weight: 400
-* Line Height: 1.5
-
-### Mono Label
-
-* Font: JetBrains Mono
-* Size: 11px
-* Weight: 400
-* Line Height: 1.4
-* Letter Spacing: 0.05em
-
----
-
-
-# 7. Layout & Grid System
-
-## Spacing Tokens
-
-| Token         | Value  |
-| ------------- | ------ |
-| unit          | 4px    |
-| gutter        | 24px   |
-| margin        | 32px   |
-| section-v-pad | 48px   |
-| sidebar-width | 220px  |
-| max-width     | 1280px |
-
----
-
-## Layout Principles
-
-### Density
-
-Spacing should remain tight and efficient.
-
-Inspired by:
-
-* Linear
-* Vercel
-* GitHub
-* Financial dashboards
-
-### Rhythm
-
-All spacing must be based on the 4px grid.
-
-### Structural Rules
-
-Use monochromatic rules extensively.
-
-```css
-border: 1px solid #1A1A1A;
+### Light Mode
+```
+--background:           #FAFAF8
+--on-surface:           #1C1C1A
+--body:                 #1C1C1A
+--dim:                  #6B6B68
+--muted:                #9C9C98
+--rule:                 #D4D4D0
+--ink:                  #FFFFFF
+--surface-container:     #F0F0EC
+--surface-container-low: #F5F5F2
+--surface-container-high:#E8E8E4
+--primary-container:    #A68B3C
+--destructive:          #B33A3A
+--error:                #B33A3A
+--error-container:      #FDEDED
+--live:                 #2A7A4A
+--live-dim:             #E8F5EC
+--press-amber:          #C8A84E
+--gradient-a:           #8B7355
+--gradient-b:           #5B7B9A
 ```
 
-These rules define hierarchy and layout instead of shadows.
-
----
-
-## Grid System
-
-### Dashboard Layout
-
-Fixed-Fluid Hybrid Grid
-
-* Sidebar: 220px fixed width
-* Main Content: Fluid 12-column grid
-
-### Marketing Pages
-
-* 12-column grid
-* Max width: 1280px
-
----
-
-# 8. Visual Rules
-
-## Radius
-
-Default:
-
-0px
-
-Exceptions:
-
-* Status Badge → 2px
-* Pills → Full Radius
-
----
-
-## Shadows
-
-Not allowed.
-
-Use:
-
-* Borders
-* Contrast
-* Tonal Layering
-
----
-
-## Structural Rules
-
-Primary Layout Border:
-
-1px solid #1A1A1A
-
-Borders establish hierarchy.
-
-Not shadows.
-
----
-
-# 9. TanStack Start Architecture
-
-## Root Structure
-
-src/
-├── app/
-├── routes/
-├── layouts/
-├── components/
-├── features/
-├── hooks/
-├── stores/
-├── lib/
-├── types/
-├── assets/
-└── styles/
-
----
-
-# 10. App Layer
-
-app/
-├── providers/
-├── router/
-├── guards/
-└── config/
-
-Responsibilities:
-
-* Bootstrapping
-* Global Providers
-* Configuration
-* Route Guards
-
----
-
-# 11. Route Architecture
-
-routes/
-├── __root.tsx
-├── index.tsx
-
-├── (public)/
-├── (candidate)/
-├── (recruiter)/
-├── (admin)/
-
-└── api/
-
----
-
-## Route Groups
-
-Public
-
-* Landing
-* Jobs
-* Companies
-* Login
-* Register
-
-Candidate
-
-* Dashboard
-* Applications
-* Saved Jobs
-* Profile
-
-Recruiter
-
-* Dashboard
-* Jobs
-* Applicants
-* Analytics
-
-Admin
-
-* Dashboard
-* Users
-* Companies
-* Reports
-
----
-
-# 12. Layout Architecture
-
-layouts/
-├── public-layout.tsx
-├── candidate-layout.tsx
-├── recruiter-layout.tsx
-└── admin-layout.tsx
-
-Each layout owns:
-
-* Navigation
-* Sidebar
-* Breadcrumbs
-* Access Control
-
----
-
-# 13. Feature Architecture
-
-features/
-├── auth/
-├── jobs/
-├── candidate/
-├── recruiter/
-├── admin/
-├── analytics/
-└── notifications/
-
-Feature Structure:
-
-feature/
-├── api/
-├── components/
-├── hooks/
-├── schemas/
-├── services/
-├── types/
-└── utils/
-
----
-
-# 14. API Architecture
-
-Use Native Fetch API.
-
-lib/api/
-├── client.ts
-├── request.ts
-├── auth.ts
-├── endpoints.ts
-├── errors.ts
-└── query-keys.ts
-
-Required Flow:
-
-Component
-→ Feature Hook
-→ Feature API
-→ Request Layer
-→ Backend
-
-Components never call fetch directly.
-
----
-
-# 15. Authentication
-
-Supported:
-
-* Login
-* Register
-* Forgot Password
-* Reset Password
-
-Roles:
-
-* Candidate
-* Recruiter
-* Admin
-
-Flow:
-
-User
-→ Login
-→ Token Storage
-→ Current User Query
-→ Role Redirect
-
----
-
-# 16. State Management
-
-## TanStack Query
-
-Server State Only
-
-Examples:
-
-* Users
-* Jobs
-* Companies
-* Applications
-* Analytics
-
----
-
-## Zustand
-
-Client State Only
-
-Examples:
-
-* Sidebar
-* Theme
-* Modal
-* UI Preferences
-
-Never duplicate query data.
-
----
-
-# 17. UI Architecture
-
-Priority:
-
-Radix UI
-→ shadcn/ui
-→ Shared Components
-→ Feature Components
-
-Do not create custom primitives when existing primitives exist.
-
----
-
-# 18. Component Standards
-
-Keep all existing:
-
-* Buttons
-* Inputs
-* Cards
-* Tables
-* Status Badges
-* Audit Logs
-* Press Grid
-
-## Buttons
-
-### Primary
-
-* Background: Primary
-* Text: On Primary
-* Radius: 0px
-
-### Secondary
-
-* Transparent background
-* Rule border
-* Surface text
-
-### Ghost
-
-* No border
-* Muted text
-* Brightens on hover
-
----
-
-## Inputs
-
-### Default
-
-* Surface background
-* Rule border
-* Radius: 0px
-
-### Focus
-
-Border changes to primary accent.
-
----
-
-## Cards
-
-Requirements:
-
-* 0px radius
-* Rule border
-* Dense spacing
-* No shadows
-
----
-
-## Tables
-
-Requirements:
-
-* TanStack Table
-* Dense rows
-* Row separators
-* Search
-* Filtering
-* Sorting
-* Pagination
-
-Cell padding:
-
-```css
-8px - 12px
+### Dark Mode
+```
+--background:           #0F0F0D
+--on-surface:           #E8E8E4
+--body:                 #D4D4D0
+--dim:                  #8A8A86
+--muted:                #5C5C58
+--rule:                 #2A2A28
+--ink:                  #1A1A18
+--surface-container:     #1C1C1A
+--surface-container-low: #161614
+--surface-container-high:#242422
+--primary-container:    #C8A84E
+--destructive:          #DC5A5A
+--error:                #DC5A5A
+--error-container:      #3D1A1A
+--live:                 #4ADE80
+--live-dim:             #1A3D2A
+--press-amber:          #C8A84E
+--gradient-a:           #8B7355
+--gradient-b:           #5B7B9A
 ```
 
+### Accent Behavior
+- Primary action color: `--primary-container` (amber/gold)
+- No blue primary (differentiates from generic SaaS)
+- Red only for destructive/errors
+- Green only for success/live states
+- Text colors limited to 3 levels: `--on-surface` (primary), `--body` (secondary), `--dim` (tertiary)
+
 ---
 
-## Audit Logs
+## 4. Spacing System
 
-Inspired by:
-
-* Vercel Deployments
-* CI/CD Logs
-* Terminal Output
-
-Typography:
-
-* JetBrains Mono
-
-Metadata:
-
-```css
-#666666
+```
+--margin:       24px  (page margins)
+--section-v-pad: 64px (section vertical padding)
+--gap-sm:       4px
+--gap-md:       8px
+--gap-lg:       12px
+--gap-xl:       16px
+--gap-2xl:      24px
 ```
 
-Content:
+Based on 4px grid. All spacing uses multiples of 4.
 
-```css
-#B8B8B8
+### Card Padding
+- Cards: `p-4` (16px)
+- Data-dense cards: `p-3` (12px)
+- Compact table cells: `px-3 py-2` (12px horizontal, 8px vertical)
+
+---
+
+## 5. Breakpoints
+
+```
+sm:  640px   (mobile landscape)
+md:  768px   (tablet, sidebar appears)
+lg:  1024px  (desktop)
+xl:  1280px  (wide desktop)
+2xl: 1536px  (ultra-wide)
 ```
 
----
-
-## Status Badges
-
-### OPEN
-
-Background:
-
-```css
-#14532D
-```
-
-Text:
-
-```css
-#22C55A
-```
-
-### DRAFT
-
-Border:
-
-```css
-1px dashed #1A1A1A
-```
-
-Text:
-
-```css
-#666666
-```
-
-### REJECTED
-
-Background:
-
-```css
-#93000a
-```
-
-Text:
-
-```css
-#EF4444
-```
+### Layout Behavior
+- Below `md`: Mobile single-column, bottom tab nav or top scrollable tabs
+- `md`-`lg`: Sidebar appears, content expands
+- Above `xl`: Max-width constraint, centered content
 
 ---
 
-## The Press Grid
+## 6. Component Design
 
-Signature decorative component.
+### Sidebar
+- Width: 224px (`w-56`)
+- Background: `--surface-container-low`
+- Border-right: `--rule`
+- Active item: `--primary-container` text + 10% bg
+- Hover item: `--surface-container` bg
+- Mono label header with `// SECTION_NAME`
 
-Characteristics:
+### Navbar (Topbar)
+- Height: 64px
+- Background: `--background`
+- Border-bottom: `--rule`
+- User menu: dropdown with avatar, role badge, logout
+- Theme toggle: 3-button (light/dark/system)
 
-* Sharp square tiles
-* Iridescent gradients
-* Grain texture
-* Data visualization aesthetic
+### Cards
+- Background: `--ink` (white in light, dark gray in dark)
+- Border: `--rule` (1px solid)
+- Padding: `p-4`
+- Zero border-radius
+- No shadows
+- Hover: border color change to `--primary-container`
 
-Uses:
+### Forms
+- Input background: transparent or `--surface-container-low`
+- Border: `--rule`
+- Focus ring: 2px `--primary-container` outline
+- Label: `font-ui-sm` uppercase, `--dim` color
+- Error: `--destructive` border + message
+- Input height: `h-9` (36px) for standard, `h-10` (40px) for primary
 
-* Landing pages
-* Analytics dashboards
-* Empty states
-* Hero sections
+### Tables
+- Header: `--surface-container-low` bg, `--dim` text, `font-sans text-[12px] uppercase tracking-wider`
+- Rows: alternating `--ink` and `--surface-container-low`
+- Hover row: `--surface-container` bg
+- Border: `--rule` for cell dividers
+- Compact cell padding: `px-3 py-2`
+- Cursor pagination: "Load More" button or prev/next
 
-Interactive behavior:
+### Dialogs
+- Overlay: `bg-black/50` (50% black overlay)
+- Content: `--ink` bg, `--rule` border
+- Zero border-radius
+- Width: `max-w-md` (448px) default, `max-w-lg` (640px) for large
+- Header: title + close button
+- Footer: action buttons (cancel + confirm)
 
-* subtle scaling
-* color inversion
-* gradient transitions
+### Badges
+- `font-sans text-[11px] uppercase tracking-wider`
+- Padding: `px-2 py-0.5`
+- Color variants: status-based (pending/reviewed/shortlisted/rejected/accepted)
+- Zero border-radius
 
----
+### Notifications
+- Bell icon in topbar with unread count badge
+- Drawer: slides from right, `Sheet` component
+- Notification item: icon + message + timestamp
+- Read: `--dim` text, unread: `--on-surface` text + left border accent
 
-# 19. Data Tables
+### Skeletons
+- Background: `--surface-container-high`
+- Animated pulse via Tailwind `animate-pulse`
+- Zero border-radius
+- Width/height match content being loaded
 
-Mandatory:
-
-TanStack Table
-
-Features:
-
-* Search
-* Filter
-* Sort
-* Pagination
-* Column Visibility
-
-Used by:
-
-* Jobs
-* Users
-* Companies
-* Applications
-* Audit Logs
-
----
-
-# 20. Analytics
-
-Recharts
-
-Candidate:
-
-* Application Metrics
-
-Recruiter:
-
-* Hiring Funnel
-* Conversion Metrics
-
-Admin:
-
-* Platform KPIs
-* Tenant Growth
-
-Follow Industrial Broadsheet visualization styling.
-
----
-
-# 21. Error Handling
-
-Every experience must support:
-
-* Loading
-* Empty
-* Error
-* Success
-
-Required Boundaries:
-
-* Global
-* Layout
-* Route
-* Feature
+### Loading States
+- **Spinner variant**: Centered spinning icon + message
+- **Skeleton variant**: Row of skeleton blocks matching content shape
+- **Page variant**: Full-page centered spinner for route transitions
 
 ---
 
-# 22. Accessibility
+## 7. Animations
 
-Release Requirements:
-
-* Keyboard Navigation
-* ARIA Labels
-* Semantic HTML
-* Screen Readers
-* WCAG Compliance
-
-Accessibility failures block release.
+No decorative animations. Only functional:
+- Dialog open/close (fade + scale, fast: 150ms)
+- Sheet slide (150ms ease-out)
+- Hover state transitions (150ms)
+- Spinner rotation (1s linear infinite)
+- Skeleton pulse (2s ease-in-out infinite)
+- Route transitions: instant (no page transition animation)
 
 ---
 
-# 23. Responsive Strategy
+## 8. Icons
 
-Desktop First
-
-Desktop
-
-* Fixed Sidebar
-
-Tablet
-
-* Adaptive Layout
-
-Mobile
-
-* Drawer Navigation
-* Single Column Layout
+- Single library: **Hugeicons** (core-free-icons)
+- Size: 14px (small), 16px (default), 20px (large), 24px (x-large)
+- Stroke width: 2 (default), 1.5 (detailed icons)
+- Use `aria-hidden="true"` on all decorative icons
+- Use `sr-only` text for icon-only buttons
 
 ---
 
-# 24. Multi-Tenant Requirements
+## 9. Accessibility
 
-Every feature must support:
-
-* Tenant Isolation
-* Company Ownership
-* Recruiter Ownership
-* Platform Administration
-
-Never assume a single company.
+- Focus indicators: 2px solid `--primary-container` outline with 2px offset
+- Color contrast: all text meets WCAG AA (minimum 4.5:1 ratio)
+- Interactive elements: minimum 44x44px touch target
+- Form errors: linked to input via `aria-describedby`
+- Dynamic content: uses `role="status"` or `role="alert"` for screen readers
+- Skip-to-content link available
 
 ---
 
-# 25. Future Scalability
+## 10. Responsive Behavior
 
-Architecture must support:
+### Mobile (< md: 768px)
+- Sidebar hidden, replaced by top scrollable tab bar
+- Tables collapse to card list
+- Dialogs become full-screen
+- Font sizes remain the same (no mobile scaling)
+- Bottom padding for mobile nav
 
-* Subscription Plans
-* Billing
-* Recruiter Teams
-* Audit Logs
-* Notifications
-* Feature Flags
-* WebSockets
-* AI Matching
-* Enterprise Permissions
+### Tablet (md-lg: 768-1024px)
+- Sidebar visible but narrower
+- Multi-column layouts collapse to 2 columns
+- Tables remain horizontal with horizontal scroll
 
-Without major refactoring.
+### Desktop (> lg: 1024px)
+- Full layout with sidebar
+- Multi-column grids (3-4 columns)
+- Side-by-side detail panels
 
 ---
 
-# 26. Definition Of Done
+## 11. Future Design Tokens
 
-✓ Typed
-
-✓ Accessible
-
-✓ Responsive
-
-✓ Loading State
-
-✓ Empty State
-
-✓ Error State
-
-✓ Success State
-
-✓ Query Integrated
-
-✓ Role Protected
-
-✓ Design System Compliant
-
-✓ Tested
-
-✓ Production Ready
+Tokens reserved for future expansion:
+- `--font-ui-xs`: 10px (for extreme density)
+- `--radius-sm`: If radius is ever needed (not currently used)
+- `--shadow-sm`, `--shadow-md`: If shadows are ever needed (not currently used)
+- `--transition-fast`: 100ms
+- `--transition-normal`: 200ms
+- `--z-dropdown`, `--z-sticky`, `--z-modal`, `--z-toast`: z-index layers
